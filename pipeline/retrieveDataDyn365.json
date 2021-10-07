@@ -1,0 +1,86 @@
+{
+	"name": "retrieveDataDyn365",
+	"properties": {
+		"activities": [
+			{
+				"name": "Lookup1",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DynamicsSource",
+						"query": "<fetch top='1' >\n  <entity name='ntv_customercluster' >\n    <attribute name='ntv_customerclusterid' />\n    <filter>\n      <condition attribute='ntv_name' operator='eq' value='Base' />\n    </filter>\n  </entity>\n</fetch>"
+					},
+					"dataset": {
+						"referenceName": "Dynamics365Entity",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": true
+				}
+			},
+			{
+				"name": "sp update",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Lookup1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[batchSync].[UpdateTablesSync]",
+					"storedProcedureParameters": {
+						"ColumnKeyName": {
+							"value": "ntv_customerClusterId",
+							"type": "String"
+						},
+						"ColumnValueName": {
+							"value": "Cluster",
+							"type": "String"
+						},
+						"FieldKey": {
+							"value": {
+								"value": "@activity('Lookup1').output.firstrow.ntv_customerclusterid",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"FieldValue": {
+							"value": "Base",
+							"type": "String"
+						},
+						"TableName": {
+							"value": "batchSync.AggClusterCorporate",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDbCrmStagingArea",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2021-09-28T09:07:15Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

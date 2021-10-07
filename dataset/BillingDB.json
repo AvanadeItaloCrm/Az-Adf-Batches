@@ -1,0 +1,203 @@
+{
+	"name": "BillingDB",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDbCrmStagingArea",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "idChiave",
+				"type": "varchar"
+			},
+			{
+				"name": "PNR",
+				"type": "varchar"
+			},
+			{
+				"name": "Flag_di_blocco_fatturazione_PNR",
+				"type": "bit"
+			},
+			{
+				"name": "Codice_Carta_business_pass",
+				"type": "varchar"
+			},
+			{
+				"name": "Codice_Carta_Web_business_pass",
+				"type": "varchar"
+			},
+			{
+				"name": "Numero_Ordine",
+				"type": "varchar"
+			},
+			{
+				"name": "Codice_documento_emesso_Fattura_o_Nota_di_credito",
+				"type": "varchar"
+			},
+			{
+				"name": "Tipo_documento_Fattura_Nota_di_Credito",
+				"type": "varchar"
+			},
+			{
+				"name": "Codice_documento_padre",
+				"type": "varchar"
+			},
+			{
+				"name": "Tipo_documento",
+				"type": "varchar"
+			},
+			{
+				"name": "Data_creazione_documento",
+				"type": "varchar"
+			},
+			{
+				"name": "Data_emissione_documento",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Data_creazione_pdf",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Data_Ultima_Modifica_documento",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Data_trasmissione_sdi",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Esito_sdi",
+				"type": "varchar"
+			},
+			{
+				"name": "Descrizione_sdi",
+				"type": "varchar"
+			},
+			{
+				"name": "Codice_errore_sdi",
+				"type": "varchar"
+			},
+			{
+				"name": "Data_esito_sdi",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Tipologia_errore_sdi",
+				"type": "varchar"
+			},
+			{
+				"name": "Importo_lordo_documento",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 0
+			},
+			{
+				"name": "Flag_Nota_di_credito_interna",
+				"type": "bit"
+			},
+			{
+				"name": "Nome_Intestatario",
+				"type": "varchar"
+			},
+			{
+				"name": "Cognome_Ragione_Sociale_Intestatario",
+				"type": "varchar"
+			},
+			{
+				"name": "Partita_Iva",
+				"type": "varchar"
+			},
+			{
+				"name": "Codice_fiscale",
+				"type": "varchar"
+			},
+			{
+				"name": "Codice_destinatario",
+				"type": "varchar"
+			},
+			{
+				"name": "email",
+				"type": "varchar"
+			},
+			{
+				"name": "tipolologia_profilo",
+				"type": "varchar"
+			},
+			{
+				"name": "Flag_gruppo_iva",
+				"type": "bit"
+			},
+			{
+				"name": "Flag_Onlus",
+				"type": "bit"
+			},
+			{
+				"name": "Codice_ciu",
+				"type": "varchar"
+			},
+			{
+				"name": "Codice_cig",
+				"type": "varchar"
+			},
+			{
+				"name": "Codice_cup",
+				"type": "varchar"
+			},
+			{
+				"name": "Pubblica_Amministrazione_Flag",
+				"type": "bit"
+			},
+			{
+				"name": "Nazione_estesa",
+				"type": "varchar"
+			},
+			{
+				"name": "Città",
+				"type": "varchar"
+			},
+			{
+				"name": "Provincia",
+				"type": "varchar"
+			},
+			{
+				"name": "Tipo_Strada",
+				"type": "varchar"
+			},
+			{
+				"name": "Nome_Strada",
+				"type": "varchar"
+			},
+			{
+				"name": "Numero_Civico",
+				"type": "varchar"
+			},
+			{
+				"name": "Codice_postale",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "batchSync",
+			"table": "AggFatture"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

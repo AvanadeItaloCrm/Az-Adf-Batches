@@ -1,0 +1,35 @@
+{
+	"name": "Italo-devtest-IntegrationRuntimeSSIS",
+	"properties": {
+		"type": "Managed",
+		"description": "Azure-SSIS integration runtime with KingswaySoft products installed",
+		"typeProperties": {
+			"computeProperties": {
+				"location": "West Europe",
+				"nodeSize": "Standard_D2_v3",
+				"numberOfNodes": 1,
+				"maxParallelExecutionsPerNode": 2
+			},
+			"ssisProperties": {
+				"catalogInfo": {
+					"catalogServerEndpoint": "crm-dev-sqlsrv.database.windows.net",
+					"catalogAdminUserName": "crmdevadmin",
+					"catalogAdminPassword": {
+						"type": "SecureString",
+						"value": "**********"
+					},
+					"catalogPricingTier": "Basic"
+				},
+				"customSetupScriptProperties": {
+					"blobContainerUri": "https://italodevtestoragedf.blob.core.windows.net/kingsway",
+					"sasToken": {
+						"type": "SecureString",
+						"value": "**********"
+					}
+				},
+				"edition": "Standard",
+				"licenseType": "LicenseIncluded"
+			}
+		}
+	}
+}

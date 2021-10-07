@@ -1,0 +1,22 @@
+{
+	"name": "AzureSqlTable1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "test oracle",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "onlydev",
+			"table": "OracleTable"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

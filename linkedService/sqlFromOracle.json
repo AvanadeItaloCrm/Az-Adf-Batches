@@ -1,0 +1,12 @@
+{
+	"name": "sqlFromOracle",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"connectionString": "integrated security=False;encrypt=True;connection timeout=30;data source=ntvdevdatabase.database.windows.net;initial catalog=ntvdevstagingarea;user id=Ntvdevadmin",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIklUQUxPREVWVEVTVERBVEFGQUNUT1JZX2Y5YWVhZTU0LThjNTItNDBlNC05NGY3LWI5YWQ0MzQ2NzY3YiINCn0="
+		}
+	}
+}

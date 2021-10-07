@@ -1,0 +1,9 @@
+{
+	"name": "italodevtestdatafactory",
+	"location": "westeurope",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "0ad0e7cc-78a8-49ec-9f86-f3a925b69d26",
+		"tenantId": "f680f343-d650-422b-b605-407599c75de5"
+	}
+}

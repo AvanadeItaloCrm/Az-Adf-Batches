@@ -1,0 +1,192 @@
+{
+	"name": "BillingFileRepository",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "BillingStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureFileStorageLocation",
+				"fileName": "fatt.csv"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "idChiave",
+				"type": "String"
+			},
+			{
+				"name": "PNR",
+				"type": "String"
+			},
+			{
+				"name": "Flag_di_blocco_fatturazione_PNR",
+				"type": "String"
+			},
+			{
+				"name": "Codice_Carta_business_pass",
+				"type": "String"
+			},
+			{
+				"name": "Codice_Carta_Web_business_pass",
+				"type": "String"
+			},
+			{
+				"name": "Numero_Ordine",
+				"type": "String"
+			},
+			{
+				"name": "Codice_documento_emesso_Fattura_o_Nota_di_credito",
+				"type": "String"
+			},
+			{
+				"name": "Tipo_documento_emesso",
+				"type": "String"
+			},
+			{
+				"name": "Codice_documento_padre",
+				"type": "String"
+			},
+			{
+				"name": "Tipo_documento",
+				"type": "String"
+			},
+			{
+				"name": "Data_creazione_documento",
+				"type": "String"
+			},
+			{
+				"name": "Data_emissione_documento",
+				"type": "String"
+			},
+			{
+				"name": "Data_creazione_pdf",
+				"type": "String"
+			},
+			{
+				"name": "Data_Ultima_Modifica_documento",
+				"type": "String"
+			},
+			{
+				"name": "Data_trasmissione_sdi",
+				"type": "String"
+			},
+			{
+				"name": "Esito_sdi",
+				"type": "String"
+			},
+			{
+				"name": "Descrizione_sdi",
+				"type": "String"
+			},
+			{
+				"name": "Codice_errore_sdi",
+				"type": "String"
+			},
+			{
+				"name": "Data_esito_sdi",
+				"type": "String"
+			},
+			{
+				"name": "Tipologia_errore_sdi",
+				"type": "String"
+			},
+			{
+				"name": "Importo_lordo_documento",
+				"type": "String"
+			},
+			{
+				"name": "Flag_Nota_di_credito_interna",
+				"type": "String"
+			},
+			{
+				"name": "Nome_Intestatario",
+				"type": "String"
+			},
+			{
+				"name": "Cognome_Ragione_Sociale_Intestatario",
+				"type": "String"
+			},
+			{
+				"name": "Partita_Iva",
+				"type": "String"
+			},
+			{
+				"name": "Codice_fiscale",
+				"type": "String"
+			},
+			{
+				"name": "Codice_destinatario",
+				"type": "String"
+			},
+			{
+				"name": "email",
+				"type": "String"
+			},
+			{
+				"name": "tipolologia_profilo",
+				"type": "String"
+			},
+			{
+				"name": "Flag_gruppo_iva",
+				"type": "String"
+			},
+			{
+				"name": "Flag_Onlus",
+				"type": "String"
+			},
+			{
+				"name": "Codice_ciu",
+				"type": "String"
+			},
+			{
+				"name": "Codice_cig",
+				"type": "String"
+			},
+			{
+				"name": "Codice_cup",
+				"type": "String"
+			},
+			{
+				"name": "Pubblica_Amministrazione_Flag",
+				"type": "String"
+			},
+			{
+				"name": "Nazione_estesa",
+				"type": "String"
+			},
+			{
+				"name": "Città",
+				"type": "String"
+			},
+			{
+				"name": "Provincia",
+				"type": "String"
+			},
+			{
+				"name": "Tipo_Strada",
+				"type": "String"
+			},
+			{
+				"name": "Nome_Strada",
+				"type": "String"
+			},
+			{
+				"name": "Numero_Civico",
+				"type": "String"
+			},
+			{
+				"name": "Codice_postale",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

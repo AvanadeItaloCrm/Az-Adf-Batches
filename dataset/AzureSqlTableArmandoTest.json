@@ -1,0 +1,40 @@
+{
+	"name": "AzureSqlTableArmandoTest",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDbCrmStagingArea",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 0
+			},
+			{
+				"name": "name",
+				"type": "varchar"
+			},
+			{
+				"name": "firstname",
+				"type": "varchar"
+			},
+			{
+				"name": "ntv_clientid",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_customernumber",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "onlydev",
+			"table": "armando-test"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

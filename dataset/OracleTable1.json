@@ -1,0 +1,17 @@
+{
+	"name": "OracleTable1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Oracle Migrazione",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "OracleTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "SA_D365_SVIL",
+			"table": "TBLPROVADYNAMICS"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

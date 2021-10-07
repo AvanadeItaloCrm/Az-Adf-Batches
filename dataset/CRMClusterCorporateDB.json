@@ -1,0 +1,47 @@
+{
+	"name": "CRMClusterCorporateDB",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDbCrmStagingArea",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Codice_corporate",
+				"type": "varchar"
+			},
+			{
+				"name": "Cluster",
+				"type": "varchar"
+			},
+			{
+				"name": "Data_Aggiornamento",
+				"type": "smalldatetime",
+				"precision": 16,
+				"scale": 0
+			},
+			{
+				"name": "Data_Importazione",
+				"type": "smalldatetime",
+				"precision": 16,
+				"scale": 0
+			},
+			{
+				"name": "ntv_customerClusterId",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "batchSync",
+			"table": "AggClusterCorporate"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

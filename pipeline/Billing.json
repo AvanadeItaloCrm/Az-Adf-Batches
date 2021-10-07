@@ -1,0 +1,569 @@
+{
+	"name": "Billing",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureFileStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "idChiave",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "idChiave",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "PNR",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PNR",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Flag_di_blocco_fatturazione_PNR",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Flag_di_blocco_fatturazione_PNR",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Codice_Carta_business_pass",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Codice_Carta_business_pass",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Codice_Carta_Web_business_pass",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Codice_Carta_Web_business_pass",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Numero_Ordine",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Numero_Ordine",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Codice_documento_emesso_Fattura_o_Nota_di_credito",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Codice_documento_emesso_Fattura_o_Nota_di_credito",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Tipo_documento_emesso",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Tipo_documento_Fattura_Nota_di_Credito",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Codice_documento_padre",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Codice_documento_padre",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Tipo_documento",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Tipo_documento",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Data_creazione_documento",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Data_creazione_documento",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Data_emissione_documento",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Data_emissione_documento",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "Data_creazione_pdf",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Data_creazione_pdf",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "Data_Ultima_Modifica_documento",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Data_Ultima_Modifica_documento",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "Data_trasmissione_sdi",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Data_trasmissione_sdi",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "Esito_sdi",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Esito_sdi",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Descrizione_sdi",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Descrizione_sdi",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Codice_errore_sdi",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Codice_errore_sdi",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Data_esito_sdi",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Data_esito_sdi",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "Tipologia_errore_sdi",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Tipologia_errore_sdi",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Importo_lordo_documento",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Importo_lordo_documento",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 18
+								}
+							},
+							{
+								"source": {
+									"name": "Flag_Nota_di_credito_interna",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Flag_Nota_di_credito_interna",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Nome_Intestatario",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Nome_Intestatario",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Cognome_Ragione_Sociale_Intestatario",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Cognome_Ragione_Sociale_Intestatario",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Partita_Iva",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Partita_Iva",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Codice_fiscale",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Codice_fiscale",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Codice_destinatario",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Codice_destinatario",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "email",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "email",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "tipolologia_profilo",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "tipolologia_profilo",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Flag_gruppo_iva",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Flag_gruppo_iva",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Flag_Onlus",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Flag_Onlus",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Codice_ciu",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Codice_ciu",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Codice_cig",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Codice_cig",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Codice_cup",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Codice_cup",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Pubblica_Amministrazione_Flag",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Pubblica_Amministrazione_Flag",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Nazione_estesa",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Nazione_estesa",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Città",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Città",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Provincia",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Provincia",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Tipo_Strada",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Tipo_Strada",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Nome_Strada",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Nome_Strada",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Numero_Civico",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Numero_Civico",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Codice_postale",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Codice_postale",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "BillingFileRepository",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "BillingDB",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2021-10-01T13:43:29Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

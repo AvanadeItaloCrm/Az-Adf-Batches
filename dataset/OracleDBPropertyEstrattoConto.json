@@ -1,0 +1,17 @@
+{
+	"name": "OracleDBPropertyEstrattoConto",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "OracleDB_DEV",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "OracleTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "SA_D365_SVIL",
+			"table": "ESTRATTI_CONTO_CORPORATE"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

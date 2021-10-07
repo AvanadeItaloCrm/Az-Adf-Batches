@@ -1,0 +1,104 @@
+{
+	"name": "OracleToSqlEstrattoContoAgencyProperty",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDbCrmStagingArea",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "INTEGRAZIONE_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "NUM_DOCUMENTO",
+				"type": "varchar"
+			},
+			{
+				"name": "TIPO_DOCUMENTO",
+				"type": "varchar"
+			},
+			{
+				"name": "DATA_CREAZIONE_DOC",
+				"type": "varchar"
+			},
+			{
+				"name": "DATA_EMISSIONE_DOC",
+				"type": "date"
+			},
+			{
+				"name": "DATA_CREAZIONE_PDF",
+				"type": "date"
+			},
+			{
+				"name": "DATA_INIZIO_COMPETENZA",
+				"type": "date"
+			},
+			{
+				"name": "DATA_FINE_COMPETENZA",
+				"type": "date"
+			},
+			{
+				"name": "DATA_MODIFICA",
+				"type": "date"
+			},
+			{
+				"name": "IMPORTO_LORDO",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 0
+			},
+			{
+				"name": "CODICE_ADV",
+				"type": "varchar"
+			},
+			{
+				"name": "RAG_SOC",
+				"type": "varchar"
+			},
+			{
+				"name": "P_IVA",
+				"type": "varchar"
+			},
+			{
+				"name": "CODFICE_FISCALE",
+				"type": "varchar"
+			},
+			{
+				"name": "NAZIONE",
+				"type": "varchar"
+			},
+			{
+				"name": "CITTA",
+				"type": "varchar"
+			},
+			{
+				"name": "PROVINCIA",
+				"type": "varchar"
+			},
+			{
+				"name": "TIPO_STRADA",
+				"type": "varchar"
+			},
+			{
+				"name": "NOME_STRADA",
+				"type": "varchar"
+			},
+			{
+				"name": "NUMERO_CIVICO",
+				"type": "varchar"
+			},
+			{
+				"name": "CODICE_POSTALE",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "batchSync",
+			"table": "Estratti_Conto_Agency"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

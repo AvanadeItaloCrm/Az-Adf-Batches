@@ -1,0 +1,35 @@
+{
+	"name": "testSSIS",
+	"properties": {
+		"activities": [
+			{
+				"name": "Execute SSIS package1",
+				"type": "ExecuteSSISPackage",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"packageLocation": {
+						"packagePath": "TestSSIS/TestSSIS8/Package.dtsx",
+						"type": "SSISDB"
+					},
+					"environmentPath": null,
+					"connectVia": {
+						"referenceName": "Italo-devtest-IntegrationRuntimeSSIS",
+						"type": "IntegrationRuntimeReference"
+					},
+					"loggingLevel": "Verbose"
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2021-09-23T07:53:22Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

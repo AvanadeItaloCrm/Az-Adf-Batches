@@ -1,0 +1,44 @@
+{
+	"name": "CRMClusteringClienteChiamataDB",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDbCrmStagingArea",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Codice_Cliente",
+				"type": "varchar"
+			},
+			{
+				"name": "Cluster_Chiamata",
+				"type": "varchar"
+			},
+			{
+				"name": "Valore_Cliente_Chiamata",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Promozioni_Chiamata",
+				"type": "varchar"
+			},
+			{
+				"name": "ntv_callclusterid",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "batchSync",
+			"table": "AggClusteringClenteChiamata"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

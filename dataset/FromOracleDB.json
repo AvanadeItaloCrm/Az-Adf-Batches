@@ -1,0 +1,35 @@
+{
+	"name": "FromOracleDB",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sqlFromOracle",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "cognome",
+				"type": "varchar"
+			},
+			{
+				"name": "nome",
+				"type": "varchar"
+			},
+			{
+				"name": "guid",
+				"type": "varchar"
+			},
+			{
+				"name": "id",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "provaIS"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

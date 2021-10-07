@@ -1,0 +1,16 @@
+{
+	"name": "Oracle Migrazione",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "Oracle",
+		"typeProperties": {
+			"connectionString": "host=172.26.59.183;port=1521;sid=bisdev;user id=SA_D365_SVIL",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJiZGVjY2I4YS0zMTc3LTQyN2YtOWQ3OC0xM2UyM2UwNTk1MmQiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "integrationRuntimeSFH",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

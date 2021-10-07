@@ -1,0 +1,17 @@
+{
+	"name": "OracleDBPropertyADV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "OracleDB_DEV",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "OracleTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "SA_D365_SVIL",
+			"table": "FATTURE_ADV_COM"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,1486 @@
+{
+	"name": "AzureSqlTable2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDbCrmStagingArea",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ROW_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "CREATED",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "CREATED_BY",
+				"type": "varchar"
+			},
+			{
+				"name": "LAST_UPD",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "LAST_UPD_BY",
+				"type": "varchar"
+			},
+			{
+				"name": "MODIFICATION_NUM",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "CONFLICT_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "ASSET_NUM",
+				"type": "varchar"
+			},
+			{
+				"name": "AUTO_SR_FLG",
+				"type": "char"
+			},
+			{
+				"name": "BU_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "COMP_UND_WRNTY_FLG",
+				"type": "char"
+			},
+			{
+				"name": "CUSTOMIZABLE_FLG",
+				"type": "char"
+			},
+			{
+				"name": "DMNDNG_DR_FLG",
+				"type": "char"
+			},
+			{
+				"name": "FLEET_FLG",
+				"type": "char"
+			},
+			{
+				"name": "HH_CONSUMED_FLG",
+				"type": "char"
+			},
+			{
+				"name": "PROD_UND_WRNTY_FLG",
+				"type": "char"
+			},
+			{
+				"name": "REFERENCEABLE_FLG",
+				"type": "char"
+			},
+			{
+				"name": "SRL_NUM_VRFD_FLG",
+				"type": "char"
+			},
+			{
+				"name": "TEST_ASSET_FLG",
+				"type": "char"
+			},
+			{
+				"name": "UND_MFG_WRNTY_FLG",
+				"type": "char"
+			},
+			{
+				"name": "BILLPAY_FLG",
+				"type": "char"
+			},
+			{
+				"name": "ALT_FUEL_FLG",
+				"type": "char"
+			},
+			{
+				"name": "ANNUAL_REVN",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 7
+			},
+			{
+				"name": "ANNUAL_USG",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 7
+			},
+			{
+				"name": "APR",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 7
+			},
+			{
+				"name": "APY",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 7
+			},
+			{
+				"name": "ARCHIVE_FLG",
+				"type": "char"
+			},
+			{
+				"name": "ASGN_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ASGN_USR_EXCLD_FLG",
+				"type": "char"
+			},
+			{
+				"name": "ASSET_VALUE_AMT",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 7
+			},
+			{
+				"name": "ASSET_VAL_EXCH_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "AVAIL_BAL",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 7
+			},
+			{
+				"name": "AVERAGE_BAL",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 7
+			},
+			{
+				"name": "CAPACITY",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 7
+			},
+			{
+				"name": "CAUTION_FLG",
+				"type": "char"
+			},
+			{
+				"name": "CFG_VALDN_STAT_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "CURRENT_BAL",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 7
+			},
+			{
+				"name": "CUTOFF_FLG",
+				"type": "char"
+			},
+			{
+				"name": "DB_LAST_UPD",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "DLR_INV_PRICE",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 7
+			},
+			{
+				"name": "EFFICIENCY_RATING",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 7
+			},
+			{
+				"name": "END_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "EXCHG_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "EXCH_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "EXTD_QTY",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 7
+			},
+			{
+				"name": "EXTENDED_QTY",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "INCEPTION_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "INSTALL_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "INTERNAL_ASSET_FLG",
+				"type": "char"
+			},
+			{
+				"name": "INTR_RATE",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 7
+			},
+			{
+				"name": "LAST_DOWNLOAD_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "LAST_TEST_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "LCNS_EXP_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "LOAD_ADDED",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 7
+			},
+			{
+				"name": "METER_CNT",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 7
+			},
+			{
+				"name": "MFGD_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "MODEL_YR",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "MSRP",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 7
+			},
+			{
+				"name": "ORIGINAL_COST",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 7
+			},
+			{
+				"name": "PREMIUM",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 7
+			},
+			{
+				"name": "PREMIUM_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "PROFIT",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 7
+			},
+			{
+				"name": "PR_REP_DNRM_FLG",
+				"type": "char"
+			},
+			{
+				"name": "PR_REP_MANL_FLG",
+				"type": "char"
+			},
+			{
+				"name": "PR_REP_SYS_FLG",
+				"type": "char"
+			},
+			{
+				"name": "PURCH_ADJ_UNIT_PRI",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 7
+			},
+			{
+				"name": "PURCH_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "PURCH_LST_UNIT_PRI",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 7
+			},
+			{
+				"name": "QTY",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 7
+			},
+			{
+				"name": "RECOVERED_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "REGISTERED_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "REL_LIMIT",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 7
+			},
+			{
+				"name": "REVENUE",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 7
+			},
+			{
+				"name": "RPLCMNT_VAL_AMT",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 7
+			},
+			{
+				"name": "SHIP_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "START_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "STATUS_CHG_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "SVC_PER_PROD_AMT",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 7
+			},
+			{
+				"name": "UNINSTALL_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "WARRANTY_END_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "WARRANTY_START_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "WRNTY_LAST_UPD_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "AAGSVC_CON_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "AIA_INTEG_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "ALIAS_NAME",
+				"type": "varchar"
+			},
+			{
+				"name": "ASSEMBLY_PORT_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "ASSET_COND_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "ASSET_IMG_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "ASSET_VAL_CURCY_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "BAR_CODE_NUM",
+				"type": "varchar"
+			},
+			{
+				"name": "BASE_CURRENCY_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "BILLACCT_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "BILL_ACCNT_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "BILL_PROFILE_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "BILL_STATUS_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "BL_ADDR_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "BODY_STYLE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "BRANCH_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "BUILD",
+				"type": "varchar"
+			},
+			{
+				"name": "CAPITALIZED_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "CASE_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "CFG1_INTEG_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "CFG2_INTEG_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "CFG3_INTEG_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "CFG_STATE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "CFG_TYPE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "CFG_VALDN_STAT_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "CHANNEL_TYPE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "COMMENTS",
+				"type": "varchar"
+			},
+			{
+				"name": "COMPANY_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "CONDITION_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "COST_LST_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "CURCY_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "CUR_AGREE_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "DATA_SRC",
+				"type": "varchar"
+			},
+			{
+				"name": "DB_LAST_UPD_SRC",
+				"type": "varchar"
+			},
+			{
+				"name": "DESC_TEXT",
+				"type": "varchar"
+			},
+			{
+				"name": "DLR_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "DOORS_TYPE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "DRIVE_TRAIN_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "ENGINE_TYPE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "EXTENSION_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "EXT_COLOR_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "FLEET_OU_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "FLT_TYPE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "FUEL_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "HLTHACCNT_TYPE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "INSCLM_EVT_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "INTEGRATION_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "INT_COLOR_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "INVLOC_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "LCNS_NUM",
+				"type": "varchar"
+			},
+			{
+				"name": "LCNS_STATE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "LOAD_PERIOD_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "LOB_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "LOT_NUM",
+				"type": "varchar"
+			},
+			{
+				"name": "MAKE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "METER_LOC",
+				"type": "varchar"
+			},
+			{
+				"name": "METER_TYPE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "METER_USE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "MODEL_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "NAME",
+				"type": "varchar"
+			},
+			{
+				"name": "NEW_USD_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "OPER_STATUS_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "ORG_CENSUS_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "ORIG_ORDER_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "OU_ADDR_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "OWNERSHIP_TYPE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "OWNER_ACCNT_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "OWNER_ASSET_NUM",
+				"type": "varchar"
+			},
+			{
+				"name": "OWNER_CON_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "OWNR_TYPE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "PARTNER_BANK",
+				"type": "varchar"
+			},
+			{
+				"name": "PARTNER_BRANCH",
+				"type": "varchar"
+			},
+			{
+				"name": "PAR_ASSET_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "PER_ADDR_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "PNSN_SUBTYPE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "POLICY_SOURCE_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "PORT_VALID_PROD_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "PREF_SRV_DLR_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "PRI_DESC_TEXT",
+				"type": "varchar"
+			},
+			{
+				"name": "PRI_LST_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "PRODUCER_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "PROD_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "PROD_INV_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "PROMOTION_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "PROM_INTEG_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "PROM_ITEM_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "PROM_SRC_INTG_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "PROP_LOSS_TYPE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "PROP_TYPE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "PR_ACCNT_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "PR_ASSET_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "PR_ASSET_WRNTY_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "PR_CON_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "PR_DISCNT_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "PR_DRVR_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "PR_EMP_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "PR_FIN_DTL_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "PR_GRP_OU_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "PR_POSTN_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "PR_TERR_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "PURCH_LOC_DESC",
+				"type": "varchar"
+			},
+			{
+				"name": "RATE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "RATE_EXCEPTION",
+				"type": "varchar"
+			},
+			{
+				"name": "RATE_PLAN_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "RATE_STATE",
+				"type": "varchar"
+			},
+			{
+				"name": "REASON_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "REFERRAL_NAME",
+				"type": "varchar"
+			},
+			{
+				"name": "REF_NUMBER_1",
+				"type": "varchar"
+			},
+			{
+				"name": "REF_NUMBER_2",
+				"type": "varchar"
+			},
+			{
+				"name": "REF_NUMBER_3",
+				"type": "varchar"
+			},
+			{
+				"name": "REGION",
+				"type": "varchar"
+			},
+			{
+				"name": "REL_TYPE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "REV_NUM",
+				"type": "varchar"
+			},
+			{
+				"name": "ROOT_ASSET_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "RTNG_DLR_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "SERIAL_NUM",
+				"type": "varchar"
+			},
+			{
+				"name": "SERVICE_POINT_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "SERV_ACCT_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "SP_NUM",
+				"type": "varchar"
+			},
+			{
+				"name": "SRV_REGN_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "SR_RTNG_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "STATUS_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "STAT_REASON_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "STOCK_NUM",
+				"type": "varchar"
+			},
+			{
+				"name": "SUB_STATUS_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "SUB_TYPE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "SUPPLIER_OU_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "SUSP_DRUG_TYPE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "TERM_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "THMBNL_IMAGE_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "TIER_PRI_INFO",
+				"type": "varchar"
+			},
+			{
+				"name": "TIMEFRAME_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "TRADEIN_TYPE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "TRANSMISSION_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "TRIM_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "TYPE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "UOM_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "USG_UOM_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "VALUE_BASIS_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "VERSION",
+				"type": "varchar"
+			},
+			{
+				"name": "WARRANTY_TYPE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "XA_CLASS_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "X_BOOKING_ACTION_STATUS_CODE",
+				"type": "varchar"
+			},
+			{
+				"name": "X_BOOKING_ID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "X_CABIN_OF_SERVICE",
+				"type": "varchar"
+			},
+			{
+				"name": "X_CANALE_ACQUISIZIONE",
+				"type": "varchar"
+			},
+			{
+				"name": "X_CARRIER_CODE",
+				"type": "varchar"
+			},
+			{
+				"name": "X_CARROZZA",
+				"type": "varchar"
+			},
+			{
+				"name": "X_CHANGE_REASON_CODE",
+				"type": "varchar"
+			},
+			{
+				"name": "X_CHIUSURA_TRENO_FLG",
+				"type": "char"
+			},
+			{
+				"name": "X_CLASS_OF_SERVICE",
+				"type": "varchar"
+			},
+			{
+				"name": "X_CODICE_RICEVUTA",
+				"type": "varchar"
+			},
+			{
+				"name": "X_CREATED_AGENT_NAV",
+				"type": "varchar"
+			},
+			{
+				"name": "X_CREATED_ORG_NAV",
+				"type": "varchar"
+			},
+			{
+				"name": "X_DECK",
+				"type": "varchar"
+			},
+			{
+				"name": "X_FARE_ACTION_STATUS_CODE",
+				"type": "varchar"
+			},
+			{
+				"name": "X_FARE_APPLICATION_TYPE",
+				"type": "varchar"
+			},
+			{
+				"name": "X_FARE_BASIS_CODE",
+				"type": "varchar"
+			},
+			{
+				"name": "X_FARE_CARRIER_CODE",
+				"type": "varchar"
+			},
+			{
+				"name": "X_FARE_CLASS_OF_SERVICE",
+				"type": "varchar"
+			},
+			{
+				"name": "X_FARE_CLASS_TYPE",
+				"type": "char"
+			},
+			{
+				"name": "X_FARE_SEQUENCE",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "X_FARE_STATUS",
+				"type": "varchar"
+			},
+			{
+				"name": "X_FLIGHT_ACTION_STATUS_CODE",
+				"type": "varchar"
+			},
+			{
+				"name": "X_LIFT_STATUS",
+				"type": "varchar"
+			},
+			{
+				"name": "X_OPSUFFIX",
+				"type": "varchar"
+			},
+			{
+				"name": "X_PASSENGER_NUMBER",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "X_PAXSEAT_ACTION_STATUS_CODE",
+				"type": "varchar"
+			},
+			{
+				"name": "X_PAXSEG_ACTION_STATUS_CODE",
+				"type": "varchar"
+			},
+			{
+				"name": "X_PENALTY",
+				"type": "varchar"
+			},
+			{
+				"name": "X_POSTO",
+				"type": "varchar"
+			},
+			{
+				"name": "X_PRIMARY_PAYMENT_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "X_PRODUCT_CLASS",
+				"type": "varchar"
+			},
+			{
+				"name": "X_RICHIESTA_FATTURA_FLG",
+				"type": "char"
+			},
+			{
+				"name": "X_ROUND_TRIP_FLG",
+				"type": "char"
+			},
+			{
+				"name": "X_RULE_NUMBER",
+				"type": "varchar"
+			},
+			{
+				"name": "X_SALES_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "X_SEAT_PREFERENCE",
+				"type": "varchar"
+			},
+			{
+				"name": "X_SEAT_SET",
+				"type": "varchar"
+			},
+			{
+				"name": "X_SEAT_TOGETHER_PREFERENCE",
+				"type": "varchar"
+			},
+			{
+				"name": "X_SEGMENT_NUMBER",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "X_SEGMENT_SELLKEY",
+				"type": "varchar"
+			},
+			{
+				"name": "X_SEGMENT_TYPE",
+				"type": "char"
+			},
+			{
+				"name": "X_STATO_BOOKING_NAV",
+				"type": "varchar"
+			},
+			{
+				"name": "X_TRAVEL_CLASS_CODE",
+				"type": "varchar"
+			},
+			{
+				"name": "X_CITTA_ARRIVO",
+				"type": "varchar"
+			},
+			{
+				"name": "X_CITTA_PARTENZA",
+				"type": "varchar"
+			},
+			{
+				"name": "X_STA_ARRIVO_CODIFICATA",
+				"type": "varchar"
+			},
+			{
+				"name": "X_STA_PARTENZA_CODIFICATA",
+				"type": "varchar"
+			},
+			{
+				"name": "X_TARIFFA_CODIFICATA",
+				"type": "varchar"
+			},
+			{
+				"name": "X_FARE_RULE_TARIFF",
+				"type": "varchar"
+			},
+			{
+				"name": "X_MESSAGE_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "X_STATO_AGGREGAZIONE",
+				"type": "varchar"
+			},
+			{
+				"name": "X_ACCESSORY_DATA_VAS",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "X_ADDRESS_VAS",
+				"type": "varchar"
+			},
+			{
+				"name": "X_ASSET_REFERENCE_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "X_CANALE_VAS",
+				"type": "varchar"
+			},
+			{
+				"name": "X_CODICE_TRENO_RFI",
+				"type": "varchar"
+			},
+			{
+				"name": "X_DATA_FINE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "X_DATA_INIZIO",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "X_IVA",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 6
+			},
+			{
+				"name": "X_NUMERO_COUPON",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "X_OPERATION_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "X_PARTNER_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "X_PREZZO_ITEM",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "X_STATO_VAS",
+				"type": "varchar"
+			},
+			{
+				"name": "X_TIPOLOGIA",
+				"type": "varchar"
+			},
+			{
+				"name": "X_EXPORT_FLG",
+				"type": "char"
+			},
+			{
+				"name": "X_SPECIAL_TYPE",
+				"type": "varchar"
+			},
+			{
+				"name": "X_POS_AGENT_CODE",
+				"type": "varchar"
+			},
+			{
+				"name": "X_POS_DOMAIN_CODE",
+				"type": "varchar"
+			},
+			{
+				"name": "X_POS_LOCATION_CODE",
+				"type": "varchar"
+			},
+			{
+				"name": "X_POS_ORGANIZATION_CODE",
+				"type": "varchar"
+			},
+			{
+				"name": "X_ACTIVATION_ORDER_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "X_LOCATOR_NUMERIC",
+				"type": "varchar"
+			},
+			{
+				"name": "X_FIELD1",
+				"type": "varchar"
+			},
+			{
+				"name": "X_FIELD2",
+				"type": "varchar"
+			},
+			{
+				"name": "X_FIELD3",
+				"type": "varchar"
+			},
+			{
+				"name": "X_FIELD4",
+				"type": "varchar"
+			},
+			{
+				"name": "X_FIELD5",
+				"type": "varchar"
+			},
+			{
+				"name": "X_DELTA_VOUCHER_PAX",
+				"type": "decimal",
+				"precision": 15,
+				"scale": 2
+			},
+			{
+				"name": "X_APPLICATION_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "X_CHANNEL_TYPE",
+				"type": "varchar"
+			},
+			{
+				"name": "X_DEVICE_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "X_IMEI",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 0
+			},
+			{
+				"name": "X_IP",
+				"type": "varchar"
+			},
+			{
+				"name": "X_OS",
+				"type": "varchar"
+			},
+			{
+				"name": "X_DATA_CONFERMA",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "X_DELETE_OWNER",
+				"type": "varchar"
+			},
+			{
+				"name": "X_PR_SEGMENT_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "X_COD_STZ_ARR_CON",
+				"type": "varchar"
+			},
+			{
+				"name": "X_COD_STZ_PART_CON",
+				"type": "varchar"
+			},
+			{
+				"name": "X_CODICE_PARTNER_UTILIZ",
+				"type": "varchar"
+			},
+			{
+				"name": "X_CODICE_CARTA_MIGRATA_MT",
+				"type": "varchar"
+			},
+			{
+				"name": "X_CODICE_CARTA_WEB_MIGRATA_MT",
+				"type": "varchar"
+			},
+			{
+				"name": "X_CODICE_CARTA_WEB_MT",
+				"type": "varchar"
+			},
+			{
+				"name": "X_IMPORTO_BONUS_MT",
+				"type": "decimal",
+				"precision": 15,
+				"scale": 2
+			},
+			{
+				"name": "X_IMPORTO_NETTO",
+				"type": "decimal",
+				"precision": 19,
+				"scale": 6
+			},
+			{
+				"name": "X_PERC_IVA",
+				"type": "decimal",
+				"precision": 15,
+				"scale": 2
+			},
+			{
+				"name": "X_PNR_ACQUISTO_MT",
+				"type": "varchar"
+			},
+			{
+				"name": "X_STATO_CARTA_MT",
+				"type": "varchar"
+			},
+			{
+				"name": "X_IMPORTO_BONUS_NETTO_MT",
+				"type": "decimal",
+				"precision": 15,
+				"scale": 2
+			},
+			{
+				"name": "X_PERC_BONUS_MT",
+				"type": "decimal",
+				"precision": 15,
+				"scale": 2
+			},
+			{
+				"name": "X_VAL_NOMINALE_NETTO_MT",
+				"type": "decimal",
+				"precision": 19,
+				"scale": 6
+			},
+			{
+				"name": "X_FRODE_BPASS_FLG",
+				"type": "char"
+			},
+			{
+				"name": "X_ID_PAX_PNR_MULT_LOY",
+				"type": "varchar"
+			},
+			{
+				"name": "X_FLG_BLOCCO_FATTURAZIONE",
+				"type": "char"
+			},
+			{
+				"name": "X_FLG_BONUS_CB",
+				"type": "char"
+			},
+			{
+				"name": "X_ID_OFFERTA_BONUS_CB",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "S_ASSET"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,634 @@
+{
+	"name": "BillingFattureClienti_Oracle",
+	"properties": {
+		"activities": [
+			{
+				"name": "Start SP",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[batchSync].[InizioBatchSync]",
+					"storedProcedureParameters": {
+						"NomeFile": {
+							"value": "",
+							"type": "String"
+						},
+						"TabellaImport": {
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDbCrmStagingArea",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Finally SP",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "da db a Dyn365",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[batchSync].[FineBatchSync]",
+					"storedProcedureParameters": {
+						"TabellaImport": {
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDbCrmStagingArea",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "da db a Dyn365",
+				"type": "ExecuteSSISPackage",
+				"dependsOn": [
+					{
+						"activity": "Oracle To Sql",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"packageLocation": {
+						"packagePath": "SqlToDyn/NTV.Az.Batches.Dyn365.CC/Dev_Billing_Oracle.dtsx",
+						"type": "SSISDB"
+					},
+					"environmentPath": null,
+					"connectVia": {
+						"referenceName": "Italo-devtest-IntegrationRuntimeSSIS",
+						"type": "IntegrationRuntimeReference"
+					},
+					"loggingLevel": "Verbose"
+				}
+			},
+			{
+				"name": "Oracle To Sql",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Start SP",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "INTEGRAZIONE_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INTEGRAZIONE_ID",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "PNR",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PNR",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "BLOCCO_FATTURAZIONE_PNR_FLG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BLOCCO_FATTURAZIONE_PNR_FLG",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CARTA_BUSS_PASS",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CARTA_BUSS_PASS",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CARTA_BUSS_PASS_WEB",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CARTA_BUSS_PASS_WEB",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ORDINE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ORDINE",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "NUM_DOCUMENTO",
+									"type": "String"
+								},
+								"sink": {
+									"name": "NUM_DOCUMENTO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TIPO_DOCUMENTO",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TIPO_DOCUMENTO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "NUM_DOCUMENTO_PADRE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "NUM_DOCUMENTO_PADRE",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TIPO_DOCUMENTO_PADRE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TIPO_DOCUMENTO_PADRE",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "DATA_CREAZIONE_DOC",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DATA_CREAZIONE_DOC",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "DATA_EMISSIONE_DOC",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "DATA_EMISSIONE_DOC",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "DATA_CREAZIONE_PDF",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "DATA_CREAZIONE_PDF",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "DATA_MODIFICA",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "DATA_MODIFICA",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "DATA_TRASMISSIONE_SDI",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "DATA_TRASMISSIONE_SDI",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "ESITO_SDI",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ESITO_SDI",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "DESCRIZIONE_SDI",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DESCRIZIONE_SDI",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CODICE_ERRORE_SDI",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CODICE_ERRORE_SDI",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "DATA_ESITO_SDI",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "DATA_ESITO_SDI",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "TIPOLOGIA_ERRORE_SDI",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TIPOLOGIA_ERRORE_SDI",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "IMPORTO_LORDO",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "IMPORTO_LORDO",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 18
+								}
+							},
+							{
+								"source": {
+									"name": "NC_FLG_INTERNA",
+									"type": "String"
+								},
+								"sink": {
+									"name": "NC_FLG_INTERNA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "NOME",
+									"type": "String"
+								},
+								"sink": {
+									"name": "NOME",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "COGNOME_RAG_SOC",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COGNOME_RAG_SOC",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "P_IVA",
+									"type": "String"
+								},
+								"sink": {
+									"name": "P_IVA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CODFICE_FISCALE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CODFICE_FISCALE",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CODICE_DESTINATARIO",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CODICE_DESTINATARIO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "E_MAIL",
+									"type": "String"
+								},
+								"sink": {
+									"name": "E_MAIL",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TIPOLOGIA_PROFILO",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TIPOLOGIA_PROFILO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "GRUPPO_IVA_FLG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GRUPPO_IVA_FLG",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ONLUS_FLG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ONLUS_FLG",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CODICE_CIU",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CODICE_CIU",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CODICE_CIG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CODICE_CIG",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CODICE_CUP",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CODICE_CUP",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "PA_FLG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PA_FLG",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "NAZIONE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "NAZIONE",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CITTA",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CITTA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "PROVINCIA",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PROVINCIA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TIPO_STRADA",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TIPO_STRADA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "NOME_STRADA",
+									"type": "String"
+								},
+								"sink": {
+									"name": "NOME_STRADA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "NUMERO_CIVICO",
+									"type": "String"
+								},
+								"sink": {
+									"name": "NUMERO_CIVICO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CODICE_POSTALE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CODICE_POSTALE",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "OracleDBProperty",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "OracleToSqlProperty",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"variables": {
+			"TableName": {
+				"type": "String",
+				"defaultValue": "Fatture_Cliente"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-10-04T10:34:30Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

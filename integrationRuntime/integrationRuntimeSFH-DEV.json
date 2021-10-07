@@ -1,0 +1,7 @@
+{
+	"name": "integrationRuntimeSFH-DEV",
+	"properties": {
+		"type": "SelfHosted",
+		"description": "Self Hosted Integration Runtime per ambiente di DEV"
+	}
+}
