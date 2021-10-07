@@ -137,7 +137,7 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "CODICE_FATTURA1"
+									"name": "CODICE_FATTURA"
 								},
 								"sink": {
 									"name": "CODICE_FATTURA",
