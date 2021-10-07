@@ -137,7 +137,7 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "CODICE_FATTURA1"
+									"name": "CODICE_FATTURA"
 								},
 								"sink": {
 									"name": "CODICE_FATTURA",
@@ -619,11 +619,56 @@
 					"storedProcedureName": "[batchSync].[ErrorBatchSync]",
 					"storedProcedureParameters": {
 						"Errore": {
-							"value": "",
+							"value": "Errore",
 							"type": "String"
 						},
 						"Modulo": {
 							"value": "Copy Data Oracle To Sql",
+							"type": "String"
+						},
+						"NomeFile": {
+							"value": "",
+							"type": "String"
+						},
+						"TabellaImport": {
+							"value": "@variables('TableName')",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDbCrmStagingArea",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "SP Error 2",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "da db a Dyn365",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[batchSync].[ErrorBatchSync]",
+					"storedProcedureParameters": {
+						"Errore": {
+							"value": "Errore",
+							"type": "String"
+						},
+						"Modulo": {
+							"value": "Execute SSiS package",
 							"type": "String"
 						},
 						"NomeFile": {
