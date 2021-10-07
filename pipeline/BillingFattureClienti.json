@@ -4,6 +4,7 @@
 		"activities": [
 			{
 				"name": "csvBilling",
+				"description": "dal file csv",
 				"type": "Copy",
 				"dependsOn": [
 					{
