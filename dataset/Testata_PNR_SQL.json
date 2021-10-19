@@ -1,0 +1,16 @@
+{
+	"name": "Testata_PNR_SQL",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDbCrmStagingArea",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "batchSync",
+			"table": "v_Testata_PNR"
+		}
+	}
+}
