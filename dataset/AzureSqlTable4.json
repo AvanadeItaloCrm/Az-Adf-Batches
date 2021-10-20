@@ -1,0 +1,122 @@
+{
+	"name": "AzureSqlTable4",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDbCrmStagingArea",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ROW_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CREATED",
+				"type": "varchar"
+			},
+			{
+				"name": "LAST_UPD",
+				"type": "varchar"
+			},
+			{
+				"name": "TIMESTAMP",
+				"type": "varchar"
+			},
+			{
+				"name": "PNR",
+				"type": "varchar"
+			},
+			{
+				"name": "NUM_ITINERARI",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "NUM_PASSEGGERI",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "COSTO_TOTALE",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 0
+			},
+			{
+				"name": "STATO_BIGLIETTO",
+				"type": "varchar"
+			},
+			{
+				"name": "DATA_CREAZIONE",
+				"type": "varchar"
+			},
+			{
+				"name": "DATA_MODIFICA",
+				"type": "varchar"
+			},
+			{
+				"name": "BALANCE_DUE",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 0
+			},
+			{
+				"name": "CREATED_ORG",
+				"type": "varchar"
+			},
+			{
+				"name": "CREATED_LOC",
+				"type": "varchar"
+			},
+			{
+				"name": "CREATED_DOM",
+				"type": "varchar"
+			},
+			{
+				"name": "CREATED_AGENT",
+				"type": "varchar"
+			},
+			{
+				"name": "MODIFIED_ORG",
+				"type": "varchar"
+			},
+			{
+				"name": "MODIFIED_LOC",
+				"type": "varchar"
+			},
+			{
+				"name": "MODIFIED_DOM",
+				"type": "varchar"
+			},
+			{
+				"name": "MODIFIED_AGENT",
+				"type": "varchar"
+			},
+			{
+				"name": "RECEIVED_BY",
+				"type": "varchar"
+			},
+			{
+				"name": "PNR_PADRE",
+				"type": "varchar"
+			},
+			{
+				"name": "IDDATASRC",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "IDLOAD",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "TESTATA_PNR"
+		}
+	}
+}
