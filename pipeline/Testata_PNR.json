@@ -99,7 +99,7 @@
 					"sink": {
 						"type": "OracleSink",
 						"writeBatchSize": 10000,
-						"preCopyScript": "EXECUTE SA_D365_SVIL.Inizio_Scrittura( 'Testata_PNR');"
+						"preCopyScript": "SELECT  sa_d365_svil.iniziasync ('Testata_PNR') FROM DUAL;"
 					},
 					"enableStaging": false,
 					"translator": {
