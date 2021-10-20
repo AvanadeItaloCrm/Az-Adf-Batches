@@ -15,7 +15,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[batchSync].[InizioSQL_ORACLEBatchSync]",
+					"storedProcedureName": "[batchSync].[InizioBatchSync]",
 					"storedProcedureParameters": {
 						"NomeFile": {
 							"value": "",
@@ -98,7 +98,11 @@
 					},
 					"sink": {
 						"type": "OracleSink",
-						"writeBatchSize": 10000
+						"writeBatchSize": 10000,
+						"preCopyScript": {
+							"value": "insert into sa_d365_svil.sinc_log\n(dt_ultima_sinc,dt_inizio_scrittura,stato_scrittura,tipo)\nvalues\n('a','b','c','s');\n",
+							"type": "Expression"
+						}
 					},
 					"enableStaging": false,
 					"translator": {
