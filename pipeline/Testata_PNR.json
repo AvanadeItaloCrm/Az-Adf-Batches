@@ -106,6 +106,17 @@
 						"mappings": [
 							{
 								"source": {
+									"name": "Row_ID",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "ROW_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
 									"name": "Created",
 									"type": "DateTime",
 									"physicalType": "datetime"
