@@ -99,10 +99,7 @@
 					"sink": {
 						"type": "OracleSink",
 						"writeBatchSize": 10000,
-						"preCopyScript": {
-							"value": "insert into sa_d365_svil.sinc_log\n(dt_ultima_sinc,dt_inizio_scrittura,stato_scrittura,tipo)\nvalues\n('a','b','c','s');\n",
-							"type": "Expression"
-						}
+						"preCopyScript": "EXECUTE SA_D365_SVIL.Inizio_Scrittura( 'Testata_PNR');"
 					},
 					"enableStaging": false,
 					"translator": {
