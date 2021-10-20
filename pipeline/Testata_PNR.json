@@ -100,7 +100,7 @@
 						"type": "OracleSink",
 						"writeBatchSize": 10000,
 						"preCopyScript": {
-							"value": "\ninsert into sa_d365_svil.sinc_log\n(dt_ultima_sinc,dt_inizio_scrittura,stato_scrittura,tipo)\nvalues\n('a','b','c','s');",
+							"value": "insert into sa_d365_svil.sinc_log\n(dt_ultima_sinc,dt_inizio_scrittura,stato_scrittura,tipo)\nvalues\n('a','b','c',@variables('TableName'));",
 							"type": "Expression"
 						}
 					},
