@@ -415,7 +415,45 @@
 				"typeProperties": {
 					"source": {
 						"type": "OracleSource",
-						"oracleReaderQuery": "SELECT  sa_d365_svil.iniziasync ('Testata_PNR') FROM DUAL;",
+						"oracleReaderQuery": {
+							"value": "@concat('SELECT sa_d365_svil.iniziasync (''',\nvariables('TableName'),\n''') FROM DUAL;')",
+							"type": "Expression"
+						},
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "Testata_PNR_OracleDB",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "End Oracle",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Finally SP",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": {
+							"value": "@concat('SELECT sa_d365_svil.finesync (''',\nvariables('TableName'),\n''') FROM DUAL;')",
+							"type": "Expression"
+						},
 						"partitionOption": "None",
 						"queryTimeout": "02:00:00"
 					},
