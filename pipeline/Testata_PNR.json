@@ -98,11 +98,7 @@
 					},
 					"sink": {
 						"type": "OracleSink",
-						"writeBatchSize": 10000,
-						"preCopyScript": {
-							"value": "insert into sa_d365_svil.sinc_log\n(dt_ultima_sinc,dt_inizio_scrittura,stato_scrittura,tipo)\nvalues\n('a','b','c',variables('TableName'));",
-							"type": "Expression"
-						}
+						"writeBatchSize": 10000
 					},
 					"enableStaging": false,
 					"translator": {
