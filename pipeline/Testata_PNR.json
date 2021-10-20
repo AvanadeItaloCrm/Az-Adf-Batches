@@ -99,7 +99,10 @@
 					"sink": {
 						"type": "OracleSink",
 						"writeBatchSize": 10000,
-						"preCopyScript": "EXECUTE SA_D365_SVIL.Inizio_Scrittura( 'pippo');"
+						"preCopyScript": {
+							"value": "\ninsert into sa_d365_svil.sinc_log\n(dt_ultima_sinc,dt_inizio_scrittura,stato_scrittura,tipo)\nvalues\n('a','b','c','s');",
+							"type": "Expression"
+						}
 					},
 					"enableStaging": false,
 					"translator": {
