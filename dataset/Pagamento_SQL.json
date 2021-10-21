@@ -1,0 +1,86 @@
+{
+	"name": "Pagamento_SQL",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDbCrmStagingArea",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ROW_ID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "CREATED",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "LAST_UPD",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "TIME_STAMP",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "PAYMENT_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "PAR_PAYMENT_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "DATA_PAGAMENTO",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ORA_PAGAMENTO",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CODICE_AUTORIZ",
+				"type": "varchar"
+			},
+			{
+				"name": "METODO_PAGAMENTO",
+				"type": "varchar"
+			},
+			{
+				"name": "ESITO_PAGAMENTO",
+				"type": "varchar"
+			},
+			{
+				"name": "RICEVUTA_FISCALE",
+				"type": "varchar"
+			},
+			{
+				"name": "IMPORTO",
+				"type": "varchar"
+			},
+			{
+				"name": "IDDATASRC",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "IDLOAD",
+				"type": "bigint",
+				"precision": 19
+			}
+		],
+		"typeProperties": {
+			"schema": "batchSync",
+			"table": "v_Pagamento"
+		}
+	}
+}
