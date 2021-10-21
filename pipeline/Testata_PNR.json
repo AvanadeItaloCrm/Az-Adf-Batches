@@ -54,7 +54,7 @@
 							"dependsOn": [],
 							"userProperties": [],
 							"typeProperties": {
-								"message": "Processo fermato perché un altro processo sta leggendo i dati",
+								"message": "Un altro processo sta leggendo i dati",
 								"errorCode": "200"
 							}
 						}
