@@ -134,7 +134,7 @@
 							"type": "Copy",
 							"dependsOn": [
 								{
-									"activity": "Start SP",
+									"activity": "Dyn365_To_SQL",
 									"dependencyConditions": [
 										"Succeeded"
 									]
@@ -671,6 +671,38 @@
 									"referenceName": "AnagraficaAziendeOracleDB",
 									"type": "DatasetReference"
 								}
+							}
+						},
+						{
+							"name": "Dyn365_To_SQL",
+							"type": "ExecuteSSISPackage",
+							"dependsOn": [
+								{
+									"activity": "Start SP",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"packageLocation": {
+									"packagePath": "SqlToDyn/NTV.Az.Batches.Dyn365.CC/Dev_AnagraficaAgenzie.dtsx",
+									"type": "SSISDB"
+								},
+								"environmentPath": null,
+								"connectVia": {
+									"referenceName": "Italo-devtest-IntegrationRuntimeSSIS",
+									"type": "IntegrationRuntimeReference"
+								},
+								"loggingLevel": "Basic"
 							}
 						}
 					]
