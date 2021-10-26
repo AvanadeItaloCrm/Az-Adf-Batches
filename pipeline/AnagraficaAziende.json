@@ -157,7 +157,7 @@
 								"sink": {
 									"type": "OracleSink",
 									"writeBatchSize": 10000,
-									"preCopyScript": "truncate table sa_d365_svil.Anagrafica_aziende"
+									"preCopyScript": "truncate table sa_d365_svil.Anagrafica_Aziende"
 								},
 								"enableStaging": false,
 								"translator": {
@@ -221,8 +221,8 @@
 										{
 											"source": {
 												"name": "IDLOAD",
-												"type": "String",
-												"physicalType": "varchar"
+												"type": "Int32",
+												"physicalType": "int"
 											},
 											"sink": {
 												"name": "IDLOAD",
