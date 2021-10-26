@@ -107,7 +107,7 @@
 		"variables": {
 			"TableName": {
 				"type": "String",
-				"defaultValue": "ntv.DynInd_Station_ServiceNow"
+				"defaultValue": "DynInd_Station_ServiceNow"
 			}
 		},
 		"annotations": [],
