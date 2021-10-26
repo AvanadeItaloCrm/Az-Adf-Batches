@@ -1,0 +1,180 @@
+{
+	"name": "AnagraficaAziende_SQL",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDbCrmStagingArea",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ROW_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CREATED",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "LAST_UPD",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "TIMESTAMP",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "IDDATASRC",
+				"type": "varchar"
+			},
+			{
+				"name": "IDLOAD",
+				"type": "varchar"
+			},
+			{
+				"name": "CODICE",
+				"type": "varchar"
+			},
+			{
+				"name": "NOME",
+				"type": "varchar"
+			},
+			{
+				"name": "RAGIONE_SOCIALE",
+				"type": "varchar"
+			},
+			{
+				"name": "CODICE_FISCALE",
+				"type": "varchar"
+			},
+			{
+				"name": "PARTITA_IVA",
+				"type": "varchar"
+			},
+			{
+				"name": "ONLUS_FLG",
+				"type": "bit"
+			},
+			{
+				"name": "PIVA_GRUPPO_FLG",
+				"type": "bit"
+			},
+			{
+				"name": "TIPO_CENTRO_FATT",
+				"type": "varchar"
+			},
+			{
+				"name": "COD_CENTRO_FATT",
+				"type": "varchar"
+			},
+			{
+				"name": "COD_BUSIN_PART",
+				"type": "varchar"
+			},
+			{
+				"name": "NAZIONALITA",
+				"type": "varchar"
+			},
+			{
+				"name": "TIPO",
+				"type": "varchar"
+			},
+			{
+				"name": "TIPO_AGENZIA",
+				"type": "varchar"
+			},
+			{
+				"name": "TIPO_CORPORATE",
+				"type": "varchar"
+			},
+			{
+				"name": "DATA_ATTIVAZIONE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "TEL_FISSO",
+				"type": "varchar"
+			},
+			{
+				"name": "FAX",
+				"type": "varchar"
+			},
+			{
+				"name": "EMAIL",
+				"type": "varchar"
+			},
+			{
+				"name": "EMAIL_PEC",
+				"type": "varchar"
+			},
+			{
+				"name": "COD_PERC_IVA",
+				"type": "varchar"
+			},
+			{
+				"name": "COD_MTD_PAG",
+				"type": "varchar"
+			},
+			{
+				"name": "COD_TRM_PAG",
+				"type": "varchar"
+			},
+			{
+				"name": "FLG_MANDATO",
+				"type": "bit"
+			},
+			{
+				"name": "ESITO_MANDATO",
+				"type": "varchar"
+			},
+			{
+				"name": "DATA_ESITO_MDT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "NETWORK",
+				"type": "varchar"
+			},
+			{
+				"name": "CODICE_PADRE",
+				"type": "varchar"
+			},
+			{
+				"name": "IND_LEGALE",
+				"type": "varchar"
+			},
+			{
+				"name": "IND_SEDE_OPT",
+				"type": "varchar"
+			},
+			{
+				"name": "STATO",
+				"type": "varchar"
+			},
+			{
+				"name": "PNR_AGENCY_CRT",
+				"type": "varchar"
+			},
+			{
+				"name": "PNR_BARTER",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "batchSync",
+			"table": "AggAnagraficaAgenzie2"
+		}
+	}
+}
