@@ -160,6 +160,7 @@
 									"preCopyScript": "truncate table sa_d365_svil.Anagrafica_Aziende"
 								},
 								"enableStaging": false,
+								"enableSkipIncompatibleRow": false,
 								"translator": {
 									"type": "TabularTranslator",
 									"mappings": [
@@ -210,8 +211,8 @@
 										{
 											"source": {
 												"name": "IDDATASRC",
-												"type": "String",
-												"physicalType": "varchar"
+												"type": "Int32",
+												"physicalType": "int"
 											},
 											"sink": {
 												"name": "IDDATASRC",
