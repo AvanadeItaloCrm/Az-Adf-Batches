@@ -134,7 +134,7 @@
 							"type": "Copy",
 							"dependsOn": [
 								{
-									"activity": "copyToAggAnagraficaAgenzie2",
+									"activity": "copy to AggAnagraficaAgenzie2",
 									"dependencyConditions": [
 										"Succeeded"
 									]
@@ -706,8 +706,8 @@
 							}
 						},
 						{
-							"name": "copyToAggAnagraficaAgenzie2",
-							"type": "ExecuteSSISPackage",
+							"name": "copy to AggAnagraficaAgenzie2",
+							"type": "SqlServerStoredProcedure",
 							"dependsOn": [
 								{
 									"activity": "Dyn365_To_SQL",
@@ -725,16 +725,11 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"packageLocation": {
-									"packagePath": "SqlToDyn/NTV.Az.Batches.Dyn365.CC/Dev_AnagraficaAgenzie2.dtsx",
-									"type": "SSISDB"
-								},
-								"environmentPath": null,
-								"connectVia": {
-									"referenceName": "Italo-devtest-IntegrationRuntimeSSIS",
-									"type": "IntegrationRuntimeReference"
-								},
-								"loggingLevel": "Basic"
+								"storedProcedureName": "[batchSync].[copyToAggAnagraficaAgenzie2]"
+							},
+							"linkedServiceName": {
+								"referenceName": "AzureSqlDbCrmStagingArea",
+								"type": "LinkedServiceReference"
 							}
 						}
 					]
