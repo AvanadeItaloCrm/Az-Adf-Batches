@@ -40,7 +40,7 @@
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "da json a sql server",
+						"activity": "AzureFunctionServiceNow",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -72,8 +72,8 @@
 				}
 			},
 			{
-				"name": "da json a sql server",
-				"type": "ExecuteSSISPackage",
+				"name": "AzureFunctionServiceNow",
+				"type": "AzureFunctionActivity",
 				"dependsOn": [
 					{
 						"activity": "Start SP",
@@ -89,19 +89,7 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": [],
-				"typeProperties": {
-					"packageLocation": {
-						"packagePath": "SqlToDyn/NTV.Az.Batches.Dyn365.CC/Dev_DynInd_Station.dtsx",
-						"type": "SSISDB"
-					},
-					"environmentPath": null,
-					"connectVia": {
-						"referenceName": "Italo-devtest-IntegrationRuntimeSSIS",
-						"type": "IntegrationRuntimeReference"
-					},
-					"loggingLevel": "Verbose"
-				}
+				"userProperties": []
 			}
 		],
 		"variables": {
