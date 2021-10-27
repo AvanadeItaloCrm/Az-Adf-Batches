@@ -2,15 +2,17 @@
 	"name": "CRMClusterCorporateCopyFile",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "CRMClusterCorporateLinkedService",
+			"referenceName": "CRMClusterCorporateBlobStorage",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
-				"type": "AzureFileStorageLocation",
-				"fileName": "CRMClusterCorporate.csv"
+				"type": "AzureBlobStorageLocation",
+				"fileName": "CRMClusterCorporate.csv",
+				"folderPath": "CRMClusterCorporate",
+				"container": "batchfiles"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
