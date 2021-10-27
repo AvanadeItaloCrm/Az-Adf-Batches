@@ -166,7 +166,7 @@
 					"source": {
 						"type": "DelimitedTextSource",
 						"storeSettings": {
-							"type": "AzureFileStorageReadSettings",
+							"type": "AzureBlobStorageReadSettings",
 							"recursive": true,
 							"enablePartitionDiscovery": false
 						},
@@ -177,7 +177,7 @@
 					"sink": {
 						"type": "DelimitedTextSink",
 						"storeSettings": {
-							"type": "AzureFileStorageWriteSettings"
+							"type": "AzureBlobStorageWriteSettings"
 						},
 						"formatSettings": {
 							"type": "DelimitedTextWriteSettings",
@@ -234,7 +234,7 @@
 					},
 					"enableLogging": false,
 					"storeSettings": {
-						"type": "AzureFileStorageReadSettings",
+						"type": "AzureBlobStorageReadSettings",
 						"recursive": true,
 						"enablePartitionDiscovery": false
 					}
