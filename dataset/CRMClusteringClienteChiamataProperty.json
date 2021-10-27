@@ -2,15 +2,17 @@
 	"name": "CRMClusteringClienteChiamataProperty",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzureFileStorage1",
+			"referenceName": "CRMClusterClienteChiamataBlobStorage",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
-				"type": "AzureFileStorageLocation",
-				"fileName": "CRMClusteringClienteChiamata.csv"
+				"type": "AzureBlobStorageLocation",
+				"fileName": "CRMClusteringClienteChiamata.csv",
+				"folderPath": "CRMClusteringClienteChiamata",
+				"container": "batchfiles"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
