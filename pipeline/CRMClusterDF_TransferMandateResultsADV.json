@@ -76,13 +76,6 @@
 									"type": "String",
 									"physicalType": "varchar"
 								}
-							},
-							{
-								"sink": {
-									"name": "Data_Importazione",
-									"type": "DateTime",
-									"physicalType": "smalldatetime"
-								}
 							}
 						],
 						"typeConversion": true,
