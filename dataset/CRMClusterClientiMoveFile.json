@@ -2,7 +2,7 @@
 	"name": "CRMClusterClientiMoveFile",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "BillingStorageBlobService",
+			"referenceName": "CRMClusterClientiBlobStorageFile",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
