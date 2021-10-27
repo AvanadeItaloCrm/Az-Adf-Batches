@@ -2,16 +2,17 @@
 	"name": "BilliFileCopyFile",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "BillingStorage",
+			"referenceName": "BillingStorageBlobService",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
-				"type": "AzureFileStorageLocation",
+				"type": "AzureBlobStorageLocation",
 				"fileName": "fatt.csv",
-				"folderPath": "Elaborated"
+				"folderPath": "ProvaFatt/Elaborated",
+				"container": "batchfiles"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
