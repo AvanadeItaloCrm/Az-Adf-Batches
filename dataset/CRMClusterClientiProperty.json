@@ -2,7 +2,7 @@
 	"name": "CRMClusterClientiProperty",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "CRMClusterClientiBlobStorageFile",
+			"referenceName": "CRMClusterDFTransferMandateBlobStorage",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -10,8 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "CRMClusteringClienti.csv",
-				"folderPath": "CRMClusteringClienti",
+				"fileName": "DF_TransferMandateResultsADV.csv",
+				"folderPath": "DF_TransferMandateResultsADV",
 				"container": "batchfiles"
 			},
 			"columnDelimiter": ",",
