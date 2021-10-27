@@ -89,7 +89,15 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"functionName": "FStationServiceNow",
+					"method": "GET"
+				},
+				"linkedServiceName": {
+					"referenceName": "crmdevbatchesdyn365out",
+					"type": "LinkedServiceReference"
+				}
 			}
 		],
 		"variables": {
