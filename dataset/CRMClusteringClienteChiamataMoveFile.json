@@ -2,16 +2,17 @@
 	"name": "CRMClusteringClienteChiamataMoveFile",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "CRMClusterCorporateLinkedService",
+			"referenceName": "CRMClusterClienteChiamataBlobStorage",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
-				"type": "AzureFileStorageLocation",
+				"type": "AzureBlobStorageLocation",
 				"fileName": "CRMClusteringClienteChiamata.csv",
-				"folderPath": "Elaborated"
+				"folderPath": "CRMClusteringClienteChiamata/Elaborated",
+				"container": "batchfiles"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
