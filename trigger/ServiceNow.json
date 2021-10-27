@@ -1,0 +1,17 @@
+{
+	"name": "ServiceNow",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Hour",
+				"interval": 1,
+				"startTime": "2021-10-27T09:24:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}
