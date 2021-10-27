@@ -10,8 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "CRMClusterCorporate.csv",
-				"folderPath": "CRMClusterCorporate/Elabrated",
+				"fileName": "CRMClusteringClienti.csv",
+				"folderPath": "CRMClusteringClienti/Elaborated",
 				"container": "batchfiles"
 			},
 			"columnDelimiter": ",",
