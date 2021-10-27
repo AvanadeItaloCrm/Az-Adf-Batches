@@ -2,15 +2,17 @@
 	"name": "BillingFileRepository",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "BillingStorage",
+			"referenceName": "BillingStorageBlobService",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
-				"type": "AzureFileStorageLocation",
-				"fileName": "fatt.csv"
+				"type": "AzureBlobStorageLocation",
+				"fileName": "fatt.csv",
+				"folderPath": "ProvaFatt",
+				"container": "batchfiles"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
