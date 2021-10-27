@@ -2,7 +2,7 @@
 	"name": "CRMClusterClientiProperty",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "CRMClusterCorporateBlobStorage",
+			"referenceName": "CRMClusterClientiBlobStorageFile",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
