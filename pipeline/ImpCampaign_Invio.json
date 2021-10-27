@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "csvCRMClusteringClienteChiamata",
+				"name": "csvImpCampaign_Invio",
 				"type": "Copy",
 				"dependsOn": [
 					{
@@ -25,7 +25,7 @@
 					"source": {
 						"type": "DelimitedTextSource",
 						"storeSettings": {
-							"type": "AzureFileStorageReadSettings",
+							"type": "AzureBlobStorageReadSettings",
 							"recursive": true,
 							"enablePartitionDiscovery": false
 						},
@@ -48,7 +48,7 @@
 									"ordinal": 1
 								},
 								"sink": {
-									"name": "Codice_Cliente",
+									"name": "Message_ID",
 									"type": "String",
 									"physicalType": "varchar"
 								}
@@ -60,7 +60,7 @@
 									"ordinal": 2
 								},
 								"sink": {
-									"name": "Cluster_Chiamata",
+									"name": "Delivery_ID",
 									"type": "String",
 									"physicalType": "varchar"
 								}
@@ -72,9 +72,9 @@
 									"ordinal": 3
 								},
 								"sink": {
-									"name": "Valore_Cliente_Chiamata",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "Campaign_ID",
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -84,7 +84,91 @@
 									"ordinal": 4
 								},
 								"sink": {
-									"name": "Promozioni_Chiamata",
+									"name": "Event_Date",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"physicalType": "String",
+									"ordinal": 5
+								},
+								"sink": {
+									"name": "Email_Address",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"physicalType": "String",
+									"ordinal": 6
+								},
+								"sink": {
+									"name": "Codice_Cliente",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"physicalType": "String",
+									"ordinal": 7
+								},
+								"sink": {
+									"name": "Subject",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"physicalType": "String",
+									"ordinal": 8
+								},
+								"sink": {
+									"name": "Status",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"physicalType": "String",
+									"ordinal": 9
+								},
+								"sink": {
+									"name": "Failure_Type",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"physicalType": "String",
+									"ordinal": 10
+								},
+								"sink": {
+									"name": "Reason",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"physicalType": "String",
+									"ordinal": 11
+								},
+								"sink": {
+									"name": "Transazionale",
 									"type": "String",
 									"physicalType": "varchar"
 								}
@@ -99,13 +183,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "CRMClusteringClienteChiamataProperty",
+						"referenceName": "ImpCampaign_InvioProperty",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "CRMClusteringClienteChiamataDB",
+						"referenceName": "ImpCampaign_InvioDB",
 						"type": "DatasetReference"
 					}
 				]
@@ -148,7 +232,7 @@
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "csvCRMClusteringClienteChiamata",
+						"activity": "csvImpCampaign_Invio",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -166,7 +250,7 @@
 					"source": {
 						"type": "DelimitedTextSource",
 						"storeSettings": {
-							"type": "AzureFileStorageReadSettings",
+							"type": "AzureBlobStorageReadSettings",
 							"recursive": true,
 							"enablePartitionDiscovery": false
 						},
@@ -177,7 +261,7 @@
 					"sink": {
 						"type": "DelimitedTextSink",
 						"storeSettings": {
-							"type": "AzureFileStorageWriteSettings"
+							"type": "AzureBlobStorageWriteSettings"
 						},
 						"formatSettings": {
 							"type": "DelimitedTextWriteSettings",
@@ -197,13 +281,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "CRMClusteringClienteChiamataCopyFile",
+						"referenceName": "ImpCampaign_InvioCopyFile",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "CRMClusteringClienteChiamataMoveFile",
+						"referenceName": "ImpCampaign_InvioMovieFile",
 						"type": "DatasetReference"
 					}
 				]
@@ -229,12 +313,12 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "CRMClusteringClienteChiamataCopyFile",
+						"referenceName": "ImpCampaign_InvioCopyFile",
 						"type": "DatasetReference"
 					},
 					"enableLogging": false,
 					"storeSettings": {
-						"type": "AzureFileStorageReadSettings",
+						"type": "AzureBlobStorageReadSettings",
 						"recursive": true,
 						"enablePartitionDiscovery": false
 					}
@@ -281,7 +365,7 @@
 				"type": "ExecuteSSISPackage",
 				"dependsOn": [
 					{
-						"activity": "csvCRMClusteringClienteChiamata",
+						"activity": "csvImpCampaign_Invio",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -355,7 +439,7 @@
 		"variables": {
 			"TableName": {
 				"type": "String",
-				"defaultValue": "AggClusteringClenteChiamata"
+				"defaultValue": "AggImpCampaign_Invio"
 			}
 		},
 		"annotations": [],

@@ -1,0 +1,27 @@
+{
+	"name": "ImpCampaign_InvioMovieFile",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ImpCampaign_InvioBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "BusinessCRMevolution_broadlog_20210928_123235.csv",
+				"folderPath": "crm_evolution/italo_impresa/Elaborated",
+				"container": "adobe"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"type": "String"
+			}
+		]
+	}
+}
