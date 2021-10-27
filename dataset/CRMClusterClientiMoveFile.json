@@ -2,16 +2,17 @@
 	"name": "CRMClusterClientiMoveFile",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "CRMClusterCorporateLinkedService",
+			"referenceName": "BillingStorageBlobService",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
-				"type": "AzureFileStorageLocation",
+				"type": "AzureBlobStorageLocation",
 				"fileName": "CRMClusteringClienti.csv",
-				"folderPath": "Elaborated"
+				"folderPath": "CRMClusteringClienti/Elaborated",
+				"container": "batchfiles"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
