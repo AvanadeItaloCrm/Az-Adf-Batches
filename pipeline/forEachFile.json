@@ -77,7 +77,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@startswith(item().name,'BusinessCRMevolution_broadlog_')\n",
+									"value": "@startswith(item().name,'ConsumerCRMevolution_broadlog_')",
 									"type": "Expression"
 								},
 								"ifTrueActivities": [
