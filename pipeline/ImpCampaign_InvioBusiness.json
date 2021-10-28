@@ -363,7 +363,7 @@
 										]
 									},
 									{
-										"name": "Delete file",
+										"name": "Delete Business file",
 										"type": "Delete",
 										"dependsOn": [
 											{
