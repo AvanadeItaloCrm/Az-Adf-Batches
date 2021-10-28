@@ -46,7 +46,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('Evolution Consumers File Invio').output.childItems",
+						"value": "@activity('Evolution Consumer File Invio').output.childItems",
 						"type": "Expression"
 					},
 					"isSequential": true,
