@@ -1,0 +1,19 @@
+{
+	"name": "CRMClusterDFTransferDelete",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "CRMClusterDFTransferDelete",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "DF_TransferMandateResultsADV.csv",
+				"folderPath": "DF_TransferMandateResultsADV",
+				"container": "batchfiles"
+			}
+		}
+	}
+}

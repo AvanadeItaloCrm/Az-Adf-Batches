@@ -252,7 +252,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "CRMClusteringClientiCopyFile",
+						"referenceName": "CRMClusterDFTransferDelete",
 						"type": "DatasetReference"
 					},
 					"enableLogging": false,
