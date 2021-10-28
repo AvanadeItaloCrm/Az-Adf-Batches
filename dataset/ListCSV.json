@@ -2,14 +2,14 @@
 	"name": "ListCSV",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "FileCSVFolder",
+			"referenceName": "LinkFiles",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
-				"type": "AzureFileStorageLocation"
+				"type": "AzureBlobStorageLocation"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
