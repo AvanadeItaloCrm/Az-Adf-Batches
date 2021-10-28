@@ -97,17 +97,16 @@
 								],
 								"ifTrueActivities": [
 									{
-										"name": "Fail1",
-										"description": "ok",
-										"type": "Fail",
+										"name": "Set variable1",
+										"type": "SetVariable",
 										"dependsOn": [],
 										"userProperties": [],
 										"typeProperties": {
-											"message": {
-												"value": "@item().name",
+											"variableName": "FileName",
+											"value": {
+												"value": "item().name",
 												"type": "Expression"
-											},
-											"errorCode": "100"
+											}
 										}
 									}
 								]
