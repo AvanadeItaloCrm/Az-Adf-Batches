@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Evolution Consumer File",
+				"name": "Evolution Consumer File Invio",
 				"type": "GetMetadata",
 				"dependsOn": [],
 				"policy": {
@@ -37,7 +37,7 @@
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "Evolution Consumer File",
+						"activity": "Evolution Consumer File Invio",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -46,7 +46,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('Evolution Consumers File').output.childItems",
+						"value": "@activity('Evolution Consumers File Invio').output.childItems",
 						"type": "Expression"
 					},
 					"isSequential": true,
