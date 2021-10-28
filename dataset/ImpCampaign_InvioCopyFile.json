@@ -10,7 +10,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "BusinessCRMevolution_broadlog_20210928_123235.csv",
+				"fileName": {
+					"value": "BusinessCRMevolution_broadlog_20210928_123235.csv\n@concat('BusinessCRMevolution_broadlog','*','.csv')",
+					"type": "Expression"
+				},
 				"folderPath": "crm_evolution/italo_impresa",
 				"container": "adobe"
 			},
