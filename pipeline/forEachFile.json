@@ -77,21 +77,21 @@
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@startswith(item().name,'BusinessCRMevolution_broadlog_')",
+									"value": "@startswith(variables('FileName'),'BusinessCRMevolution_broadlog_')",
 									"type": "Expression"
 								},
 								"ifTrueActivities": [
 									{
-										"name": "Set variable1",
-										"type": "SetVariable",
+										"name": "Fail1",
+										"type": "Fail",
 										"dependsOn": [],
 										"userProperties": [],
 										"typeProperties": {
-											"variableName": "FileName",
-											"value": {
-												"value": "item().name",
+											"message": {
+												"value": "@variables('FileName')",
 												"type": "Expression"
-											}
+											},
+											"errorCode": "0"
 										}
 									}
 								]
