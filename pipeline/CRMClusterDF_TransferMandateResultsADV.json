@@ -220,13 +220,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "CRMClusterClientiCopyFile",
+						"referenceName": "CRMClusterDFTransfer",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "CRMClusterClientiMoveFile",
+						"referenceName": "CRMClusterDFTransferMoveFile",
 						"type": "DatasetReference"
 					}
 				]
