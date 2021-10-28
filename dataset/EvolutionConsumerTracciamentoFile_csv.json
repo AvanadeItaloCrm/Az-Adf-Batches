@@ -1,0 +1,26 @@
+{
+	"name": "EvolutionConsumerTracciamentoFile_csv",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AdobeEvolutionItaloBS",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "crm_evolution/italo_impresa",
+				"container": "adobe"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"type": "String"
+			}
+		]
+	}
+}
