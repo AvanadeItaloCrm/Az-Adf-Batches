@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Evolution Consumers Tracciamento File",
+				"name": "Evolution Italo Tracciamento File",
 				"type": "GetMetadata",
 				"dependsOn": [],
 				"policy": {
@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "EvolutionConsumerTracciamentoFile_csv",
+						"referenceName": "EvolutionItaloTracciamentoFile_csv",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
@@ -37,7 +37,7 @@
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "Evolution Consumers Tracciamento File",
+						"activity": "Evolution Italo Tracciamento File",
 						"dependencyConditions": [
 							"Succeeded"
 						]
