@@ -10,7 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"folderPath": "crm_evolution/consumer",
+				"fileName": "@item().name",
+				"folderPath": "crm_evolution/consumer/Elaborated",
 				"container": "adobe"
 			},
 			"columnDelimiter": ",",
