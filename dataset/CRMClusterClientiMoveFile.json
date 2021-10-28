@@ -10,8 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "DF_TransferMandateResultsADV.csv",
-				"folderPath": "DF_TransferMandateResultsADV/Elaborated",
+				"fileName": "CRMClusteringClienti.csv",
+				"folderPath": "CRMClusteringClienti/Elaborated",
 				"container": "batchfiles"
 			},
 			"columnDelimiter": ",",
