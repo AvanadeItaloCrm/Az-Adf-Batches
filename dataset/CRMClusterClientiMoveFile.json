@@ -2,7 +2,7 @@
 	"name": "CRMClusterClientiMoveFile",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "CRMClusterDFTransferMandateBlobStorage",
+			"referenceName": "CRMClusterClientiBlobStorageFile",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
