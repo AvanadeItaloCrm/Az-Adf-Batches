@@ -2,7 +2,7 @@
 	"name": "ImpCampaign_TracciamentoDB",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "SqlServerDb",
+			"referenceName": "AzurecrmdevstagingareaDB",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
