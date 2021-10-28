@@ -23,8 +23,7 @@
 						"childItems"
 					],
 					"storeSettings": {
-						"type": "AzureFileStorageReadSettings",
-						"recursive": true,
+						"type": "AzureBlobStorageReadSettings",
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
@@ -62,6 +61,34 @@
 									"value": "@item().name",
 									"type": "Expression"
 								}
+							}
+						},
+						{
+							"name": "If Condition1",
+							"type": "IfCondition",
+							"dependsOn": [
+								{
+									"activity": "CSVFileName",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"expression": {
+									"value": "@startswith(variables('FileName'),'BusinessCRMevolution_broadlog_')",
+									"type": "Expression"
+								},
+								"ifTrueActivities": [
+									{
+										"name": "Fail1",
+										"description": "ok",
+										"type": "Fail",
+										"dependsOn": [],
+										"userProperties": []
+									}
+								]
 							}
 						}
 					]
