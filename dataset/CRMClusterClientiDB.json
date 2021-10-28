@@ -38,7 +38,7 @@
 		],
 		"typeProperties": {
 			"schema": "batchSync",
-			"table": "AggDFTransferMandateResultADV"
+			"table": "AggClusterClienti"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
