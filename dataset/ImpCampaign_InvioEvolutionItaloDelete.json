@@ -1,0 +1,19 @@
+{
+	"name": "ImpCampaign_InvioEvolutionItaloDelete",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AdobeEvolutionConsumerBS",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "@item().name",
+				"folderPath": "crm_evolution/italo_impresa",
+				"container": "adobe"
+			}
+		}
+	}
+}

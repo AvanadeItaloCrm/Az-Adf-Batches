@@ -316,6 +316,11 @@
 												"storeSettings": {
 													"type": "AzureBlobStorageReadSettings",
 													"recursive": true,
+													"wildcardFolderPath": "crm_evolution/italo_impresa",
+													"wildcardFileName": {
+														"value": "@item().name",
+														"type": "Expression"
+													},
 													"enablePartitionDiscovery": false
 												},
 												"formatSettings": {
@@ -377,7 +382,7 @@
 										"userProperties": [],
 										"typeProperties": {
 											"dataset": {
-												"referenceName": "ImpCampaign_InvioCopyFile",
+												"referenceName": "ImpCampaign_InvioEvolutionItaloDelete",
 												"type": "DatasetReference"
 											},
 											"enableLogging": false,
