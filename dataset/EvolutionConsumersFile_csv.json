@@ -2,7 +2,7 @@
 	"name": "EvolutionConsumersFile_csv",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AdobeEvolutionConsumerBS",
+			"referenceName": "AdobeEvolutionItaloBS",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
