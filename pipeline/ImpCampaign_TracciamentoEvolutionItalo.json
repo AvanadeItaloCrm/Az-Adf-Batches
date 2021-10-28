@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Evolution Consumers File",
+				"name": "Evolution Consumers Tracciamento File",
 				"type": "GetMetadata",
 				"dependsOn": [],
 				"policy": {
@@ -33,11 +33,11 @@
 				}
 			},
 			{
-				"name": "ForEach1",
+				"name": "ForEachTracciamento",
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "Evolution Consumers File",
+						"activity": "Evolution Consumers Tracciamento File",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -46,7 +46,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('Evolution Consumers File').output.childItems",
+						"value": "@activity('Evolution Consumers Tracciamento File').output.childItems",
 						"type": "Expression"
 					},
 					"isSequential": true,
