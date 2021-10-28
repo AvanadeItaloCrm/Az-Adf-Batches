@@ -1,0 +1,18 @@
+{
+	"name": "ImpCampaign_InvioBusinessDelete",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ImpCampaign_InvioBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "dem_business",
+				"container": "adobe"
+			}
+		}
+	}
+}
