@@ -86,7 +86,7 @@
 												"type": "DelimitedTextSource",
 												"storeSettings": {
 													"type": "AzureBlobStorageReadSettings",
-													"fileListPath": "adobe/crm_evolution/italo_impresa/BusinessCRMevolution_trackinglog_20210928_122919.csv",
+													"recursive": true,
 													"enablePartitionDiscovery": false
 												},
 												"formatSettings": {
@@ -101,6 +101,140 @@
 											"enableStaging": false,
 											"translator": {
 												"type": "TabularTranslator",
+												"mappings": [
+													{
+														"source": {
+															"type": "String",
+															"physicalType": "String",
+															"ordinal": 1
+														},
+														"sink": {
+															"name": "Delivery_ID",
+															"type": "String",
+															"physicalType": "varchar"
+														}
+													},
+													{
+														"source": {
+															"type": "String",
+															"physicalType": "String",
+															"ordinal": 2
+														},
+														"sink": {
+															"name": "Email_Address",
+															"type": "String",
+															"physicalType": "varchar"
+														}
+													},
+													{
+														"source": {
+															"type": "String",
+															"physicalType": "String",
+															"ordinal": 3
+														},
+														"sink": {
+															"name": "Subject",
+															"type": "String",
+															"physicalType": "varchar"
+														}
+													},
+													{
+														"source": {
+															"type": "String",
+															"physicalType": "String",
+															"ordinal": 4
+														},
+														"sink": {
+															"name": "Event_Date",
+															"type": "String",
+															"physicalType": "varchar"
+														}
+													},
+													{
+														"source": {
+															"type": "String",
+															"physicalType": "String",
+															"ordinal": 5
+														},
+														"sink": {
+															"name": "Event_Type",
+															"type": "String",
+															"physicalType": "varchar"
+														}
+													},
+													{
+														"source": {
+															"type": "String",
+															"physicalType": "String",
+															"ordinal": 6
+														},
+														"sink": {
+															"name": "Url",
+															"type": "String",
+															"physicalType": "varchar"
+														}
+													},
+													{
+														"source": {
+															"type": "String",
+															"physicalType": "String",
+															"ordinal": 7
+														},
+														"sink": {
+															"name": "Codice_Cliente",
+															"type": "String",
+															"physicalType": "varchar"
+														}
+													},
+													{
+														"source": {
+															"type": "String",
+															"physicalType": "String",
+															"ordinal": 8
+														},
+														"sink": {
+															"name": "Message_ID",
+															"type": "String",
+															"physicalType": "varchar"
+														}
+													},
+													{
+														"source": {
+															"type": "String",
+															"physicalType": "String",
+															"ordinal": 9
+														},
+														"sink": {
+															"name": "Campaign_ID",
+															"type": "String",
+															"physicalType": "varchar"
+														}
+													},
+													{
+														"source": {
+															"type": "String",
+															"physicalType": "String",
+															"ordinal": 10
+														},
+														"sink": {
+															"name": "Tracking_ID",
+															"type": "String",
+															"physicalType": "varchar"
+														}
+													},
+													{
+														"source": {
+															"type": "String",
+															"physicalType": "String",
+															"ordinal": 11
+														},
+														"sink": {
+															"name": "Transazionale",
+															"type": "String",
+															"physicalType": "varchar"
+														}
+													}
+												],
 												"typeConversion": true,
 												"typeConversionSettings": {
 													"allowDataTruncation": true,
