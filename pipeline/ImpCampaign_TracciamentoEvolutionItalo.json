@@ -88,7 +88,10 @@
 													"type": "AzureBlobStorageReadSettings",
 													"recursive": true,
 													"wildcardFolderPath": "crm_evolution/italo_impresa",
-													"wildcardFileName": "@item().name",
+													"wildcardFileName": {
+														"value": "@item().name",
+														"type": "Expression"
+													},
 													"enablePartitionDiscovery": false
 												},
 												"formatSettings": {
@@ -449,7 +452,7 @@
 										"userProperties": [],
 										"typeProperties": {
 											"packageLocation": {
-												"packagePath": "SqlToDyn/NTV.Az.Batches.Dyn365.CC/Dev_ImpCampaign_Invio.dtsx",
+												"packagePath": "SqlToDyn/NTV.Az.Batches.Dyn365.CC/Dev_ImpCampaign_Tracciamento.dtsx",
 												"type": "SSISDB"
 											},
 											"environmentPath": null,
