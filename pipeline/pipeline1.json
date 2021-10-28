@@ -86,7 +86,14 @@
 										"description": "ok",
 										"type": "Fail",
 										"dependsOn": [],
-										"userProperties": []
+										"userProperties": [],
+										"typeProperties": {
+											"message": {
+												"value": "@variables('FileName')",
+												"type": "Expression"
+											},
+											"errorCode": "100"
+										}
 									}
 								]
 							}
