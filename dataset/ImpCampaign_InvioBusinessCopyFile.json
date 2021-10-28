@@ -1,5 +1,5 @@
 {
-	"name": "BusinessFile_csv",
+	"name": "ImpCampaign_InvioBusinessCopyFile",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ImpCampaign_InvioBlobStorage",

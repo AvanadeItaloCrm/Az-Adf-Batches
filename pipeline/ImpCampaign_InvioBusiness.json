@@ -87,7 +87,7 @@
 												"storeSettings": {
 													"type": "AzureBlobStorageReadSettings",
 													"recursive": true,
-													"wildcardFolderPath": "crm_evolution/italo_impresa",
+													"wildcardFolderPath": "dem_business",
 													"wildcardFileName": {
 														"value": "@item().name",
 														"type": "Expression"
@@ -248,7 +248,7 @@
 										},
 										"inputs": [
 											{
-												"referenceName": "ImpCampaign_InvioProperty",
+												"referenceName": "ImpCampaign_InvioBusinessProperty",
 												"type": "DatasetReference"
 											}
 										],
@@ -293,7 +293,7 @@
 										}
 									},
 									{
-										"name": "Copy in Elaborated",
+										"name": "Copy in ElaboratedBusiness",
 										"type": "Copy",
 										"dependsOn": [
 											{
@@ -317,7 +317,7 @@
 												"storeSettings": {
 													"type": "AzureBlobStorageReadSettings",
 													"recursive": true,
-													"wildcardFolderPath": "crm_evolution/italo_impresa",
+													"wildcardFolderPath": "dem_business",
 													"wildcardFileName": {
 														"value": "@item().name",
 														"type": "Expression"
@@ -351,13 +351,13 @@
 										},
 										"inputs": [
 											{
-												"referenceName": "ImpCampaign_InvioCopyFile",
+												"referenceName": "ImpCampaign_InvioBusinessCopyFile",
 												"type": "DatasetReference"
 											}
 										],
 										"outputs": [
 											{
-												"referenceName": "ImpCampaign_InvioMovieFile",
+												"referenceName": "ImpCampaign_InvioBusinessMovieFile",
 												"type": "DatasetReference"
 											}
 										]
@@ -367,7 +367,7 @@
 										"type": "Delete",
 										"dependsOn": [
 											{
-												"activity": "Copy in Elaborated",
+												"activity": "Copy in ElaboratedBusiness",
 												"dependencyConditions": [
 													"Succeeded"
 												]
