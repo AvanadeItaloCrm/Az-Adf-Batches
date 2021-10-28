@@ -5,8 +5,8 @@
 		"annotations": [],
 		"type": "SqlServer",
 		"typeProperties": {
-			"connectionString": "integrated security=False;data source=crm-test-sqlsrv.database.windows.net;initial catalog=crmdevstagingarea;user id=Crmtestadmin",
-			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIklUQUxPREVWVEVTVERBVEFGQUNUT1JZXzU4NDgzOGFlLTM2MDQtNDU3Mi05NThlLWY0MmE5ZTZjYTA2MCINCn0="
+			"connectionString": "integrated security=False;data source=crm-dev-sqlsrv.database.windows.net;initial catalog=crmdevstagingarea;user id=crmdevadmin",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIklUQUxPREVWVEVTVERBVEFGQUNUT1JZXzQ0NmU0OTE1LWZmN2MtNDBhNi1iMDY5LTI5ZjM4MGJlODIyZSINCn0="
 		}
 	}
 }
