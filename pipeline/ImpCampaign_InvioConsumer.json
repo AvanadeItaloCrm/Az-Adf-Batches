@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Evolution Italo File",
+				"name": "Consumer File",
 				"type": "GetMetadata",
 				"dependsOn": [],
 				"policy": {
@@ -37,7 +37,7 @@
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "Evolution Italo File",
+						"activity": "Consumer File",
 						"dependencyConditions": [
 							"Succeeded"
 						]
