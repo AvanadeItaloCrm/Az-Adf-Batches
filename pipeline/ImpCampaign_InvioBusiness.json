@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "EvolutionConsumersFile_csv",
+						"referenceName": "BusinessFile_csv",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
@@ -33,7 +33,7 @@
 				}
 			},
 			{
-				"name": "ForEach1",
+				"name": "ForEachBusiness",
 				"type": "ForEach",
 				"dependsOn": [
 					{
@@ -46,13 +46,13 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('Evolution Consumers File').output.childItems",
+						"value": "@activity('Business File').output.childItems",
 						"type": "Expression"
 					},
 					"isSequential": true,
 					"activities": [
 						{
-							"name": "If Condition1",
+							"name": "If ConditionBusiness",
 							"type": "IfCondition",
 							"dependsOn": [],
 							"userProperties": [],
@@ -63,7 +63,7 @@
 								},
 								"ifTrueActivities": [
 									{
-										"name": "csvImpCampaign_Invio",
+										"name": "csvImpCampaign_InvioBusiness",
 										"type": "Copy",
 										"dependsOn": [
 											{
@@ -297,7 +297,7 @@
 										"type": "Copy",
 										"dependsOn": [
 											{
-												"activity": "csvImpCampaign_Invio",
+												"activity": "csvImpCampaign_InvioBusiness",
 												"dependencyConditions": [
 													"Succeeded"
 												]
@@ -435,7 +435,7 @@
 										"type": "ExecuteSSISPackage",
 										"dependsOn": [
 											{
-												"activity": "csvImpCampaign_Invio",
+												"activity": "csvImpCampaign_InvioBusiness",
 												"dependencyConditions": [
 													"Succeeded"
 												]
