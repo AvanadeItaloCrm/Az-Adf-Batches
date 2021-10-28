@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Evolution Consumers File",
+				"name": "Business File",
 				"type": "GetMetadata",
 				"dependsOn": [],
 				"policy": {
@@ -37,7 +37,7 @@
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "Evolution Consumers File",
+						"activity": "Business File",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -476,7 +476,7 @@
 			},
 			"InizioNomeFile": {
 				"type": "String",
-				"defaultValue": "BusinessCRMevolution_broadlog_"
+				"defaultValue": "BusinessDEM_broadlog_"
 			}
 		},
 		"annotations": [],
