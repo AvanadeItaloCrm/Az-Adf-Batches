@@ -318,7 +318,7 @@
 												"storeSettings": {
 													"type": "AzureBlobStorageReadSettings",
 													"recursive": true,
-													"wildcardFolderPath": "crm_evolution/italo_impresa",
+													"wildcardFolderPath": "crm_evolution/consumer",
 													"wildcardFileName": {
 														"value": "@item().name",
 														"type": "Expression"
@@ -352,13 +352,13 @@
 										},
 										"inputs": [
 											{
-												"referenceName": "ImpCampaign_InvioCopyFile",
+												"referenceName": "ImpCampaign_TracciamentoInvioCopyFile",
 												"type": "DatasetReference"
 											}
 										],
 										"outputs": [
 											{
-												"referenceName": "ImpCampaign_InvioMovieFile",
+												"referenceName": "ImpCampaign_TracciamentoMovieFile",
 												"type": "DatasetReference"
 											}
 										]
@@ -384,7 +384,7 @@
 										"userProperties": [],
 										"typeProperties": {
 											"dataset": {
-												"referenceName": "ImpCampaign_InvioEvolutionItaloDelete",
+												"referenceName": "ImpCampaign_TracciamentoEvolutionConsumer",
 												"type": "DatasetReference"
 											},
 											"enableLogging": false,
