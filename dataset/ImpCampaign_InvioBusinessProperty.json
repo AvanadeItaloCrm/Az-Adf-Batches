@@ -2,7 +2,7 @@
 	"name": "ImpCampaign_InvioBusinessProperty",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AdobeBusinessBS",
+			"referenceName": "ImpCampaign_InvioBlobStorage",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
