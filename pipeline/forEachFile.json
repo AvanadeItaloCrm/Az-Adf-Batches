@@ -77,7 +77,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@startswith(item().value,'BusinessCRMevolution_broadlog_')\n",
+									"value": "@startswith(item().name,'BusinessCRMevolution_broadlog_')\n",
 									"type": "Expression"
 								},
 								"ifTrueActivities": [
@@ -88,7 +88,7 @@
 										"userProperties": [],
 										"typeProperties": {
 											"message": {
-												"value": "@item().name.value",
+												"value": "@item().name",
 												"type": "Expression"
 											},
 											"errorCode": "100"
