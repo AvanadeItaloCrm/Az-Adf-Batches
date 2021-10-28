@@ -33,7 +33,7 @@
 				}
 			},
 			{
-				"name": "ForEach1",
+				"name": "ForEachConsumer",
 				"type": "ForEach",
 				"dependsOn": [
 					{
