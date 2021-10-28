@@ -10,10 +10,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": {
-					"value": "BusinessCRMevolution_broadlog_*.csv",
-					"type": "Expression"
-				},
 				"folderPath": "crm_evolution/consumer",
 				"container": "adobe"
 			},
