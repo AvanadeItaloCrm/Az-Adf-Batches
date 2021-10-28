@@ -87,7 +87,7 @@
 												"storeSettings": {
 													"type": "AzureBlobStorageReadSettings",
 													"recursive": true,
-													"wildcardFolderPath": "crm_evolution/italo_impresa",
+													"wildcardFolderPath": "crm_evolution/consumer",
 													"wildcardFileName": {
 														"value": "@item().name",
 														"type": "Expression"
@@ -249,7 +249,7 @@
 										},
 										"inputs": [
 											{
-												"referenceName": "ImpCampaign_TracciamentoProperty",
+												"referenceName": "ImpCampaign_TracciamentoConsumerProperty",
 												"type": "DatasetReference"
 											}
 										],
