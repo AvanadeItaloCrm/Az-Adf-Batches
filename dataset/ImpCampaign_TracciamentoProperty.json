@@ -9,10 +9,7 @@
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobStorageLocation",
-				"fileName": "BusinessCRMevolution_trackinglog_20210928_122919.csv",
-				"folderPath": "crm_evolution/italo_impresa",
-				"container": "adobe"
+				"type": "AzureBlobStorageLocation"
 			},
 			"columnDelimiter": ";",
 			"escapeChar": "\\",
