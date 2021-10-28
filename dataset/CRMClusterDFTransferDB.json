@@ -1,0 +1,40 @@
+{
+	"name": "CRMClusterDFTransferDB",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDbCrmStagingArea",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Codice_Partner",
+				"type": "varchar"
+			},
+			{
+				"name": "Stato_Mandato",
+				"type": "varchar"
+			},
+			{
+				"name": "Data_Esito",
+				"type": "varchar"
+			},
+			{
+				"name": "Data_Importazione",
+				"type": "smalldatetime",
+				"precision": 16,
+				"scale": 0
+			}
+		],
+		"typeProperties": {
+			"schema": "batchSync",
+			"table": "AggDFTransferMandateResultADV"
+		}
+	}
+}

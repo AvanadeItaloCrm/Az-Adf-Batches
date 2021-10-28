@@ -1,0 +1,33 @@
+{
+	"name": "CRMClusterDFTransfer",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "CRMClusterDFTransferBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "DF_TransferMandateResultsADV.csv",
+				"folderPath": "DF_TransferMandateResultsADV",
+				"container": "batchfiles"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			}
+		]
+	}
+}
