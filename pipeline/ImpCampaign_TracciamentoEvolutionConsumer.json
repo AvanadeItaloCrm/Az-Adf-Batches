@@ -1,9 +1,9 @@
 {
-	"name": "ImpCampaign_TracciamentoEvolutionItalo",
+	"name": "ImpCampaign_TracciamentoEvolutionConsumer",
 	"properties": {
 		"activities": [
 			{
-				"name": "Evolution Italo Tracciamento File",
+				"name": "Evolution Consumer Tracciamento File",
 				"type": "GetMetadata",
 				"dependsOn": [],
 				"policy": {
@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "EvolutionItaloTracciamentoFile_csv",
+						"referenceName": "EvolutionConsumerTracciamentoFile_csv",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
@@ -37,7 +37,7 @@
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "Evolution Italo Tracciamento File",
+						"activity": "Evolution Consumer Tracciamento File",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -46,7 +46,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('Evolution Italo Tracciamento File').output.childItems",
+						"value": "@activity('Evolution Consumers Tracciamento File').output.childItems",
 						"type": "Expression"
 					},
 					"isSequential": true,
