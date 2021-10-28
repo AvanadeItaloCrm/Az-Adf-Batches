@@ -11,7 +11,7 @@
 			"location": {
 				"type": "AzureBlobStorageLocation",
 				"fileName": {
-					"value": "@concat('BusinessCRMevolution_broadlog','*','.csv')",
+					"value": "@concat('BusinessCRMevolution_broadlog','*.csv')",
 					"type": "Expression"
 				},
 				"folderPath": "crm_evolution/italo_impresa",
