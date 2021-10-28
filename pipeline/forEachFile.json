@@ -80,6 +80,21 @@
 									"value": "@startswith(variables('FileName'),'BusinessCRMevolution_broadlog_')",
 									"type": "Expression"
 								},
+								"ifFalseActivities": [
+									{
+										"name": "Fail2",
+										"type": "Fail",
+										"dependsOn": [],
+										"userProperties": [],
+										"typeProperties": {
+											"message": {
+												"value": "@variables('FileName')",
+												"type": "Expression"
+											},
+											"errorCode": "200"
+										}
+									}
+								],
 								"ifTrueActivities": [
 									{
 										"name": "Fail1",
