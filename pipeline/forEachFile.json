@@ -88,10 +88,10 @@
 										"userProperties": [],
 										"typeProperties": {
 											"message": {
-												"value": "@variables('FileName')",
+												"value": "@variables('FileName').value",
 												"type": "Expression"
 											},
-											"errorCode": "0"
+											"errorCode": "100"
 										}
 									}
 								]
