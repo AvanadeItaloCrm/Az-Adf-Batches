@@ -2,7 +2,7 @@
 	"name": "ImpCampaign_TracciamentoProperty",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AdobeEvolutionItaloBS",
+			"referenceName": "AdobeEvolutionConsumerTracciamentoBS",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
