@@ -461,49 +461,6 @@
 											},
 											"loggingLevel": "Verbose"
 										}
-									},
-									{
-										"name": "Update Nome File",
-										"type": "SqlServerStoredProcedure",
-										"dependsOn": [
-											{
-												"activity": "Delete file",
-												"dependencyConditions": [
-													"Succeeded"
-												]
-											}
-										],
-										"policy": {
-											"timeout": "7.00:00:00",
-											"retry": 0,
-											"retryIntervalInSeconds": 30,
-											"secureOutput": false,
-											"secureInput": false
-										},
-										"userProperties": [],
-										"typeProperties": {
-											"storedProcedureName": "[batchSync].[UpdateBatchSync]",
-											"storedProcedureParameters": {
-												"NomeFile": {
-													"value": {
-														"value": "@activity('Delete file').output.fileName",
-														"type": "Expression"
-													},
-													"type": "String"
-												},
-												"TabellaImport": {
-													"value": {
-														"value": "@variables('TableName')",
-														"type": "Expression"
-													},
-													"type": "String"
-												}
-											}
-										},
-										"linkedServiceName": {
-											"referenceName": "AzureSqlDbCrmStagingArea",
-											"type": "LinkedServiceReference"
-										}
 									}
 								]
 							}
