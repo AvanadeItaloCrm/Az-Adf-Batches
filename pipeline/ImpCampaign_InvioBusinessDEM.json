@@ -7,7 +7,7 @@
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "BusinessDEM File",
+						"activity": "Business_DEM File",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('BusinessDEM File').output.childItems",
+						"value": "@activity('Business_DEM File').output.childItems",
 						"type": "Expression"
 					},
 					"isSequential": true,
@@ -439,7 +439,7 @@
 				}
 			},
 			{
-				"name": "BusinessDEM File",
+				"name": "Business_DEM File",
 				"type": "GetMetadata",
 				"dependsOn": [],
 				"policy": {
