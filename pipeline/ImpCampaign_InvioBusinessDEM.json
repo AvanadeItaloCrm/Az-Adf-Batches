@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "BusinessDEMFile_csv",
+						"referenceName": "BusinessDemFilecsv",
 						"type": "DatasetReference"
 					},
 					"fieldList": [],
