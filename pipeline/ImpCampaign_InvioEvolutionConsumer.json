@@ -33,7 +33,7 @@
 				}
 			},
 			{
-				"name": "ForEachConsumer",
+				"name": "ForEach EvolutionConsumer",
 				"type": "ForEach",
 				"dependsOn": [
 					{
@@ -52,7 +52,7 @@
 					"isSequential": true,
 					"activities": [
 						{
-							"name": "If Condition1",
+							"name": "If Condition Evolution Consumer",
 							"type": "IfCondition",
 							"dependsOn": [],
 							"userProperties": [],
@@ -63,7 +63,7 @@
 								},
 								"ifTrueActivities": [
 									{
-										"name": "csvImpCampaign_Invio",
+										"name": "csvImpCampaign_Invio EvolutionConsumer",
 										"type": "Copy",
 										"dependsOn": [
 											{
@@ -87,7 +87,7 @@
 												"storeSettings": {
 													"type": "AzureBlobStorageReadSettings",
 													"recursive": true,
-													"wildcardFolderPath": "crm_evolution/italo_impresa",
+													"wildcardFolderPath": "crm_evolution/consumer",
 													"wildcardFileName": {
 														"value": "@item().name",
 														"type": "Expression"
@@ -248,7 +248,7 @@
 										},
 										"inputs": [
 											{
-												"referenceName": "ImpCampaign_InvioProperty",
+												"referenceName": "ImpCampaign_InvioEvolutionConsumer",
 												"type": "DatasetReference"
 											}
 										],
@@ -293,11 +293,11 @@
 										}
 									},
 									{
-										"name": "Copy in Elaborated",
+										"name": "Copy in Elaborated EvolutionConsumer",
 										"type": "Copy",
 										"dependsOn": [
 											{
-												"activity": "csvImpCampaign_Invio",
+												"activity": "csvImpCampaign_Invio EvolutionConsumer",
 												"dependencyConditions": [
 													"Succeeded"
 												]
@@ -317,7 +317,7 @@
 												"storeSettings": {
 													"type": "AzureBlobStorageReadSettings",
 													"recursive": true,
-													"wildcardFolderPath": "crm_evolution/italo_impresa",
+													"wildcardFolderPath": "crm_evolution/consumer",
 													"wildcardFileName": {
 														"value": "@item().name",
 														"type": "Expression"
@@ -351,23 +351,23 @@
 										},
 										"inputs": [
 											{
-												"referenceName": "ImpCampaign_InvioCopyFile",
+												"referenceName": "ImpCampaign_InvioEvolutionConsumerCopyFile",
 												"type": "DatasetReference"
 											}
 										],
 										"outputs": [
 											{
-												"referenceName": "ImpCampaign_InvioMovieFile",
+												"referenceName": "ImpCampaign_InvioEvolutionConsumerMovieFile",
 												"type": "DatasetReference"
 											}
 										]
 									},
 									{
-										"name": "Delete file",
+										"name": "Delete file EvolutionConsumer",
 										"type": "Delete",
 										"dependsOn": [
 											{
-												"activity": "Copy in Elaborated",
+												"activity": "Copy in Elaborated EvolutionConsumer",
 												"dependencyConditions": [
 													"Succeeded"
 												]
@@ -435,7 +435,7 @@
 										"type": "ExecuteSSISPackage",
 										"dependsOn": [
 											{
-												"activity": "csvImpCampaign_Invio",
+												"activity": "csvImpCampaign_Invio EvolutionConsumer",
 												"dependencyConditions": [
 													"Succeeded"
 												]
