@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "EvolutionConsumersFile_csv",
+						"referenceName": "EvolutionItaloFile_csv",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
