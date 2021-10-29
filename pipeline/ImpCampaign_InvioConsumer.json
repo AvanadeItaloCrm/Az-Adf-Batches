@@ -476,7 +476,7 @@
 			},
 			"InizioNomeFile": {
 				"type": "String",
-				"defaultValue": "BusinessCRMevolution_broadlog_"
+				"defaultValue": "ConsumerDEM_broadlog_"
 			}
 		},
 		"annotations": [],
