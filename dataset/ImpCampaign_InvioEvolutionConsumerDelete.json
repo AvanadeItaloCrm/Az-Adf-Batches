@@ -1,0 +1,18 @@
+{
+	"name": "ImpCampaign_InvioEvolutionConsumerDelete",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AdobeEvolutionConsumerBS",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "crm_evolution/consumer",
+				"container": "adobe"
+			}
+		}
+	}
+}
