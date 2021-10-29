@@ -3,12 +3,49 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "ForEachBusinessDEM",
-				"type": "ForEach",
+				"name": "BusinessDEM File",
+				"type": "GetMetadata",
 				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
 				"userProperties": [],
 				"typeProperties": {
-					"isSequential": true,
+					"dataset": {
+						"referenceName": "DEMBusinessFile_csv",
+						"type": "DatasetReference"
+					},
+					"fieldList": [],
+					"storeSettings": {
+						"type": "AzureBlobStorageReadSettings",
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
+					}
+				}
+			},
+			{
+				"name": "ForEach BusinessDEM",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "BusinessDEM File",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('BusinessDEM File').output.childItems",
+						"type": "Expression"
+					},
 					"activities": [
 						{
 							"name": "If Condition BusinessDEM",
@@ -46,11 +83,6 @@
 												"storeSettings": {
 													"type": "AzureBlobStorageReadSettings",
 													"recursive": true,
-													"wildcardFolderPath": "dem_business",
-													"wildcardFileName": {
-														"value": "@item().name",
-														"type": "Expression"
-													},
 													"enablePartitionDiscovery": false
 												},
 												"formatSettings": {
