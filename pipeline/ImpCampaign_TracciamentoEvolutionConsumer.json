@@ -276,7 +276,10 @@
 											"storedProcedureName": "[batchSync].[InizioBatchSync]",
 											"storedProcedureParameters": {
 												"NomeFile": {
-													"value": "",
+													"value": {
+														"value": "@variables('InizioNomeFile')",
+														"type": "Expression"
+													},
 													"type": "String"
 												},
 												"TabellaImport": {
