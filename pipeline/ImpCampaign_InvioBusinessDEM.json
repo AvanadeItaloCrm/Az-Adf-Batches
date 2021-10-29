@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Business DEM File",
+				"name": "BusinessDEM File",
 				"type": "GetMetadata",
 				"dependsOn": [],
 				"policy": {
@@ -35,7 +35,7 @@
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "Business DEM File",
+						"activity": "BusinessDEM File",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -44,13 +44,13 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('Business DEM File').output.childItems",
+						"value": "@activity('BusinessDEM File').output.childItems",
 						"type": "Expression"
 					},
 					"isSequential": true,
 					"activities": [
 						{
-							"name": "If Condition1",
+							"name": "If Condition BusinessDEM",
 							"type": "IfCondition",
 							"dependsOn": [],
 							"userProperties": [],
@@ -361,7 +361,7 @@
 										]
 									},
 									{
-										"name": "Delete file",
+										"name": "Delete file BusinessDEM",
 										"type": "Delete",
 										"dependsOn": [
 											{
