@@ -1,0 +1,19 @@
+{
+	"name": "ImpCampaign_InvioConsumerDelete",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AdobeConsumerBS",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "@item().name",
+				"folderPath": "dem_consumer",
+				"container": "adobe"
+			}
+		}
+	}
+}

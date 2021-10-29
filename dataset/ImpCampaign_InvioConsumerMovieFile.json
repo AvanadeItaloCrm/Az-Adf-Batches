@@ -1,0 +1,26 @@
+{
+	"name": "ImpCampaign_InvioConsumerMovieFile",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AdobeConsumerBS",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "dem_consumer/Elaborated",
+				"container": "adobe"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"type": "String"
+			}
+		]
+	}
+}
