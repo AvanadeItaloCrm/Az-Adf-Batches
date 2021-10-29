@@ -1,0 +1,26 @@
+{
+	"name": "ImpCampaign_InvioBusinessDEMMovieFile",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AdobeBusinessDEMBS",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "dem_business/Elaborated",
+				"container": "adobe"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"type": "String"
+			}
+		]
+	}
+}

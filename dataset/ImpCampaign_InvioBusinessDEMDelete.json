@@ -1,0 +1,19 @@
+{
+	"name": "ImpCampaign_InvioBusinessDEMDelete",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AdobeBusinessDEMBS",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "@item().name",
+				"folderPath": "dem_business",
+				"container": "adobe"
+			}
+		}
+	}
+}
