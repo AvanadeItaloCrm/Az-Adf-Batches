@@ -2,7 +2,7 @@
 	"name": "ImpCampaign_InvioBusinessProperty",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "ImpCampaign_InvioBlobStorage",
+			"referenceName": "AdobeBusinessBS",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -10,7 +10,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "@item().name",
+				"fileName": {
+					"value": "@item().name",
+					"type": "Expression"
+				},
 				"folderPath": "dem_business",
 				"container": "adobe"
 			},
