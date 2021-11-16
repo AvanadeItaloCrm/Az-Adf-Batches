@@ -22,12 +22,26 @@
 					},
 					"sink": {
 						"type": "AzureSqlSink",
-						"tableOption": "autoCreate",
 						"disableMetricsCollection": false
 					},
 					"enableStaging": false,
+					"parallelCopies": 2,
+					"dataIntegrationUnits": 2,
 					"translator": {
 						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "WORKSPACE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Prova",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							}
+						],
 						"typeConversion": true,
 						"typeConversionSettings": {
 							"allowDataTruncation": true,
@@ -43,12 +57,8 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "Mig_AzureTable",
-						"type": "DatasetReference",
-						"parameters": {
-							"DestinationSchema": "stg",
-							"DestinationTable": "M_REFERENTE_CLIENTE"
-						}
+						"referenceName": "Mig_AzureCopyConfig",
+						"type": "DatasetReference"
 					}
 				]
 			}
