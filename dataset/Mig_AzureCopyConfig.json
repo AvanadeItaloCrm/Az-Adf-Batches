@@ -17,25 +17,25 @@
 				"precision": 10
 			},
 			{
-				"name": "Source_Schema",
+				"name": "SourceSchema",
 				"type": "varchar"
 			},
 			{
-				"name": "Source_Table",
+				"name": "SourceTable",
 				"type": "varchar"
 			},
 			{
-				"name": "Destination_Schema",
+				"name": "DestinationSchema",
 				"type": "varchar"
 			},
 			{
-				"name": "Destination_Table",
+				"name": "DestinationTable",
 				"type": "varchar"
 			}
 		],
 		"typeProperties": {
 			"schema": "stg",
-			"table": "Copy_Config_V"
+			"table": "CopyConfig_V"
 		}
 	}
 }
