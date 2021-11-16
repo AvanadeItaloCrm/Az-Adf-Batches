@@ -31,15 +31,11 @@
 			{
 				"name": "Destination_Table",
 				"type": "varchar"
-			},
-			{
-				"name": "Activation_Flag",
-				"type": "bit"
 			}
 		],
 		"typeProperties": {
 			"schema": "stg",
-			"table": "Copy_Config"
+			"table": "Copy_Config_V"
 		}
 	}
 }
