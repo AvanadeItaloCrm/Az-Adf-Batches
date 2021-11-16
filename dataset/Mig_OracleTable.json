@@ -5,6 +5,11 @@
 			"referenceName": "Mig_STGOracle",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"SourceSchema": {
+				"type": "string"
+			}
+		},
 		"folder": {
 			"name": "Migration"
 		},
