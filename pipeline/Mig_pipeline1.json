@@ -53,132 +53,99 @@
 							},
 							{
 								"source": {
-									"name": "DT_NASCITA",
+									"name": "EMAIL",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EMAIL",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TITOLO",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TITOLO",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TEL_MOBILE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TEL_MOBILE",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TEL_FISSO",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TEL_FISSO",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TEL_FAX",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TEL_FAX",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RUOLO_LAVORO",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RUOLO_LAVORO",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DATA_DI_NASCITA",
 									"type": "DateTime"
 								},
 								"sink": {
-									"name": "DT_NASCITA",
+									"name": "DATA_DI_NASCITA",
 									"type": "DateTime",
 									"physicalType": "DateTime"
 								}
 							},
 							{
 								"source": {
-									"name": "TEL_MOBILE",
+									"name": "CODICE_CORPORATE",
 									"type": "String"
 								},
 								"sink": {
-									"name": "TEL_MOBILE",
+									"name": "CODICE_CORPORATE",
 									"type": "String",
 									"physicalType": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "EMAIL",
+									"name": "ID_CONTATTO",
 									"type": "String"
 								},
 								"sink": {
-									"name": "EMAIL",
-									"type": "String",
-									"physicalType": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "FAX",
-									"type": "String"
-								},
-								"sink": {
-									"name": "FAX",
-									"type": "String",
-									"physicalType": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "TEL_FISSO",
-									"type": "String"
-								},
-								"sink": {
-									"name": "TEL_FISSO",
-									"type": "String",
-									"physicalType": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "TITOLO",
-									"type": "String"
-								},
-								"sink": {
-									"name": "TITOLO",
-									"type": "String",
-									"physicalType": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "SESSO",
-									"type": "String"
-								},
-								"sink": {
-									"name": "SESSO",
-									"type": "String",
-									"physicalType": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "TEL_ALTERNATIVO",
-									"type": "String"
-								},
-								"sink": {
-									"name": "TEL_ALTERNATIVO",
-									"type": "String",
-									"physicalType": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "INSTANT_MESSAGGING",
-									"type": "String"
-								},
-								"sink": {
-									"name": "INSTANT_MESSAGGING",
-									"type": "String",
-									"physicalType": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "CODICE_CLIENTE",
-									"type": "String"
-								},
-								"sink": {
-									"name": "CODICE_CLIENTE",
-									"type": "String",
-									"physicalType": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "INTEGRATION_ID",
-									"type": "String"
-								},
-								"sink": {
-									"name": "INTEGRATION_ID",
-									"type": "String",
-									"physicalType": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "TIPOLOGIA_REFERENTE",
-									"type": "String"
-								},
-								"sink": {
-									"name": "TIPOLOGIA_REFERENTE",
+									"name": "ID_CONTATTO",
 									"type": "String",
 									"physicalType": "String"
 								}
