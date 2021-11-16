@@ -40,17 +40,7 @@
 				"inputs": [
 					{
 						"referenceName": "Mig_OracleTable",
-						"type": "DatasetReference",
-						"parameters": {
-							"SourceSchema": {
-								"value": "@pipeline().parameters.SourceSchema",
-								"type": "Expression"
-							},
-							"SourceTable": {
-								"value": "@pipeline().parameters.SourceTable",
-								"type": "Expression"
-							}
-						}
+						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
