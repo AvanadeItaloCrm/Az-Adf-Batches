@@ -1,0 +1,15 @@
+{
+	"name": "Mig_OracleTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Mig_STGOracle",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migration"
+		},
+		"annotations": [],
+		"type": "OracleTable",
+		"schema": []
+	}
+}
