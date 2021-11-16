@@ -1,0 +1,9 @@
+{
+	"name": "Mig_pipeline1",
+	"properties": {
+		"folder": {
+			"name": "Migration"
+		},
+		"annotations": []
+	}
+}
