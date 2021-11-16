@@ -74,7 +74,7 @@
 					"storedProcedureParameters": {
 						"Tabella": {
 							"value": {
-								"value": "@pipeline().parameters.Destinazione_Tabella",
+								"value": "@pipeline().parameters.DestinationTable",
 								"type": "Expression"
 							},
 							"type": "String"
@@ -121,7 +121,7 @@
 					"storedProcedureParameters": {
 						"Tabella": {
 							"value": {
-								"value": "@pipeline().parameters.Destinazione_Tabella",
+								"value": "@pipeline().parameters.DestinationTable",
 								"type": "Expression"
 							},
 							"type": "String"
@@ -146,16 +146,16 @@
 			}
 		],
 		"parameters": {
-			"Sorgente_Schema": {
+			"SourceSchema": {
 				"type": "string"
 			},
-			"Sorgente_Tabella": {
+			"SourceTable": {
 				"type": "string"
 			},
-			"Destinazione_Schema": {
+			"DestinationSchema": {
 				"type": "string"
 			},
-			"Destinazione_Tabella": {
+			"DestinationTable": {
 				"type": "string"
 			}
 		},
