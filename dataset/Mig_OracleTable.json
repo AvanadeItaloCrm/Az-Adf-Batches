@@ -12,8 +12,8 @@
 		"type": "OracleTable",
 		"schema": [],
 		"typeProperties": {
-			"schema": "MIG_SA",
-			"table": "M_REFERENTI_CORP"
+			"schema": "WMSYS",
+			"table": "ALL_VERSION_HVIEW"
 		}
 	}
 }
