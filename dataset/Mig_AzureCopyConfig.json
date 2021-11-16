@@ -12,30 +12,13 @@
 		"type": "AzureSqlTable",
 		"schema": [
 			{
-				"name": "Id",
-				"type": "int",
-				"precision": 10
-			},
-			{
-				"name": "SourceSchema",
-				"type": "varchar"
-			},
-			{
-				"name": "SourceTable",
-				"type": "varchar"
-			},
-			{
-				"name": "DestinationSchema",
-				"type": "varchar"
-			},
-			{
-				"name": "DestinationTable",
-				"type": "varchar"
+				"name": "Prova",
+				"type": "nvarchar"
 			}
 		],
 		"typeProperties": {
-			"schema": "stg",
-			"table": "CopyConfig_V"
+			"schema": "dbo",
+			"table": "Table_1"
 		}
 	}
 }

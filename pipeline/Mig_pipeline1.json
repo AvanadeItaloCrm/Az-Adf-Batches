@@ -28,41 +28,6 @@
 					"enableStaging": false,
 					"translator": {
 						"type": "TabularTranslator",
-						"mappings": [
-							{
-								"source": {
-									"name": "VERSION",
-									"type": "String"
-								},
-								"sink": {
-									"name": "VERSION",
-									"type": "String",
-									"physicalType": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "PARENT_VERSION",
-									"type": "String"
-								},
-								"sink": {
-									"name": "PARENT_VERSION",
-									"type": "String",
-									"physicalType": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "WORKSPACE",
-									"type": "String"
-								},
-								"sink": {
-									"name": "WORKSPACE",
-									"type": "String",
-									"physicalType": "String"
-								}
-							}
-						],
 						"typeConversion": true,
 						"typeConversionSettings": {
 							"allowDataTruncation": true,
