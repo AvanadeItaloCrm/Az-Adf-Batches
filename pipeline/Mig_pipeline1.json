@@ -31,121 +31,33 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "NOME",
+									"name": "VERSION",
 									"type": "String"
 								},
 								"sink": {
-									"name": "NOME",
+									"name": "VERSION",
 									"type": "String",
 									"physicalType": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "COGNOME",
+									"name": "PARENT_VERSION",
 									"type": "String"
 								},
 								"sink": {
-									"name": "COGNOME",
+									"name": "PARENT_VERSION",
 									"type": "String",
 									"physicalType": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "EMAIL",
+									"name": "WORKSPACE",
 									"type": "String"
 								},
 								"sink": {
-									"name": "EMAIL",
-									"type": "String",
-									"physicalType": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "TITOLO",
-									"type": "String"
-								},
-								"sink": {
-									"name": "TITOLO",
-									"type": "String",
-									"physicalType": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "TEL_MOBILE",
-									"type": "String"
-								},
-								"sink": {
-									"name": "TEL_MOBILE",
-									"type": "String",
-									"physicalType": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "TEL_FISSO",
-									"type": "String"
-								},
-								"sink": {
-									"name": "TEL_FISSO",
-									"type": "String",
-									"physicalType": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "TEL_FAX",
-									"type": "String"
-								},
-								"sink": {
-									"name": "TEL_FAX",
-									"type": "String",
-									"physicalType": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "RUOLO_LAVORO",
-									"type": "String"
-								},
-								"sink": {
-									"name": "RUOLO_LAVORO",
-									"type": "String",
-									"physicalType": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "DATA_DI_NASCITA",
-									"type": "DateTime"
-								},
-								"sink": {
-									"name": "DATA_DI_NASCITA",
-									"type": "DateTime",
-									"physicalType": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "CODICE_CORPORATE",
-									"type": "String"
-								},
-								"sink": {
-									"name": "CODICE_CORPORATE",
-									"type": "String",
-									"physicalType": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ID_CONTATTO",
-									"type": "String"
-								},
-								"sink": {
-									"name": "ID_CONTATTO",
+									"name": "WORKSPACE",
 									"type": "String",
 									"physicalType": "String"
 								}
