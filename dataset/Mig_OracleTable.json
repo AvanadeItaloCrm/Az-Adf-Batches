@@ -8,6 +8,9 @@
 		"parameters": {
 			"SourceSchema": {
 				"type": "string"
+			},
+			"SourceTable": {
+				"type": "string"
 			}
 		},
 		"folder": {
@@ -15,6 +18,16 @@
 		},
 		"annotations": [],
 		"type": "OracleTable",
-		"schema": []
+		"schema": [],
+		"typeProperties": {
+			"schema": {
+				"value": "@dataset().SourceSchema",
+				"type": "Expression"
+			},
+			"table": {
+				"value": "@dataset().SourceTable",
+				"type": "Expression"
+			}
+		}
 	}
 }
