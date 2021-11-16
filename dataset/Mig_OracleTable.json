@@ -20,14 +20,8 @@
 		"type": "OracleTable",
 		"schema": [],
 		"typeProperties": {
-			"schema": {
-				"value": "@dataset().SourceSchema",
-				"type": "Expression"
-			},
-			"table": {
-				"value": "@dataset().SourceTable",
-				"type": "Expression"
-			}
+			"schema": "MIG_SA",
+			"table": "M_REFERENTE_CLIENTE"
 		}
 	}
 }
