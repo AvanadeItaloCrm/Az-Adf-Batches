@@ -28,6 +28,162 @@
 					"enableStaging": false,
 					"translator": {
 						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "NOME",
+									"type": "String"
+								},
+								"sink": {
+									"name": "NOME",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "COGNOME",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COGNOME",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DT_NASCITA",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "DT_NASCITA",
+									"type": "DateTime",
+									"physicalType": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "TEL_MOBILE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TEL_MOBILE",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EMAIL",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EMAIL",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FAX",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FAX",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TEL_FISSO",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TEL_FISSO",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TITOLO",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TITOLO",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SESSO",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SESSO",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TEL_ALTERNATIVO",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TEL_ALTERNATIVO",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INSTANT_MESSAGGING",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INSTANT_MESSAGGING",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CODICE_CLIENTE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CODICE_CLIENTE",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INTEGRATION_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INTEGRATION_ID",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TIPOLOGIA_REFERENTE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TIPOLOGIA_REFERENTE",
+									"type": "String",
+									"physicalType": "String"
+								}
+							}
+						],
 						"typeConversion": true,
 						"typeConversionSettings": {
 							"allowDataTruncation": true,
