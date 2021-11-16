@@ -1,0 +1,15 @@
+{
+	"name": "Mig_AzureTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Mig_STGAzure",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migration"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	}
+}
