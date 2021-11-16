@@ -20,12 +20,35 @@
 						"partitionOption": "None",
 						"queryTimeout": "02:00:00"
 					},
-					"enableStaging": false
+					"sink": {
+						"type": "AzureSqlSink",
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
 				},
 				"inputs": [
 					{
 						"referenceName": "Mig_OracleTable",
 						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Mig_AzureTable",
+						"type": "DatasetReference",
+						"parameters": {
+							"DestinationSchema": "stg",
+							"DestinationTable": "M_REFERENTE_CLIENTE"
+						}
 					}
 				]
 			}
