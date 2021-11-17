@@ -16,9 +16,9 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "OracleSource",
-						"partitionOption": "None",
-						"queryTimeout": "02:00:00"
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
 					},
 					"sink": {
 						"type": "AzureSqlSink",
@@ -32,8 +32,9 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "WORKSPACE",
-									"type": "String"
+									"name": "Prova",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "Prova",
@@ -51,13 +52,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Mig_OracleTable",
+						"referenceName": "Mig_AzureCopyConfig",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "Mig_AzureCopyConfig",
+						"referenceName": "Mig_AzureTable",
 						"type": "DatasetReference"
 					}
 				]
