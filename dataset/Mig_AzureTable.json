@@ -5,14 +5,6 @@
 			"referenceName": "Mig_STGAzure",
 			"type": "LinkedServiceReference"
 		},
-		"parameters": {
-			"DestinationSchema": {
-				"type": "string"
-			},
-			"DestinationTable": {
-				"type": "string"
-			}
-		},
 		"folder": {
 			"name": "Migration"
 		},
@@ -20,14 +12,8 @@
 		"type": "AzureSqlTable",
 		"schema": [],
 		"typeProperties": {
-			"schema": {
-				"value": "@dataset().DestinationSchema",
-				"type": "Expression"
-			},
-			"table": {
-				"value": "@dataset().DestinationTable",
-				"type": "Expression"
-			}
+			"schema": "dbo",
+			"table": "Table_2"
 		}
 	}
 }
