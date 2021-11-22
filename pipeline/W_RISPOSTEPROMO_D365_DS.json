@@ -239,9 +239,9 @@
 							},
 							{
 								"source": {
-									"name": "ntv_contactid",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "ntv_contactidname",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "CODICE_CLIENTE",
