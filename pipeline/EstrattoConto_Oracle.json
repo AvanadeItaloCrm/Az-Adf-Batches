@@ -597,6 +597,9 @@
 				"defaultValue": "Estratti_Conto_Corporate"
 			}
 		},
+		"folder": {
+			"name": "Az_IntegrazioniBatch"
+		},
 		"annotations": [],
 		"lastPublishTime": "2021-10-06T13:20:20Z"
 	},

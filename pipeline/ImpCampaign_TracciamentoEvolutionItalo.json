@@ -483,6 +483,9 @@
 				"defaultValue": "BusinessCRMevolution_trackinglog_"
 			}
 		},
+		"folder": {
+			"name": "Az_IntegrazioniBatch"
+		},
 		"annotations": [],
 		"lastPublishTime": "2021-10-01T13:12:25Z"
 	},

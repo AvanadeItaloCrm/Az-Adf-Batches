@@ -106,6 +106,9 @@
 				"defaultValue": "DynInd_Station_ServiceNow"
 			}
 		},
+		"folder": {
+			"name": "Az_IntegrazioniBatch"
+		},
 		"annotations": [],
 		"lastPublishTime": "2021-10-06T12:38:05Z"
 	},

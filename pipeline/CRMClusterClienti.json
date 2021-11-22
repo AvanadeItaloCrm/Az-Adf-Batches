@@ -346,6 +346,9 @@
 				"defaultValue": "AggClusterClienti"
 			}
 		},
+		"folder": {
+			"name": "Az_IntegrazioniBatch"
+		},
 		"annotations": [],
 		"lastPublishTime": "2021-10-01T13:07:51Z"
 	},

@@ -817,6 +817,9 @@
 				"defaultValue": "AggFatture"
 			}
 		},
+		"folder": {
+			"name": "Az_IntegrazioniBatch"
+		},
 		"annotations": [],
 		"lastPublishTime": "2021-10-01T13:43:29Z"
 	},

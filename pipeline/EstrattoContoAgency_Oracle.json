@@ -396,6 +396,9 @@
 				"defaultValue": "Estratti_Conto_Agency"
 			}
 		},
+		"folder": {
+			"name": "Az_IntegrazioniBatch"
+		},
 		"annotations": [],
 		"lastPublishTime": "2021-10-06T14:48:17Z"
 	},
