@@ -10,7 +10,7 @@
 		"schema": [],
 		"typeProperties": {
 			"schema": "SA_D365_SVIL",
-			"table": "SINC_LOG"
+			"table": "W_CUSTUMER_D365_DS"
 		}
 	}
 }
