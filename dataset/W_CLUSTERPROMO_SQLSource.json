@@ -44,7 +44,7 @@
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "ntv_ntv_corporatecluster"
+			"table": "ntv_ntv_customercluster"
 		}
 	}
 }
