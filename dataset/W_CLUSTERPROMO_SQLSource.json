@@ -44,7 +44,7 @@
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "ntv_ntv_ntv_corporatecluster_ntv_promotion"
+			"table": "ntv_ntv_cashbackcluster"
 		}
 	}
 }
