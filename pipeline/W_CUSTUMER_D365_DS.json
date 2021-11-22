@@ -107,67 +107,419 @@
 						"mappings": [
 							{
 								"source": {
+									"name": "ntv_notes",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NOTE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
 									"name": "Id",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
 								"sink": {
-									"name": "DT_ULTIMA_SINC",
-									"type": "String"
+									"name": "DATA_FINE_CLUB",
+									"type": "DateTime"
 								}
 							},
 							{
 								"source": {
-									"name": "SinkCreatedOn",
-									"type": "DateTime",
-									"physicalType": "datetime"
+									"name": "Id",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
 								},
 								"sink": {
-									"name": "DT_INIZIO_SCRITTURA",
-									"type": "String"
+									"name": "DATA_INIZIO_CLUB",
+									"type": "DateTime"
 								}
 							},
 							{
 								"source": {
-									"name": "SinkModifiedOn",
-									"type": "DateTime",
-									"physicalType": "datetime"
+									"name": "Id",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
 								},
 								"sink": {
-									"name": "DT_FINE_SCRITTURA",
+									"name": "FLG_CLUB",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "statecode",
+									"name": "ntv_customernumber",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CODICE_CLIENTE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Id",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "INTEGRAZIONE_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "lastname",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "COGNOME",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "firstname",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NOME",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Id",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "STATO_FIDELIZZAZIONE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_acquisitionchannelcode",
 									"type": "Int32",
 									"physicalType": "int"
 								},
 								"sink": {
-									"name": "STATO_SCRITTURA",
+									"name": "CANALE_ACQUISIZIONE",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "statuscode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "Id",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
 								},
 								"sink": {
-									"name": "DT_INIZIO_LETTURA",
+									"name": "DATA_CREAZIONE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "Id",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "FLG_PROFILO_CC",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "haschildrencode",
+									"name": "Id",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "FLG_PARTNER_NTV",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Id",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "FLG_PMR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Id",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "FLG_DIPENDENTE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Id",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "FLG_FAMILIARE_DIP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_viptypecode",
 									"type": "Int32",
 									"physicalType": "int"
 								},
 								"sink": {
-									"name": "DT_FINE_LETTURA",
+									"name": "TIPOLOGIA_VIP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Id",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "FLG_AMBASSADOR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_professioncode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "PROFESSIONE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_commercialsectorcode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "SETTORE_ATTIVITA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "preferredcontactmethodcode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "METODO_CONT_PRIV",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_preferredpaymenttypecode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "METODO_PAG_PRIV",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_travelreasoncode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "MOTIVAZIONI_VIAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Id",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "TRASPORTO_ABITUALE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_preferredclasscode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "PREFERENZA_AMBIENTE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_preferredfarecode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "PREFERENZA_CLAS_TARIFFA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_preferredmealcode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "PREFERENZA_PASTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_preferredseatcode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "PREFERENZA_POSTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_preferredmovietypecode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "PREFERENZA_CINEMA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_languagecode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "LINGUA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_messagingcontact",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CONTATTO_MESS_NTV",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Id",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "CANALE_CONT_PRIV",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_preferredcontacttimecode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "FASCIA_ORARIA_CONTATTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "emailaddress1",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "EMAIL",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "telephone1",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "TEL_FISSO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "mobilephone",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "TEL_MOBILE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Id",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "FLG_CONSENSO_PROFILAZIONE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Id",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "FLG_CONSENSO_MARKETING",
 									"type": "String"
 								}
 							},
@@ -178,19 +530,228 @@
 									"physicalType": "int"
 								},
 								"sink": {
-									"name": "STATO_LETTURA",
+									"name": "SEGMENTO",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "customertypecode",
+									"name": "address1_city",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CITTA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "statecode",
 									"type": "Int32",
 									"physicalType": "int"
 								},
 								"sink": {
-									"name": "TIPO",
+									"name": "STATO",
 									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "address1_stateorprovince",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "PROVINCIA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "address1_addresstypecode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "INDIRIZZO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Id",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "CAP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "gendercode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "SESSO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "birthdate",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_NASCITA",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "Id",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "NUM_VIAGGI",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Id",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "CLUSTER_PROMOZIONI",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Id",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "DATA_AGG_CLUSTER_PROMO",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "Id",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "CODICE_INVITO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Id",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "FLG_CONSENSO_TERZE_PARTI",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Id",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "DATA_AGG_CONS_TERZE_PARTI",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_callclusterid",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "CLUSTER_CHIAMATA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Id",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "VALORE_CHIAMATA_CLIENTE",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Id",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "DATA_AGG_CLUSTER_CHIAM",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "Id",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "PROMOZIONI_CC",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "msdyn_gdproptout",
+									"type": "Boolean",
+									"physicalType": "bit"
+								},
+								"sink": {
+									"name": "DATA_AGG_CONS_MARK",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "Id",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "DATA_AGG__CONS_PROF",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "Id",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "DATA_AGGIORNAMENTO",
+									"type": "DateTime"
 								}
 							}
 						],
