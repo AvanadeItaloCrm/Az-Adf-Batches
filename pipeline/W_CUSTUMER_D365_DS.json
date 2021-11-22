@@ -415,8 +415,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_birthplace",
-									"type": "String",
+									"name": "ntv_tripcounter",
 									"physicalType": "nvarchar"
 								},
 								"sink": {
