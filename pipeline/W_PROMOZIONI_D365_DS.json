@@ -129,9 +129,9 @@
 							},
 							{
 								"source": {
-									"name": "SinkModifiedOn",
-									"type": "DateTime",
-									"physicalType": "datetime"
+									"name": "createdby",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
 								},
 								"sink": {
 									"name": "CREATO_DA",
