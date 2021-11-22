@@ -118,9 +118,9 @@
 							},
 							{
 								"source": {
-									"name": "Id",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "birthdate",
+									"type": "DateTime",
+									"physicalType": "datetime"
 								},
 								"sink": {
 									"name": "DATA_FINE_CLUB",
@@ -129,9 +129,9 @@
 							},
 							{
 								"source": {
-									"name": "Id",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "ntv_birthplace",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "DATA_INIZIO_CLUB",
@@ -217,9 +217,9 @@
 							},
 							{
 								"source": {
-									"name": "Id",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "ntv_birthplace",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "DATA_CREAZIONE",
@@ -613,9 +613,9 @@
 							},
 							{
 								"source": {
-									"name": "Id",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "ntv_birthplace",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "NUM_VIAGGI",
@@ -635,9 +635,9 @@
 							},
 							{
 								"source": {
-									"name": "Id",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "ntv_birthplace",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "DATA_AGG_CLUSTER_PROMO",
@@ -668,9 +668,9 @@
 							},
 							{
 								"source": {
-									"name": "Id",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "ntv_birthplace",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "DATA_AGG_CONS_TERZE_PARTI",
@@ -690,9 +690,9 @@
 							},
 							{
 								"source": {
-									"name": "Id",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "ntv_birthplace",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "VALORE_CHIAMATA_CLIENTE",
@@ -701,9 +701,9 @@
 							},
 							{
 								"source": {
-									"name": "Id",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "ntv_birthplace",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "DATA_AGG_CLUSTER_CHIAM",
@@ -723,9 +723,9 @@
 							},
 							{
 								"source": {
-									"name": "msdyn_gdproptout",
-									"type": "Boolean",
-									"physicalType": "bit"
+									"name": "ntv_birthplace",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "DATA_AGG_CONS_MARK",
@@ -734,9 +734,9 @@
 							},
 							{
 								"source": {
-									"name": "Id",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "ntv_birthplace",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "DATA_AGG__CONS_PROF",
@@ -745,9 +745,9 @@
 							},
 							{
 								"source": {
-									"name": "Id",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "ntv_birthplace",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "DATA_AGGIORNAMENTO",
