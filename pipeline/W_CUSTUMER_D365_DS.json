@@ -118,56 +118,12 @@
 							},
 							{
 								"source": {
-									"name": "birthdate",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								},
-								"sink": {
-									"name": "DATA_FINE_CLUB",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_birthplace",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "DATA_INIZIO_CLUB",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "Id",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "FLG_CLUB",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
 									"name": "ntv_customernumber",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "CODICE_CLIENTE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "Id",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "INTEGRAZIONE_ID",
 									"type": "String"
 								}
 							},
@@ -195,17 +151,6 @@
 							},
 							{
 								"source": {
-									"name": "Id",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "STATO_FIDELIZZAZIONE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
 									"name": "ntv_acquisitionchannelcode",
 									"type": "Int32",
 									"physicalType": "int"
@@ -217,89 +162,12 @@
 							},
 							{
 								"source": {
-									"name": "ntv_birthplace",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "DATA_CREAZIONE",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "Id",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "FLG_PROFILO_CC",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "Id",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "FLG_PARTNER_NTV",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "Id",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "FLG_PMR",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "Id",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "FLG_DIPENDENTE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "Id",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "FLG_FAMILIARE_DIP",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
 									"name": "ntv_viptypecode",
 									"type": "Int32",
 									"physicalType": "int"
 								},
 								"sink": {
 									"name": "TIPOLOGIA_VIP",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "Id",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "FLG_AMBASSADOR",
 									"type": "String"
 								}
 							},
@@ -355,17 +223,6 @@
 								},
 								"sink": {
 									"name": "MOTIVAZIONI_VIAG",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "Id",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "TRASPORTO_ABITUALE",
 									"type": "String"
 								}
 							},
@@ -448,17 +305,6 @@
 							},
 							{
 								"source": {
-									"name": "Id",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "CANALE_CONT_PRIV",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
 									"name": "ntv_preferredcontacttimecode",
 									"type": "Int32",
 									"physicalType": "int"
@@ -498,28 +344,6 @@
 								},
 								"sink": {
 									"name": "TEL_MOBILE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "Id",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "FLG_CONSENSO_PROFILAZIONE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "Id",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "FLG_CONSENSO_MARKETING",
 									"type": "String"
 								}
 							},
@@ -580,17 +404,6 @@
 							},
 							{
 								"source": {
-									"name": "Id",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "CAP",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
 									"name": "gendercode",
 									"type": "Int32",
 									"physicalType": "int"
@@ -602,17 +415,6 @@
 							},
 							{
 								"source": {
-									"name": "birthdate",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								},
-								"sink": {
-									"name": "DATA_NASCITA",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
 									"name": "ntv_birthplace",
 									"type": "String",
 									"physicalType": "nvarchar"
@@ -620,138 +422,6 @@
 								"sink": {
 									"name": "NUM_VIAGGI",
 									"type": "Decimal"
-								}
-							},
-							{
-								"source": {
-									"name": "Id",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "CLUSTER_PROMOZIONI",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_birthplace",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "DATA_AGG_CLUSTER_PROMO",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "Id",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "CODICE_INVITO",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "Id",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "FLG_CONSENSO_TERZE_PARTI",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_birthplace",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "DATA_AGG_CONS_TERZE_PARTI",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_callclusterid",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "CLUSTER_CHIAMATA",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_birthplace",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "VALORE_CHIAMATA_CLIENTE",
-									"type": "Decimal"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_birthplace",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "DATA_AGG_CLUSTER_CHIAM",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "Id",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "PROMOZIONI_CC",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_birthplace",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "DATA_AGG_CONS_MARK",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_birthplace",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "DATA_AGG__CONS_PROF",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_birthplace",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "DATA_AGGIORNAMENTO",
-									"type": "DateTime"
 								}
 							}
 						],
