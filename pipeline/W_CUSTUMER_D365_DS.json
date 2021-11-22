@@ -99,7 +99,7 @@
 					"sink": {
 						"type": "OracleSink",
 						"writeBatchSize": 10000,
-						"preCopyScript": "truncate table sa_d365_svil.pagamento"
+						"preCopyScript": "truncate table sa_d365_svil.W_CUSTUMER_D365_DS"
 					},
 					"enableStaging": false,
 					"translator": {
@@ -107,166 +107,89 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "ROW_ID",
-									"type": "Int64",
-									"physicalType": "bigint"
+									"name": "Id",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
 								},
 								"sink": {
-									"name": "ROW_ID",
+									"name": "DT_ULTIMA_SINC",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "CREATED",
+									"name": "SinkCreatedOn",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
 								"sink": {
-									"name": "CREATED",
+									"name": "DT_INIZIO_SCRITTURA",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "LAST_UPD",
+									"name": "SinkModifiedOn",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
 								"sink": {
-									"name": "LAST_UPD",
+									"name": "DT_FINE_SCRITTURA",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "TIMESTAMP",
-									"type": "DateTime",
-									"physicalType": "datetime"
+									"name": "statecode",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
-									"name": "TIMESTAMP",
+									"name": "STATO_SCRITTURA",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "PAYMENT_ID",
-									"type": "String",
-									"physicalType": "varchar"
+									"name": "statuscode",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
-									"name": "PAYMENT_ID",
+									"name": "DT_INIZIO_LETTURA",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "PAR_PAYMENT_ID",
-									"type": "String",
-									"physicalType": "varchar"
+									"name": "haschildrencode",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
-									"name": "PAR_PAYMENT_ID",
+									"name": "DT_FINE_LETTURA",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "DATA_PAGAMENTO",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "ntv_segmentcode",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
-									"name": "DATA_PAGAMENTO",
+									"name": "STATO_LETTURA",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "ORA_PAGAMENTO",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "customertypecode",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
-									"name": "ORA_PAGAMENTO",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "CODICE_AUTORIZ",
-									"type": "String",
-									"physicalType": "varchar"
-								},
-								"sink": {
-									"name": "CODICE_AUTORIZ",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "METODO_PAGAMENTO",
-									"type": "String",
-									"physicalType": "varchar"
-								},
-								"sink": {
-									"name": "METODO_PAGAMENTO",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ESITO_PAGAMENTO",
-									"type": "String",
-									"physicalType": "varchar"
-								},
-								"sink": {
-									"name": "ESITO_PAGAMENTO",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "RICEVUTA_FISCALE",
-									"type": "String",
-									"physicalType": "varchar"
-								},
-								"sink": {
-									"name": "RICEVUTA_FISCALE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "IMPORTO",
-									"type": "String",
-									"physicalType": "varchar"
-								},
-								"sink": {
-									"name": "IMPORTO",
-									"type": "Decimal"
-								}
-							},
-							{
-								"source": {
-									"name": "IDDATASRC",
-									"type": "Int64",
-									"physicalType": "bigint"
-								},
-								"sink": {
-									"name": "IDDATASRC",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "IDLOAD",
-									"type": "Int64",
-									"physicalType": "bigint"
-								},
-								"sink": {
-									"name": "IDLOAD",
+									"name": "TIPO",
 									"type": "String"
 								}
 							}
@@ -280,13 +203,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Pagamento_SQL",
+						"referenceName": "W_CUSTUMER_SQLSource",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "Pagamento_OracleDB",
+						"referenceName": "W_Customer_OracleDB",
 						"type": "DatasetReference"
 					}
 				]
