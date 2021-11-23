@@ -1,0 +1,529 @@
+{
+	"name": "W_PAG_CAMPI_D365_DS",
+	"properties": {
+		"activities": [
+			{
+				"name": "Start SP",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[batchSync].[InizioSQL_ORACLEBatchSync]",
+					"storedProcedureParameters": {
+						"NomeFile": {
+							"value": "",
+							"type": "String"
+						},
+						"TabellaImport": {
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureSqlTestStagingArea",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Finally SP",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "End Oracle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[batchSync].[FineSQL_ORACLEBatchSync]",
+					"storedProcedureParameters": {
+						"TabellaImport": {
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureSqlTestStagingArea",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Sql To Oracle",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Start Oracle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "OracleSink",
+						"writeBatchSize": 10000,
+						"preCopyScript": "truncate table sa_d365_svil.W_PAG_CAMPI_D365_DSS"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "ntv_notes",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NOTE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_customernumber",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CODICE_CLIENTE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "lastname",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "COGNOME",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "firstname",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NOME",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_acquisitionchannelcode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "CANALE_ACQUISIZIONE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_viptypecode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "TIPOLOGIA_VIP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_professioncode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "PROFESSIONE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_commercialsectorcode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "SETTORE_ATTIVITA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "preferredcontactmethodcode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "METODO_CONT_PRIV",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_preferredpaymenttypecode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "METODO_PAG_PRIV",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_travelreasoncode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "MOTIVAZIONI_VIAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_preferredclasscode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "PREFERENZA_AMBIENTE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_preferredfarecode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "PREFERENZA_CLAS_TARIFFA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_preferredmealcode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "PREFERENZA_PASTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_preferredseatcode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "PREFERENZA_POSTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_preferredmovietypecode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "PREFERENZA_CINEMA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_languagecode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "LINGUA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_messagingcontact",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CONTATTO_MESS_NTV",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_preferredcontacttimecode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "FASCIA_ORARIA_CONTATTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "emailaddress1",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "EMAIL",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "telephone1",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "TEL_FISSO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "mobilephone",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "TEL_MOBILE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_segmentcode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "SEGMENTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "address1_city",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CITTA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "statecode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "STATO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "address1_stateorprovince",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "PROVINCIA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "address1_addresstypecode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "INDIRIZZO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "gendercode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "SESSO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_tripcounter",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NUM_VIAGGI",
+									"type": "Decimal"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "W_CUSTUMER_SQLSource",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "W_PAG_CAMPI_OracleDB",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Start Oracle",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Start SP",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": {
+							"value": "@concat('SELECT sa_d365_svil.iniziasync (''',\nvariables('TableName'),\n''') FROM DUAL;')",
+							"type": "Expression"
+						},
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "W_PAG_CAMPI_OracleDB",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "End Oracle",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Sql To Oracle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": {
+							"value": "@concat('SELECT sa_d365_svil.finesync (''',\nvariables('TableName'),\n''') FROM DUAL;')",
+							"type": "Expression"
+						},
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "W_PAG_CAMPI_OracleDB",
+						"type": "DatasetReference"
+					}
+				}
+			}
+		],
+		"variables": {
+			"TableName": {
+				"type": "String",
+				"defaultValue": "W_PAG_CAMPI_D365_DS"
+			}
+		},
+		"folder": {
+			"name": "Az_IntegrazioniBatch_Oracle"
+		},
+		"annotations": []
+	}
+}
