@@ -1,0 +1,293 @@
+{
+	"name": "W_RITARDO_TRENO_D365_DS_SQLSource",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzSqlOracle_Test_StagingArea",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "BookID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "MessageId",
+				"type": "varchar"
+			},
+			{
+				"name": "BookingID",
+				"type": "varchar"
+			},
+			{
+				"name": "BookingAsc",
+				"type": "varchar"
+			},
+			{
+				"name": "BookingChangeCode",
+				"type": "varchar"
+			},
+			{
+				"name": "BookingParentID",
+				"type": "varchar"
+			},
+			{
+				"name": "ParentRecordLocator",
+				"type": "varchar"
+			},
+			{
+				"name": "RecordLocator",
+				"type": "varchar"
+			},
+			{
+				"name": "PaxCount",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "SystemCode",
+				"type": "varchar"
+			},
+			{
+				"name": "ContacAsc",
+				"type": "varchar"
+			},
+			{
+				"name": "AddressLine",
+				"type": "varchar"
+			},
+			{
+				"name": "City",
+				"type": "varchar"
+			},
+			{
+				"name": "CompanyName",
+				"type": "varchar"
+			},
+			{
+				"name": "CultureCode",
+				"type": "varchar"
+			},
+			{
+				"name": "CustomerNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "CustomerCode",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "DistributionOption",
+				"type": "varchar"
+			},
+			{
+				"name": "EmailAddress",
+				"type": "varchar"
+			},
+			{
+				"name": "Fax",
+				"type": "varchar"
+			},
+			{
+				"name": "HomePhone",
+				"type": "varchar"
+			},
+			{
+				"name": "NotificationPreference",
+				"type": "varchar"
+			},
+			{
+				"name": "OtherPhone",
+				"type": "varchar"
+			},
+			{
+				"name": "PostalCode",
+				"type": "varchar"
+			},
+			{
+				"name": "ProvinceState",
+				"type": "varchar"
+			},
+			{
+				"name": "SourceOrganization",
+				"type": "varchar"
+			},
+			{
+				"name": "WorkPhone",
+				"type": "varchar"
+			},
+			{
+				"name": "NameAsc",
+				"type": "varchar"
+			},
+			{
+				"name": "FirstName",
+				"type": "varchar"
+			},
+			{
+				"name": "LastName",
+				"type": "varchar"
+			},
+			{
+				"name": "Suffix",
+				"type": "varchar"
+			},
+			{
+				"name": "Title",
+				"type": "varchar"
+			},
+			{
+				"name": "InfoAsc",
+				"type": "varchar"
+			},
+			{
+				"name": "BookingStatus",
+				"type": "varchar"
+			},
+			{
+				"name": "ChangeAllowed",
+				"type": "varchar"
+			},
+			{
+				"name": "ChannelType",
+				"type": "varchar"
+			},
+			{
+				"name": "CreatedAgentID",
+				"type": "varchar"
+			},
+			{
+				"name": "CreatedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ExpiredDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ModifiedAgentID",
+				"type": "varchar"
+			},
+			{
+				"name": "ModifiedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "AuthorizedBalanceDue",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 4
+			},
+			{
+				"name": "BalanceDue",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 4
+			},
+			{
+				"name": "SegmentCount",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "TotalCost",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 4
+			},
+			{
+				"name": "ModifiedPosAsc",
+				"type": "varchar"
+			},
+			{
+				"name": "ModifiedPosAgentCode",
+				"type": "varchar"
+			},
+			{
+				"name": "ModifiedPosDomainCode",
+				"type": "varchar"
+			},
+			{
+				"name": "ModifiedPosLocationCode",
+				"type": "varchar"
+			},
+			{
+				"name": "ModifiedPosOrganizationCode",
+				"type": "varchar"
+			},
+			{
+				"name": "PosAsc",
+				"type": "varchar"
+			},
+			{
+				"name": "PosAgentCode",
+				"type": "varchar"
+			},
+			{
+				"name": "PosDomainCode",
+				"type": "varchar"
+			},
+			{
+				"name": "PosLocationCode",
+				"type": "varchar"
+			},
+			{
+				"name": "PosOrganizationCode",
+				"type": "varchar"
+			},
+			{
+				"name": "ReceivedByInfoAsc",
+				"type": "varchar"
+			},
+			{
+				"name": "ReceivedBy",
+				"type": "varchar"
+			},
+			{
+				"name": "ReceivedReference",
+				"type": "varchar"
+			},
+			{
+				"name": "TypeOfSaleAsc",
+				"type": "varchar"
+			},
+			{
+				"name": "PromotionCode",
+				"type": "varchar"
+			},
+			{
+				"name": "StatusCode",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "RecCreationDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "RecModifiedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "RecDeleted",
+				"type": "bit"
+			}
+		],
+		"typeProperties": {
+			"schema": "ntv",
+			"table": "Segments"
+		}
+	}
+}
