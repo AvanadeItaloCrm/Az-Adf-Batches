@@ -99,7 +99,7 @@
 					"sink": {
 						"type": "OracleSink",
 						"writeBatchSize": 10000,
-						"preCopyScript": "truncate table sa_d365_svil.W_CUSTUMER_D365_DS"
+						"preCopyScript": "truncate table sa_d365_svil.W_CANALEPROMO_D365_DS"
 					},
 					"enableStaging": false,
 					"translator": {
@@ -439,7 +439,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "W_Customer_OracleDB",
+						"referenceName": "W_CANALEPROMO_OracleDB",
 						"type": "DatasetReference"
 					}
 				]
@@ -474,7 +474,7 @@
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "W_Customer_OracleDB",
+						"referenceName": "W_CANALEPROMO_OracleDB",
 						"type": "DatasetReference"
 					}
 				}
@@ -509,7 +509,7 @@
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "W_Customer_OracleDB",
+						"referenceName": "W_CANALEPROMO_OracleDB",
 						"type": "DatasetReference"
 					}
 				}
@@ -518,7 +518,7 @@
 		"variables": {
 			"TableName": {
 				"type": "String",
-				"defaultValue": "W_CUSTUMER_D365_DS"
+				"defaultValue": "W_CANALEPROMO_D365_DS"
 			}
 		},
 		"folder": {
