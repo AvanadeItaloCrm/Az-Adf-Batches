@@ -15,7 +15,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[batchSync].[InizioBatchSync]",
+					"storedProcedureName": "[batchSync].[InizioSQL_ORACLEBatchSync]",
 					"storedProcedureParameters": {
 						"NomeFile": {
 							"value": "",
