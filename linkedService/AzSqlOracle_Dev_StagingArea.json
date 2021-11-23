@@ -1,0 +1,16 @@
+{
+	"name": "AzSqlOracle_Dev_StagingArea",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"connectionString": "integrated security=False;encrypt=True;connection timeout=30;data source=crm-dev-sqlsrv.database.windows.net;initial catalog=crmdevstagingarea;user id=crmdevadmin",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI5MWRjN2RlMi1iMjM3LTQ5ZTQtOWViMy04YmY5OWNjOTE5YmYiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "integrationRuntimeSFH-DEV",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
