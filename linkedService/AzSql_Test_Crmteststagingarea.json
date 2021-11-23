@@ -1,0 +1,16 @@
+{
+	"name": "AzSql_Test_Crmteststagingarea",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"connectionString": "integrated security=False;encrypt=True;connection timeout=30;data source=crm-test-sqlsrv.database.windows.net;initial catalog=crmteststagingarea;user id=crmtestadmin",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJjYzc5YWExMi03Y2FlLTQ1ZjgtOWJkMC1iMmNkOGE5M2RhMmMiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "integrationRuntimeSFH-DEV",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
