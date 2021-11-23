@@ -118,6 +118,39 @@
 							},
 							{
 								"source": {
+									"name": "ntv_cdcexpireson",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_FINE_CLUB",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_cdcregisteredon",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_INIZIO_CLUB",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_iscdc",
+									"type": "Boolean",
+									"physicalType": "bit"
+								},
+								"sink": {
+									"name": "FLG_CLUB",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
 									"name": "ntv_customernumber",
 									"type": "String",
 									"physicalType": "nvarchar"
@@ -151,6 +184,17 @@
 							},
 							{
 								"source": {
+									"name": "statuscode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "STATO_FIDELIZZAZIONE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
 									"name": "ntv_acquisitionchannelcode",
 									"type": "Int32",
 									"physicalType": "int"
@@ -162,12 +206,76 @@
 							},
 							{
 								"source": {
+									"name": "Createdon",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "DATA_CREAZIONE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_iscreditcardprofiled",
+									"type": "Boolean",
+									"physicalType": "bit"
+								},
+								"sink": {
+									"name": "FLG_PROFILO_CC",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_partnershiptypecode",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "FLG_PARTNER_NTV",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_ispmr",
+									"type": "Boolean",
+									"physicalType": "bit"
+								},
+								"sink": {
+									"name": "FLG_PMR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_employeeid",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "FLG_DIPENDENTE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
 									"name": "ntv_viptypecode",
 									"type": "Int32",
 									"physicalType": "int"
 								},
 								"sink": {
 									"name": "TIPOLOGIA_VIP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_isambassador",
+									"type": "Boolean",
+									"physicalType": "bit"
+								},
+								"sink": {
+									"name": "FLG_AMBASSADOR",
 									"type": "String"
 								}
 							},
@@ -195,7 +303,7 @@
 							},
 							{
 								"source": {
-									"name": "preferredcontactmethodcode",
+									"name": "ntv_preferredcontacttypecode",
 									"type": "Int32",
 									"physicalType": "int"
 								},
@@ -223,6 +331,17 @@
 								},
 								"sink": {
 									"name": "MOTIVAZIONI_VIAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_preferredtransportmean",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "TRASPORTO_ABITUALE",
 									"type": "String"
 								}
 							},
@@ -261,8 +380,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_preferredseatcode",
-									"type": "Int32",
+									"name": "ntv_preferredseattode",
 									"physicalType": "int"
 								},
 								"sink": {
@@ -305,8 +423,18 @@
 							},
 							{
 								"source": {
-									"name": "ntv_preferredcontacttimecode",
+									"name": "ntv_preferredcontacttypecode",
 									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "CANALE_CONT_PRIV",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_preferredcontatimecode",
 									"physicalType": "int"
 								},
 								"sink": {
@@ -349,56 +477,34 @@
 							},
 							{
 								"source": {
+									"name": "ntv_consentprofilation",
+									"type": "Boolean",
+									"physicalType": "bit"
+								},
+								"sink": {
+									"name": "FLG_CONSENSO_PROFILAZIONE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_consentmarketinginfo",
+									"type": "Boolean",
+									"physicalType": "bit"
+								},
+								"sink": {
+									"name": "FLG_CONSENSO_MARKETING",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
 									"name": "ntv_segmentcode",
 									"type": "Int32",
 									"physicalType": "int"
 								},
 								"sink": {
 									"name": "SEGMENTO",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "address1_city",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "CITTA",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "statecode",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "STATO",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "address1_stateorprovince",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "PROVINCIA",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "address1_addresstypecode",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "INDIRIZZO",
 									"type": "String"
 								}
 							},
@@ -415,12 +521,143 @@
 							},
 							{
 								"source": {
+									"name": "birthdate",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_NASCITA",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
 									"name": "ntv_tripcounter",
-									"physicalType": "nvarchar"
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "NUM_VIAGGI",
 									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_customerclusterid",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "CLUSTER_PROMOZIONI",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_customerinvitation",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CODICE_INVITO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_thirdpartyconsent",
+									"type": "Boolean",
+									"physicalType": "bit"
+								},
+								"sink": {
+									"name": "FLG_CONSENSO_TERZE_PARTI",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "nntv_thirdpartyupdatedon",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_AGG_CONS_TERZE_PARTI",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_callclusterid",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "CLUSTER_CHIAMATA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_callclustervalue",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "VALORE_CHIAMATA_CLIENTE",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_callclusterupdatedon",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_AGG_CLUSTER_CHIAM",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_callpromotions",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "PROMOZIONI_CC",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_marketingupdatedon",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_AGG_CONS_MARK",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_profilationupdatedon",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_AGG__CONS_PROF",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "modifiedon",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_AGGIORNAMENTO",
+									"type": "DateTime"
 								}
 							}
 						],
