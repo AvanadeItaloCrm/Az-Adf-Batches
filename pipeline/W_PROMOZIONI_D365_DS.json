@@ -107,9 +107,8 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "Id",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "ntv_promotionnumber",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "INTEGRAZIONE_ID",
@@ -118,8 +117,7 @@
 							},
 							{
 								"source": {
-									"name": "SinkCreatedOn",
-									"type": "DateTime",
+									"name": "Createdon",
 									"physicalType": "datetime"
 								},
 								"sink": {
