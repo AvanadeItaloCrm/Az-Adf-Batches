@@ -129,7 +129,7 @@
 							},
 							{
 								"source": {
-									"name": "PaymentID",
+									"name": "ApplicationId",
 									"type": "String",
 									"physicalType": "varchar"
 								},
