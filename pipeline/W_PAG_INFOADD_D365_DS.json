@@ -129,7 +129,7 @@
 							},
 							{
 								"source": {
-									"name": "ApplicationId",
+									"name": "ChannelType",
 									"type": "String",
 									"physicalType": "varchar"
 								},
@@ -151,7 +151,7 @@
 							},
 							{
 								"source": {
-									"name": "ChannelType",
+									"name": "DeviceId",
 									"type": "String",
 									"physicalType": "varchar"
 								},
