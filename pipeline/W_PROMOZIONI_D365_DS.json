@@ -250,7 +250,7 @@
 							},
 							{
 								"source": {
-									"name": "statuscode",
+									"name": "statecode",
 									"physicalType": "int"
 								},
 								"sink": {

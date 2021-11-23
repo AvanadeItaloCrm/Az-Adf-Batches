@@ -206,7 +206,7 @@
 							},
 							{
 								"source": {
-									"name": "ArrivalStation",
+									"name": "ArrivalStationName",
 									"type": "String",
 									"physicalType": "varchar"
 								},
