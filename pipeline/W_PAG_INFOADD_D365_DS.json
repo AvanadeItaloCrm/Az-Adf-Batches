@@ -107,320 +107,134 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "ntv_notes",
+									"name": "AdditionalInfoId",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "INTEGRAZIONE_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IMEI",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								},
 								"sink": {
-									"name": "NOTE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_customernumber",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "CODICE_CLIENTE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "lastname",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "COGNOME",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "firstname",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "NOME",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_acquisitionchannelcode",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "CANALE_ACQUISIZIONE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_viptypecode",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "TIPOLOGIA_VIP",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_professioncode",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "PROFESSIONE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_commercialsectorcode",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "SETTORE_ATTIVITA",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "preferredcontactmethodcode",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "METODO_CONT_PRIV",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_preferredpaymenttypecode",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "METODO_PAG_PRIV",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_travelreasoncode",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "MOTIVAZIONI_VIAG",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_preferredclasscode",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "PREFERENZA_AMBIENTE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_preferredfarecode",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "PREFERENZA_CLAS_TARIFFA",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_preferredmealcode",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "PREFERENZA_PASTO",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_preferredseatcode",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "PREFERENZA_POSTO",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_preferredmovietypecode",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "PREFERENZA_CINEMA",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_languagecode",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "LINGUA",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_messagingcontact",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "CONTATTO_MESS_NTV",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_preferredcontacttimecode",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "FASCIA_ORARIA_CONTATTO",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "emailaddress1",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "EMAIL",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "telephone1",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "TEL_FISSO",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "mobilephone",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "TEL_MOBILE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_segmentcode",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "SEGMENTO",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "address1_city",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "CITTA",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "statecode",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "STATO",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "address1_stateorprovince",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "PROVINCIA",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "address1_addresstypecode",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "INDIRIZZO",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "gendercode",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "SESSO",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_tripcounter",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "NUM_VIAGGI",
+									"name": "IMEI",
 									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PaymentID",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "PAGAMENTO_NAV_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "ApplicationId",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "APPLICAZIONE_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ChannelType",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "CANALE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Ip",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "IP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OS",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "OS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RecCreationDate",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "RICEVUTO_DA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PaymentID",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "PAGAMENTO_CRM_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RecModifiedDate",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "CODICE_RICEVUTA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RecDeleted",
+									"type": "Boolean",
+									"physicalType": "bit"
+								},
+								"sink": {
+									"name": "CANCELLATO_DA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RecordLocator",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "PNR",
+									"type": "String"
 								}
 							}
 						],
@@ -433,7 +247,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "W_CUSTUMER_SQLSource",
+						"referenceName": "W_PAG_INFOADD_D365_DS_SQLSource",
 						"type": "DatasetReference"
 					}
 				],
