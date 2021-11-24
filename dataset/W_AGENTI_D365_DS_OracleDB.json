@@ -1,0 +1,16 @@
+{
+	"name": "W_AGENTI_D365_DS_OracleDB",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "OracleDB_DEV",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "OracleTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "SA_D365_SVIL",
+			"table": "W_AGENTI_D365_DS"
+		}
+	}
+}
