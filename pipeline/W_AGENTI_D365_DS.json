@@ -517,7 +517,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "W_ADV_CORP_D365_DS_OracleDB",
+						"referenceName": "W_AGENTI_D365_DS_OracleDB",
 						"type": "DatasetReference"
 					}
 				]
@@ -587,7 +587,7 @@
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "W_ADV_CORP_D365_DS_OracleDB",
+						"referenceName": "W_AGENTI_D365_DS_OracleDB",
 						"type": "DatasetReference"
 					}
 				}
