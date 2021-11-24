@@ -162,9 +162,9 @@
 							},
 							{
 								"source": {
-									"name": "ntv_reponsedate",
-									"type": "DateTime",
-									"physicalType": "datetime"
+									"name": "ntv_responseoutcome",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "DATA_RISPOSTA",
@@ -173,7 +173,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_contactid",
+									"name": "owninguser",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -228,9 +228,8 @@
 							},
 							{
 								"source": {
-									"name": "ownerid",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "ntv_cluster",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "CLUSTER",
@@ -239,9 +238,9 @@
 							},
 							{
 								"source": {
-									"name": "ntv_contactidname",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "ntv_contactid",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
 								},
 								"sink": {
 									"name": "CODICE_CLIENTE",
@@ -250,9 +249,8 @@
 							},
 							{
 								"source": {
-									"name": "ntv_recordlocator",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "rec",
+									"physicalType": "uniqueidentifier"
 								},
 								"sink": {
 									"name": "PNR",
