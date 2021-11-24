@@ -107,16 +107,6 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "ntv_promotionnumber",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "INTEGRAZIONE_ID",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
 									"name": "SinkCreatedOn",
 									"physicalType": "datetime"
 								},

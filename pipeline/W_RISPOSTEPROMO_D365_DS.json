@@ -162,17 +162,6 @@
 							},
 							{
 								"source": {
-									"name": "ntv_responseoutcome",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "DATA_RISPOSTA",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
 									"name": "owninguser",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
