@@ -117,7 +117,7 @@
 							},
 							{
 								"source": {
-									"name": "Createdon",
+									"name": "SinkCreatedOn",
 									"physicalType": "datetime"
 								},
 								"sink": {

@@ -206,8 +206,9 @@
 							},
 							{
 								"source": {
-									"name": "Createdon",
-									"physicalType": "int"
+									"name": "SinkCreatedOn",
+									"type": "DateTime",
+									"physicalType": "datetime"
 								},
 								"sink": {
 									"name": "DATA_CREAZIONE",
@@ -575,7 +576,8 @@
 							},
 							{
 								"source": {
-									"name": "nntv_thirdpartyupdatedon",
+									"name": "ntv_thirdpartyupdatedon",
+									"type": "DateTime",
 									"physicalType": "datetime"
 								},
 								"sink": {
