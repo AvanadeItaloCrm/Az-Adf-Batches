@@ -228,16 +228,6 @@
 							},
 							{
 								"source": {
-									"name": "ntv_partnershiptypecode",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "FLG_PARTNER_NTV",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
 									"name": "ntv_ispmr",
 									"type": "Boolean",
 									"physicalType": "bit"
@@ -381,16 +371,6 @@
 							},
 							{
 								"source": {
-									"name": "ntv_preferredseattode",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "PREFERENZA_POSTO",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
 									"name": "ntv_preferredmovietypecode",
 									"type": "Int32",
 									"physicalType": "int"
@@ -430,16 +410,6 @@
 								},
 								"sink": {
 									"name": "CANALE_CONT_PRIV",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_preferredcontatimecode",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "FASCIA_ORARIA_CONTATTO",
 									"type": "String"
 								}
 							},
@@ -529,16 +499,6 @@
 								"sink": {
 									"name": "DATA_NASCITA",
 									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_tripcounter",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "NUM_VIAGGI",
-									"type": "Decimal"
 								}
 							},
 							{
