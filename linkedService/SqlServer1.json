@@ -5,8 +5,8 @@
 		"annotations": [],
 		"type": "SqlServer",
 		"typeProperties": {
-			"connectionString": "integrated security=False;data source=crm-dev-sqlsrv.database.windows.net;initial catalog=crmdevdesdynamics365;user id=crmdevadmin",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJlOGQ0MmE4NC02ZTU1LTQ2NmItOWEzZS0xYmE0N2UxNTQ4YzgiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"connectionString": "integrated security=False;data source=crm-dev-sqlsrv.database.windows.net;initial catalog=crmdevstagingarea;user id=crmdevadmin",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI3ZTZlYWM1YS1jYWY5LTQ4NGUtODFlZi05NjBmNTk3YTc1MWIiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "integrationRuntimeSFH-DEV",
