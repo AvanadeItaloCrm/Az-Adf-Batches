@@ -118,9 +118,9 @@
 							},
 							{
 								"source": {
-									"name": "SinkCreatedOn",
-									"type": "DateTime",
-									"physicalType": "datetime"
+									"name": "ntv_promotorinvitation",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "DESCRIZIONE_PROMOCODE",
@@ -129,9 +129,9 @@
 							},
 							{
 								"source": {
-									"name": "SinkModifiedOn",
-									"type": "DateTime",
-									"physicalType": "datetime"
+									"name": "name",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "NOME",
@@ -140,7 +140,7 @@
 							},
 							{
 								"source": {
-									"name": "statecode",
+									"name": "ntv_agencytypecode",
 									"type": "Int32",
 									"physicalType": "int"
 								},
@@ -156,37 +156,15 @@
 									"physicalType": "int"
 								},
 								"sink": {
-									"name": "TIPO_PARTNER",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "owninguser",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "RAGIONE_SOCIALE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "owninguser_entitytype",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
 									"name": "STATO",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "createdonbehalfby",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "ntv_segmentcode",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "SEGMENTO_MERCATO",
@@ -195,42 +173,9 @@
 							},
 							{
 								"source": {
-									"name": "createdonbehalfby_entitytype",
+									"name": "ntv_vatcode",
 									"type": "String",
 									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "FLG_BOOKING_SOURCE_GDS",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "owningbusinessunit",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "FLG_BOOKING_SOURCE_WEB",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "owningbusinessunit_entitytype",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "ADV_PADRE_ID",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "owningteam",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
 								},
 								"sink": {
 									"name": "PIVA_CFS",
@@ -239,7 +184,7 @@
 							},
 							{
 								"source": {
-									"name": "owningteam_entitytype",
+									"name": "ntv_iata",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -250,9 +195,9 @@
 							},
 							{
 								"source": {
-									"name": "modifiedby",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "ntv_registrationchannelcode",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "CODICE_REGISTRAZIONE",
@@ -261,9 +206,9 @@
 							},
 							{
 								"source": {
-									"name": "modifiedby_entitytype",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "ntv_iscashback",
+									"type": "Boolean",
+									"physicalType": "bit"
 								},
 								"sink": {
 									"name": "MID_BACKOFFICE",
@@ -272,9 +217,9 @@
 							},
 							{
 								"source": {
-									"name": "modifiedonbehalfby",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "ntv_lodgecardholder",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "NOME_HOLDING",
@@ -283,7 +228,7 @@
 							},
 							{
 								"source": {
-									"name": "modifiedonbehalfby_entitytype",
+									"name": "description",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -294,7 +239,7 @@
 							},
 							{
 								"source": {
-									"name": "ownerid_entitytype",
+									"name": "emailaddress1",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -305,7 +250,7 @@
 							},
 							{
 								"source": {
-									"name": "createdonbehalfbyyominame",
+									"name": "fax",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -316,7 +261,7 @@
 							},
 							{
 								"source": {
-									"name": "owneridname",
+									"name": "telephone1",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -327,9 +272,9 @@
 							},
 							{
 								"source": {
-									"name": "importsequencenumber",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "ntv_abicab",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "ABICAB",
@@ -338,7 +283,7 @@
 							},
 							{
 								"source": {
-									"name": "modifiedbyyominame",
+									"name": "ntv_cin",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -349,7 +294,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_departure",
+									"name": "ntv_iban",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -360,9 +305,9 @@
 							},
 							{
 								"source": {
-									"name": "utcconversiontimezonecode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "ntv_bankname",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "NOME_BANCA",
@@ -371,7 +316,7 @@
 							},
 							{
 								"source": {
-									"name": "createdbyyominame",
+									"name": "accountnumber",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -382,20 +327,9 @@
 							},
 							{
 								"source": {
-									"name": "modifiedbyname",
+									"name": "ntv_swift",
 									"type": "String",
 									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "BANK_COUNTRY",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "timezoneruleversionnumber",
-									"type": "Int32",
-									"physicalType": "int"
 								},
 								"sink": {
 									"name": "SWIFT",
@@ -404,42 +338,9 @@
 							},
 							{
 								"source": {
-									"name": "ntv_cashbackblackmarketid",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "TITOLARE_CC",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "owneridtype",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "TIPO_CENTRO_FATTURAZIONE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "owneridyominame",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "FLG_OVERCOMMISSIONING",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_arrival",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "ntv_paymentmethodcode",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "METODO_PAGAMENTO",
@@ -448,9 +349,20 @@
 							},
 							{
 								"source": {
-									"name": "modifiedonbehalfbyyominame",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "ntv_ivapercentage",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "PERCENTUALE_IVA",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_paymentwaittimecode",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "TERMINE_PAGAMENTO",
@@ -459,45 +371,14 @@
 							},
 							{
 								"source": {
-									"name": "createdbyname",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "marketcap",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 38
 								},
 								"sink": {
-									"name": "CENTRO_FATT_BASE_ID",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "createdon",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								},
-								"sink": {
-									"name": "CENTRO_FATT_OVER_ID",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "owningbusinessunitname",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "COGNOME_REF_UNICO",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "createdonbehalfbyname",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "NOME_REF_UNICO",
+									"name": "CAP_SEDE_LEGALE",
 									"type": "String"
 								}
 							}
