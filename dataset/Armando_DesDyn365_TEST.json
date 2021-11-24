@@ -2,7 +2,7 @@
 	"name": "Armando_DesDyn365_TEST",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzSqlOracle_Dev_DesDYN365",
+			"referenceName": "AzSqlOracle_Test_DesDYN365",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
