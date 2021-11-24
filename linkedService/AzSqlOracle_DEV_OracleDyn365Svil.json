@@ -5,8 +5,8 @@
 		"annotations": [],
 		"type": "Oracle",
 		"typeProperties": {
-			"connectionString": "host=172.26.59.183;port=1521;sid=bisdev;user id=SA_D365_TEST",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJkNmUxNzBlMS0zMGE4LTQ1MjAtYmQ3OS1mOGFkY2JmYWE4MDgiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"connectionString": "host=172.26.59.183;port=1521;sid=bisdev;user id=SA_D365_SVIL",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIxZmY2NGYyZC1hNTMxLTQ5NjgtODRhNy01YzY5MTA1M2Y5MjAiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "integrationRuntimeSFH-DEV",
