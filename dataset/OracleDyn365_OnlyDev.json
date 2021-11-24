@@ -1,0 +1,12 @@
+{
+	"name": "OracleDyn365_OnlyDev",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzSqlOracle_DEV_OracleDyn365Svil",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "OracleTable",
+		"schema": []
+	}
+}
