@@ -1,5 +1,5 @@
 {
-	"name": "OracleDyn365_OnlyDev",
+	"name": "Armando_OracleDyn365_OnlyDev",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzSqlOracle_DEV_OracleDyn365Svil",
