@@ -96,13 +96,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Armando_DesDyn365_DEV",
+						"referenceName": "ArmandoSqlDesDyn365_DEV",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "Armando_OracleDyn365_TEST_OnlyDev",
+						"referenceName": "ArmandoOracleTEST_OnlyDev_Contact",
 						"type": "DatasetReference"
 					}
 				]
