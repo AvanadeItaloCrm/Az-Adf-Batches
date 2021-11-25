@@ -1,5 +1,5 @@
 {
-	"name": "AzureSqlTableArmandoTest",
+	"name": "AzArmando_OnlyDev_ArmandoTest",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureSqlDbCrmStagingArea",
