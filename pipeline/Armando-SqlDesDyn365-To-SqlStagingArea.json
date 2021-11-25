@@ -118,7 +118,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "AzureSqlTableArmandoTest",
+						"referenceName": "AzArmando_OnlyDev_ArmandoTest",
 						"type": "DatasetReference"
 					}
 				]
