@@ -45,6 +45,7 @@
 						"value": "@activity('GetCopyConfig').output",
 						"type": "Expression"
 					},
+					"isSequential": false,
 					"activities": [
 						{
 							"name": "Execute CopySecondary",
@@ -59,23 +60,23 @@
 								"waitOnCompletion": true,
 								"parameters": {
 									"SourceSchema": {
-										"value": "@item().SourceSchema",
+										"value": "@item().SourceSchema.value",
 										"type": "Expression"
 									},
 									"SourceTable": {
-										"value": "@item().SourceTable",
+										"value": "@item().SourceTable.value",
 										"type": "Expression"
 									},
 									"DestinationSchema": {
-										"value": "@item().DestinationSchema",
+										"value": "@item().DestinationSchema.value",
 										"type": "Expression"
 									},
 									"DestinationTable": {
-										"value": "@item().DestinationTable",
+										"value": "@item().DestinationTable.value",
 										"type": "Expression"
 									},
 									"CopyId": {
-										"value": "@item().CopyId",
+										"value": "@item().CopyId.value",
 										"type": "Expression"
 									}
 								}
