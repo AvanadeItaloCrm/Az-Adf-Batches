@@ -12,8 +12,8 @@
 		"type": "OracleTable",
 		"schema": [],
 		"typeProperties": {
-			"schema": "WMSYS",
-			"table": "ALL_VERSION_HVIEW"
+			"schema": "MIG_SA",
+			"table": "M_ATTIVITA_SR"
 		}
 	}
 }
