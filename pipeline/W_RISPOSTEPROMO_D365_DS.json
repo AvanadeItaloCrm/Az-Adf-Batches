@@ -107,17 +107,6 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "Id",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "INTEGRAZIONE_ID",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
 									"name": "SinkCreatedOn",
 									"type": "DateTime",
 									"physicalType": "datetime"
@@ -162,13 +151,13 @@
 							},
 							{
 								"source": {
-									"name": "owninguser",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "ntv_reponsedate",
+									"type": "DateTime",
+									"physicalType": "datetime"
 								},
 								"sink": {
-									"name": "ID_CLIENTE",
-									"type": "String"
+									"name": "DATA_RISPOSTA",
+									"type": "DateTime"
 								}
 							},
 							{
@@ -217,16 +206,6 @@
 							},
 							{
 								"source": {
-									"name": "ntv_cluster",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "CLUSTER",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
 									"name": "ntv_contactid",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
@@ -238,7 +217,8 @@
 							},
 							{
 								"source": {
-									"name": "rec",
+									"name": "ntv_bookingid",
+									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
 								"sink": {
