@@ -6,7 +6,7 @@
 		"pipelines": [
 			{
 				"pipelineReference": {
-					"referenceName": "Dyn_Ind_Station_ServiceNow",
+					"referenceName": "Az_B2C-B2B_Test_Dyn_Ind_Station_ServiceNow",
 					"type": "PipelineReference"
 				}
 			}
