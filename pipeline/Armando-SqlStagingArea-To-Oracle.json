@@ -96,7 +96,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Armando_DesDyn365_TEST",
+						"referenceName": "Armando_DesDyn365_DEV",
 						"type": "DatasetReference"
 					}
 				],
