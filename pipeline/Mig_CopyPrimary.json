@@ -76,7 +76,7 @@
 										"type": "Expression"
 									},
 									"CopyId": {
-										"value": "@item().CopyId.value",
+										"value": "@item().CopyId",
 										"type": "Expression"
 									}
 								}
