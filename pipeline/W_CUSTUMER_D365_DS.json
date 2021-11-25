@@ -503,17 +503,6 @@
 							},
 							{
 								"source": {
-									"name": "ntv_travelreasoncode",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "NUM_VIAGGI",
-									"type": "Decimal"
-								}
-							},
-							{
-								"source": {
 									"name": "ntv_customerclusterid",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
