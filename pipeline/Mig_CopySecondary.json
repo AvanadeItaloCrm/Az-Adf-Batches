@@ -40,13 +40,33 @@
 				"inputs": [
 					{
 						"referenceName": "Mig_OracleTable",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"SourceSchema": {
+								"value": "@pipeline().parameters.SourceSchema",
+								"type": "Expression"
+							},
+							"SourceTable": {
+								"value": "@pipeline().parameters.SourceTable",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
 					{
 						"referenceName": "Mig_AzureTable",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"DestinationSchema": {
+								"value": "@pipeline().parameters.DestinationSchema",
+								"type": "Expression"
+							},
+							"DestinationTable": {
+								"value": "@pipeline().parameters.DestinationTable",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			},
