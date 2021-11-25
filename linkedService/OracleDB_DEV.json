@@ -6,7 +6,7 @@
 		"type": "Oracle",
 		"typeProperties": {
 			"connectionString": "host=172.26.59.183;port=1521;sid=bisdev;user id=SA_D365_SVIL",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJkZWZhYTc0Yi1jMjA5LTRhNmYtOTU4ZS1hNmE4NTljY2E0OTUiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIzNTgzYTMwNC1jNzRkLTRhNzYtYTU3My1hMjg1NGQzNTg1MTAiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "integrationRuntimeSFH-DEV",
