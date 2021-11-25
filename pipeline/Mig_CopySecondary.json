@@ -46,17 +46,7 @@
 				"outputs": [
 					{
 						"referenceName": "Mig_AzureTable",
-						"type": "DatasetReference",
-						"parameters": {
-							"DestinationSchema": {
-								"value": "@pipeline().parameters.DestinationSchema",
-								"type": "Expression"
-							},
-							"DestinationTable": {
-								"value": "@pipeline().parameters.DestinationTable",
-								"type": "Expression"
-							}
-						}
+						"type": "DatasetReference"
 					}
 				]
 			},
