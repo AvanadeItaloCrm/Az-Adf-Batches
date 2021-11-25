@@ -25,6 +25,7 @@
 						"writeBatchSize": 10000
 					},
 					"enableStaging": false,
+					"parallelCopies": 1,
 					"logSettings": {
 						"enableCopyActivityLog": true,
 						"copyActivityLogSettings": {
