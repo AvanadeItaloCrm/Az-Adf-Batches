@@ -92,22 +92,22 @@
 				"typeProperties": {
 					"storedProcedureName": "[log].[pr_WriteCopyResults]",
 					"storedProcedureParameters": {
-						"Tabella": {
-							"value": {
-								"value": "@pipeline().parameters.DestinationTable",
-								"type": "Expression"
-							},
-							"type": "String"
-						},
-						"NumRecord": {
+						"RecNum": {
 							"value": {
 								"value": "@activity('Copy data').output.rowsCopied",
 								"type": "Expression"
 							},
 							"type": "Int32"
 						},
-						"Esito": {
+						"Result": {
 							"value": "OK",
+							"type": "String"
+						},
+						"Table": {
+							"value": {
+								"value": "@pipeline().parameters.DestinationTable",
+								"type": "Expression"
+							},
 							"type": "String"
 						}
 					}
@@ -139,22 +139,25 @@
 				"typeProperties": {
 					"storedProcedureName": "[log].[pr_WriteCopyResults]",
 					"storedProcedureParameters": {
-						"Tabella": {
-							"value": {
-								"value": "@pipeline().parameters.DestinationTable",
-								"type": "Expression"
-							},
-							"type": "String"
-						},
-						"NumRecord": {
+						"RecNum": {
 							"value": {
 								"value": "@activity('Copy data').output.rowsCopied",
 								"type": "Expression"
 							},
 							"type": "Int32"
 						},
-						"Esito": {
-							"value": "KO",
+						"Result": {
+							"value": {
+								"value": "KO",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"Table": {
+							"value": {
+								"value": "@pipeline().parameters.DestinationTable",
+								"type": "Expression"
+							},
 							"type": "String"
 						}
 					}
