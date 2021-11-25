@@ -106,6 +106,13 @@
 							},
 							"type": "Int32"
 						},
+						"durationInQueue": {
+							"value": {
+								"value": "@activity('Copy data').output.durationInQueue.integrationRuntimeQueue",
+								"type": "Expression"
+							},
+							"type": "Double"
+						},
 						"Result": {
 							"value": "OK",
 							"type": "String"
@@ -173,6 +180,13 @@
 								"type": "Expression"
 							},
 							"type": "Int32"
+						},
+						"durationInQueue": {
+							"value": {
+								"value": "@activity('Copy data').output.durationInQueue.integrationRuntimeQueue",
+								"type": "Expression"
+							},
+							"type": "Double"
 						},
 						"Result": {
 							"value": "KO",
