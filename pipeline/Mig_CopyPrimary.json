@@ -44,7 +44,40 @@
 					"items": {
 						"value": "@activity('GetCopyConfig').output",
 						"type": "Expression"
-					}
+					},
+					"activities": [
+						{
+							"name": "Execute CopySecondary",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "Mig_CopySecondary",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"SourceSchema": {
+										"value": "@item().SourceSchema",
+										"type": "Expression"
+									},
+									"SourceTable": {
+										"value": "@item().SourceTable",
+										"type": "Expression"
+									},
+									"DestinationSchema": {
+										"value": "@item().DestinationSchema",
+										"type": "Expression"
+									},
+									"DestinationTable": {
+										"value": "@item().DestinationTable",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
 				}
 			}
 		],
