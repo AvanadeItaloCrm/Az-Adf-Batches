@@ -1,5 +1,5 @@
 {
-	"name": "Mig_pipeline1",
+	"name": "Mig_CopyPrimary",
 	"properties": {
 		"activities": [
 			{
