@@ -92,9 +92,16 @@
 				"typeProperties": {
 					"storedProcedureName": "[log].[pr_WriteCopyResults]",
 					"storedProcedureParameters": {
-						"RecNum": {
+						"copyDuration": {
 							"value": {
-								"value": "@activity('Copy data').output.rowsCopied",
+								"value": "@activity('Copy data').output.copyDuration",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						},
+						"CopyId": {
+							"value": {
+								"value": "@pipeline().parameters.CopyId",
 								"type": "Expression"
 							},
 							"type": "Int32"
@@ -103,12 +110,26 @@
 							"value": "OK",
 							"type": "String"
 						},
+						"rowsCopied": {
+							"value": {
+								"value": "@activity('Copy data').output.rowsCopied",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						},
 						"Table": {
 							"value": {
 								"value": "@pipeline().parameters.DestinationTable",
 								"type": "Expression"
 							},
 							"type": "String"
+						},
+						"throughput": {
+							"value": {
+								"value": "@activity('Copy data').output.throughput",
+								"type": "Expression"
+							},
+							"type": "Double"
 						}
 					}
 				},
@@ -139,19 +160,30 @@
 				"typeProperties": {
 					"storedProcedureName": "[log].[pr_WriteCopyResults]",
 					"storedProcedureParameters": {
-						"RecNum": {
+						"copyDuration": {
 							"value": {
-								"value": "@activity('Copy data').output.rowsCopied",
+								"value": "@activity('Copy data').output.copyDuration",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						},
+						"CopyId": {
+							"value": {
+								"value": "@pipeline().parameters.CopyId",
 								"type": "Expression"
 							},
 							"type": "Int32"
 						},
 						"Result": {
+							"value": "KO",
+							"type": "String"
+						},
+						"rowsCopied": {
 							"value": {
-								"value": "KO",
+								"value": "@activity('Copy data').output.rowsCopied",
 								"type": "Expression"
 							},
-							"type": "String"
+							"type": "Int32"
 						},
 						"Table": {
 							"value": {
@@ -159,6 +191,13 @@
 								"type": "Expression"
 							},
 							"type": "String"
+						},
+						"throughput": {
+							"value": {
+								"value": "@activity('Copy data').output.throughput",
+								"type": "Expression"
+							},
+							"type": "Double"
 						}
 					}
 				},
@@ -180,6 +219,9 @@
 			},
 			"DestinationTable": {
 				"type": "string"
+			},
+			"CopyId": {
+				"type": "int"
 			}
 		},
 		"folder": {
