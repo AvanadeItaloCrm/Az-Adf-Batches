@@ -73,6 +73,10 @@
 									"DestinationTable": {
 										"value": "@item().DestinationTable",
 										"type": "Expression"
+									},
+									"CopyId": {
+										"value": "@item().CopyId",
+										"type": "Expression"
 									}
 								}
 							}
