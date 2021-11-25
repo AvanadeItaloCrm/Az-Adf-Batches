@@ -47,7 +47,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "AzureSqlTableArmandoTest",
+						"referenceName": "Armando_DesDyn365_TEST",
 						"type": "DatasetReference"
 					}
 				]
