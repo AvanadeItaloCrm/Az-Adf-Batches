@@ -5,6 +5,16 @@
 			"referenceName": "Mig_STGOracle",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"SourceSchema": {
+				"type": "string",
+				"defaultValue": "db_schema"
+			},
+			"SourceTable": {
+				"type": "string",
+				"defaultValue": "db_table"
+			}
+		},
 		"folder": {
 			"name": "Migration"
 		},
@@ -12,8 +22,14 @@
 		"type": "OracleTable",
 		"schema": [],
 		"typeProperties": {
-			"schema": "MIG_SA",
-			"table": "M_ATTIVITA_SR"
+			"schema": {
+				"value": "@dataset().SourceSchema",
+				"type": "Expression"
+			},
+			"table": {
+				"value": "@dataset().SourceTable",
+				"type": "Expression"
+			}
 		}
 	}
 }

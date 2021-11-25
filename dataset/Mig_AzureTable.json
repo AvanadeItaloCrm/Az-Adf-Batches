@@ -5,84 +5,31 @@
 			"referenceName": "Mig_STGAzure",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"DestinationSchema": {
+				"type": "string",
+				"defaultValue": "db_schema"
+			},
+			"DestinationTable": {
+				"type": "string",
+				"defaultValue": "db_table"
+			}
+		},
 		"folder": {
 			"name": "Migration"
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",
-		"schema": [
-			{
-				"name": "NUM_ATTIVITA",
-				"type": "varchar"
-			},
-			{
-				"name": "COMMENTI",
-				"type": "varchar"
-			},
-			{
-				"name": "DATA_APERTURA",
-				"type": "date"
-			},
-			{
-				"name": "UTENZA_CREAZIONE",
-				"type": "varchar"
-			},
-			{
-				"name": "DATA_WORKAROUND",
-				"type": "date"
-			},
-			{
-				"name": "UTENZA_MODIFICA",
-				"type": "varchar"
-			},
-			{
-				"name": "DESCRIZIONE",
-				"type": "varchar"
-			},
-			{
-				"name": "DATA_CHIUSURA_EFFETTIVA",
-				"type": "date"
-			},
-			{
-				"name": "PRIORITA",
-				"type": "varchar"
-			},
-			{
-				"name": "DATA_INIZIO_LAV",
-				"type": "date"
-			},
-			{
-				"name": "TIPOLOGIA",
-				"type": "varchar"
-			},
-			{
-				"name": "DATA_MODIFICA",
-				"type": "date"
-			},
-			{
-				"name": "NUM_SR",
-				"type": "varchar"
-			},
-			{
-				"name": "CREATO_DA",
-				"type": "varchar"
-			},
-			{
-				"name": "MODIFICATO_DA",
-				"type": "varchar"
-			},
-			{
-				"name": "DT_CREAZIONE",
-				"type": "date"
-			},
-			{
-				"name": "DT_MODIFICA",
-				"type": "date"
-			}
-		],
+		"schema": [],
 		"typeProperties": {
-			"schema": "stg",
-			"table": "M_ATTIVITA_SR"
+			"schema": {
+				"value": "@dataset().DestinationSchema",
+				"type": "Expression"
+			},
+			"table": {
+				"value": "@dataset().DestinationTable",
+				"type": "Expression"
+			}
 		}
 	}
 }
