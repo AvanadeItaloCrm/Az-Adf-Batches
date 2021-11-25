@@ -228,9 +228,20 @@
 							},
 							{
 								"source": {
-									"name": "ntv_ispmr",
-									"type": "Boolean",
-									"physicalType": "bit"
+									"name": "ntv_partnershipcode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "FLG_PARTNER_NTV",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_partnershipcode",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "FLG_PMR",
@@ -239,23 +250,12 @@
 							},
 							{
 								"source": {
-									"name": "ntv_employeeid",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "ntv_ispmr",
+									"type": "Boolean",
+									"physicalType": "bit"
 								},
 								"sink": {
 									"name": "FLG_DIPENDENTE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_viptypecode",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "TIPOLOGIA_VIP",
 									"type": "String"
 								}
 							},
@@ -371,6 +371,17 @@
 							},
 							{
 								"source": {
+									"name": "ntv_preferredseatcode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "PREFERENZA_POSTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
 									"name": "ntv_preferredmovietypecode",
 									"type": "Int32",
 									"physicalType": "int"
@@ -399,6 +410,28 @@
 								},
 								"sink": {
 									"name": "CONTATTO_MESS_NTV",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_preferredcontacttypecode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "CANALE_CONT_PRIV",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_preferredcontacttimecode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "FASCIA_ORARIA_CONTATTO",
 									"type": "String"
 								}
 							},
@@ -492,6 +525,17 @@
 							},
 							{
 								"source": {
+									"name": "ntv_travelreasoncode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "NUM_VIAGGI",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
 									"name": "ntv_customerclusterid",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
@@ -575,6 +619,17 @@
 								},
 								"sink": {
 									"name": "PROMOZIONI_CC",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_viptypecode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "TIPOLOGIA_VIP",
 									"type": "String"
 								}
 							},
