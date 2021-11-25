@@ -49,18 +49,6 @@
 									"physicalType": "nvarchar"
 								},
 								"sink": {
-									"name": "name",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "firstname",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
 									"name": "firstname",
 									"type": "String",
 									"physicalType": "varchar"
