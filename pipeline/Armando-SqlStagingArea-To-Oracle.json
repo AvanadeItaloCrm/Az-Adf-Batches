@@ -102,7 +102,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "ArmandoOracleTEST_OnlyDev_Contact",
+						"referenceName": "AzOracleDev_OnlyDev_Contact",
 						"type": "DatasetReference"
 					}
 				]
