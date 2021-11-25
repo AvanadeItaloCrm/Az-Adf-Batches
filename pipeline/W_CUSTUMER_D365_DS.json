@@ -404,17 +404,6 @@
 							},
 							{
 								"source": {
-									"name": "ntv_preferredcontacttypecode",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "CANALE_CONT_PRIV",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
 									"name": "ntv_preferredcontacttimecode",
 									"type": "Int32",
 									"physicalType": "int"
