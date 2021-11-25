@@ -1,5 +1,5 @@
 {
-	"name": "Armando_OracleDyn365_TEST_OnlyDev",
+	"name": "ArmandoOracleTEST_OnlyDev_Contact",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzOracle_TEST",
