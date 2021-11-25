@@ -2,7 +2,7 @@
 	"name": "Armando_OracleDyn365_TEST_OnlyDev",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzSqlOracle_DEV_OracleDyn365Svil",
+			"referenceName": "AzOracle_TEST",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
