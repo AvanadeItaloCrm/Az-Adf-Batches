@@ -3,8 +3,8 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy data1",
-				"type": "Copy",
+				"name": "GetCopyConfig",
+				"type": "Lookup",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
@@ -16,227 +16,36 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "OracleSource",
-						"partitionOption": "None",
-						"queryTimeout": "02:00:00"
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"isolationLevel": "ReadUncommitted",
+						"partitionOption": "None"
 					},
-					"sink": {
-						"type": "AzureSqlSink",
-						"disableMetricsCollection": false
-					},
-					"enableStaging": false,
-					"parallelCopies": 2,
-					"dataIntegrationUnits": 2,
-					"translator": {
-						"type": "TabularTranslator",
-						"mappings": [
-							{
-								"source": {
-									"name": "NUM_ATTIVITA",
-									"type": "String"
-								},
-								"sink": {
-									"name": "NUM_ATTIVITA",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "COMMENTI",
-									"type": "String"
-								},
-								"sink": {
-									"name": "COMMENTI",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "DATA_APERTURA",
-									"type": "DateTime"
-								},
-								"sink": {
-									"name": "DATA_APERTURA",
-									"type": "DateTime",
-									"physicalType": "date"
-								}
-							},
-							{
-								"source": {
-									"name": "UTENZA_CREAZIONE",
-									"type": "String"
-								},
-								"sink": {
-									"name": "UTENZA_CREAZIONE",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "DATA_WORKAROUND",
-									"type": "DateTime"
-								},
-								"sink": {
-									"name": "DATA_WORKAROUND",
-									"type": "DateTime",
-									"physicalType": "date"
-								}
-							},
-							{
-								"source": {
-									"name": "UTENZA_MODIFICA",
-									"type": "String"
-								},
-								"sink": {
-									"name": "UTENZA_MODIFICA",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "DESCRIZIONE",
-									"type": "String"
-								},
-								"sink": {
-									"name": "DESCRIZIONE",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "DATA_CHIUSURA_EFFETTIVA",
-									"type": "DateTime"
-								},
-								"sink": {
-									"name": "DATA_CHIUSURA_EFFETTIVA",
-									"type": "DateTime",
-									"physicalType": "date"
-								}
-							},
-							{
-								"source": {
-									"name": "PRIORITA",
-									"type": "String"
-								},
-								"sink": {
-									"name": "PRIORITA",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "DATA_INIZIO_LAV",
-									"type": "DateTime"
-								},
-								"sink": {
-									"name": "DATA_INIZIO_LAV",
-									"type": "DateTime",
-									"physicalType": "date"
-								}
-							},
-							{
-								"source": {
-									"name": "TIPOLOGIA",
-									"type": "String"
-								},
-								"sink": {
-									"name": "TIPOLOGIA",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "DATA_MODIFICA",
-									"type": "DateTime"
-								},
-								"sink": {
-									"name": "DATA_MODIFICA",
-									"type": "DateTime",
-									"physicalType": "date"
-								}
-							},
-							{
-								"source": {
-									"name": "NUM_SR",
-									"type": "String"
-								},
-								"sink": {
-									"name": "NUM_SR",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "CREATO_DA",
-									"type": "String"
-								},
-								"sink": {
-									"name": "CREATO_DA",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "MODIFICATO_DA",
-									"type": "String"
-								},
-								"sink": {
-									"name": "MODIFICATO_DA",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "DT_CREAZIONE",
-									"type": "DateTime"
-								},
-								"sink": {
-									"name": "DT_CREAZIONE",
-									"type": "DateTime",
-									"physicalType": "date"
-								}
-							},
-							{
-								"source": {
-									"name": "DT_MODIFICA",
-									"type": "DateTime"
-								},
-								"sink": {
-									"name": "DT_MODIFICA",
-									"type": "DateTime",
-									"physicalType": "date"
-								}
-							}
-						],
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
-						}
-					}
-				},
-				"inputs": [
-					{
-						"referenceName": "Mig_OracleTable",
+					"dataset": {
+						"referenceName": "Mig_AzureCopyConfig",
 						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "ForEachTable",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "GetCopyConfig",
+						"dependencyConditions": [
+							"Succeeded"
+						]
 					}
 				],
-				"outputs": [
-					{
-						"referenceName": "Mig_AzureTable",
-						"type": "DatasetReference"
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('GetCopyConfig').output",
+						"type": "Expression"
 					}
-				]
+				}
 			}
 		],
 		"folder": {
