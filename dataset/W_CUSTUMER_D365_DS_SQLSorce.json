@@ -2,7 +2,7 @@
 	"name": "W_CUSTUMER_D365_DS_SQLSorce",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzSqlOracle_Test_DesDYN365",
+			"referenceName": "AzSqlOracle_Dev_DesDYN365",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
