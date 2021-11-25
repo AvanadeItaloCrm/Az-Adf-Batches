@@ -549,9 +549,9 @@
 							},
 							{
 								"source": {
-									"name": "ntv_srsubcategoryid_entitytype",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "parentcaseid",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
 								},
 								"sink": {
 									"name": "SR_PADRE",
@@ -560,9 +560,9 @@
 							},
 							{
 								"source": {
-									"name": "slainvokedid",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "ntv_money_clientaddress",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "INDIRIZZO_RIMBORSO",
@@ -571,7 +571,7 @@
 							},
 							{
 								"source": {
-									"name": "slainvokedid_entitytype",
+									"name": "ntv_wc_cardpan",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -582,18 +582,7 @@
 							},
 							{
 								"source": {
-									"name": "contractid",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "DIPENDENTE_CID",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "contractid_entitytype",
+									"name": "ntv_money_email",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -604,9 +593,9 @@
 							},
 							{
 								"source": {
-									"name": "owningbusinessunit",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "ntv_money_ccowner",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "INTESTATARIO_CONTO",
@@ -615,7 +604,7 @@
 							},
 							{
 								"source": {
-									"name": "owningbusinessunit_entitytype",
+									"name": "ntv_money_ccnumber",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -626,9 +615,9 @@
 							},
 							{
 								"source": {
-									"name": "responsiblecontactid",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "ntv_wc_ceevatcode",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "P_IVA_CEE",
@@ -637,7 +626,7 @@
 							},
 							{
 								"source": {
-									"name": "responsiblecontactid_entitytype",
+									"name": "ntv_money_sapclientcode",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -648,9 +637,9 @@
 							},
 							{
 								"source": {
-									"name": "accountid",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "ntv_ctichannel",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "CANALE_CTI",
@@ -659,29 +648,7 @@
 							},
 							{
 								"source": {
-									"name": "accountid_entitytype",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "FRODE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "kbarticleid",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "DATA_ORA_INIZIO_CHIAMATA",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "kbarticleid_entitytype",
+									"name": "ntv_connectionid",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -692,7 +659,7 @@
 							},
 							{
 								"source": {
-									"name": "msdyn_iotalert",
+									"name": "contractdetailid",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -703,29 +670,7 @@
 							},
 							{
 								"source": {
-									"name": "msdyn_iotalert_entitytype",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "CODICE_VOUCHER",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_srreasonid",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "BUG_FLG",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_srreasonid_entitytype",
+									"name": "ntv_webnote",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -736,18 +681,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_srcategoryid",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "DATA_RICEZIONE",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_srcategoryid_entitytype",
+									"name": "ntv_ecbill",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -758,24 +692,13 @@
 							},
 							{
 								"source": {
-									"name": "ntv_outcomeid",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "ntv_callstartdate",
+									"type": "DateTime",
+									"physicalType": "datetime"
 								},
 								"sink": {
-									"name": "NAZIONE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_outcomeid_entitytype",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "LINGUA",
-									"type": "String"
+									"name": "DATA_ORA_INIZIO_CHIAMATA",
+									"type": "DateTime"
 								}
 							}
 						],
