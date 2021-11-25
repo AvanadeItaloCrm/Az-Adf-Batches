@@ -42,7 +42,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('GetCopyConfig').output",
+						"value": "@activity('GetCopyConfig').output.value",
 						"type": "Expression"
 					},
 					"isSequential": false,
@@ -60,19 +60,19 @@
 								"waitOnCompletion": true,
 								"parameters": {
 									"SourceSchema": {
-										"value": "@item().SourceSchema.value",
+										"value": "@item().SourceSchema",
 										"type": "Expression"
 									},
 									"SourceTable": {
-										"value": "@item().SourceTable.value",
+										"value": "@item().SourceTable",
 										"type": "Expression"
 									},
 									"DestinationSchema": {
-										"value": "@item().DestinationSchema.value",
+										"value": "@item().DestinationSchema",
 										"type": "Expression"
 									},
 									"DestinationTable": {
-										"value": "@item().DestinationTable.value",
+										"value": "@item().DestinationTable",
 										"type": "Expression"
 									},
 									"CopyId": {
