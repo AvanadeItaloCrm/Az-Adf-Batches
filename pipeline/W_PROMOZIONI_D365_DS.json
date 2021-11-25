@@ -107,7 +107,19 @@
 						"mappings": [
 							{
 								"source": {
+									"name": "ntv_promotionnumber",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "INTEGRAZIONE_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
 									"name": "SinkCreatedOn",
+									"type": "DateTime",
 									"physicalType": "datetime"
 								},
 								"sink": {
@@ -139,9 +151,9 @@
 							},
 							{
 								"source": {
-									"name": "statuscode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "modifiedby",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
 								},
 								"sink": {
 									"name": "AGGIORNATO_DA",
@@ -183,17 +195,6 @@
 							},
 							{
 								"source": {
-									"name": "ntv_actionid",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "AZIONE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
 									"name": "ntv_promotiondescription",
 									"type": "String",
 									"physicalType": "nvarchar"
@@ -227,7 +228,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_promotionnumber",
+									"name": "ntv_name",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -238,7 +239,8 @@
 							},
 							{
 								"source": {
-									"name": "statecode",
+									"name": "statuscode",
+									"type": "Int32",
 									"physicalType": "int"
 								},
 								"sink": {
@@ -248,9 +250,9 @@
 							},
 							{
 								"source": {
-									"name": "owninguser_entitytype",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "ntv_promotiontypecode",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "TIPOLOGIA",
