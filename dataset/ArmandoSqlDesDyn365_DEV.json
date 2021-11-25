@@ -1,5 +1,5 @@
 {
-	"name": "Armando_DesDyn365_DEV",
+	"name": "ArmandoSqlDesDyn365_DEV",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzSqlOracle_Dev_DesDYN365",
