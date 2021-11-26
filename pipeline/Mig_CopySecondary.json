@@ -261,8 +261,7 @@
 				"type": "int"
 			},
 			"BatchId": {
-				"type": "int",
-				"defaultValue": 1
+				"type": "int"
 			}
 		},
 		"folder": {
