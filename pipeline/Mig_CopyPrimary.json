@@ -79,6 +79,10 @@
 									"CopyId": {
 										"value": "@item().CopyId",
 										"type": "Expression"
+									},
+									"BatchId": {
+										"value": "@pipeline().parameters.BatchId",
+										"type": "Expression"
 									}
 								}
 							}
@@ -87,6 +91,11 @@
 				}
 			}
 		],
+		"parameters": {
+			"BatchId": {
+				"type": "int"
+			}
+		},
 		"folder": {
 			"name": "Migration"
 		},
