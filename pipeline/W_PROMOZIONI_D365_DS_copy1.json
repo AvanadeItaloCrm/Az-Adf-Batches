@@ -195,39 +195,6 @@
 							},
 							{
 								"source": {
-									"name": "ntv_promotiondescription",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "DESCRIZIONE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_promotionmessageita",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "MESSAGGIO_PROMO",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_promotionmessageeng",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "MESSAGGIO_PROMO_EN",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
 									"name": "ntv_name",
 									"type": "String",
 									"physicalType": "nvarchar"
@@ -245,50 +212,6 @@
 								},
 								"sink": {
 									"name": "STATO",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_promotiontypecode",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "TIPOLOGIA",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_imageurl",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "URL",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_adobecommunication",
-									"type": "Boolean",
-									"physicalType": "bit"
-								},
-								"sink": {
-									"name": "FLG_OMUNICAZIONE_ADOBE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_communicationid",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "ID_COMUNICAZIONE",
 									"type": "String"
 								}
 							}
