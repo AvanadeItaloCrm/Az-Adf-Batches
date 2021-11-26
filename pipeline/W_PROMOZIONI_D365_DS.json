@@ -118,7 +118,7 @@
 							},
 							{
 								"source": {
-									"name": "SinkCreatedOn",
+									"name": "createdon",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
@@ -140,7 +140,7 @@
 							},
 							{
 								"source": {
-									"name": "SinkModifiedOn",
+									"name": "modifiedon",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
