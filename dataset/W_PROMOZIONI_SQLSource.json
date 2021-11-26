@@ -2,7 +2,7 @@
 	"name": "W_PROMOZIONI_SQLSource",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzureSqlDYN365",
+			"referenceName": "AzSqlOracle_Dev_DesDYN365",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
