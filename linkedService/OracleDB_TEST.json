@@ -1,0 +1,16 @@
+{
+	"name": "OracleDB_TEST",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "Oracle",
+		"typeProperties": {
+			"connectionString": "host=172.26.59.183;port=1521;sid=bisdev;user id=SA_D365_TEST",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJiMTE5MDA3YS0wNjRhLTQ5ODAtYWNhZS01Y2QwMGUwNDhjYTQiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "integrationRuntimeSFH-TEST",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
