@@ -148,17 +148,6 @@
 									"name": "VALORE",
 									"type": "String"
 								}
-							},
-							{
-								"source": {
-									"name": "PayID",
-									"type": "Int64",
-									"physicalType": "bigint"
-								},
-								"sink": {
-									"name": "PAGAMENTO_NAV_ID",
-									"type": "String"
-								}
 							}
 						],
 						"typeConversion": true,
