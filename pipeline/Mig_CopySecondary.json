@@ -20,7 +20,7 @@
 						"additionalColumns": [
 							{
 								"name": "BatchId",
-								"value": "$$COLUMN:1"
+								"value": "1"
 							}
 						],
 						"partitionOption": "None",
