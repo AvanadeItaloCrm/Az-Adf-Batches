@@ -1,0 +1,6 @@
+{
+	"name": "integrationRuntimeSFH-TEST",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}
