@@ -107,9 +107,9 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "AccountID",
-									"type": "String",
-									"physicalType": "varchar"
+									"name": "PaymentFieldID",
+									"type": "Int64",
+									"physicalType": "bigint"
 								},
 								"sink": {
 									"name": "INTEGRAZIONE_ID",
@@ -129,7 +129,7 @@
 							},
 							{
 								"source": {
-									"name": "AccountName",
+									"name": "Name",
 									"type": "String",
 									"physicalType": "varchar"
 								},
@@ -140,7 +140,7 @@
 							},
 							{
 								"source": {
-									"name": "ReferenceType",
+									"name": "Value",
 									"type": "String",
 									"physicalType": "varchar"
 								},
@@ -151,9 +151,9 @@
 							},
 							{
 								"source": {
-									"name": "PaymentAsc",
-									"type": "String",
-									"physicalType": "char"
+									"name": "PayID",
+									"type": "Int64",
+									"physicalType": "bigint"
 								},
 								"sink": {
 									"name": "PAGAMENTO_NAV_ID",
