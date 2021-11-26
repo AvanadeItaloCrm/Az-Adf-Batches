@@ -20,7 +20,10 @@
 						"additionalColumns": [
 							{
 								"name": "BatchId",
-								"value": "1"
+								"value": {
+									"value": "@pipeline().parameters.BatchId",
+									"type": "Expression"
+								}
 							}
 						],
 						"partitionOption": "None",
