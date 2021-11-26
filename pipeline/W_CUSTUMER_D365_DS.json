@@ -654,15 +654,6 @@
 									"name": "DATA_AGGIORNAMENTO",
 									"type": "DateTime"
 								}
-							},
-							{
-								"source": {
-									"name": "ntv_employeeid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "INTEGRAZIONE_ID"
-								}
 							}
 						],
 						"typeConversion": true,
