@@ -101,6 +101,13 @@
 				"typeProperties": {
 					"storedProcedureName": "[log].[pr_WriteCopyResults]",
 					"storedProcedureParameters": {
+						"BatchId": {
+							"value": {
+								"value": "@pipeline().parameters.BatchId",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						},
 						"copyDuration": {
 							"value": {
 								"value": "@activity('Copy data').output.copyDuration",
@@ -176,6 +183,13 @@
 				"typeProperties": {
 					"storedProcedureName": "[log].[pr_WriteCopyResults]",
 					"storedProcedureParameters": {
+						"BatchId": {
+							"value": {
+								"value": "@pipeline().parameters.BatchId",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						},
 						"copyDuration": {
 							"value": {
 								"value": "@activity('Copy data').output.copyDuration",
