@@ -2,7 +2,7 @@
 	"name": "W_PROMOZIONI_SQLSource",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzSqlOracle_Test_DesDYN365",
+			"referenceName": "AzureLinkedService_Dyn365",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
