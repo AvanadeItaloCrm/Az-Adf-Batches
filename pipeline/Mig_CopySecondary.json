@@ -17,6 +17,12 @@
 				"typeProperties": {
 					"source": {
 						"type": "OracleSource",
+						"additionalColumns": [
+							{
+								"name": "BatchId",
+								"value": "$$COLUMN:1"
+							}
+						],
 						"partitionOption": "None",
 						"queryTimeout": "02:00:00"
 					},
