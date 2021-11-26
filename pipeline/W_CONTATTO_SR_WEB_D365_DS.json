@@ -1,5 +1,5 @@
 {
-	"name": "W_PAG_INFOADD_D365_DS",
+	"name": "W_CONTATTO_SR_WEB_D365_DS",
 	"properties": {
 		"activities": [
 			{
@@ -31,7 +31,7 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureSqlTestStagingArea",
+					"referenceName": "AzureLinkedService",
 					"type": "LinkedServiceReference"
 				}
 			},
@@ -67,7 +67,7 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureSqlTestStagingArea",
+					"referenceName": "AzureLinkedService",
 					"type": "LinkedServiceReference"
 				}
 			},
@@ -99,7 +99,7 @@
 					"sink": {
 						"type": "OracleSink",
 						"writeBatchSize": 10000,
-						"preCopyScript": "truncate table sa_d365_svil.W_PAG_INFOADD_D365_DSS"
+						"preCopyScript": "truncate table sa_d365_svil.W_CONTATTO_SR_WEB_D365_DS"
 					},
 					"enableStaging": false,
 					"translator": {
@@ -107,9 +107,9 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "AdditionalInfoId",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "ntv_promotionnumber",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "INTEGRAZIONE_ID",
@@ -118,112 +118,100 @@
 							},
 							{
 								"source": {
-									"name": "IMEI",
-									"type": "String",
-									"physicalType": "varchar"
-								},
-								"sink": {
-									"name": "IMEI",
-									"type": "Decimal"
-								}
-							},
-							{
-								"source": {
-									"name": "PaymentID",
-									"type": "String",
-									"physicalType": "varchar"
-								},
-								"sink": {
-									"name": "PAGAMENTO_NAV_ID",
-									"type": "Decimal"
-								}
-							},
-							{
-								"source": {
-									"name": "ApplicationId",
-									"type": "String",
-									"physicalType": "varchar"
-								},
-								"sink": {
-									"name": "APPLICAZIONE_ID",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ChannelType",
-									"type": "String",
-									"physicalType": "varchar"
-								},
-								"sink": {
-									"name": "CANALE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "Ip",
-									"type": "String",
-									"physicalType": "varchar"
-								},
-								"sink": {
-									"name": "IP",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "OS",
-									"type": "String",
-									"physicalType": "varchar"
-								},
-								"sink": {
-									"name": "OS",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "RecCreationDate",
+									"name": "createdon",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
 								"sink": {
-									"name": "RICEVUTO_DA",
-									"type": "String"
+									"name": "DATA_CREAZIONE",
+									"type": "DateTime"
 								}
 							},
 							{
+								"source": {
+									"name": "createdby",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
 								"sink": {
-									"name": "PAGAMENTO_CRM_ID",
-									"type": "String"
-								}
-							},
-							{
-								"sink": {
-									"name": "CODICE_RICEVUTA",
+									"name": "CREATO_DA",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "DeleteOwner",
-									"type": "String",
-									"physicalType": "varchar"
+									"name": "modifiedon",
+									"type": "DateTime",
+									"physicalType": "datetime"
 								},
 								"sink": {
-									"name": "CANCELLATO_DA",
+									"name": "DATA_AGGIORNAMENTO",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "modifiedby",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "AGGIORNATO_DA",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "RecordLocator",
-									"type": "String",
-									"physicalType": "varchar"
+									"name": "ntv_enddate",
+									"type": "DateTime",
+									"physicalType": "datetime"
 								},
 								"sink": {
-									"name": "PNR",
+									"name": "DATA_FINE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_startdate",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_INIZIO",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_participationlimit",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "LIMITE",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_name",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NOME_PROMO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "statuscode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "STATO",
 									"type": "String"
 								}
 							}
@@ -237,13 +225,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "W_PAG_INFOADD_D365_DS_SQLSource",
+						"referenceName": "W_PROMOZIONI_SQLSource",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "W_PAG_INFOADD_OracleDB",
+						"referenceName": "W_CONTATTO_SR_WEB_D365_DS_OracleDB",
 						"type": "DatasetReference"
 					}
 				]
@@ -278,7 +266,7 @@
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "W_PAG_INFOADD_OracleDB",
+						"referenceName": "W_CONTATTO_SR_WEB_D365_DS_OracleDB",
 						"type": "DatasetReference"
 					}
 				}
@@ -313,7 +301,7 @@
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "W_PAG_INFOADD_OracleDB",
+						"referenceName": "W_CONTATTO_SR_WEB_D365_DS_OracleDB",
 						"type": "DatasetReference"
 					}
 				}
@@ -322,7 +310,7 @@
 		"variables": {
 			"TableName": {
 				"type": "String",
-				"defaultValue": "W_PAG_INFOADD_D365_DS"
+				"defaultValue": "W_CONTATTO_SR_WEB_D365_DS"
 			}
 		},
 		"folder": {
