@@ -2,7 +2,7 @@
 	"name": "W_PAG_INFOADD_D365_DS_SQLSource",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzureSqlTestStagingArea",
+			"referenceName": "AzSqlOracle_Dev_StagingArea",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -220,7 +220,7 @@
 			}
 		],
 		"typeProperties": {
-			"schema": "ntv",
+			"schema": "ntvdev",
 			"table": "AdditionalInfo"
 		}
 	}
