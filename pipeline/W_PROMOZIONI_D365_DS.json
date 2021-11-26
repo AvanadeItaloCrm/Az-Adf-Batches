@@ -272,17 +272,6 @@
 							},
 							{
 								"source": {
-									"name": "ntv_adobecommunication",
-									"type": "Boolean",
-									"physicalType": "bit"
-								},
-								"sink": {
-									"name": "FLG_OMUNICAZIONE_ADOBE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
 									"name": "ntv_communicationid",
 									"type": "String",
 									"physicalType": "nvarchar"
@@ -291,12 +280,23 @@
 									"name": "ID_COMUNICAZIONE",
 									"type": "String"
 								}
+							},
+							{
+								"source": {
+									"name": "ntv_adobecommunication",
+									"type": "Boolean",
+									"physicalType": "bit"
+								},
+								"sink": {
+									"name": "FLG_OMUNICAZIONE_ADOBE",
+									"type": "String"
+								}
 							}
 						],
 						"typeConversion": true,
 						"typeConversionSettings": {
 							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
+							"treatBooleanAsNumber": true
 						}
 					}
 				},
