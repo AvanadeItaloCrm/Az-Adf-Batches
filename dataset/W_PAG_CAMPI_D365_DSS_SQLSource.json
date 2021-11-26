@@ -2,7 +2,7 @@
 	"name": "W_PAG_CAMPI_D365_DSS_SQLSource",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzureSqlTestStagingArea",
+			"referenceName": "AzSqlOracle_Dev_StagingArea",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -220,8 +220,8 @@
 			}
 		],
 		"typeProperties": {
-			"schema": "ntv",
-			"table": "Payments"
+			"schema": "ntvdev",
+			"table": "PaymentFields"
 		}
 	}
 }
