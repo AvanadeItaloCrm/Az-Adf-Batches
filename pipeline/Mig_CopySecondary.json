@@ -242,6 +242,9 @@
 			},
 			"CopyId": {
 				"type": "int"
+			},
+			"BatchId": {
+				"type": "int"
 			}
 		},
 		"folder": {
