@@ -194,18 +194,6 @@
 								}
 							},
 							{
-								"sink": {
-									"name": "PAGAMENTO_CRM_ID",
-									"type": "String"
-								}
-							},
-							{
-								"sink": {
-									"name": "CODICE_RICEVUTA",
-									"type": "String"
-								}
-							},
-							{
 								"source": {
 									"name": "DeleteOwner",
 									"type": "String",
