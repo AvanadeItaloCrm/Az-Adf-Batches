@@ -1,0 +1,16 @@
+{
+	"name": "Az_AzureLinkedService_DEV_Dyn365",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"connectionString": "integrated security=False;encrypt=True;connection timeout=30;data source=crm-dev-sqlsrv.database.windows.net;initial catalog=crmdevdesdynamics365;user id=crmdevadmin",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIxNjNlY2IyMS05MGExLTRjMzEtODIxYy01ZWQ0YTEzNzY2M2UiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "integrationRuntimeSFH-DEV",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
