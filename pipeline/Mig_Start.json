@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Lookup1",
+				"name": "GetId",
 				"type": "Lookup",
 				"dependsOn": [],
 				"policy": {
@@ -24,6 +24,32 @@
 					"dataset": {
 						"referenceName": "Mig_OracleSyncLog",
 						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "Execute Pipeline1",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "GetId",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Mig_CopyPrimary",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"BatchId": {
+							"value": "@activity('GetId').output.value",
+							"type": "Expression"
+						}
 					}
 				}
 			}
