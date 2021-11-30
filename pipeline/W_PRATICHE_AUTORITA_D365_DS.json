@@ -107,189 +107,222 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "ntv_promotionnumber",
+									"name": "ntv_receptiondate",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_RICEZIONE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_authority",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
 								"sink": {
-									"name": "INTEGRAZIONE_ID",
+									"name": "AUTORITA",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "createdon",
-									"type": "DateTime",
-									"physicalType": "datetime"
+									"name": "ntv_dateandplace",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
-									"name": "DATA_CREAZIONE",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "createdby",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "CREATO_DA",
+									"name": "DATA_LUOGO",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "modifiedon",
-									"type": "DateTime",
-									"physicalType": "datetime"
+									"name": "ntv_acquirerdates",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
-									"name": "DATA_AGGIORNAMENTO",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "modifiedby",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "AGGIORNATO_DA",
+									"name": "DATI_ACQUIRER",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "ntv_enddate",
-									"type": "DateTime",
-									"physicalType": "datetime"
+									"name": "ntv_email",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
-									"name": "DATA_FINE",
-									"type": "DateTime"
+									"name": "EMAIL",
+									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "ntv_startdate",
-									"type": "DateTime",
-									"physicalType": "datetime"
+									"name": "ntv_fax",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
-									"name": "DATA_INIZIO",
-									"type": "DateTime"
+									"name": "FAX",
+									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "ntv_participationlimit",
+									"name": "ntv_address",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "INDIRIZZO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_heading",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "INTESTAZIONE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_notes",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NOTE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_authorityprotocolnumber",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "PROTOCOLLO_AUTORITA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_subject",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "OGGETTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_inprotocol",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "PROTOCOLLO_IN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_outprotocol",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "PROTOCOLLO_OUT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_phonenumber",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "TELEFONO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_acquirertypecode",
 									"type": "Int32",
 									"physicalType": "int"
 								},
 								"sink": {
-									"name": "LIMITE",
-									"type": "Decimal"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_promotiondescription",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "DESCRIZIONE",
+									"name": "TIPO_ACQUIRER",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "ntv_promotionmessageita",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "ntv_processingenddate",
+									"type": "DateTime",
+									"physicalType": "datetime"
 								},
 								"sink": {
-									"name": "MESSAGGIO_PROMO",
-									"type": "String"
+									"name": "DATA_FINE_LAVORAZIONE",
+									"type": "DateTime"
 								}
 							},
 							{
 								"source": {
-									"name": "ntv_promotionmessageeng",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "ntv_processingstartdate",
+									"type": "DateTime",
+									"physicalType": "datetime"
 								},
 								"sink": {
-									"name": "MESSAGGIO_PROMO_EN",
-									"type": "String"
+									"name": "DATA_INIZIO_LAVORAZIONE",
+									"type": "DateTime"
 								}
 							},
 							{
 								"source": {
-									"name": "ntv_name",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "ntv_sendingdate",
+									"type": "DateTime",
+									"physicalType": "datetime"
 								},
 								"sink": {
-									"name": "NOME_PROMO",
-									"type": "String"
+									"name": "DATA_INVIO",
+									"type": "DateTime"
 								}
 							},
 							{
 								"source": {
-									"name": "statuscode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "ntv_authoritypracticedate",
+									"type": "DateTime",
+									"physicalType": "datetime"
 								},
 								"sink": {
-									"name": "STATO",
-									"type": "String"
+									"name": "DATA_PRATICA_AUTORITA",
+									"type": "DateTime"
 								}
 							},
 							{
 								"source": {
-									"name": "ntv_promotiontypecode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "ntv_resendingdate",
+									"type": "DateTime",
+									"physicalType": "datetime"
 								},
 								"sink": {
-									"name": "TIPOLOGIA",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_imageurl",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "URL",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_communicationid",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "ID_COMUNICAZIONE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_adobecommunication",
-									"type": "Boolean",
-									"physicalType": "bit"
-								},
-								"sink": {
-									"name": "FLG_OMUNICAZIONE_ADOBE",
-									"type": "String"
+									"name": "DATA_ULTIMO_INVIO",
+									"type": "DateTime"
 								}
 							}
 						],
@@ -302,7 +335,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "W_PROMOZIONI_SQLSource",
+						"referenceName": "W_PRATICHE_AUTORITA_D365_DS_SQLSource",
 						"type": "DatasetReference"
 					}
 				],
