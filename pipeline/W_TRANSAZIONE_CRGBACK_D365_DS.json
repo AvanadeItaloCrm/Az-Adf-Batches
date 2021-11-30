@@ -107,122 +107,12 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "ntv_promotionnumber",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "INTEGRAZIONE_ID",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "createdon",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								},
-								"sink": {
-									"name": "DATA_CREAZIONE",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "createdby",
+									"name": "ntv_chargebackloadid",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
 								"sink": {
-									"name": "CREATO_DA",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "modifiedon",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								},
-								"sink": {
-									"name": "DATA_AGGIORNAMENTO",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "modifiedby",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "AGGIORNATO_DA",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_enddate",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								},
-								"sink": {
-									"name": "DATA_FINE",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_startdate",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								},
-								"sink": {
-									"name": "DATA_INIZIO",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_participationlimit",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "LIMITE",
-									"type": "Decimal"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_promotiondescription",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "DESCRIZIONE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_promotionmessageita",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "MESSAGGIO_PROMO",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_promotionmessageeng",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "MESSAGGIO_PROMO_EN",
+									"name": "CARICAMENTO_ID",
 									"type": "String"
 								}
 							},
@@ -233,15 +123,140 @@
 									"physicalType": "nvarchar"
 								},
 								"sink": {
-									"name": "NOME_PROMO",
+									"name": "NOME_FILE",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "statuscode",
+									"name": "ntv_receivingrequestdate",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_RICEZIONE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_disputedamount",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 38
+								},
+								"sink": {
+									"name": "IMPORTO_CONTESTATO",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_uploadresult",
 									"type": "Int32",
 									"physicalType": "int"
+								},
+								"sink": {
+									"name": "ESITO_ADDEBITO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_chargedamount",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 38
+								},
+								"sink": {
+									"name": "IMPORTO_ADDEBITO",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_cccircuit",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CIRCUITO_CC",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_note",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NOTE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_provider",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "PROVIDER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_commerciantnumber",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CODICE_COMMERCIANTE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_cardnumber",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NUMERO_CARTA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_providerdossiernumber",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NUMERO_PRATICA_PROVIDER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_authorizationnumber",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CODICE_AUTORIZZATIVO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_status",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "STATO",
@@ -250,45 +265,168 @@
 							},
 							{
 								"source": {
-									"name": "ntv_promotiontypecode",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "TIPOLOGIA",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_imageurl",
+									"name": "ntv_processinguser",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
 								"sink": {
-									"name": "URL",
+									"name": "UTENTE_LAVORAZIONE",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "ntv_communicationid",
+									"name": "ntv_handlingdate",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_GESTIONE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_workflowname",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
 								"sink": {
-									"name": "ID_COMUNICAZIONE",
+									"name": "NOME_WORKFLOW",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "ntv_adobecommunication",
-									"type": "Boolean",
-									"physicalType": "bit"
+									"name": "ntv_monthname",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
-									"name": "FLG_OMUNICAZIONE_ADOBE",
+									"name": "NOME_MESE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_ppidcase",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "PP_CASE_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_transactioncreateddate",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_CREAZIONE_TRANS",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_atkcopendate",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "ATKC_DATA_APERTURA",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_atkcreversaldate",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "ATKC_DATA_STORNO",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_grosscurrentamount",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 38
+								},
+								"sink": {
+									"name": "IMPORTO_LORDO",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_paypaloutcome",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "ESITO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_merchanttxnidtext",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "MERCHANT_TXN_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_payeridtext",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "PAYER_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_cbdisprsnnumber",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CB_DISP_RSN_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "overriddencreatedon",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_CARICAMENTO",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_idpayment",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "PAGAMENTO_NAV_ID",
 									"type": "String"
 								}
 							}
@@ -302,7 +440,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "W_PROMOZIONI_SQLSource",
+						"referenceName": "W_TRANSAZIONE_CRGBACK_D365_DS_SQLSource",
 						"type": "DatasetReference"
 					}
 				],
