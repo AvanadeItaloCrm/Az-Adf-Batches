@@ -107,9 +107,9 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "ntv_promotionnumber",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "Id",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
 								},
 								"sink": {
 									"name": "INTEGRAZIONE_ID",
@@ -118,100 +118,67 @@
 							},
 							{
 								"source": {
-									"name": "createdon",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								},
-								"sink": {
-									"name": "DATA_CREAZIONE",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "createdby",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "CREATO_DA",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "modifiedon",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								},
-								"sink": {
-									"name": "DATA_AGGIORNAMENTO",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "modifiedby",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "AGGIORNATO_DA",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_enddate",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								},
-								"sink": {
-									"name": "DATA_FINE",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_startdate",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								},
-								"sink": {
-									"name": "DATA_INIZIO",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_participationlimit",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "LIMITE",
-									"type": "Decimal"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_name",
+									"name": "ntv_email",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
 								"sink": {
-									"name": "NOME_PROMO",
+									"name": "EMAIL",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "statuscode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "ntv_lastname",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
-									"name": "STATO",
+									"name": "COGNOME",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_firstname",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NOME",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_mobilephone",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "TELEFONO_MOBILE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_homephone",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "TELEFONO_FISSO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_comment",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NOTE",
 									"type": "String"
 								}
 							}
@@ -225,7 +192,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "W_PROMOZIONI_SQLSource",
+						"referenceName": "W_CONTATTO_SR_WEB_D365_DS_SQLSource",
 						"type": "DatasetReference"
 					}
 				],
