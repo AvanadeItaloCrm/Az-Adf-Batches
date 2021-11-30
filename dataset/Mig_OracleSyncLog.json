@@ -1,0 +1,19 @@
+{
+	"name": "Mig_OracleSyncLog",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Mig_STGOracle",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migration"
+		},
+		"annotations": [],
+		"type": "OracleTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "MIG_SA",
+			"table": "M_SYNC_LOG"
+		}
+	}
+}
