@@ -13,7 +13,19 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": "SELECT ID\nFROM MIG_SA.M_SYNC_LOG\nWHERE STATO_SCRITTURA = 'Completato'",
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "Mig_OracleSyncLog",
+						"type": "DatasetReference"
+					}
+				}
 			}
 		],
 		"folder": {
