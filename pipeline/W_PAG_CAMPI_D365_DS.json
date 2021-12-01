@@ -55,7 +55,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[batchSync].[InizioSQL_ORACLEBatchSync]",
+					"storedProcedureName": "[batchSync].[FineSQL_ORACLEBatchSync]",
 					"storedProcedureParameters": {
 						"TabellaImport": {
 							"value": {
