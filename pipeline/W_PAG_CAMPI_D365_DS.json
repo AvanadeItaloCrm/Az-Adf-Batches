@@ -31,7 +31,7 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureLinkedService",
+					"referenceName": "AzureSqlTestStagingArea",
 					"type": "LinkedServiceReference"
 				}
 			},
@@ -55,7 +55,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[batchSync].[FineSQL_ORACLEBatchSync]",
+					"storedProcedureName": "[batchSync].[InizioSQL_ORACLEBatchSync]",
 					"storedProcedureParameters": {
 						"TabellaImport": {
 							"value": {
@@ -67,7 +67,7 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureLinkedService",
+					"referenceName": "AzureSqlTestStagingArea",
 					"type": "LinkedServiceReference"
 				}
 			},
