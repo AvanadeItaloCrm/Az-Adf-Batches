@@ -119,8 +119,8 @@
 							{
 								"source": {
 									"name": "IMEI",
-									"type": "String",
-									"physicalType": "varchar"
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "IMEI",
@@ -195,12 +195,12 @@
 							},
 							{
 								"source": {
-									"name": "DeleteOwner",
+									"name": "PAGAMENTO_CRM_ID",
 									"type": "String",
 									"physicalType": "varchar"
 								},
 								"sink": {
-									"name": "CANCELLATO_DA",
+									"name": "PAGAMENTO_CRM_ID",
 									"type": "String"
 								}
 							},
