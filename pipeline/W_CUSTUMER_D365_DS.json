@@ -31,7 +31,7 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureSqlTestStagingArea",
+					"referenceName": "Az_AzureLinkedService_DEV_Dyn365",
 					"type": "LinkedServiceReference"
 				}
 			},
@@ -67,7 +67,7 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureSqlTestStagingArea",
+					"referenceName": "Az_AzureLinkedService_DEV_Dyn365",
 					"type": "LinkedServiceReference"
 				}
 			},
