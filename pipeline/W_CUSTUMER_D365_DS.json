@@ -228,17 +228,6 @@
 							},
 							{
 								"source": {
-									"name": "ntv_partnershipcode",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "FLG_PARTNER_NTV",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
 									"name": "ntv_ispmr",
 									"type": "Boolean",
 									"physicalType": "bit"
