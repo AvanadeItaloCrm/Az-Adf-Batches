@@ -107,6 +107,17 @@
 						"mappings": [
 							{
 								"source": {
+									"name": "INTEGRAZIONE_ID",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "INTEGRAZIONE_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
 									"name": "IMEI",
 									"type": "String",
 									"physicalType": "varchar"
