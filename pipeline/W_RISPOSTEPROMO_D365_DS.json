@@ -107,7 +107,18 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "SinkCreatedOn",
+									"name": "Id",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "INTEGRAZIONE_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "createdon",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
@@ -129,7 +140,7 @@
 							},
 							{
 								"source": {
-									"name": "SinkModifiedOn",
+									"name": "modifiedon",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
