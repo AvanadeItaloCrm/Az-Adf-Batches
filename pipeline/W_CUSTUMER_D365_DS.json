@@ -31,7 +31,7 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "Az_AzureLinkedService_DEV_Dyn365",
+					"referenceName": "AzureLinkedService",
 					"type": "LinkedServiceReference"
 				}
 			},
@@ -67,7 +67,7 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "Az_AzureLinkedService_DEV_Dyn365",
+					"referenceName": "AzureLinkedService",
 					"type": "LinkedServiceReference"
 				}
 			},
