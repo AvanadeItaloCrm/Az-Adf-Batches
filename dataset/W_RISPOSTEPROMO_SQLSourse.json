@@ -2,7 +2,7 @@
 	"name": "W_RISPOSTEPROMO_SQLSourse",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzureSqlDYN365",
+			"referenceName": "Az_AzureLinkedService_DEV_Dyn365",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
