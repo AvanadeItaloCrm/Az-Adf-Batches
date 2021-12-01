@@ -700,6 +700,14 @@
 									"name": "DATA_ORA_INIZIO_CHIAMATA",
 									"type": "DateTime"
 								}
+							},
+							{
+								"source": {
+									"name": "Id"
+								},
+								"sink": {
+									"name": "INTEGRAZIONE_ID"
+								}
 							}
 						],
 						"typeConversion": true,
