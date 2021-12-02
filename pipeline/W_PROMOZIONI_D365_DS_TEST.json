@@ -378,7 +378,7 @@
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "W_Promozioni_OracleDB",
+						"referenceName": "TEST_W_Promozioni_OracleDB",
 						"type": "DatasetReference"
 					}
 				}
