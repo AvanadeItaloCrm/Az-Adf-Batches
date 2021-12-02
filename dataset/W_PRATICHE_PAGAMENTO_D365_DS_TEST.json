@@ -1,0 +1,12 @@
+{
+	"name": "W_PRATICHE_PAGAMENTO_D365_DS_TEST",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "OracleDB_TEST",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "OracleTable",
+		"schema": []
+	}
+}
