@@ -1,0 +1,83 @@
+{
+	"name": "TEST_W_PAG_INFOADD_D365_DS_SQLSource",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzSqlOracle_Test_StagingArea",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "INTEGRAZIONE_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "AdditionalInfoId",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "RecordLocator",
+				"type": "varchar"
+			},
+			{
+				"name": "PaymentID",
+				"type": "varchar"
+			},
+			{
+				"name": "ApplicationId",
+				"type": "varchar"
+			},
+			{
+				"name": "DeviceId",
+				"type": "varchar"
+			},
+			{
+				"name": "Ip",
+				"type": "varchar"
+			},
+			{
+				"name": "ChannelType",
+				"type": "varchar"
+			},
+			{
+				"name": "OS",
+				"type": "varchar"
+			},
+			{
+				"name": "IMEI",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "DeleteOwner",
+				"type": "varchar"
+			},
+			{
+				"name": "RecCreationDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "RecModifiedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "RecDeleted",
+				"type": "bit"
+			},
+			{
+				"name": "PAGAMENTO_CRM_ID",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "ntv",
+			"table": "v_AdditionalInfo"
+		}
+	}
+}

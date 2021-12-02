@@ -225,13 +225,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "W_PAG_INFOADD_D365_DS_SQLSource",
+						"referenceName": "TEST_W_PAG_INFOADD_D365_DS_SQLSource",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "W_PAG_INFOADD_OracleDB",
+						"referenceName": "TEST_W_PAG_INFOADD_OracleDB",
 						"type": "DatasetReference"
 					}
 				]
