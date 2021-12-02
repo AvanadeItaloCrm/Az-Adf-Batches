@@ -107,8 +107,7 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "PaymentFieldID",
-									"type": "Int64",
+									"name": "PayID",
 									"physicalType": "bigint"
 								},
 								"sink": {
@@ -140,8 +139,7 @@
 							},
 							{
 								"source": {
-									"name": "PayID",
-									"type": "Int64",
+									"name": "PaymentFieldID",
 									"physicalType": "bigint"
 								},
 								"sink": {
