@@ -2,7 +2,7 @@
 	"name": "W_RITARDO_TRENO_D365_DS_SQLSource",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzSqlOracle_Test_StagingArea",
+			"referenceName": "AzSqlOracle_Dev_StagingArea",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
