@@ -1,0 +1,476 @@
+{
+	"name": "TEST_W_TRANSAZIONE_CRGBACK_D365_DS_SQLSource",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzSqlOracle_Test_DesDYN365",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Id",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "SinkCreatedOn",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "SinkModifiedOn",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "statecode",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "statuscode",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ntv_uploadresult",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "createdonbehalfby",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "createdonbehalfby_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "modifiedonbehalfby",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "modifiedonbehalfby_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "owningteam",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "owningteam_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "createdby",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "createdby_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "modifiedby",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "modifiedby_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "owninguser",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "owninguser_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "owningbusinessunit",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "owningbusinessunit_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ownerid",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "ownerid_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_cbdisprsnnumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_sentthrought",
+				"type": "nvarchar"
+			},
+			{
+				"name": "versionnumber",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "ntv_provider",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_cbrvadossier",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_cbreceivingthrought",
+				"type": "nvarchar"
+			},
+			{
+				"name": "owningbusinessunitname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_sellchannel",
+				"type": "nvarchar"
+			},
+			{
+				"name": "modifiedbyyominame",
+				"type": "nvarchar"
+			},
+			{
+				"name": "createdon",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ntv_no3dsdebit",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_channel",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_operationmonth",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_cccircuit",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_attacheddocverification",
+				"type": "nvarchar"
+			},
+			{
+				"name": "modifiedonbehalfbyyominame",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_merchanttxnidtext",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_wfubmprotocol",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_ppidcase",
+				"type": "nvarchar"
+			},
+			{
+				"name": "owneridname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "overriddencreatedon",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ntv_receivingrequestdate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ntv_name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_secondjourneytrainnumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "createdonbehalfbyyominame",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_outcome",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_commerciantnumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_operationdate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ntv_workflowname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_status",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_sentemaildate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "timezoneruleversionnumber",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ntv_afpcprotocol",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_pnramount",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 0
+			},
+			{
+				"name": "ntv_transactioncreateddate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ntv_firstjourneytrainnumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_transactionamount",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 0
+			},
+			{
+				"name": "createdonbehalfbyname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_atkcreversaldate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ntv_note",
+				"type": "nvarchar"
+			},
+			{
+				"name": "utcconversiontimezonecode",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ntv_missingutilizationservicedoc",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_providerdossiernumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "modifiedon",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "importsequencenumber",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "owneridyominame",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_firstjourneydate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ntv_atkcopendate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ntv_requestexpirationdate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ntv_secondjourneysegment",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_providerfeedbackreceivingdate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "createdbyname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "modifiedonbehalfbyname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_paypaloutcome",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_cardnumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_monthname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_processinguser",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_secondjourneydate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ntv_resenddossierdate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ntv_authorizationnumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_requestremiderdate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "createdbyyominame",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_pnr",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_grosscurrentamount",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 0
+			},
+			{
+				"name": "ntv_requestemissiondate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ntv_debitvaluedate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ntv_disputedamountrange",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_disputedamount",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 0
+			},
+			{
+				"name": "owneridtype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "modifiedbyname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_firstjourneysegment",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_payeridtext",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_handlingdate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ntv_chargebackloadid",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "ntv_amountliquidationdate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ntv_idpayment",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_idtransaction",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_chargedamount",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 2
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "ntv_ntv_chargebackload"
+		}
+	}
+}

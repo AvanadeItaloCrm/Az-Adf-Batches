@@ -448,7 +448,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "W_TRANSAZIONE_CRGBACK_D365_DS_SQLSource",
+						"referenceName": "TEST_W_TRANSAZIONE_CRGBACK_D365_DS_SQLSource",
 						"type": "DatasetReference"
 					}
 				],
