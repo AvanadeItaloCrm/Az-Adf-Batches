@@ -5,11 +5,11 @@
 		"annotations": [],
 		"type": "AzureSqlDatabase",
 		"typeProperties": {
-			"connectionString": "integrated security=False;encrypt=True;connection timeout=30;data source=crm-test-sqlsrv.database.windows.net;initial catalog=crmteststagingarea;user id=crmtestadmin",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJiYThkNjhhMC1hNjdkLTQwYzItYTM5OS04ZGRlZTliMTU5ZDkiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"connectionString": "integrated security=False;encrypt=True;connection timeout=30;data source=crm-dev-sqlsrv.database.windows.net;initial catalog=crmdevstagingarea;user id=crmdevadmin",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI0NjFjZWJhMC1iOGMzLTQ2YjgtYjg4Zi02OWMyOWQzODZhNmYiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
-			"referenceName": "integrationRuntimeSFH-TEST",
+			"referenceName": "integrationRuntimeSFH-DEV",
 			"type": "IntegrationRuntimeReference"
 		}
 	}
