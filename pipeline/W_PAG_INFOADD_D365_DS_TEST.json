@@ -31,7 +31,7 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureSqlTestStagingArea",
+					"referenceName": "AzSqlOracle_Test_StagingArea",
 					"type": "LinkedServiceReference"
 				}
 			},
