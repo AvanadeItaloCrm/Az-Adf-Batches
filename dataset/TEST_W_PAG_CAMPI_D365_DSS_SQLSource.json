@@ -1,0 +1,51 @@
+{
+	"name": "TEST_W_PAG_CAMPI_D365_DSS_SQLSource",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzSqlOracle_Test_StagingArea",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "PaymentFieldID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "PayID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Value",
+				"type": "varchar"
+			},
+			{
+				"name": "RecCreationDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "RecModifiedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "RecDeleted",
+				"type": "bit"
+			}
+		],
+		"typeProperties": {
+			"schema": "ntv",
+			"table": "PaymentFields"
+		}
+	}
+}

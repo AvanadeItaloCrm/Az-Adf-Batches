@@ -157,13 +157,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "W_PAG_CAMPI_D365_DSS_SQLSource",
+						"referenceName": "TEST_W_PAG_CAMPI_D365_DSS_SQLSource",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "W_PAG_CAMPI_OracleDB",
+						"referenceName": "TEST_W_PAG_CAMPI_OracleDB",
 						"type": "DatasetReference"
 					}
 				]
