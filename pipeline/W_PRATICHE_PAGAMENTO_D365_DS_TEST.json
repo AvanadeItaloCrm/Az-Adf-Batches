@@ -1,5 +1,5 @@
 {
-	"name": "W_PRATICHE_PAGAMENTO_D365_DS_ORACLE_TEST",
+	"name": "W_PRATICHE_PAGAMENTO_D365_DS_TEST",
 	"properties": {
 		"activities": [
 			{
@@ -67,7 +67,7 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureLinkedService",
+					"referenceName": "AzSqlOracle_Test_StagingArea",
 					"type": "LinkedServiceReference"
 				}
 			},
@@ -339,13 +339,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "W_PRATICHE_PAGAMENTO_D365_DS_SQLSource",
+						"referenceName": "TEST_W_PRATICHE_PAGAMENTO_D365_DS_SQLSource",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "W_PRATICHE_PAGAMENTO_D365_DS_OracleDB",
+						"referenceName": "TEST_W_PRATICHE_PAGAMENTO_D365_DS_OracleDB",
 						"type": "DatasetReference"
 					}
 				]
@@ -380,7 +380,7 @@
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "W_PRATICHE_PAGAMENTO_D365_DS_TEST",
+						"referenceName": "TEST_W_PRATICHE_PAGAMENTO_D365_DS",
 						"type": "DatasetReference"
 					}
 				}
@@ -415,7 +415,7 @@
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "W_PRATICHE_PAGAMENTO_D365_DS_OracleDB",
+						"referenceName": "TEST_W_PRATICHE_PAGAMENTO_D365_DS_OracleDB",
 						"type": "DatasetReference"
 					}
 				}
