@@ -302,7 +302,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "W_PROMOZIONI_SQLSource",
+						"referenceName": "TEST_W_PROMOZIONI_SQLSource",
 						"type": "DatasetReference"
 					}
 				],
