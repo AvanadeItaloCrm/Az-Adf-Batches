@@ -350,6 +350,14 @@
 									"name": "PAGAMENTO_NAV_ID",
 									"type": "String"
 								}
+							},
+							{
+								"source": {
+									"name": "Id"
+								},
+								"sink": {
+									"name": "INTEGRAZIONE_ID"
+								}
 							}
 						],
 						"typeConversion": true,
