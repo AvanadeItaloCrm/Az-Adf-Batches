@@ -6,10 +6,10 @@
 		"type": "Oracle",
 		"typeProperties": {
 			"connectionString": "host=172.26.59.183;port=1521;sid=bisdev;user id=SA_D365_SVIL",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIwYmFiOTVkMi1mMjc1LTRjZGQtYmE3NC00MzVhYmZmZDZlNzciLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIwNThjMDYwZS0wZGYyLTRkMmEtYjUxYi1lMzgzNmJmMDE4NTIiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
-			"referenceName": "integrationRuntimeSFH-TEST",
+			"referenceName": "integrationRuntimeSFH-DEV",
 			"type": "IntegrationRuntimeReference"
 		}
 	}
