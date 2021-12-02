@@ -233,7 +233,7 @@
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "W_PAG_CAMPI_OracleDB",
+						"referenceName": "TEST_W_PAG_CAMPI_OracleDB",
 						"type": "DatasetReference"
 					}
 				}
