@@ -1,0 +1,465 @@
+{
+	"name": "W_TRANSAZIONE_FRODI_D365_DS_TEST",
+	"properties": {
+		"activities": [
+			{
+				"name": "Start SP",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[batchSync].[InizioSQL_ORACLEBatchSync]",
+					"storedProcedureParameters": {
+						"NomeFile": {
+							"value": "",
+							"type": "String"
+						},
+						"TabellaImport": {
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureLinkedService",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Finally SP",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "End Oracle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[batchSync].[FineSQL_ORACLEBatchSync]",
+					"storedProcedureParameters": {
+						"TabellaImport": {
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureLinkedService",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Sql To Oracle",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Start Oracle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "OracleSink",
+						"writeBatchSize": 10000,
+						"preCopyScript": "truncate table sa_d365_svil.W_TRANSAZIONE_FRODI_D365_DS"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "ntv_fraudloadid",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "CARICAMENTO_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_sign",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "INSEGNA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_setefimerchantnumber",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CODICE_ESERCENTE_SETEFI",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_pan",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "PAN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_issuercountrynumber",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CODICE_NAZ_SOC_EMITTENTE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_amount",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 38
+								},
+								"sink": {
+									"name": "IMPORTO",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_purchasedate",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_ACQUISTO",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_fraudwarningdate",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_SEGNALAZIONE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_ordernumber",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NUMERO_ORDINE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_note",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NOTE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_workflowname",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NOME_WORKFLOW",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_monthname",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NOME_MESE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_ppcaseidtext",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "PP_CASE_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_operationdate",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_CREAZIONE_TRANS",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_atkcopendate",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "ATKC_DATA_APERTURA",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_atkcreversaldate",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "ATKC_DATA_STORNO",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_grosscurramount",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 38
+								},
+								"sink": {
+									"name": "IMPORTO_LORDO",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_loadresultcode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "ESITO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_merchanttxnidtext",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "MERCHANT_TXN_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_payeridtext",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "PAYER_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "overriddencreatedon",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_CARICAMENTO",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_idpayment",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "PAGAMENTO_NAV_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Id"
+								},
+								"sink": {
+									"name": "INTEGRAZIONE_ID"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": true
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "W_TRANSAZIONE_FRODI_D365_DS_SQLSource",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "W_TRANSAZIONE_FRODI_D365_DS_OracleDB",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Start Oracle",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Start SP",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": {
+							"value": "@concat('SELECT sa_d365_svil.iniziasync (''',\nvariables('TableName'),\n''') FROM DUAL;')",
+							"type": "Expression"
+						},
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "W_TRANSAZIONE_FRODI_D365_DS_OracleDB",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "End Oracle",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Sql To Oracle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": {
+							"value": "@concat('SELECT sa_d365_svil.finesync (''',\nvariables('TableName'),\n''') FROM DUAL;')",
+							"type": "Expression"
+						},
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "W_TRANSAZIONE_FRODI_D365_DS_OracleDB",
+						"type": "DatasetReference"
+					}
+				}
+			}
+		],
+		"variables": {
+			"TableName": {
+				"type": "String",
+				"defaultValue": "W_TRANSAZIONE_FRODI_D365_DS"
+			}
+		},
+		"folder": {
+			"name": "Az_IntegrazioniBatch_Oracle"
+		},
+		"annotations": []
+	}
+}
