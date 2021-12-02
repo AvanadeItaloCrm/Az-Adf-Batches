@@ -410,7 +410,7 @@
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "W_TRANSAZIONE_FRODI_D365_DS_OracleDB",
+						"referenceName": "TEST_W_TRANSAZIONE_FRODI_D365_DS_OracleDB",
 						"type": "DatasetReference"
 					}
 				}
