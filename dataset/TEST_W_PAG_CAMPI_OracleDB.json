@@ -10,7 +10,7 @@
 		"schema": [],
 		"typeProperties": {
 			"schema": "SA_D365_SVIL",
-			"table": "W_PAG_INFOADD_D365_DS"
+			"table": "W_PAG_CAMPI_D365_DS"
 		}
 	}
 }
