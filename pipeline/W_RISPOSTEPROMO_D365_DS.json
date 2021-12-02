@@ -93,6 +93,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
+						"sqlReaderQuery": "SELECT TOP 50 Id AS INTEGRAZIONE_ID,Id AS ID_CLIENTE,ntv_contactid AS CODICE_CLIENTE, ntv_responseoutcome AS RISPOSTA, ntv_channel AS CANALE, ntv_note AS NOTE, modifiedby AS AGGIORNATO_DA, createdby AS CREATO_DA, ntv_reponsedate AS DATA_RISPOSTA, ntv_promotionid AS ID_PROMO, modifiedon AS DATA_AGGIORNAMENTO, ntv_bookingid AS PNR, createdon AS DATA_AGGIORNAMENTO\nFROM ntv_promoresponse\n",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
