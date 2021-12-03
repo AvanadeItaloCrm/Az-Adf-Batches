@@ -93,6 +93,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
+						"sqlReaderQuery": "SELECT ntv_ntv_promoter.modifiedon, ntv_ntv_promoter.ntv_lastname, ntv_ntv_promoter.ntv_id, ntv_ntv_promoter.ntv_name, ntv_ntv_promoter.statuscode, ntv_ntv_promoter.Id,\nntv_ntv_station.ntv_name AS ntv_station_name, ntv_ntv_station.ntv_codenavitaire\nFROM ntv_ntv_station RIGHT OUTER JOIN\nntv_ntv_promoter ON ntv_ntv_station.ntv_stationid = ntv_ntv_promoter.ntv_stationid",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -173,7 +174,7 @@
 							},
 							{
 								"source": {
-									"name": "owninguser_entitytype",
+									"name": "ntv_station_name",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -185,7 +186,8 @@
 							{
 								"source": {
 									"name": "ntv_codenavitaire",
-									"physicalType": "uniqueidentifier"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "STAZIONE",
@@ -281,6 +283,77 @@
 						"referenceName": "W_PROMOTER_BSS_D365_DS_OracleDB",
 						"type": "DatasetReference"
 					}
+				}
+			},
+			{
+				"name": "End Oracle_copy1",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Sql To Oracle",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": {
+							"value": "@concat('SELECT sa_d365_svil.finesync (''',\nvariables('TableName'),\n''') FROM DUAL;')",
+							"type": "Expression"
+						},
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "W_PROMOTER_BSS_D365_DS_OracleDB",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "Finally SP_copy1",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "End Oracle_copy1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[batchSync].[FineSQL_ORACLEBatchSync]",
+					"storedProcedureParameters": {
+						"TabellaImport": {
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureLinkedService",
+					"type": "LinkedServiceReference"
 				}
 			}
 		],
