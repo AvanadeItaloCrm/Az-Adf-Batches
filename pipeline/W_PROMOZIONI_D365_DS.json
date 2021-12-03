@@ -413,7 +413,7 @@
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "W_RISPOSTEPROMO_Oracle",
+						"referenceName": "W_Promozioni_OracleDB",
 						"type": "DatasetReference"
 					}
 				}
