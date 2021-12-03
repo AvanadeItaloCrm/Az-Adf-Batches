@@ -363,7 +363,7 @@
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "W_PRATICHE_AUTORITA_D365_DS_OracleDB",
+						"referenceName": "W_PROMOTER_BSS_D365_DS_OracleDB",
 						"type": "DatasetReference"
 					}
 				}
