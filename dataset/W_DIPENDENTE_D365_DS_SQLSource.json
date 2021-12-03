@@ -1,0 +1,285 @@
+{
+	"name": "W_DIPENDENTE_D365_DS_SQLSource",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Az_AzureLinkedService_DEV_Dyn365",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Id",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "SinkCreatedOn",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "SinkModifiedOn",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "statecode",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "statuscode",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "modifiedonbehalfby",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "modifiedonbehalfby_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "owningteam",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "owningteam_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "owninguser",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "owninguser_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "createdonbehalfby",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "createdonbehalfby_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "owningbusinessunit",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "owningbusinessunit_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "modifiedby",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "modifiedby_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "createdby",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "createdby_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ownerid",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "ownerid_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "createdonbehalfbyyominame",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_jobtitle",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_voip",
+				"type": "nvarchar"
+			},
+			{
+				"name": "owneridname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_email",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_mobilephone",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_positiontype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_userid",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_badge",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_employeeid",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "importsequencenumber",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ntv_surname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_contracthours",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 2
+			},
+			{
+				"name": "ntv_firstname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "timezoneruleversionnumber",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "utcconversiontimezonecode",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "createdbyyominame",
+				"type": "nvarchar"
+			},
+			{
+				"name": "modifiedbyname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "versionnumber",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "modifiedbyyominame",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_fax",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_birthdate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ntv_sapuserid",
+				"type": "nvarchar"
+			},
+			{
+				"name": "owneridtype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "owningbusinessunitname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_stationoffice",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_contractstartdate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "owneridyominame",
+				"type": "nvarchar"
+			},
+			{
+				"name": "modifiedon",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ntv_instantmessaging",
+				"type": "nvarchar"
+			},
+			{
+				"name": "modifiedonbehalfbyyominame",
+				"type": "nvarchar"
+			},
+			{
+				"name": "createdbyname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "createdon",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ntv_phone",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_contractenddate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ntv_name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "modifiedonbehalfbyname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_employeecode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "createdonbehalfbyname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "overriddencreatedon",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "ntv_ntv_employee"
+		}
+	}
+}
