@@ -1,0 +1,397 @@
+{
+	"name": "W_ATTIVITA_SR_D365_DS_SQLSource",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Az_AzureLinkedService_DEV_Dyn365",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Id",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "SinkCreatedOn",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "SinkModifiedOn",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "statecode",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "statuscode",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "prioritycode",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "softphon_iwsmedianame",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "isbilled",
+				"type": "bit"
+			},
+			{
+				"name": "isworkflowcreated",
+				"type": "bit"
+			},
+			{
+				"name": "isregularactivity",
+				"type": "bit"
+			},
+			{
+				"name": "createdonbehalfby",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "createdonbehalfby_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "modifiedonbehalfby",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "modifiedonbehalfby_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "owningteam",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "owningteam_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "regardingobjectid",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "regardingobjectid_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "modifiedby",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "modifiedby_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "slaid",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "slaid_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "transactioncurrencyid",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "transactioncurrencyid_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "slainvokedid",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "slainvokedid_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "createdby",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "createdby_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "serviceid",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "serviceid_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "owninguser",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "owninguser_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "owningbusinessunit",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "owningbusinessunit_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ownerid",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "ownerid_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "versionnumber",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "createdon",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "owningbusinessunitname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "traversedpath",
+				"type": "nvarchar"
+			},
+			{
+				"name": "modifiedbyyominame",
+				"type": "nvarchar"
+			},
+			{
+				"name": "owneridtype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "crmtaskassigneduniqueid",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "modifiedbyname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "onholdtime",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "regardingobjectidyominame",
+				"type": "nvarchar"
+			},
+			{
+				"name": "owneridname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "overriddencreatedon",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "scheduledstart",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "actualstart",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "createdonbehalfbyyominame",
+				"type": "nvarchar"
+			},
+			{
+				"name": "subscriptionid",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "exchangerate",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 10
+			},
+			{
+				"name": "subcategory",
+				"type": "nvarchar"
+			},
+			{
+				"name": "timezoneruleversionnumber",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "regardingobjectidname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "activityadditionalparams",
+				"type": "nvarchar"
+			},
+			{
+				"name": "createdonbehalfbyname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "activitytypecode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "utcconversiontimezonecode",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "importsequencenumber",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "owneridyominame",
+				"type": "nvarchar"
+			},
+			{
+				"name": "scheduleddurationminutes",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "processid",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "description",
+				"type": "nvarchar"
+			},
+			{
+				"name": "slaname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "createdbyname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "regardingobjecttypecode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "sortdate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "modifiedon",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "lastonholdtime",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "stageid",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "category",
+				"type": "nvarchar"
+			},
+			{
+				"name": "percentcomplete",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "createdbyyominame",
+				"type": "nvarchar"
+			},
+			{
+				"name": "transactioncurrencyidname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "actualend",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "activityid",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "modifiedonbehalfbyname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "serviceidname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "slainvokedidname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "scheduledend",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "modifiedonbehalfbyyominame",
+				"type": "nvarchar"
+			},
+			{
+				"name": "actualdurationminutes",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "subject",
+				"type": "nvarchar"
+			},
+			{
+				"name": "softphon_iwsinteractionid",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "ntv_task"
+		}
+	}
+}
