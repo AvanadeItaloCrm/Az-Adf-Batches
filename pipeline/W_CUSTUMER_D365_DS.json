@@ -766,7 +766,7 @@
 					"source": {
 						"type": "OracleSource",
 						"oracleReaderQuery": {
-							"value": "@concat('SELECT sa_d365_svil.errore_sync (''',\nvariables('TableName'),\n''',''pipeline().RunId'') FROM DUAL;')",
+							"value": "@concat('SELECT sa_d365_svil.errore_sync (''',\nvariables('TableName'),\n''',''Errore'') FROM DUAL;')",
 							"type": "Expression"
 						},
 						"partitionOption": "None",

@@ -417,6 +417,10 @@
 			"TableName": {
 				"type": "String",
 				"defaultValue": "W_RISPOSTEPROMO_D365_DS"
+			},
+			"Errore": {
+				"type": "String",
+				"defaultValue": "@pipeline().RunId"
 			}
 		},
 		"folder": {

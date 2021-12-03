@@ -634,7 +634,10 @@
 							"type": "String"
 						},
 						"TabellaImport": {
-							"value": "@variables('TableName')",
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
 							"type": "String"
 						}
 					}
@@ -679,7 +682,10 @@
 							"type": "String"
 						},
 						"TabellaImport": {
-							"value": "@variables('TableName')",
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
 							"type": "String"
 						}
 					}
