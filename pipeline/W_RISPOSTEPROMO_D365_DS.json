@@ -119,9 +119,9 @@
 							},
 							{
 								"source": {
-									"name": "ID_CLIENTE",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "createdon",
+									"type": "DateTime",
+									"physicalType": "datetime"
 								},
 								"sink": {
 									"name": "DATA_CREAZIONE",
@@ -129,24 +129,44 @@
 								}
 							},
 							{
+								"source": {
+									"name": "createdby",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
 								"sink": {
 									"name": "CREATO_DA",
 									"type": "String"
 								}
 							},
 							{
+								"source": {
+									"name": "modifiedon",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
 								"sink": {
 									"name": "DATA_AGGIORNAMENTO",
 									"type": "DateTime"
 								}
 							},
 							{
+								"source": {
+									"name": "modifiedby",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
 								"sink": {
 									"name": "AGGIORNATO_DA",
 									"type": "String"
 								}
 							},
 							{
+								"source": {
+									"name": "ntv_reponsedate",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
 								"sink": {
 									"name": "DATA_RISPOSTA",
 									"type": "DateTime"
@@ -164,42 +184,66 @@
 								}
 							},
 							{
+								"source": {
+									"name": "ntv_promotionid",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
 								"sink": {
 									"name": "ID_PROMO",
 									"type": "String"
 								}
 							},
 							{
+								"source": {
+									"name": "ntv_note",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
 								"sink": {
 									"name": "NOTE",
 									"type": "String"
 								}
 							},
 							{
+								"source": {
+									"name": "ntv_responseoutcome",
+									"type": "Int32",
+									"physicalType": "int"
+								},
 								"sink": {
 									"name": "RISPOSTA",
 									"type": "String"
 								}
 							},
 							{
+								"source": {
+									"name": "ntv_channel",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
 								"sink": {
 									"name": "CANALE",
 									"type": "String"
 								}
 							},
 							{
-								"sink": {
-									"name": "CLUSTER",
-									"type": "String"
-								}
-							},
-							{
+								"source": {
+									"name": "ntv_contactid",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
 								"sink": {
 									"name": "CODICE_CLIENTE",
 									"type": "String"
 								}
 							},
 							{
+								"source": {
+									"name": "ntv_bookingid",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
 								"sink": {
 									"name": "PNR",
 									"type": "String"
