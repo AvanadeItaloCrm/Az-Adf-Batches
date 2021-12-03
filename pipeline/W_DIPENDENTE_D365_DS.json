@@ -327,12 +327,80 @@
 						"type": "DatasetReference"
 					}
 				}
+			},
+			{
+				"name": "End Oracle_copy1",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Sql To Oracle",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": {
+							"value": "@concat('SELECT sa_d365_svil.finesync (''',\nvariables('ErroreTabella'),\n''') FROM DUAL;')",
+							"type": "Expression"
+						},
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "W_DIPENDENTE_D365_DS_OracleDB",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "Finally SP_copy1",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[batchSync].[FineSQL_ORACLEBatchSync]",
+					"storedProcedureParameters": {
+						"TabellaImport": {
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureLinkedService",
+					"type": "LinkedServiceReference"
+				}
 			}
 		],
 		"variables": {
 			"TableName": {
 				"type": "String",
 				"defaultValue": "W_DIPENDENTE_D365_DS"
+			},
+			"ErroreTabella": {
+				"type": "String",
+				"defaultValue": "ERRORE_W_DIPENDENTE_D365_DS"
 			}
 		},
 		"folder": {
