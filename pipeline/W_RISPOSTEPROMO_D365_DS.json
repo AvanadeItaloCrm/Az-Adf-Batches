@@ -93,7 +93,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "SELECT  Id,Id AS ID_CLIENTE,ntv_contactid, ntv_responseoutcome, ntv_channel , ntv_note , modifiedby , createdby , ntv_reponsedate , ntv_promotionid , modifiedon, ntv_bookingid, createdon\nFROM  dbo.ntv_ntv_promoresponse",
+						"sqlReaderQuery": "SELECT  Id, createdon , createdby , modifiedon , modifiedby , ntv_reponsedate , Id AS ID_CLIENTE, ntv_promotionid , ntv_note , ntv_responseoutcome, ntv_channel ,  ntv_contactid , ntv_bookingid\nFROM  dbo.ntv_ntv_promoresponse",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -108,7 +108,9 @@
 						"mappings": [
 							{
 								"source": {
-									"name": ""
+									"name": "Id",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
 								},
 								"sink": {
 									"name": "INTEGRAZIONE_ID",
@@ -117,7 +119,9 @@
 							},
 							{
 								"source": {
-									"name": ""
+									"name": "ID_CLIENTE",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
 								},
 								"sink": {
 									"name": "DATA_CREAZIONE",
@@ -125,36 +129,24 @@
 								}
 							},
 							{
-								"source": {
-									"name": ""
-								},
 								"sink": {
 									"name": "CREATO_DA",
 									"type": "String"
 								}
 							},
 							{
-								"source": {
-									"name": ""
-								},
 								"sink": {
 									"name": "DATA_AGGIORNAMENTO",
 									"type": "DateTime"
 								}
 							},
 							{
-								"source": {
-									"name": ""
-								},
 								"sink": {
 									"name": "AGGIORNATO_DA",
 									"type": "String"
 								}
 							},
 							{
-								"source": {
-									"name": ""
-								},
 								"sink": {
 									"name": "DATA_RISPOSTA",
 									"type": "DateTime"
@@ -162,53 +154,52 @@
 							},
 							{
 								"source": {
-									"name": ""
+									"name": "ID_CLIENTE",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
 								},
+								"sink": {
+									"name": "ID_CLIENTE",
+									"type": "String"
+								}
+							},
+							{
 								"sink": {
 									"name": "ID_PROMO",
 									"type": "String"
 								}
 							},
 							{
-								"source": {
-									"name": ""
-								},
 								"sink": {
 									"name": "NOTE",
 									"type": "String"
 								}
 							},
 							{
-								"source": {
-									"name": ""
-								},
 								"sink": {
 									"name": "RISPOSTA",
 									"type": "String"
 								}
 							},
 							{
-								"source": {
-									"name": ""
-								},
 								"sink": {
 									"name": "CANALE",
 									"type": "String"
 								}
 							},
 							{
-								"source": {
-									"name": ""
-								},
+								"sink": {
+									"name": "CLUSTER",
+									"type": "String"
+								}
+							},
+							{
 								"sink": {
 									"name": "CODICE_CLIENTE",
 									"type": "String"
 								}
 							},
 							{
-								"source": {
-									"name": ""
-								},
 								"sink": {
 									"name": "PNR",
 									"type": "String"
