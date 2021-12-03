@@ -245,7 +245,7 @@
 					{
 						"activity": "Sql To Oracle",
 						"dependencyConditions": [
-							"Succeeded"
+							"Failed"
 						]
 					}
 				],
