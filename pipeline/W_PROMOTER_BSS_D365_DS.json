@@ -93,7 +93,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "SELECT ntv_ntv_promoter.modifiedon, ntv_ntv_promoter.ntv_lastname, ntv_ntv_promoter.ntv_id, ntv_ntv_promoter.ntv_name, ntv_ntv_promoter.statuscode, ntv_ntv_promoter.Id,\nntv_ntv_station.ntv_name AS ntv_station_name, ntv_ntv_station.ntv_codenavitaire\nFROM ntv_ntv_station RIGHT OUTER JOIN\nntv_ntv_promoter ON ntv_ntv_station.ntv_stationid = ntv_ntv_promoter.ntv_stationid",
+						"sqlReaderQuery": "SELECT ntv_ntv_promoter.modifiedon, ntv_ntv_promoter.ntv_lastname, ntv_ntv_promoter.ntv_id, ntv_ntv_promoter.ntv_name, ntv_ntv_promoter.statuscode, ntv_ntv_promoter.Id SUBSTRING(convert(varchar(50),dbo.ntv_ntv_promoter.Id), 0, 15) AS Id,\nntv_ntv_station.ntv_name AS ntv_station_name, ntv_ntv_station.ntv_codenavitaire\nFROM ntv_ntv_station RIGHT OUTER JOIN\nntv_ntv_promoter ON ntv_ntv_station.ntv_stationid = ntv_ntv_promoter.ntv_stationid",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
