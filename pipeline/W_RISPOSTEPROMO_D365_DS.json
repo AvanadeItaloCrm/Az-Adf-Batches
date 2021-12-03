@@ -93,7 +93,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "SELECT  Id AS INTEGRAZIONE_ID,Id AS ID_CLIENTE,ntv_contactid AS CODICE_CLIENTE, ntv_responseoutcome AS RISPOSTA, ntv_channel AS CANALE, ntv_note AS NOTE, modifiedby AS AGGIORNATO_DA, createdby AS CREATO_DA, ntv_reponsedate AS DATA_RISPOSTA, ntv_promotionid AS ID_PROMO, modifiedon AS DATA_AGGIORNAMENTO, ntv_bookingid AS PNR, createdon AS DATA_AGGIORNAMENTO\nFROM ntv_promoresponse\n",
+						"sqlReaderQuery": "SELECT  ntv_promoresponse.Id,ntv_promoresponse.Id AS ID_CLIENTE,ntv_promoresponse.ntv_contactid, ntv_promoresponse.ntv_responseoutcome, ntv_promoresponse.ntv_channel , ntv_promoresponse.ntv_note , ntv_promoresponse.modifiedby , ntv_promoresponse.createdby , ntv_promoresponse.ntv_reponsedate , ntv_promoresponse.ntv_promotionid , ntv_promoresponse.modifiedon, ntv_promoresponse.ntv_bookingid, ntv_promoresponse.createdon\nFROM ntv_promoresponse",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
