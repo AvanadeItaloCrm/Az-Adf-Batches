@@ -41,7 +41,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"expression": {
-						"value": "@equals(activity('GetId').output.firstRow.ID, 100000000)",
+						"value": "@not(equals(activity('GetId').output.firstRow.ID, 100000000))",
 						"type": "Expression"
 					},
 					"ifTrueActivities": [
