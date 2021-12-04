@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "OracleSource",
-						"oracleReaderQuery": "SELECT ID\nFROM MIG_SA.M_SYNC_LOG\nWHERE STATO_SCRITTURA = 'Completato'",
+						"oracleReaderQuery": "SELECT ID\nFROM MIG_SA.M_SYNC_LOG\nWHERE STATO_SCRITTURA = 'Completato' AND DT_FINE_SCRITTURA IS NOT NULL\n",
 						"partitionOption": "None",
 						"queryTimeout": "02:00:00"
 					},
@@ -28,8 +28,8 @@
 				}
 			},
 			{
-				"name": "Execute Pipeline1",
-				"type": "ExecutePipeline",
+				"name": "If Condition1",
+				"type": "IfCondition",
 				"dependsOn": [
 					{
 						"activity": "GetId",
@@ -40,17 +40,31 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
-					"pipeline": {
-						"referenceName": "Mig_CopyPrimary",
-						"type": "PipelineReference"
+					"expression": {
+						"value": "@empty(activity('GetId').output.value)\n",
+						"type": "Expression"
 					},
-					"waitOnCompletion": true,
-					"parameters": {
-						"BatchId": {
-							"value": "@activity('GetId').output.value",
-							"type": "Expression"
+					"ifFalseActivities": [
+						{
+							"name": "Start Primary",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "Mig_CopyPrimary",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"BatchId": {
+										"value": "@activity('GetId').output.value",
+										"type": "Expression"
+									}
+								}
+							}
 						}
-					}
+					]
 				}
 			}
 		],
