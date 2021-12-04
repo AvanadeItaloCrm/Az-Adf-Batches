@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "OracleSource",
-						"oracleReaderQuery": "SELECT ID\nFROM MIG_SA.M_SYNC_LOG\nWHERE STATO_SCRITTURA = 'Completato' AND DT_FINE_SCRITTURA IS NOT NULL\n",
+						"oracleReaderQuery": "SELECT ID\nFROM MIG_SA.M_SYNC_LOG\nWHERE STATO_SCRITTURA = 'Completato' \nAND DT_FINE_SCRITTURA IS NOT NULL\nAND STATO_LETTURA <> 'Completato' \nORDER BY ID",
 						"partitionOption": "None",
 						"queryTimeout": "02:00:00"
 					},
@@ -41,7 +41,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"expression": {
-						"value": "@empty(activity('GetId').output.value)\n",
+						"value": "@activity('GetId').output.contains('firstRow')",
 						"type": "Expression"
 					},
 					"ifFalseActivities": [
