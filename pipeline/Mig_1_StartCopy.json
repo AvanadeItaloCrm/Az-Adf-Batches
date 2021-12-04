@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "OracleSource",
-						"oracleReaderQuery": "SELECT ID\nFROM MIG_SA.M_SYNC_LOG\nWHERE STATO_SCRITTURA = 'Completato' \nAND DT_FINE_SCRITTURA IS NOT NULL\nAND STATO_LETTURA <> 'Completato' \nORDER BY ID",
+						"oracleReaderQuery": "SELECT  ID\nFROM MIG_SA.M_SYNC_LOG\nWHERE STATO_SCRITTURA = 'Completato' \nAND DT_FINE_SCRITTURA IS NOT NULL\nAND STATO_LETTURA <> 'Completato' \nUNION ALL\nSELECT 100000000 AS ID FROM DUAL\nORDER BY ID",
 						"partitionOption": "None",
 						"queryTimeout": "02:00:00"
 					},
@@ -41,10 +41,10 @@
 				"userProperties": [],
 				"typeProperties": {
 					"expression": {
-						"value": "@activity('GetId').output.contains('firstRow')",
+						"value": "@equals(activity('GetId').output.firstRow.ID, 100000000)",
 						"type": "Expression"
 					},
-					"ifFalseActivities": [
+					"ifTrueActivities": [
 						{
 							"name": "Start Primary",
 							"type": "ExecutePipeline",
@@ -58,7 +58,7 @@
 								"waitOnCompletion": true,
 								"parameters": {
 									"BatchId": {
-										"value": "@activity('GetId').output.value",
+										"value": "@activity('GetId').output.firstRow.ID",
 										"type": "Expression"
 									}
 								}
