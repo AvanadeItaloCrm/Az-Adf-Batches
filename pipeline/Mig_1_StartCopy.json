@@ -28,7 +28,7 @@
 				}
 			},
 			{
-				"name": "If Condition1",
+				"name": "Copy",
 				"type": "IfCondition",
 				"dependsOn": [
 					{
@@ -58,6 +58,46 @@
 								"waitOnCompletion": true,
 								"parameters": {
 									"BatchId": {
+										"value": "@activity('GetId').output.firstRow.ID",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Trasfrormations",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "Copy",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@not(equals(activity('GetId').output.firstRow.ID, 100000000))",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Start Trasformations",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "Mig_Trasformations",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"ID": {
 										"value": "@activity('GetId').output.firstRow.ID",
 										"type": "Expression"
 									}
