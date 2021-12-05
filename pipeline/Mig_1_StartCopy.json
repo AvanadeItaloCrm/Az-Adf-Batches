@@ -108,8 +108,8 @@
 				}
 			},
 			{
-				"name": "UpdateID",
-				"type": "Lookup",
+				"name": "Trasfrormations_copy1",
+				"type": "IfCondition",
 				"dependsOn": [
 					{
 						"activity": "Trasfrormations",
@@ -118,28 +118,42 @@
 						]
 					}
 				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
 				"userProperties": [],
 				"typeProperties": {
-					"source": {
-						"type": "AzureSqlSource",
-						"sqlReaderQuery": {
-							"value": "UPDATE [log].[CopyResults]\nSET BATCHID = 1\nWHERE BATCHID = @activity('GetId').output.firstRow.ID\n\nSELECT BATCHID FROM [log].[CopyResults]\nWHERE BATCHID = @activity('GetId').output.firstRow.ID",
-							"type": "Expression"
-						},
-						"queryTimeout": "02:00:00",
-						"partitionOption": "None"
+					"expression": {
+						"value": "@not(equals(activity('GetId').output.firstRow.ID, 100000000))",
+						"type": "Expression"
 					},
-					"dataset": {
-						"referenceName": "Mig_AzureCopyConfig",
-						"type": "DatasetReference"
-					}
+					"ifTrueActivities": [
+						{
+							"name": "UpdateID",
+							"type": "Lookup",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "AzureSqlSource",
+									"sqlReaderQuery": {
+										"value": "UPDATE [log].[CopyResults]\nSET BATCHID = 1\nWHERE BATCHID = @{activity('GetId').output.firstRow.ID}\n\nSELECT BATCHID FROM [log].[CopyResults]\nWHERE BATCHID = @{activity('GetId').output.firstRow.ID}",
+										"type": "Expression"
+									},
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"dataset": {
+									"referenceName": "Mig_AzureCopyConfig",
+									"type": "DatasetReference"
+								}
+							}
+						}
+					]
 				}
 			}
 		],
