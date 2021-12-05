@@ -126,7 +126,7 @@
 					},
 					"ifTrueActivities": [
 						{
-							"name": "UpdateID",
+							"name": "LookUpUpdateId",
 							"type": "Lookup",
 							"dependsOn": [],
 							"policy": {
