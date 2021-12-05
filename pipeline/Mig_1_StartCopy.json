@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "OracleSource",
-						"oracleReaderQuery": "SELECT  ID\nFROM MIG_SA.M_SYNC_LOG\nWHERE STATO_SCRITTURA = 'Completato' \nAND DT_FINE_SCRITTURA IS NOT NULL\nAND STATO_LETTURA <> 'Completato' \nUNION ALL\nSELECT 100000000 AS ID FROM DUAL\nORDER BY ID",
+						"oracleReaderQuery": "SELECT  ID\nFROM MIG_SA.M_SYNC_LOG\nWHERE STATO_SCRITTURA = 'Completato' \nAND DT_FINE_SCRITTURA IS NOT NULL\nAND STATO_LETTURA <> 'Completato' \nUNION ALL\nSELECT 1 AS ID FROM DUAL\nORDER BY ID",
 						"partitionOption": "None",
 						"queryTimeout": "02:00:00"
 					},
@@ -105,6 +105,41 @@
 							}
 						}
 					]
+				}
+			},
+			{
+				"name": "UpdateID",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Trasfrormations",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": {
+							"value": "UPDATE [log].[CopyResults]\nSET BATCHID = 1\nWHERE BATCHID = @activity('GetId').output.firstRow.ID\n\nSELECT BATCHID FROM [log].[CopyResults]\nWHERE BATCHID = @activity('GetId').output.firstRow.ID",
+							"type": "Expression"
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "Mig_AzureCopyConfig",
+						"type": "DatasetReference"
+					}
 				}
 			}
 		],
