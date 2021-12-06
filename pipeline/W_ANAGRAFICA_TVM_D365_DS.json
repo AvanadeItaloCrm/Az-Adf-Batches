@@ -342,7 +342,7 @@
 		"variables": {
 			"TableName": {
 				"type": "String",
-				"defaultValue": "W_ATTIVITA_SR_D365_DS"
+				"defaultValue": "W_ANAGRAFICA_TVM_D365_DS"
 			}
 		},
 		"folder": {
