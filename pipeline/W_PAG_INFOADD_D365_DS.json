@@ -15,7 +15,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[batchSync].[InizioSQL_ORACLEBatchSync]",
+					"storedProcedureName": "[batchSync].[InizioBatchSync]",
 					"storedProcedureParameters": {
 						"NomeFile": {
 							"value": "",
@@ -55,7 +55,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[batchSync].[FineSQL_ORACLEBatchSync]",
+					"storedProcedureName": "[batchSync].[FineBatchSync]",
 					"storedProcedureParameters": {
 						"TabellaImport": {
 							"value": {
@@ -371,7 +371,10 @@
 							"type": "String"
 						},
 						"Errore": {
-							"value": "@pipeline().RunId",
+							"value": {
+								"value": "@pipeline().RunId",
+								"type": "Expression"
+							},
 							"type": "String"
 						},
 						"NomeFile": {
