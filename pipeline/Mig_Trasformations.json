@@ -169,7 +169,7 @@
 				}
 			},
 			{
-				"name": "pr_Load_ntv_callcluster",
+				"name": "ntv_callcluster",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
@@ -209,7 +209,7 @@
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "pr_Load_ntv_callcluster",
+						"activity": "ntv_callcluster",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -306,7 +306,7 @@
 				}
 			},
 			{
-				"name": "pr_Load_ntv_corporatecluster",
+				"name": "ntv_corporatecluster",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
@@ -344,7 +344,14 @@
 			{
 				"name": "Account",
 				"type": "SqlServerStoredProcedure",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "ntv_customercluster",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -516,9 +523,16 @@
 				}
 			},
 			{
-				"name": "Contact_copy9",
+				"name": "ntv_address",
 				"type": "SqlServerStoredProcedure",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "ntv_corporatecluster",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -528,7 +542,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[datav].[pr_Load_Contact]",
+					"storedProcedureName": "[datav].[pr_Load_ntv_address]",
 					"storedProcedureParameters": {
 						"ID": {
 							"value": {
