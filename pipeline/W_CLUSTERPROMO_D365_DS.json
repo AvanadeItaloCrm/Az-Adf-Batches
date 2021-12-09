@@ -31,7 +31,7 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureSqlTestStagingArea",
+					"referenceName": "AzureLinkedService",
 					"type": "LinkedServiceReference"
 				}
 			},
@@ -67,7 +67,7 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureSqlTestStagingArea",
+					"referenceName": "AzureLinkedService",
 					"type": "LinkedServiceReference"
 				}
 			},
@@ -93,6 +93,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
+						"sqlReaderQuery": "SELECT ntv_ntv_customercluster.ntv_name, ntv_ntv_promotion.Id\nFROM   ntv_ntv_promotion INNER JOIN\n             ntv_ntv_ntv_customercluster_ntv_promotion ON ntv_ntv_promotion.ntv_promotionid = ntv_ntv_ntv_customercluster_ntv_promotion.ntv_promotionid INNER JOIN\n             ntv_ntv_customercluster ON ntv_ntv_ntv_customercluster_ntv_promotion.ntv_customerclusterid = ntv_ntv_customercluster.ntv_customerclusterid",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -118,9 +119,9 @@
 							},
 							{
 								"source": {
-									"name": "SinkCreatedOn",
-									"type": "DateTime",
-									"physicalType": "datetime"
+									"name": "ntv_name",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "CLUSTER_TARGET",
