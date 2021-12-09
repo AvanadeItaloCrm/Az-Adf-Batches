@@ -93,6 +93,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
+						"sqlReaderQuery": "SELECT PaymentFieldID, PayID, Name, Value, PayID AS PAGAMENTO_NAV_ID\nFROM   ntvdev.PaymentFields",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -107,7 +108,19 @@
 						"mappings": [
 							{
 								"source": {
+									"name": "PaymentFieldID",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "INTEGRAZIONE_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
 									"name": "PayID",
+									"type": "Int64",
 									"physicalType": "bigint"
 								},
 								"sink": {
@@ -139,11 +152,12 @@
 							},
 							{
 								"source": {
-									"name": "PaymentFieldID",
+									"name": "PAGAMENTO_NAV_ID",
+									"type": "Int64",
 									"physicalType": "bigint"
 								},
 								"sink": {
-									"name": "INTEGRAZIONE_ID",
+									"name": "PAGAMENTO_NAV_ID",
 									"type": "String"
 								}
 							}
