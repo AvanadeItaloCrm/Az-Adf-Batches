@@ -261,28 +261,6 @@
 							},
 							{
 								"source": {
-									"name": "preferredcontactmethodcode",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "DATA_ATTIVAZIONE",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "territorycode",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "DATA_CREAZIONE",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
 									"name": "industrycode",
 									"type": "Int32",
 									"physicalType": "int"
@@ -301,17 +279,6 @@
 								"sink": {
 									"name": "DESCRIZIONE",
 									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "shippingmethodcode",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "DATA_CESSAZIONE_VENDITA",
-									"type": "DateTime"
 								}
 							},
 							{
@@ -756,17 +723,6 @@
 							},
 							{
 								"source": {
-									"name": "modifiedonbehalfby",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "SCADENZA_CARTA_LODGE",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
 									"name": "modifiedonbehalfby_entitytype",
 									"type": "String",
 									"physicalType": "nvarchar"
@@ -972,17 +928,6 @@
 								"sink": {
 									"name": "CLASSIFICAZIONE",
 									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ownerid",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "DATA_NAS_REF",
-									"type": "DateTime"
 								}
 							},
 							{
@@ -1202,50 +1147,6 @@
 							},
 							{
 								"source": {
-									"name": "emailaddress1",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "DATA_CONS_INFO_MARK",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "masteraccountidyominame",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "DATA_FINE_SEGMENTO",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "address1_city",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "DATA_INIZIO_SEGMENTO",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "modifiedon",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								},
-								"sink": {
-									"name": "NUMERO_VIAGGI",
-									"type": "Decimal"
-								}
-							},
-							{
-								"source": {
 									"name": "overriddencreatedon",
 									"type": "DateTime",
 									"physicalType": "datetime"
@@ -1253,30 +1154,6 @@
 								"sink": {
 									"name": "SEGMENTO",
 									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "websiteurl",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "DATA_AGG_SEGMENT",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "address1_longitude",
-									"type": "Decimal",
-									"physicalType": "decimal",
-									"scale": 5,
-									"precision": 38
-								},
-								"sink": {
-									"name": "DATA_CONS_TERZE_PARTI",
-									"type": "DateTime"
 								}
 							},
 							{
@@ -1299,17 +1176,6 @@
 								"sink": {
 									"name": "FLG_CONSENSO_PROFILAZIONE",
 									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "transactioncurrencyidname",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "DATA_CONS_PROFILAZIONE",
-									"type": "DateTime"
 								}
 							},
 							{
@@ -1354,17 +1220,6 @@
 								"sink": {
 									"name": "ESITO_CONFERIMENTO_MAND",
 									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "masteraccountidname",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "DATA_ESITO_MANDATO_DF",
-									"type": "DateTime"
 								}
 							},
 							{
@@ -1442,17 +1297,6 @@
 								"sink": {
 									"name": "FLG_ONLUS",
 									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "originatingleadidname",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "DATA_AGGIORNAMENTO",
-									"type": "DateTime"
 								}
 							},
 							{
