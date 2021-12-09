@@ -107,9 +107,143 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "ntv_promotionnumber",
+									"name": "ntv_fraudsummaryid",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "CARICAMENTO_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_filename",
 									"type": "String",
 									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NOME_FILE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_year",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "ANNO",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_month",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "MESE",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_monthtext",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "MESE_DESC",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_trxnumber",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "NR_TRX",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_fraudtrxnumber",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "NR_TRX_FRAUDOLENTE",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_fraudamount",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 38
+								},
+								"sink": {
+									"name": "IMPORTO_FRODI",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_paymentmethod",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "METODO_PAGAMENTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_merchantnumber",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CODICE_COMMERCIANTE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_merchantdesc",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CODICE_COMMERCIANTE_DESC",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_sign",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "INSEGNA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Id",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
 								},
 								"sink": {
 									"name": "INTEGRAZIONE_ID",
@@ -123,173 +257,8 @@
 									"physicalType": "datetime"
 								},
 								"sink": {
-									"name": "DATA_CREAZIONE",
+									"name": "DATA_CARICAMENTO",
 									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "createdby",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "CREATO_DA",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "modifiedon",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								},
-								"sink": {
-									"name": "DATA_AGGIORNAMENTO",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "modifiedby",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "AGGIORNATO_DA",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_enddate",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								},
-								"sink": {
-									"name": "DATA_FINE",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_startdate",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								},
-								"sink": {
-									"name": "DATA_INIZIO",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_participationlimit",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "LIMITE",
-									"type": "Decimal"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_promotiondescription",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "DESCRIZIONE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_promotionmessageita",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "MESSAGGIO_PROMO",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_promotionmessageeng",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "MESSAGGIO_PROMO_EN",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_name",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "NOME_PROMO",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "statuscode",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "STATO",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_promotiontypecode",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "TIPOLOGIA",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_imageurl",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "URL",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_communicationid",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "ID_COMUNICAZIONE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_adobecommunication",
-									"type": "Boolean",
-									"physicalType": "bit"
-								},
-								"sink": {
-									"name": "FLG_OMUNICAZIONE_ADOBE",
-									"type": "String"
 								}
 							}
 						],
@@ -302,7 +271,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "W_PROMOZIONI_SQLSource",
+						"referenceName": "W_SINTESI_FRODI_D365_DS_SQLSource",
 						"type": "DatasetReference"
 					}
 				],
@@ -381,6 +350,92 @@
 						"referenceName": "W_SINTESI_FRODI_D365_DS_OracleDB",
 						"type": "DatasetReference"
 					}
+				}
+			},
+			{
+				"name": "Error End Oracle",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Sql To Oracle",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": {
+							"value": "@concat('SELECT sa_d365_svil.errore_sync (''',\nvariables('TableName'),\n''',''Errore'') FROM DUAL;')",
+							"type": "Expression"
+						},
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "W_SINTESI_FRODI_D365_DS_OracleDB",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "Error Finally SP",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Error End Oracle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[batchSync].[ErrorBatchSync]",
+					"storedProcedureParameters": {
+						"TabellaImport": {
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"Errore": {
+							"value": {
+								"value": "@pipeline().RunId",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"NomeFile": {
+							"value": "",
+							"type": "String"
+						},
+						"Modulo": {
+							"value": "Copy Data Sql To Oracle",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureLinkedService",
+					"type": "LinkedServiceReference"
 				}
 			}
 		],
