@@ -107,9 +107,9 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "Id",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "accountnumber",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "CODICE_PARTNER",
@@ -118,18 +118,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_promotorinvitation",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "DESCRIZIONE_PROMOCODE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "name",
+									"name": "ntv_agencyname",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -140,7 +129,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_agencytypecode",
+									"name": "accountclassificationcode",
 									"type": "Int32",
 									"physicalType": "int"
 								},
@@ -151,7 +140,29 @@
 							},
 							{
 								"source": {
-									"name": "statuscode",
+									"name": "accountclassificationcode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "TIPO_PARTNER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_socialreason",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "RAGIONE_SOCIALE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "address1_shippingmethodcode",
 									"type": "Int32",
 									"physicalType": "int"
 								},
@@ -162,7 +173,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_segmentcode",
+									"name": "paymenttermscode",
 									"type": "Int32",
 									"physicalType": "int"
 								},
@@ -173,9 +184,42 @@
 							},
 							{
 								"source": {
-									"name": "ntv_vatcode",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "accountcategorycode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "FLG_BOOKING_SOURCE_GDS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "address1_freighttermscode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "FLG_BOOKING_SOURCE_WEB",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "accountratingcode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "ADV_PADRE_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "preferredappointmenttimecode",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "PIVA_CFS",
@@ -184,9 +228,9 @@
 							},
 							{
 								"source": {
-									"name": "ntv_iata",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "accountclassificationcode",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "CODICE_IATA",
@@ -195,7 +239,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_registrationchannelcode",
+									"name": "customertypecode",
 									"type": "Int32",
 									"physicalType": "int"
 								},
@@ -206,9 +250,9 @@
 							},
 							{
 								"source": {
-									"name": "ntv_iscashback",
-									"type": "Boolean",
-									"physicalType": "bit"
+									"name": "ownershipcode",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "MID_BACKOFFICE",
@@ -217,9 +261,31 @@
 							},
 							{
 								"source": {
-									"name": "ntv_lodgecardholder",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "preferredcontactmethodcode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "DATA_ATTIVAZIONE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "territorycode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "DATA_CREAZIONE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "industrycode",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "NOME_HOLDING",
@@ -228,9 +294,9 @@
 							},
 							{
 								"source": {
-									"name": "description",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "businesstypecode",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "DESCRIZIONE",
@@ -239,9 +305,20 @@
 							},
 							{
 								"source": {
-									"name": "emailaddress1",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "shippingmethodcode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "DATA_CESSAZIONE_VENDITA",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "address2_addresstypecode",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "EMAIL_CONTATTO_AGENZIA",
@@ -250,9 +327,9 @@
 							},
 							{
 								"source": {
-									"name": "fax",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "customersizecode",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "FAX_CONTATTO_AGENZIA",
@@ -261,9 +338,9 @@
 							},
 							{
 								"source": {
-									"name": "telephone1",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "address2_shippingmethodcode",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "TEL_FISSO_CONTATTO_AGENZIA",
@@ -272,9 +349,9 @@
 							},
 							{
 								"source": {
-									"name": "ntv_abicab",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "preferredappointmentdaycode",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "ABICAB",
@@ -283,9 +360,9 @@
 							},
 							{
 								"source": {
-									"name": "ntv_cin",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "address2_freighttermscode",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "CIN",
@@ -294,9 +371,9 @@
 							},
 							{
 								"source": {
-									"name": "ntv_iban",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "donotpostalmail",
+									"type": "Boolean",
+									"physicalType": "bit"
 								},
 								"sink": {
 									"name": "IBAN",
@@ -305,9 +382,9 @@
 							},
 							{
 								"source": {
-									"name": "ntv_bankname",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "donotsendmm",
+									"type": "Boolean",
+									"physicalType": "bit"
 								},
 								"sink": {
 									"name": "NOME_BANCA",
@@ -316,9 +393,9 @@
 							},
 							{
 								"source": {
-									"name": "accountnumber",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "creditonhold",
+									"type": "Boolean",
+									"physicalType": "bit"
 								},
 								"sink": {
 									"name": "ACCOUNT_NUMBER",
@@ -327,9 +404,20 @@
 							},
 							{
 								"source": {
-									"name": "ntv_swift",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "donotbulkpostalmail",
+									"type": "Boolean",
+									"physicalType": "bit"
+								},
+								"sink": {
+									"name": "BANK_COUNTRY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "isprivate",
+									"type": "Boolean",
+									"physicalType": "bit"
 								},
 								"sink": {
 									"name": "SWIFT",
@@ -338,9 +426,42 @@
 							},
 							{
 								"source": {
-									"name": "ntv_paymentmethodcode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "donotbulkemail",
+									"type": "Boolean",
+									"physicalType": "bit"
+								},
+								"sink": {
+									"name": "TITOLARE_CC",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "donotfax",
+									"type": "Boolean",
+									"physicalType": "bit"
+								},
+								"sink": {
+									"name": "TIPO_CENTRO_FATTURAZIONE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "donotemail",
+									"type": "Boolean",
+									"physicalType": "bit"
+								},
+								"sink": {
+									"name": "FLG_OVERCOMMISSIONING",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "marketingonly",
+									"type": "Boolean",
+									"physicalType": "bit"
 								},
 								"sink": {
 									"name": "METODO_PAGAMENTO",
@@ -349,9 +470,9 @@
 							},
 							{
 								"source": {
-									"name": "ntv_ivapercentage",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "followemail",
+									"type": "Boolean",
+									"physicalType": "bit"
 								},
 								"sink": {
 									"name": "PERCENTUALE_IVA",
@@ -360,12 +481,596 @@
 							},
 							{
 								"source": {
-									"name": "ntv_paymentwaittimecode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "merged",
+									"type": "Boolean",
+									"physicalType": "bit"
 								},
 								"sink": {
 									"name": "TERMINE_PAGAMENTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "donotphone",
+									"type": "Boolean",
+									"physicalType": "bit"
+								},
+								"sink": {
+									"name": "CENTRO_FATT_BASE_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "participatesinworkflow",
+									"type": "Boolean",
+									"physicalType": "bit"
+								},
+								"sink": {
+									"name": "CENTRO_FATT_OVER_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "slaid",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "COGNOME_REF_UNICO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "slaid_entitytype",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NOME_REF_UNICO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "transactioncurrencyid",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "FAX_REF_UNICO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "transactioncurrencyid_entitytype",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "TELEFONO_FISSO_REF_UNICO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "createdbyexternalparty",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "TELEFONO_MOBILE_REF_UNICO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "createdbyexternalparty_entitytype",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CITTA_SEDE_LEGALE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "slainvokedid",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "NAZIONE_SEDE_LEGALE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "slainvokedid_entitytype",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "PROVINCIA_SEDE_LEGALE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "originatingleadid",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "CAP_SEDE_LEGALE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "originatingleadid_entitytype",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "INDIRIZZO_SEDE_LEGALE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "territoryid",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "TIPO_CORPORATE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "territoryid_entitytype",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "FATTURATO_DICHIARATO",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "preferredserviceid",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "TMC_PRIMARIA_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "preferredserviceid_entitytype",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "OWNER_CORPORATE_NTV",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "primarycontactid",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "STATO_CONTRATTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "primarycontactid_entitytype",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "DIST_TOOL_AZIENDA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "parentaccountid",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "CODICE_ESTERNO_CORPORATE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "parentaccountid_entitytype",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "MODALITA_BOOKING",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "owningbusinessunit",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "PROMOCODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "owningbusinessunit_entitytype",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "TIPO_CARTA_LODGE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "modifiedby",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "NUM_CARTA_LODGE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "modifiedby_entitytype",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "INTESTATARIO_CARTA_LODGE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "modifiedonbehalfby",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "SCADENZA_CARTA_LODGE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "modifiedonbehalfby_entitytype",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "JOB_TITLE_REFERENTE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "owninguser",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "INTEGRAZIONE_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "owninguser_entitytype",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CITTA_FATTURAZIONE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "owningteam",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "PAESE_FATTURAZIONE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "owningteam_entitytype",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "PROVINCIA_FATTURAZIONE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "preferredequipmentid",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "CAP_FATTURAZIONE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "preferredequipmentid_entitytype",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "INDIRIZZO_FATTURAZIONE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "createdonbehalfby",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "CITTA_SEDE_OPERATIVA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "createdonbehalfby_entitytype",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "PAESE_SEDE_OPERATIVA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "masterid",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "PROVINCIA_SEDE_OPERATIVA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "masterid_entitytype",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CAP_SEDE_OPERATIVA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "modifiedbyexternalparty",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "INDIRIZZO_SEDE_OPERATIVA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "modifiedbyexternalparty_entitytype",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "EMAIL_ADDRESS_REFERENTE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "defaultpricelevelid",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "FLG_AZIENDA_PRIMARIA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "defaultpricelevelid_entitytype",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "FLG_CEE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "createdby",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "FLG_PRIVACY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "createdby_entitytype",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "FLG_SEPA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "preferredsystemuserid",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "DESC_IVA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "preferredsystemuserid_entitytype",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CLASSIFICAZIONE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ownerid",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "DATA_NAS_REF",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "ownerid_entitytype",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "SETTORE_ATTIVITA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "aging90",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 38
+								},
+								"sink": {
+									"name": "DESC_TEXT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "aging30",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 38
+								},
+								"sink": {
+									"name": "TIPO_VENDITORE_CORP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "openrevenue",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 38
+								},
+								"sink": {
+									"name": "CODICE_VENDITORE_CORP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "aging60_base",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 4,
+									"precision": 38
+								},
+								"sink": {
+									"name": "CANALE_DI_REGISTRAZIONE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "creditlimit",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 38
+								},
+								"sink": {
+									"name": "TRAVEL_POLICY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "revenue",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 4,
+									"precision": 38
+								},
+								"sink": {
+									"name": "CODICE_CONVENZIONE",
 									"type": "String"
 								}
 							},
@@ -378,8 +1083,490 @@
 									"precision": 38
 								},
 								"sink": {
-									"name": "CAP_SEDE_LEGALE",
+									"name": "FLG_PUBBLICA_AMMINISTRAZIONE",
 									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "openrevenue_base",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 38
+								},
+								"sink": {
+									"name": "CODICE_CIU",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "aging60",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 38
+								},
+								"sink": {
+									"name": "CODICE_CIG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "creditlimit_base",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 4,
+									"precision": 38
+								},
+								"sink": {
+									"name": "CODICE_CUP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "revenue_base",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 4,
+									"precision": 38
+								},
+								"sink": {
+									"name": "FATT_ANNUO_ITALO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "aging90_base",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 4,
+									"precision": 38
+								},
+								"sink": {
+									"name": "MEDIA_VIAGGIO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "marketcap_base",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 4,
+									"precision": 38
+								},
+								"sink": {
+									"name": "FREQU_VIAGG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "aging30_base",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 4,
+									"precision": 38
+								},
+								"sink": {
+									"name": "TRATTA_PRINCIPALE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "emailaddress3",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NOME_OFFERTA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "emailaddress2",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CONSENSO_INFO_MARK",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "emailaddress1",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "DATA_CONS_INFO_MARK",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "masteraccountidyominame",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "DATA_FINE_SEGMENTO",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "address1_city",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "DATA_INIZIO_SEGMENTO",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "modifiedon",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "NUMERO_VIAGGI",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "overriddencreatedon",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "SEGMENTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "websiteurl",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "DATA_AGG_SEGMENT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "address1_longitude",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 5,
+									"precision": 38
+								},
+								"sink": {
+									"name": "DATA_CONS_TERZE_PARTI",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "createdbyexternalpartyname",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "FLG_CONSENSO_TERZE_PARTI",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "sharesoutstanding",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "FLG_CONSENSO_PROFILAZIONE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "transactioncurrencyidname",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "DATA_CONS_PROFILAZIONE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "yominame",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CODICE_DESTINATARIO_FATTURA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "preferredsystemuseridyominame",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "EMAIL_COMUNICAZIONE_EC",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "opendeals_date",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "FLG_MANDATO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "modifiedbyexternalpartyyominame",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "ESITO_CONFERIMENTO_MAND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "masteraccountidname",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "DATA_ESITO_MANDATO_DF",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "preferredsystemuseridname",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "ABILITA_AC",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "address2_stateorprovince",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "LIMITE_AC",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "address2_country",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "PLAFOND_AC",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "address2_line2",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "STATO_AC",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "address1_line3",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CODICE_FISCALE_PARTNER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "onholdtime",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "FLG_PIVA_GRUPPO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "owningbusinessunitname",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "FLG_ONLUS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "originatingleadidname",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "DATA_AGGIORNAMENTO",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "parentaccountidname",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "BUSINESS_PARTNER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "address1_utcoffset",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "CODICE_FISCALE_CREDITO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "numberofemployees",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "RICH_FIDO_AT_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "modifiedbyexternalpartyname",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "STATO_RICHIESTA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "exchangerate",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 12,
+									"precision": 38
+								},
+								"sink": {
+									"name": "PLAFOND_ACCETTATO",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "address2_county",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "PLAFOND_ATTIVATO",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "telephone3",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "PLAFOND_COMUNICATO",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "address2_city",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "PLAFOND_RICHIESTO",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "address2_latitude",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 5,
+									"precision": 38
+								},
+								"sink": {
+									"name": "CLUSTER_PROMOZIONI",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "createdon",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_AGG_CLUSTER_CORP",
+									"type": "DateTime"
 								}
 							}
 						],
