@@ -423,7 +423,7 @@
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "W_AGENTI_D365_DS_OracleDB",
+						"referenceName": "TEST_W_AGENTI_D365_DS_OracleDB",
 						"type": "DatasetReference"
 					}
 				}
