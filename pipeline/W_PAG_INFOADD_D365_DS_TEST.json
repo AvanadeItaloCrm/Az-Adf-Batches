@@ -388,7 +388,7 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureLinkedService",
+					"referenceName": "AzSqlOracle_Test_StagingArea",
 					"type": "LinkedServiceReference"
 				}
 			}
@@ -400,7 +400,7 @@
 			}
 		},
 		"folder": {
-			"name": "Az_IntegrazioniBatch_Oracle"
+			"name": "Az_IntegrazioniBatch_Oracle_Test"
 		},
 		"annotations": []
 	}
