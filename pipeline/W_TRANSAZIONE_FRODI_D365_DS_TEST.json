@@ -15,7 +15,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[batchSync].[nizioSQL_ORACLEBatchSync]",
+					"storedProcedureName": "[batchSync].[InizioSQL_ORACLEBatchSync]",
 					"storedProcedureParameters": {
 						"NomeFile": {
 							"value": "",
@@ -544,7 +544,7 @@
 			}
 		},
 		"folder": {
-			"name": "Az_IntegrazioniBatch_Oracle"
+			"name": "Az_IntegrazioniBatch_Oracle_Test"
 		},
 		"annotations": []
 	}
