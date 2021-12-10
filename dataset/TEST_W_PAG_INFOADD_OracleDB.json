@@ -9,7 +9,7 @@
 		"type": "OracleTable",
 		"schema": [],
 		"typeProperties": {
-			"schema": "SA_D365_SVIL",
+			"schema": "SA_D365_TEST",
 			"table": "W_PAG_INFOADD_D365_DS"
 		}
 	}
