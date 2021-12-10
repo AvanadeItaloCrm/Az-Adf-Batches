@@ -118,6 +118,17 @@
 							},
 							{
 								"source": {
+									"name": "ntv_name",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NOME_FILE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
 									"name": "ntv_sign",
 									"type": "String",
 									"physicalType": "nvarchar"
@@ -165,7 +176,7 @@
 									"name": "ntv_amount",
 									"type": "Decimal",
 									"physicalType": "decimal",
-									"scale": 0,
+									"scale": 2,
 									"precision": 38
 								},
 								"sink": {
@@ -331,6 +342,17 @@
 							},
 							{
 								"source": {
+									"name": "Id",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "INTEGRAZIONE_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
 									"name": "overriddencreatedon",
 									"type": "DateTime",
 									"physicalType": "datetime"
@@ -349,14 +371,6 @@
 								"sink": {
 									"name": "PAGAMENTO_NAV_ID",
 									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "Id"
-								},
-								"sink": {
-									"name": "INTEGRAZIONE_ID"
 								}
 							}
 						],
