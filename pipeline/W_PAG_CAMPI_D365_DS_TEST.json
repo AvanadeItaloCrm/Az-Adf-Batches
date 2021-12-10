@@ -93,6 +93,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
+						"sqlReaderQuery": "SELECT PaymentFieldID, PayID, Name, Value, PayID AS PAGAMENTO_NAV_ID\nFROM   ntvdev.PaymentFields",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
