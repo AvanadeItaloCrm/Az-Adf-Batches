@@ -373,7 +373,7 @@
 					"source": {
 						"type": "OracleSource",
 						"oracleReaderQuery": {
-							"value": "@concat('SELECT sa_d365_testiniziasync (''',\nvariables('TableName'),\n''') FROM DUAL;')",
+							"value": "@concat('SELECT sa_d365_test.iniziasync (''',\nvariables('TableName'),\n''') FROM DUAL;')",
 							"type": "Expression"
 						},
 						"partitionOption": "None",
