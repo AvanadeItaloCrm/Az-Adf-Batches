@@ -7,6 +7,10 @@
 		},
 		"annotations": [],
 		"type": "OracleTable",
-		"schema": []
+		"schema": [],
+		"typeProperties": {
+			"schema": "SA_D365_TEST",
+			"table": "W_PRATICHE_PAGAMENTO_D365_DS"
+		}
 	}
 }
