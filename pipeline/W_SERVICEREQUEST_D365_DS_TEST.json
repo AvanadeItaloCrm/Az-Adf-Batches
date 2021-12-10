@@ -1,0 +1,901 @@
+{
+	"name": "W_SERVICEREQUEST_D365_DS_TEST",
+	"properties": {
+		"activities": [
+			{
+				"name": "Start SP",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[batchSync].[InizioSQL_ORACLEBatchSync]",
+					"storedProcedureParameters": {
+						"NomeFile": {
+							"value": "",
+							"type": "String"
+						},
+						"TabellaImport": {
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureLinkedService",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Finally SP",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "End Oracle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[batchSync].[FineSQL_ORACLEBatchSync]",
+					"storedProcedureParameters": {
+						"TabellaImport": {
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureLinkedService",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Sql To Oracle",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Start Oracle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "OracleSink",
+						"writeBatchSize": 10000,
+						"preCopyScript": "truncate table sa_d365_svil.W_SERVICEREQUEST_D365_DS"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "ticketnumber",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "SR_NUM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_srcategoryid",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "CATEGORIA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_srsubcategoryid",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "SOTTOCATEGORIA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SinkCreatedOn",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_APERTURA",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_interationchanneltype",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "CANALE_INTERAZIONE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_directioncode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "TIPO_INTERAZIONE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_callernumber",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NUMERO_CHIAMANTE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "statecode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "STATO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "prioritycode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "PRIORITA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "createdby",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "CREATO_DA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "owninguser",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "OWNER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_assigndate",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_ASSEGNAZIONE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_closuredate",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_CHIUSURA",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_outcomeid",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "ESITO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_srreasonid",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "MOTIVO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_bookingid",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "PNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_originchannelid",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "PARTNER_FORNITORE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_orderid",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "ORDINE_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_note",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NOTE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_money_pnrcode",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "PNR_SCARICO_BORSELLINO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_money_amount",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 4,
+									"precision": 38
+								},
+								"sink": {
+									"name": "IMPORTO_DA_RIMBORSARE",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_money_lastname",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "COGNOME_RIMBORSO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_money_firstname",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NOME_RIMBORSO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_money_fiscalcode",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CODIFCE_FISCALE_RIMBORSO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_money_vatcode",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "P_IVA_RIMBORSO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_money_emissiondate",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_EMISS_BONIFICO",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_money_iban",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "IBAN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_money_biccode",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "SWIFT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_money_bank",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "BANCA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_wc_disputedpnr",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "PNR_CONTESTATO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_wc_pnrcancellationresult",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "ESITO_CANCELLAZIONE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_wc_paypaltnxcode",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "TRANS_PAY_PAL_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_wc_addendum1",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "ADDENDUM_1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_wc_addendum2",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "ADDENDUM_2",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_wc_purchasechannel",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CANALE_ACQUISTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_wc_purchasestation",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "STAZIONE_ACQUISTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_wc_purchasedate",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_ACQUISTO",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_wc_paymentmethod",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "METODO_PAGAMENTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_wc_sendcircuitrequestdate",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_RICHIESTA_CIRCUITO",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_wc_liquidationdate",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_LIQUIDAZIONE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "parentcaseid",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "SR_PADRE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_money_clientaddress",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "INDIRIZZO_RIMBORSO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_wc_cardpan",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "PAN_CARTA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_money_email",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "EMAIL_RIMBORSO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_money_ccowner",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "INTESTATARIO_CONTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_money_ccnumber",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NUMERO_CONTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_wc_ceevatcode",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "P_IVA_CEE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_money_sapclientcode",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CODICE_CLIENTE_SAP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_ctichannel",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CANALE_CTI",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_connectionid",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CONNESSIONE_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "contractdetailid",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "CODICE_CONTATTO_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_webnote",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NOTE_WEB",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_ecbill",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NUM_EC_FATTURA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_callstartdate",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_ORA_INIZIO_CHIAMATA",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "Id"
+								},
+								"sink": {
+									"name": "INTEGRAZIONE_ID"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "W_SERVICEREQUEST_D365_DS_SQLSource",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "W_SERVICEREQUEST_D365_DS_OracleDB",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Start Oracle",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Start SP",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": {
+							"value": "@concat('SELECT sa_d365_svil.iniziasync (''',\nvariables('TableName'),\n''') FROM DUAL;')",
+							"type": "Expression"
+						},
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "W_SERVICEREQUEST_D365_DS_OracleDB",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "End Oracle",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Sql To Oracle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": {
+							"value": "@concat('SELECT sa_d365_svil.finesync (''',\nvariables('TableName'),\n''') FROM DUAL;')",
+							"type": "Expression"
+						},
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "W_SERVICEREQUEST_D365_DS_OracleDB",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "Error Finally SP",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Error End Oracle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[batchSync].[ErrorBatchSync]",
+					"storedProcedureParameters": {
+						"TabellaImport": {
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"Errore": {
+							"value": {
+								"value": "@pipeline().RunId",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"NomeFile": {
+							"value": "",
+							"type": "String"
+						},
+						"Modulo": {
+							"value": "Copy Data Sql To Oracle",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureLinkedService",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Error End Oracle",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Sql To Oracle",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": {
+							"value": "@concat('SELECT sa_d365_svil.errore_sync (''',\nvariables('TableName'),\n''',''Errore'') FROM DUAL;')",
+							"type": "Expression"
+						},
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "W_SERVICEREQUEST_D365_DS_OracleDB",
+						"type": "DatasetReference"
+					}
+				}
+			}
+		],
+		"variables": {
+			"TableName": {
+				"type": "String",
+				"defaultValue": "W_SERVICEREQUEST_D365_DS"
+			}
+		},
+		"folder": {
+			"name": "Az_IntegrazioniBatch_Oracle_Test"
+		},
+		"annotations": []
+	}
+}
