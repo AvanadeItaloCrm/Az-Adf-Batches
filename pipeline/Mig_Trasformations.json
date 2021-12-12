@@ -77,7 +77,14 @@
 			{
 				"name": "ntv_referent",
 				"type": "SqlServerStoredProcedure",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Contact",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -142,7 +149,14 @@
 			{
 				"name": "ntv_billingprofile",
 				"type": "SqlServerStoredProcedure",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "ntv_referent",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -207,7 +221,14 @@
 			{
 				"name": "Contact",
 				"type": "SqlServerStoredProcedure",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "ntv_addressbook",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -308,7 +329,14 @@
 			{
 				"name": "Account",
 				"type": "SqlServerStoredProcedure",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "ntv_o2otracking",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -337,7 +365,14 @@
 			{
 				"name": "ntv_address",
 				"type": "SqlServerStoredProcedure",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Incident",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -366,7 +401,14 @@
 			{
 				"name": "Incident",
 				"type": "SqlServerStoredProcedure",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "ntv_servicerequestoutcome",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -539,7 +581,14 @@
 			{
 				"name": "ntv_o2otracking",
 				"type": "SqlServerStoredProcedure",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "ntv_billingprofile",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -568,7 +617,14 @@
 			{
 				"name": "ntv_servicerequestoutcome",
 				"type": "SqlServerStoredProcedure",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "ntv_tmc",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -597,7 +653,14 @@
 			{
 				"name": "ntv_servicerequestcategory",
 				"type": "SqlServerStoredProcedure",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "ntv_address",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -727,7 +790,14 @@
 			{
 				"name": "ntv_tmc",
 				"type": "SqlServerStoredProcedure",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "ntv_emaildomain",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
