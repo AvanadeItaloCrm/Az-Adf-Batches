@@ -5,7 +5,14 @@
 			{
 				"name": "ntv_nation",
 				"type": "SqlServerStoredProcedure",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Indirizzo",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -36,7 +43,7 @@
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "Indirizzo",
+						"activity": "ntv_callcluster",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -70,14 +77,7 @@
 			{
 				"name": "ntv_referent",
 				"type": "SqlServerStoredProcedure",
-				"dependsOn": [
-					{
-						"activity": "ntv_nation",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -108,7 +108,7 @@
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "ntv_referent",
+						"activity": "ntv_servicecontact",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -142,14 +142,7 @@
 			{
 				"name": "ntv_billingprofile",
 				"type": "SqlServerStoredProcedure",
-				"dependsOn": [
-					{
-						"activity": "ntv_originchannel",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -180,7 +173,7 @@
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "ntv_billingprofile",
+						"activity": "ntv_customercluster",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -214,14 +207,7 @@
 			{
 				"name": "Contact",
 				"type": "SqlServerStoredProcedure",
-				"dependsOn": [
-					{
-						"activity": "ntv_callcluster",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -252,7 +238,7 @@
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "ntv_italopassper3",
+						"activity": "ntv_employee",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -288,7 +274,7 @@
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "Contact",
+						"activity": "ntv_originchannel",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -322,14 +308,7 @@
 			{
 				"name": "Account",
 				"type": "SqlServerStoredProcedure",
-				"dependsOn": [
-					{
-						"activity": "ntv_customercluster",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -358,14 +337,7 @@
 			{
 				"name": "ntv_address",
 				"type": "SqlServerStoredProcedure",
-				"dependsOn": [
-					{
-						"activity": "ntv_corporatecluster",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -394,14 +366,7 @@
 			{
 				"name": "Incident",
 				"type": "SqlServerStoredProcedure",
-				"dependsOn": [
-					{
-						"activity": "Account",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -432,7 +397,7 @@
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "ntv_address",
+						"activity": "ntv_agent",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -468,7 +433,7 @@
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "ntv_addressbook",
+						"activity": "ntv_italopassper3",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -504,7 +469,7 @@
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "Incident",
+						"activity": "Account",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -540,7 +505,7 @@
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "ntv_emaildomain",
+						"activity": "ntv_nation",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -574,14 +539,7 @@
 			{
 				"name": "ntv_o2otracking",
 				"type": "SqlServerStoredProcedure",
-				"dependsOn": [
-					{
-						"activity": "ntv_employee",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -610,14 +568,7 @@
 			{
 				"name": "ntv_servicerequestoutcome",
 				"type": "SqlServerStoredProcedure",
-				"dependsOn": [
-					{
-						"activity": "ntv_servicerequestcategory",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -646,14 +597,7 @@
 			{
 				"name": "ntv_servicerequestcategory",
 				"type": "SqlServerStoredProcedure",
-				"dependsOn": [
-					{
-						"activity": "ntv_o2otracking",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -718,14 +662,7 @@
 			{
 				"name": "User",
 				"type": "SqlServerStoredProcedure",
-				"dependsOn": [
-					{
-						"activity": "ntv_servicecontact",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -754,7 +691,14 @@
 			{
 				"name": "ntv_servicecontact",
 				"type": "SqlServerStoredProcedure",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "ntv_corporatecluster",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -765,6 +709,35 @@
 				"userProperties": [],
 				"typeProperties": {
 					"storedProcedureName": "[datav].[pr_Load_ntv_servicecontact]",
+					"storedProcedureParameters": {
+						"ID": {
+							"value": {
+								"value": "@pipeline().parameters.ID",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "Mig_STGAzure",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "ntv_tmc",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[datav].[pr_Load_ntv_tmc]",
 					"storedProcedureParameters": {
 						"ID": {
 							"value": {
