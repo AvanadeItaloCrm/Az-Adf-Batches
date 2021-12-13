@@ -1704,7 +1704,7 @@
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "ntv_contact"
+			"table": "ntv_ntv_referent"
 		}
 	}
 }
