@@ -151,9 +151,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_mobilephone",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "mobilephone"
 								},
 								"sink": {
 									"name": "TELOFONO_MOBILE",
@@ -162,9 +160,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_phone",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "telephone1"
 								},
 								"sink": {
 									"name": "TELEFONO_FISSO",
@@ -173,9 +169,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_fax",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "fax"
 								},
 								"sink": {
 									"name": "FAX",
@@ -184,9 +178,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_jobtitle",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "jobtitle"
 								},
 								"sink": {
 									"name": "JOB_TITLE",
