@@ -93,6 +93,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
+						"sqlReaderQuery": "SELECT *  FROM [ntv_ntv_referent]\nWHERE\n     NOT [ntv_surname] IS NULL AND\n     NOT [ntv_firstname] IS NULL AND\n     NOT [ntv_referentid] IS NULL",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -108,6 +109,7 @@
 							{
 								"source": {
 									"name": "ntv_firstname",
+									"type": "String",
 									"physicalType": "nvarchar"
 								},
 								"sink": {
@@ -139,7 +141,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_referenttypecode",
+									"name": "statecode",
 									"type": "Int32",
 									"physicalType": "int"
 								},
@@ -150,9 +152,9 @@
 							},
 							{
 								"source": {
-									"name": "ntv_mobilephone",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "statuscode",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "TELOFONO_MOBILE",
@@ -161,9 +163,9 @@
 							},
 							{
 								"source": {
-									"name": "ntv_phone",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "ntv_referenttypecode",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "TELEFONO_FISSO",
@@ -172,9 +174,9 @@
 							},
 							{
 								"source": {
-									"name": "ntv_fax",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "modifiedonbehalfby",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
 								},
 								"sink": {
 									"name": "FAX",
@@ -183,7 +185,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_jobtitle",
+									"name": "modifiedonbehalfby_entitytype",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -194,7 +196,7 @@
 							},
 							{
 								"source": {
-									"name": "Id",
+									"name": "ntv_accountid",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -205,12 +207,34 @@
 							},
 							{
 								"source": {
-									"name": "ntv_referentid",
+									"name": "ntv_accountid_entitytype",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "ADV_CORP_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "owninguser",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
 								"sink": {
-									"name": "ADV_CORP_ID",
+									"name": "TIPO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "owninguser_entitytype",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "TIPOLOGIA_REFERENTE",
 									"type": "String"
 								}
 							}
