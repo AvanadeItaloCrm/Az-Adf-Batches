@@ -1,0 +1,16 @@
+{
+	"name": "TEST_W_ISO_NAZIONE_SR_D365_DS_OracleDB",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "OracleDB_TEST",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "OracleTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "SA_D365_TEST",
+			"table": "W_ISO_NAZIONE_SR_D365_DS"
+		}
+	}
+}
