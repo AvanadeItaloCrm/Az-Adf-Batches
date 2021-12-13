@@ -107,8 +107,7 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "ntv_name",
-									"type": "String",
+									"name": "ntv_firstname",
 									"physicalType": "nvarchar"
 								},
 								"sink": {
