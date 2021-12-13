@@ -31,7 +31,7 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureLinkedService",
+					"referenceName": "AzSqlOracle_Test_StagingArea",
 					"type": "LinkedServiceReference"
 				}
 			},
@@ -67,7 +67,7 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureLinkedService",
+					"referenceName": "AzSqlOracle_Test_StagingArea",
 					"type": "LinkedServiceReference"
 				}
 			},
@@ -99,7 +99,7 @@
 					"sink": {
 						"type": "OracleSink",
 						"writeBatchSize": 10000,
-						"preCopyScript": "truncate table sa_d365_svil.W_REFERENTI_D365_DS"
+						"preCopyScript": "truncate table sa_d365_test.W_REFERENTI_D365_DS"
 					},
 					"enableStaging": false,
 					"translator": {
@@ -225,13 +225,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "W_REFERENTI_D365_DS_SQLSource",
+						"referenceName": "TEST_W_REFERENTI_D365_DS_SQLSource",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "W_REFERENTI_D365_DS_OracleDb",
+						"referenceName": "TEST_W_REFERENTI_D365_DS_OracleDB",
 						"type": "DatasetReference"
 					}
 				]
@@ -259,14 +259,14 @@
 					"source": {
 						"type": "OracleSource",
 						"oracleReaderQuery": {
-							"value": "@concat('SELECT sa_d365_svil.iniziasync (''',\nvariables('TableName'),\n''') FROM DUAL;')",
+							"value": "@concat('SELECT sa_d365_test.iniziasync (''',\nvariables('TableName'),\n''') FROM DUAL;')",
 							"type": "Expression"
 						},
 						"partitionOption": "None",
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "W_REFERENTI_D365_DS_OracleDb",
+						"referenceName": "TEST_W_REFERENTI_D365_DS_OracleDB",
 						"type": "DatasetReference"
 					}
 				}
@@ -294,14 +294,14 @@
 					"source": {
 						"type": "OracleSource",
 						"oracleReaderQuery": {
-							"value": "@concat('SELECT sa_d365_svil.finesync (''',\nvariables('TableName'),\n''') FROM DUAL;')",
+							"value": "@concat('SELECT sa_d365_test.finesync (''',\nvariables('TableName'),\n''') FROM DUAL;')",
 							"type": "Expression"
 						},
 						"partitionOption": "None",
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "W_REFERENTI_D365_DS_OracleDb",
+						"referenceName": "TEST_W_REFERENTI_D365_DS_OracleDB",
 						"type": "DatasetReference"
 					}
 				}
@@ -329,7 +329,7 @@
 					"source": {
 						"type": "OracleSource",
 						"oracleReaderQuery": {
-							"value": "@concat('SELECT sa_d365_svil.errore_sync (''',\nvariables('TableName'),\n''',''Errore'') FROM DUAL;')",
+							"value": "@concat('SELECT sa_d365_test.errore_sync (''',\nvariables('TableName'),\n''',''Errore'') FROM DUAL;')",
 							"type": "Expression"
 						},
 						"partitionOption": "PhysicalPartitionsOfTable",
@@ -339,7 +339,7 @@
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "W_REFERENTI_D365_DS_OracleDb",
+						"referenceName": "TEST_W_REFERENTI_D365_DS_OracleDB",
 						"type": "DatasetReference"
 					}
 				}
@@ -391,7 +391,7 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureLinkedService",
+					"referenceName": "AzSqlOracle_Test_StagingArea",
 					"type": "LinkedServiceReference"
 				}
 			}
