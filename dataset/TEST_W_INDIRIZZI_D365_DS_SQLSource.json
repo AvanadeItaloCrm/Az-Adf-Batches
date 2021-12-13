@@ -1,0 +1,296 @@
+{
+	"name": "TEST_W_INDIRIZZI_D365_DS_SQLSource",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzSqlOracle_Test_DesDYN365",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Id",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "SinkCreatedOn",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "SinkModifiedOn",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "statecode",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "statuscode",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ntv_provincecode",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ntv_streettypecode",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ntv_addresstypecode",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "modifiedonbehalfby",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "modifiedonbehalfby_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "createdonbehalfby",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "createdonbehalfby_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_accountid",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "ntv_accountid_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_contactid",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "ntv_contactid_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "owninguser",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "owninguser_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "owningteam",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "owningteam_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_billingprofileid",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "ntv_billingprofileid_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_nationid",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "ntv_nationid_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "owningbusinessunit",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "owningbusinessunit_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "modifiedby",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "modifiedby_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "createdby",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "createdby_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ownerid",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "ownerid_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "createdonbehalfbyyominame",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_accountidyominame",
+				"type": "nvarchar"
+			},
+			{
+				"name": "owneridname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_postalcode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_contactidname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_contactidyominame",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_relatedentitykey",
+				"type": "nvarchar"
+			},
+			{
+				"name": "importsequencenumber",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ntv_addressid",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "utcconversiontimezonecode",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "createdbyyominame",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_number",
+				"type": "nvarchar"
+			},
+			{
+				"name": "modifiedbyname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_nation",
+				"type": "nvarchar"
+			},
+			{
+				"name": "modifiedbyyominame",
+				"type": "nvarchar"
+			},
+			{
+				"name": "timezoneruleversionnumber",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "owneridtype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_nationidname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_street",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_accountidname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "owneridyominame",
+				"type": "nvarchar"
+			},
+			{
+				"name": "modifiedon",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "modifiedonbehalfbyyominame",
+				"type": "nvarchar"
+			},
+			{
+				"name": "createdbyname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "createdon",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "owningbusinessunitname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "createdonbehalfbyname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "modifiedonbehalfbyname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_city",
+				"type": "nvarchar"
+			},
+			{
+				"name": "versionnumber",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "ntv_billingprofileidname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "overriddencreatedon",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "ntv_ntv_address"
+		}
+	}
+}
