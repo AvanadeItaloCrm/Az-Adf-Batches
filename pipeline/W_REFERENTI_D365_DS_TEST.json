@@ -107,7 +107,7 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "ntv_name",
+									"name": "ntv_firstname",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -151,7 +151,9 @@
 							},
 							{
 								"source": {
-									"name": "mobilephone"
+									"name": "ntv_mobilephone",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "TELOFONO_MOBILE",
@@ -160,7 +162,9 @@
 							},
 							{
 								"source": {
-									"name": "telephone1"
+									"name": "ntv_phone",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "TELEFONO_FISSO",
@@ -169,7 +173,9 @@
 							},
 							{
 								"source": {
-									"name": "fax"
+									"name": "ntv_fax",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "FAX",
@@ -178,7 +184,9 @@
 							},
 							{
 								"source": {
-									"name": "jobtitle"
+									"name": "ntv_jobtitle",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "JOB_TITLE",
