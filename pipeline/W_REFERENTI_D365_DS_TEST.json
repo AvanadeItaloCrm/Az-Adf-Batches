@@ -141,7 +141,7 @@
 							},
 							{
 								"source": {
-									"name": "statecode",
+									"name": "ntv_referenttypecode",
 									"type": "Int32",
 									"physicalType": "int"
 								},
@@ -152,9 +152,9 @@
 							},
 							{
 								"source": {
-									"name": "statuscode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "ntv_mobilephone",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "TELOFONO_MOBILE",
@@ -163,9 +163,9 @@
 							},
 							{
 								"source": {
-									"name": "ntv_referenttypecode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "ntv_phone",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "TELEFONO_FISSO",
@@ -174,9 +174,9 @@
 							},
 							{
 								"source": {
-									"name": "modifiedonbehalfby",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "ntv_fax",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "FAX",
@@ -185,7 +185,7 @@
 							},
 							{
 								"source": {
-									"name": "modifiedonbehalfby_entitytype",
+									"name": "ntv_jobtitle",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -196,7 +196,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_accountid",
+									"name": "Id",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -207,34 +207,12 @@
 							},
 							{
 								"source": {
-									"name": "ntv_accountid_entitytype",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "ADV_CORP_ID",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "owninguser",
+									"name": "ntv_referentid",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
 								"sink": {
-									"name": "TIPO",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "owninguser_entitytype",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "TIPOLOGIA_REFERENTE",
+									"name": "ADV_CORP_ID",
 									"type": "String"
 								}
 							}
