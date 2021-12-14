@@ -31,7 +31,7 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureSqlDbCrmStagingArea",
+					"referenceName": "AzureSqlTestStagingArea",
 					"type": "LinkedServiceReference"
 				}
 			},
@@ -67,7 +67,7 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureSqlDbCrmStagingArea",
+					"referenceName": "AzureSqlTestStagingArea",
 					"type": "LinkedServiceReference"
 				}
 			},
@@ -95,7 +95,7 @@
 					"method": "GET"
 				},
 				"linkedServiceName": {
-					"referenceName": "crmdevbatchesdyn365out",
+					"referenceName": "crmtestbatches",
 					"type": "LinkedServiceReference"
 				}
 			}
@@ -107,7 +107,7 @@
 			}
 		},
 		"folder": {
-			"name": "Az_IntegrazioniBatch_Oracle_Test"
+			"name": "Az_IntegrazioneBatch_Test"
 		},
 		"annotations": [],
 		"lastPublishTime": "2021-10-06T12:38:05Z"
