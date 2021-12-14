@@ -1,5 +1,5 @@
 {
-	"name": "Az_B2C-B2B_Dev_Dyn_Ind_Station_ServiceNow",
+	"name": "Az_B2C-B2B_Test_Dyn_Ind_Station_ServiceNow",
 	"properties": {
 		"activities": [
 			{
@@ -107,7 +107,7 @@
 			}
 		},
 		"folder": {
-			"name": "Az_IntegrazioniBatch"
+			"name": "Az_IntegrazioniBatch_Oracle_Test"
 		},
 		"annotations": [],
 		"lastPublishTime": "2021-10-06T12:38:05Z"
