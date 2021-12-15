@@ -315,7 +315,10 @@
 							"type": "String"
 						},
 						"Errore": {
-							"value": "@pipeline().RunId",
+							"value": {
+								"value": "@pipeline().RunId",
+								"type": "Expression"
+							},
 							"type": "String"
 						},
 						"NomeFile": {
@@ -356,7 +359,7 @@
 					"source": {
 						"type": "OracleSource",
 						"oracleReaderQuery": {
-							"value": "@concat('SELECT sa_d365_svil.errore_sync (''',\nvariables('TableName'),\n''',''Errore'') FROM DUAL;')",
+							"value": "@concat('SELECT sa_d365_svil.errore_sync (''',\nvariables('TableName'),\n''',''',variables('Error'),''') FROM DUAL;')",
 							"type": "Expression"
 						},
 						"partitionOption": "None",
@@ -373,6 +376,10 @@
 			"TableName": {
 				"type": "String",
 				"defaultValue": "W_PROMOTER_BSS_D365_DS"
+			},
+			"Error": {
+				"type": "String",
+				"defaultValue": "@pipeline().RunId"
 			}
 		},
 		"folder": {

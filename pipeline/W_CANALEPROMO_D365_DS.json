@@ -241,7 +241,7 @@
 					"source": {
 						"type": "OracleSource",
 						"oracleReaderQuery": {
-							"value": "@concat('SELECT sa_d365_svil.errore_sync (''',\nvariables('TableName'),\n''',''Errore'') FROM DUAL;')",
+							"value": "@concat('SELECT sa_d365_svil.errore_sync (''',\nvariables('TableName'),\n''',''',variables('Error'),''') FROM DUAL;')",
 							"type": "Expression"
 						},
 						"partitionOption": "PhysicalPartitionsOfTable",
@@ -312,6 +312,10 @@
 			"TableName": {
 				"type": "String",
 				"defaultValue": "W_CANALEPROMO_D365_DS"
+			},
+			"Error": {
+				"type": "String",
+				"defaultValue": "@pipeline().RunId"
 			}
 		},
 		"folder": {
