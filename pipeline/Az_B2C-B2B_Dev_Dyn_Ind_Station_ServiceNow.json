@@ -127,6 +127,15 @@
 								"type": "Expression"
 							},
 							"type": "String"
+						},
+						"Errore": {
+							"value": "@pipeline().RunId"
+						},
+						"NomeFile": {
+							"value": ""
+						},
+						"Modulo": {
+							"value": "Azure Function ServiceNow"
 						}
 					}
 				},
