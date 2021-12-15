@@ -99,7 +99,7 @@
 					"sink": {
 						"type": "OracleSink",
 						"writeBatchSize": 10000,
-						"preCopyScript": "truncate table sa_d365_svil.W_TRANSAZIONE_FRODI_D365_DS"
+						"preCopyScript": "truncate table sa_d365_svil..W_TRANSAZIONE_FRODI_D365_DS"
 					},
 					"enableStaging": false,
 					"translator": {
