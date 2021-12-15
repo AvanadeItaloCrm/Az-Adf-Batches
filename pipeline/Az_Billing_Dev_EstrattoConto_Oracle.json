@@ -616,7 +616,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[batchSync].[FineBatchSync]",
+					"storedProcedureName": "[batchSync].[ErrorBatchSync]",
 					"storedProcedureParameters": {
 						"TabellaImport": {
 							"value": {
@@ -625,8 +625,9 @@
 							},
 							"type": "String"
 						},
-						"": {
-							"value": ""
+						"Errore": {
+							"value": "@pipeline().RunId",
+							"type": "String"
 						}
 					}
 				},
