@@ -252,7 +252,7 @@
 					"source": {
 						"type": "OracleSource",
 						"oracleReaderQuery": {
-							"value": "@concat('SELECT sa_d365_test.errore_sync (''',\nvariables('TableName'),\n''',''Errore'') FROM DUAL;')",
+							"value": "@concat('SELECT sa_d365_test.errore_sync (''',\nvariables('TableName'),\n''',''',variables('Error'),''') FROM DUAL;')",
 							"type": "Expression"
 						},
 						"partitionOption": "None",
@@ -320,6 +320,10 @@
 			"TableName": {
 				"type": "String",
 				"defaultValue": "W_INTERESSI_CLIENTE_D365_D"
+			},
+			"Error": {
+				"type": "String",
+				"defaultValue": "@pipeline().RunId"
 			}
 		},
 		"folder": {

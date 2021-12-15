@@ -1248,6 +1248,10 @@
 			"TableName": {
 				"type": "String",
 				"defaultValue": "W_ADV_CORP_D365_DS"
+			},
+			"Error": {
+				"type": "String",
+				"defaultValue": "@pipeline().RunId"
 			}
 		},
 		"folder": {

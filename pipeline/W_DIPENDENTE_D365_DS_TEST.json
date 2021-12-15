@@ -402,7 +402,7 @@
 					"source": {
 						"type": "OracleSource",
 						"oracleReaderQuery": {
-							"value": "@concat('SELECT sa_d365_test.errore_sync (''',\nvariables('TableName'),\n''',''Errore'') FROM DUAL;')",
+							"value": "@concat('SELECT sa_d365_test.errore_sync (''',\nvariables('TableName'),\n''',''',variables('Error'),''') FROM DUAL;')",
 							"type": "Expression"
 						},
 						"partitionOption": "None",
@@ -420,9 +420,9 @@
 				"type": "String",
 				"defaultValue": "W_DIPENDENTE_D365_DS"
 			},
-			"ErroreTabella": {
+			"Error": {
 				"type": "String",
-				"defaultValue": "ERRORE_W_DIPENDENTE_D365_DS"
+				"defaultValue": "@pipeline().RunId"
 			}
 		},
 		"folder": {

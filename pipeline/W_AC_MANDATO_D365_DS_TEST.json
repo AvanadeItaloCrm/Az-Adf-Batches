@@ -597,6 +597,10 @@
 			"TableName": {
 				"type": "String",
 				"defaultValue": "W_AC_MANDATO_D365_DS"
+			},
+			"Error": {
+				"type": "String",
+				"defaultValue": "@pipeline().RunId"
 			}
 		},
 		"folder": {
