@@ -107,7 +107,8 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "ntv_promotionnumber",
+									"name": "Id",
+									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
 								"sink": {
