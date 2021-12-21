@@ -1,0 +1,16 @@
+{
+	"name": "PROD_COMM_OracleDB",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "OracleDB_DEV",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "OracleTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "SA_D365_SVIL",
+			"table": "PROD_COMM"
+		}
+	}
+}
