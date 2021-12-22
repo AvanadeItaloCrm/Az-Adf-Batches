@@ -338,7 +338,7 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "AzureSqlTable2",
+									"referenceName": "TEST_PNR_CARNET_SQLSource",
 									"type": "DatasetReference"
 								}
 							],
