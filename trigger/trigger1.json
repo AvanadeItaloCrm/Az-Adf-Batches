@@ -21,6 +21,12 @@
 					"referenceName": "W_ATTIVITA_SR_D365_DS",
 					"type": "PipelineReference"
 				}
+			},
+			{
+				"pipelineReference": {
+					"referenceName": "W_CANALEPROMO_D365_DS",
+					"type": "PipelineReference"
+				}
 			}
 		],
 		"type": "ScheduleTrigger",
