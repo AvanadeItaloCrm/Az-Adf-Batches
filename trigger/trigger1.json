@@ -81,6 +81,12 @@
 					"referenceName": "W_ISO_NAZIONE_SR_D365_DS",
 					"type": "PipelineReference"
 				}
+			},
+			{
+				"pipelineReference": {
+					"referenceName": "W_PAG_CAMPI_D365_DS",
+					"type": "PipelineReference"
+				}
 			}
 		],
 		"type": "ScheduleTrigger",
