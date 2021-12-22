@@ -153,6 +153,12 @@
 					"referenceName": "W_TRANSAZIONE_FRODI_D365_DS",
 					"type": "PipelineReference"
 				}
+			},
+			{
+				"pipelineReference": {
+					"referenceName": "W_AC_MANDATO_D365_DS",
+					"type": "PipelineReference"
+				}
 			}
 		],
 		"type": "ScheduleTrigger",
