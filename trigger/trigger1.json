@@ -9,6 +9,12 @@
 					"referenceName": "W_ADV_CORP_D365_DS",
 					"type": "PipelineReference"
 				}
+			},
+			{
+				"pipelineReference": {
+					"referenceName": "W_AGENTI_D365_DS",
+					"type": "PipelineReference"
+				}
 			}
 		],
 		"type": "ScheduleTrigger",
@@ -16,7 +22,7 @@
 			"recurrence": {
 				"frequency": "Hour",
 				"interval": 1,
-				"startTime": "2021-12-22T16:40:00Z",
+				"startTime": "2021-12-22T16:50:00Z",
 				"timeZone": "UTC"
 			}
 		}
