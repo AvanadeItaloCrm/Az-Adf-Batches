@@ -93,6 +93,12 @@
 					"referenceName": "W_PAG_INFOADD_D365_DS",
 					"type": "PipelineReference"
 				}
+			},
+			{
+				"pipelineReference": {
+					"referenceName": "W_PRATICHE_AUTORITA_D365_DS",
+					"type": "PipelineReference"
+				}
 			}
 		],
 		"type": "ScheduleTrigger",
