@@ -1,0 +1,12 @@
+{
+	"name": "TEST_PROD_COMM_SQLSource",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzSqlOracle_Test_DesDYN365",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	}
+}

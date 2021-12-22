@@ -338,7 +338,7 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "AzureSqlTable3",
+									"referenceName": "TEST_PROD_COMM_SQLSource",
 									"type": "DatasetReference"
 								}
 							],
