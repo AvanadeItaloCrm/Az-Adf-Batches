@@ -1,0 +1,16 @@
+{
+	"name": "TEST_PNR_CARNET_OracleDB",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "OracleDB_TEST",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "OracleTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "SA_D365_TEST",
+			"table": "PNR_CARNET"
+		}
+	}
+}
