@@ -129,6 +129,12 @@
 					"referenceName": "W_RISPOSTEPROMO_D365_DS",
 					"type": "PipelineReference"
 				}
+			},
+			{
+				"pipelineReference": {
+					"referenceName": "W_SERVICEREQUEST_D365_DS",
+					"type": "PipelineReference"
+				}
 			}
 		],
 		"type": "ScheduleTrigger",
