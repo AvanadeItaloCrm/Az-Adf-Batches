@@ -105,6 +105,12 @@
 					"referenceName": "W_PRATICHE_PAGAMENTO_D365_DS",
 					"type": "PipelineReference"
 				}
+			},
+			{
+				"pipelineReference": {
+					"referenceName": "W_PROMOTER_BSS_D365_DS",
+					"type": "PipelineReference"
+				}
 			}
 		],
 		"type": "ScheduleTrigger",
