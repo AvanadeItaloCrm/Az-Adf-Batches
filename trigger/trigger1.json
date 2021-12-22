@@ -135,6 +135,12 @@
 					"referenceName": "W_SERVICEREQUEST_D365_DS",
 					"type": "PipelineReference"
 				}
+			},
+			{
+				"pipelineReference": {
+					"referenceName": "W_SINTESI_FRODI_D365_DS",
+					"type": "PipelineReference"
+				}
 			}
 		],
 		"type": "ScheduleTrigger",
