@@ -69,6 +69,12 @@
 					"referenceName": "W_INDIRIZZI_D365_DS",
 					"type": "PipelineReference"
 				}
+			},
+			{
+				"pipelineReference": {
+					"referenceName": "W_INTERESSI_CLIENTE_D365_DS",
+					"type": "PipelineReference"
+				}
 			}
 		],
 		"type": "ScheduleTrigger",
