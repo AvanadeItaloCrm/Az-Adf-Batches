@@ -147,6 +147,12 @@
 					"referenceName": "W_TRANSAZIONE_CRGBACK_D365_DS",
 					"type": "PipelineReference"
 				}
+			},
+			{
+				"pipelineReference": {
+					"referenceName": "W_TRANSAZIONE_FRODI_D365_DS",
+					"type": "PipelineReference"
+				}
 			}
 		],
 		"type": "ScheduleTrigger",
