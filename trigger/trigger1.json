@@ -51,6 +51,12 @@
 					"referenceName": "W_CORPORATE_SEGMENT_D365_DS",
 					"type": "PipelineReference"
 				}
+			},
+			{
+				"pipelineReference": {
+					"referenceName": "W_CUSTUMER_D365_DS",
+					"type": "PipelineReference"
+				}
 			}
 		],
 		"type": "ScheduleTrigger",
