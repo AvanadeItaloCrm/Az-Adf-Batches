@@ -93,7 +93,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "SELECT ntv_account.accountnumber AS CODICE_PARTNER, ntv_account.ntv_promotorinvitation AS DESCRIZIONE_PROMOCODE, ntv_account.ntv_agencyname AS NOME, ntv_account.accountclassificationcode AS TIPO_AGENZIA, ntv_account.accountclassificationcode AS TIPO_PARTNER, ntv_account.ntv_socialreason AS RAGIONE_SOCIALE, \n             ntv_account.statuscode AS STATO, ntv_account.ntv_agencyclasscode AS SEGMENTO_MERCATO, ntv_account.ntv_isbookingsourcegds AS FLG_BOOKING_SOURCE_GDS, ntv_account.ntv_isbookingsourceweb AS FLG_BOOKING_SOURCE_WEB, ntv_account.parentaccountid AS ADV_PADRE_ID, ntv_account.ntv_vatcode AS PIVA_CFS, ntv_account.ntv_iata AS CODICE_IATA, \n             ntv_account.ntv_cciaaregistrationnumber AS CODICE_REGISTRAZIONE, ntv_account.ntv_backoffice AS MID_BACKOFFICE, ntv_account.ntv_activationdate AS DATA_ATTIVAZIONE, ntv_account.createdon AS DATA_CREAZIONE, ntv_account.ntv_railwayagencytypecode AS NOME_HOLDING, ntv_account.description AS DESCRIZIONE, ntv_account.ntv_terminationdate AS DATA_CESSAZIONE_VENDITA, \n             ntv_account.emailaddress1 AS EMAIL_CONTATTO_AGENZIA, ntv_account.fax AS FAX_CONTATTO_AGENZIA, ntv_account.telephone1 AS TEL_FISSO_CONTATTO_AGENZIA, ntv_account.ntv_abicab AS ABICAB, ntv_account.ntv_cin AS CIN, ntv_account.ntv_iban AS IBAN, ntv_account.ntv_bankname AS NOME_BANCA, ntv_account.ntv_bankaccountnumber AS NUMERO_CONYO, ntv_account.ntv_banknation AS NAZIONE_BANCA, \n             ntv_account.ntv_swift AS SWIFT, ntv_account.ntv_bankaccountholder AS TITOLARE_CC, ntv_account.ntv_billingcentercode AS TIPO_CENTRO_FATTURAZIONE, ntv_account.ntv_paymentmethodcode AS METODO_PAGAMENTO, ntv_account.ntv_ivapercentage AS PERCENTUALE_IVA, ntv_account.ntv_paymentwaittimecode AS TERMINE_PAGAMENTO, ntv_account.ntv_referent_lastname AS COGNOME_REF_UNICO, \n             ntv_account.ntv_referent_firstname AS NOME_REF_UNICO, ntv_account.ntv_referent_fax AS FAX_REF_UNICO, ntv_account.ntv_referent_phone AS TELEFONO_FISSO_REF_UNICO, ntv_account.ntv_referent_phone AS TELEFONO_MOBILE_REF_UNICO, \n             ntv_ntv_address.ntv_city AS CITTA_SEDE_LEGALE, ntv_ntv_address.ntv_nation AS NAZIONE_SEDE_LEGALE, ntv_ntv_address.ntv_provincecode AS PROVINCIA_SEDE_LEGALE, ntv_ntv_address.ntv_postalcode AS CAP_SEDE_LEGALE, \n             ntv_ntv_address.ntv_street AS INDIRIZZO_SEDE_LEGALE, ntv_ntv_address.ntv_addresstypecode AS TIPO_CORPORATE, ntv_account.ntv_declaredsales AS FATTURATO_DICHIARATO,ntv_account.ntv_ntvowner AS OWNER_CORPORATE_NTV,ntv_account.ntv_contractstatuscode AS STATO_CONTRATTO,ntv_account.ntv_distributiontool AS DIST_TOOL_AZIENDA,ntv_account.ntv_bookingmodecode AS MODALITA_BOOKING,ntv_account.ntv_lodgecardtypecode AS TIPO_CARTA_LODGE,ntv_account.ntv_lodgecardnumber AS NUM_CARTA_LODGE,\n\t\t\t ntv_account.ntv_lodgecardholder AS INTESTATARIO_CARTA_LODGE,ntv_account.ntv_lodgecardenddate AS SCADENZA_CARTA_LODGE,ntv_account.ntv_referent_jobtitle AS Lavoro_REFERENTE,\n\t\t\t ntv_account.Id,ntv_ntv_address.ntv_city AS CITTA_FATTURAZIONE, ntv_ntv_address.ntv_nation AS PAESE_FATTURAZIONE, ntv_ntv_address.ntv_provincecode AS PROVINCIA_FATTURAZIONE, ntv_ntv_address.ntv_postalcode AS CAP_FATTURAZIONE, \n             ntv_ntv_address.ntv_street AS INDIRIZZO_FATTURAZIONE,ntv_ntv_address.ntv_city AS CITTA_SEDE_OPERATIVA, ntv_ntv_address.ntv_nation AS PAESE_SEDE_OPERATIVA, ntv_ntv_address.ntv_provincecode AS PROVINCIA_SEDE_OPERATIVA, ntv_ntv_address.ntv_postalcode AS CAP_SEDE_OPERATIVA, \n             ntv_ntv_address.ntv_street AS INDIRIZZO_SEDE_OPERATIVA,ntv_account.ntv_ivatypecode AS DESC_IVA,ntv_account.ntv_corporatetypecode AS CLASSIFICAZIONE,ntv_account.ntv_activitysectorcode AS SETTORE_ATTIVITA,ntv_account.ntv_notes AS DESC_TEXT,ntv_account.ntv_registrationchannelcode AS CANALE_DI_REGISTRAZIONE, ntv_account.ntv_travelpolicycode AS TRAVEL_POLICY, ntv_account.ntv_ispublicadministration AS FLG_PUBBLICA_AMMINISTRAZIONE,\n\t\t\t ntv_account.ntv_ciu AS CODICE_CIU, ntv_account.ntv_cig AS CODICE_CIG, ntv_account.ntv_cup AS CODICE_CUP,ntv_account.ntv_areacceptedmarketinginfo AS CONSENSO_INFO_MARK, ntv_account.ntv_referent_marketingupdatedon AS DATA_CONS_INFO_MARK, ntv_account.ntv_segmentenddate AS DATA_FINE_SEGMENTO, ntv_account.ntv_segmentstartdate AS DATA_INIZIO_SEGMENTO, ntv_account.ntv_travelscount AS NUMERO_VIAGGI, ntv_account.ntv_segmentcode AS SEGMENTO, ntv_account.ntv_segmentupdatedon AS DATA_AGG_SEGMENT, \n\t\t\t ntv_account.ntv_referent_thirdpartyupdatedon AS DATA_CONS_TERZE_PARTI, ntv_account.ntv_referent_consentthirdparty AS FLG_CONSENSO_TERZE_PARTI, ntv_account.ntv_referent_consentprofilation AS FLG_CONSENSO_PROFILAZIONE, ntv_account.ntv_referent_profilationupdatedon AS DATA_CONS_PROFILAZIONE, ntv_account.ntv_recipient AS CODICE_DESTINATARIO_FATTURA, ntv_account.ntv_emailpec AS EMAIL_COMUNICAZIONE_EC, ntv_account.ntv_ismandatesent AS FLG_MANDATO, ntv_account.ntv_mandateoutcomecode AS ESITO_CONFERIMENTO_MAND, ntv_account.ntv_outcomemandatedate AS DATA_ESITO_MANDATO_DF,\n\t\t\t ntv_account.ntv_fiscalnumber AS CODICE_FISCALE_PARTNER,ntv_account.ntv_isivagroup AS FLG_PIVA_GRUPPO,ntv_account.ntv_isonlus AS FLG_ONLUS,ntv_account.modifiedon AS DATA_AGGIORNAMENTO,ntv_account.ntv_businesspartner AS BUSINESS_PARTNER,ntv_account.ntv_creditfiscalnumber AS CODICE_FISCALE_CREDITO, ntv_ntv_corporatecluster.ntv_name AS CLUSTER_PROMOZIONI,ntv_account.ntv_clusterupdatedon AS DATA_AGG_CLUSTER_CORP\nFROM   ntv_account INNER JOIN\n             ntv_ntv_address ON ntv_account.accountid = ntv_ntv_address.ntv_accountid INNER JOIN\n             ntv_ntv_corporatecluster ON ntv_account.ntv_partnerclusterid = ntv_ntv_corporatecluster.ntv_corporateclusterid",
+						"sqlReaderQuery": "SELECT ntv_account.accountnumber AS CODICE_PARTNER, ntv_account.ntv_promotorinvitation AS DESCRIZIONE_PROMOCODE, ntv_account.ntv_agencyname AS NOME, ntv_account.accountclassificationcode AS TIPO_AGENZIA, ntv_account.accountclassificationcode AS TIPO_PARTNER, ntv_account.ntv_socialreason AS RAGIONE_SOCIALE, \n             ntv_account.statuscode AS STATO, ntv_account.ntv_agencyclasscode AS SEGMENTO_MERCATO, ntv_account.ntv_isbookingsourcegds AS FLG_BOOKING_SOURCE_GDS, ntv_account.ntv_isbookingsourceweb AS FLG_BOOKING_SOURCE_WEB, ntv_account.parentaccountid AS ADV_PADRE_ID, ntv_account.ntv_vatcode AS PIVA_CFS, ntv_account.ntv_iata AS CODICE_IATA, \n             ntv_account.ntv_cciaaregistrationnumber AS CODICE_REGISTRAZIONE, ntv_account.ntv_backoffice AS MID_BACKOFFICE, ntv_account.ntv_activationdate AS DATA_ATTIVAZIONE, ntv_account.createdon AS DATA_CREAZIONE, ntv_account.ntv_railwayagencytypecode AS NOME_HOLDING, ntv_account.description AS DESCRIZIONE, ntv_account.ntv_terminationdate AS DATA_CESSAZIONE_VENDITA, \n             ntv_account.emailaddress1 AS EMAIL_CONTATTO_AGENZIA, ntv_account.fax AS FAX_CONTATTO_AGENZIA, ntv_account.telephone1 AS TEL_FISSO_CONTATTO_AGENZIA, ntv_account.ntv_abicab AS ABICAB, ntv_account.ntv_cin AS CIN, ntv_account.ntv_iban AS IBAN, ntv_account.ntv_bankname AS NOME_BANCA , ntv_account.ntv_bankaccountnumber AS NUMERO_CONTO, ntv_account.ntv_banknation AS NAZIONE_BANCA, \n             ntv_account.ntv_swift AS SWIFT, ntv_account.ntv_bankaccountholder AS TITOLARE_CC, ntv_account.ntv_billingcentercode AS TIPO_CENTRO_FATTURAZIONE, ntv_account.ntv_paymentmethodcode AS METODO_PAGAMENTO, ntv_account.ntv_ivapercentage AS PERCENTUALE_IVA, ntv_account.ntv_paymentwaittimecode AS TERMINE_PAGAMENTO, ntv_account.ntv_referent_lastname AS COGNOME_REF_UNICO, \n             ntv_account.ntv_referent_firstname AS NOME_REF_UNICO, ntv_account.ntv_referent_fax AS FAX_REF_UNICO, ntv_account.ntv_referent_phone AS TELEFONO_FISSO_REF_UNICO, ntv_account.ntv_referent_phone AS TELEFONO_MOBILE_REF_UNICO, \n             ntv_ntv_address.ntv_city AS CITTA_SEDE_LEGALE, ntv_ntv_address.ntv_nation AS NAZIONE_SEDE_LEGALE, ntv_ntv_address.ntv_provincecode AS PROVINCIA_SEDE_LEGALE, ntv_ntv_address.ntv_postalcode AS CAP_SEDE_LEGALE, \n             ntv_ntv_address.ntv_street AS INDIRIZZO_SEDE_LEGALE, ntv_ntv_address.ntv_addresstypecode AS TIPO_CORPORATE, ntv_account.ntv_declaredsales AS FATTURATO_DICHIARATO,ntv_account.ntv_ntvowner AS OWNER_CORPORATE_NTV,ntv_account.ntv_contractstatuscode AS STATO_CONTRATTO,ntv_account.ntv_distributiontool AS DIST_TOOL_AZIENDA,ntv_account.ntv_bookingmodecode AS MODALITA_BOOKING,ntv_account.ntv_lodgecardtypecode AS TIPO_CARTA_LODGE,ntv_account.ntv_lodgecardnumber AS NUM_CARTA_LODGE,\n\t\t\t ntv_account.ntv_lodgecardholder AS INTESTATARIO_CARTA_LODGE,ntv_account.ntv_lodgecardenddate AS SCADENZA_CARTA_LODGE,ntv_account.ntv_referent_jobtitle AS Lavoro_REFERENTE, \n\t\t\t ntv_account.Id AS INTEGRAZIONE_ID,ntv_ntv_address.ntv_city AS CITTA_FATTURAZIONE, ntv_ntv_address.ntv_nation AS PAESE_FATTURAZIONE, ntv_ntv_address.ntv_provincecode AS PROVINCIA_FATTURAZIONE, ntv_ntv_address.ntv_postalcode AS CAP_FATTURAZIONE, \n             ntv_ntv_address.ntv_street AS INDIRIZZO_FATTURAZIONE,ntv_ntv_address.ntv_city AS CITTA_SEDE_OPERATIVA, ntv_ntv_address.ntv_nation AS PAESE_SEDE_OPERATIVA, ntv_ntv_address.ntv_provincecode AS PROVINCIA_SEDE_OPERATIVA, ntv_ntv_address.ntv_postalcode AS CAP_SEDE_OPERATIVA, \n             ntv_ntv_address.ntv_street AS INDIRIZZO_SEDE_OPERATIVA,ntv_account.ntv_ivatypecode AS DESC_IVA,ntv_account.ntv_corporatetypecode AS CLASSIFICAZIONE,ntv_account.ntv_activitysectorcode AS SETTORE_ATTIVITA,ntv_account.ntv_notes AS DESC_TEXT,ntv_account.ntv_registrationchannelcode AS CANALE_DI_REGISTRAZIONE, ntv_account.ntv_travelpolicycode AS TRAVEL_POLICY, ntv_account.ntv_ispublicadministration AS FLG_PUBBLICA_AMMINISTRAZIONE,\n\t\t\t ntv_account.ntv_ciu AS CODICE_CIU, ntv_account.ntv_cig AS CODICE_CIG, ntv_account.ntv_cup AS CODICE_CUP,ntv_account.ntv_areacceptedmarketinginfo AS CONSENSO_INFO_MARK, ntv_account.ntv_referent_marketingupdatedon AS DATA_CONS_INFO_MARK, ntv_account.ntv_segmentenddate AS DATA_FINE_SEGMENTO, ntv_account.ntv_segmentstartdate AS DATA_INIZIO_SEGMENTO, ntv_account.ntv_travelscount AS NUMERO_VIAGGI, ntv_account.ntv_segmentcode AS SEGMENTO, ntv_account.ntv_segmentupdatedon AS DATA_AGG_SEGMENT, \n\t\t\t ntv_account.ntv_referent_thirdpartyupdatedon AS DATA_CONS_TERZE_PARTI, ntv_account.ntv_referent_consentthirdparty AS FLG_CONSENSO_TERZE_PARTI, ntv_account.ntv_referent_consentprofilation AS FLG_CONSENSO_PROFILAZIONE, ntv_account.ntv_referent_profilationupdatedon AS DATA_CONS_PROFILAZIONE, ntv_account.ntv_recipient AS CODICE_DESTINATARIO_FATTURA, ntv_account.ntv_emailpec AS EMAIL_COMUNICAZIONE_EC, ntv_account.ntv_ismandatesent AS FLG_MANDATO, ntv_account.ntv_mandateoutcomecode AS ESITO_CONFERIMENTO_MAND, ntv_account.ntv_outcomemandatedate AS DATA_ESITO_MANDATO_DF,\n\t\t\t ntv_account.ntv_fiscalnumber AS CODICE_FISCALE_PARTNER,ntv_account.ntv_isivagroup AS FLG_PIVA_GRUPPO,ntv_account.ntv_isonlus AS FLG_ONLUS,ntv_account.modifiedon AS DATA_AGGIORNAMENTO,ntv_account.ntv_businesspartner AS BUSINESS_PARTNER,ntv_account.ntv_creditfiscalnumber AS CODICE_FISCALE_CREDITO, ntv_ntv_corporatecluster.ntv_name AS CLUSTER_PROMOZIONI,ntv_account.ntv_clusterupdatedon AS DATA_AGG_CLUSTER_CORP\nFROM   ntv_account INNER JOIN\n             ntv_ntv_address ON ntv_account.accountid = ntv_ntv_address.ntv_accountid INNER JOIN\n             ntv_ntv_corporatecluster ON ntv_account.ntv_partnerclusterid = ntv_ntv_corporatecluster.ntv_corporateclusterid",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -405,6 +405,28 @@
 							},
 							{
 								"source": {
+									"name": "NUMERO_CONTO",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "ACCOUNT_NUMBER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NAZIONE_BANCA",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "BANK_COUNTRY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
 									"name": "SWIFT",
 									"type": "String",
 									"physicalType": "nvarchar"
@@ -689,6 +711,28 @@
 								"sink": {
 									"name": "SCADENZA_CARTA_LODGE",
 									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "Lavoro_REFERENTE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "JOB_TITLE_REFERENTE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INTEGRAZIONE_ID",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "INTEGRAZIONE_ID",
+									"type": "String"
 								}
 							},
 							{
