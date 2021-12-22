@@ -45,6 +45,12 @@
 					"referenceName": "W_CONTATTO_SR_WEB_D365_DS",
 					"type": "PipelineReference"
 				}
+			},
+			{
+				"pipelineReference": {
+					"referenceName": "W_CORPORATE_SEGMENT_D365_DS",
+					"type": "PipelineReference"
+				}
 			}
 		],
 		"type": "ScheduleTrigger",
