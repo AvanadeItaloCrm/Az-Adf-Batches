@@ -93,7 +93,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "SELECT ntv_account.accountnumber, ntv_account.ntv_promotorinvitation, ntv_account.ntv_agencyname, ntv_account.accountclassificationcode AS TIPO_AGENZIA, ntv_account.accountclassificationcode AS TIPO_PARTNER, ntv_account.ntv_socialreason, \n             ntv_account.statuscode, ntv_account.ntv_agencyclascode, ntv_account.ntv_isbookingsourcegds, ntv_account.ntv_isbookingsourceweb, ntv_account.parentaccountid, ntv_account.ntv_vatcode, ntv_account.ntv_iata, \n             ntv_account.ntv_cciaaregistrationnumber, ntv_account.ntv_backoffice, ntv_account.ntv_activationdate, ntv_account.createdon, ntv_account.ntv_railwayagencytypecode, ntv_account.description, ntv_account.ntv_terminationdate, \n             ntv_account.emailaddress1, ntv_account.fax, ntv_account.teleohone1, ntv_account.ntv_abicab, ntv_account.ntv_cin, ntv_account.ntv_iban, ntv_account.ntv_bankname, ntv_account.ntv_bankaccountnumber, ntv_account.ntv_banknation, \n             ntv_account.ntv_swift, ntv_account.ntv_bankaccountholder, ntv_account.ntv_billingcentercode, ntv_account.ntv_paymentmethodcode, ntv_account.ntv_ivapercentage, ntv_account.ntv_paymentwaittimecode, ntv_account.ntv_referent_lastname, \n             ntv_account.ntv_referent_firstname, ntv_account.ntv_referent_fax, ntv_account.ntv_referent_phone AS TELEFONO_FISSO_REF_UNICO, ntv_account.ntv_referent_phone AS TELEFONO_MOBILE_REF_UNICO, \n             ntv_ntv_address.ntv_city AS CITTA_SEDE_LEGALE, ntv_ntv_address.ntv_nation AS NAZIONE_SEDE_LEGALE, ntv_ntv_address.ntv_provincecode AS PROVINCIA_SEDE_LEGALE, ntv_ntv_address.ntv_postalcode AS CAP_SEDE_LEGALE, \n             ntv_ntv_address.ntv_street AS INDIRIZZO_SEDE_LEGALE, ntv_ntv_address.ntv_addresstypecode AS TIPO_CORPORATE, ntv_account.ntv_declaredsales,ntv_account.ntv_ntvowner,ntv_account.ntv_contractstatuscode,ntv_account.ntv_distributiontool,ntv_account.ntv_bookingmodecode,ntv_account.ntv_promocode,ntv_account.ntv_lodgecardtypecode,ntv_account.ntv_lodgecardnumber,\n\t\t\t ntv_account.ntv_lodgecardholder,ntv_account.ntv_lodgecardenddate,ntv_account.ntv_referent_jobtitle,\n\t\t\t ntv_account.Id,ntv_ntv_address.ntv_city AS CITTA_FATTURAZIONE, ntv_ntv_address.ntv_nation AS PAESE_FATTURAZIONE, ntv_ntv_address.ntv_provincecode AS PROVINCIA_FATTURAZIONE, ntv_ntv_address.ntv_postalcode AS CAP_FATTURAZIONE, \n             ntv_ntv_address.ntv_street AS INDIRIZZO_FATTURAZIONE,ntv_ntv_address.ntv_city AS CITTA_SEDE_OPERATIVA, ntv_ntv_address.ntv_nation AS PAESE_SEDE_OPERATIVA, ntv_ntv_address.ntv_provincecode AS PROVINCIA_SEDE_OPERATIVA, ntv_ntv_address.ntv_postalcode AS CAP_SEDE_OPERATIVA, \n             ntv_ntv_address.ntv_street AS INDIRIZZO_SEDE_OPERATIVA,ntv_account.ntv_ivatypecode,ntv_account.ntv_corporatetypecode,ntv_account.ntv_activitysectorcode,ntv_account.ntv_notes,ntv_account.ntv_registrationchannelcode, ntv_account.ntv_travelpolicycode, ntv_account.ntv_ispublicadministration,\n\t\t\t ntv_account.ntv_ciu, ntv_account.ntv_cig, ntv_account.ntv_cup,ntv_account.ntv_isacceptedthirdpartyconsent, ntv_account.ntv_referent_marketingupdatedon, ntv_account.ntv_segmentenddate, ntv_account.ntv_segmentstartdate, ntv_account.ntv_travelscount, ntv_account.ntv_segmentcode, ntv_account.ntv_segmentupdatedon, \n\t\t\t ntv_account.ntv_referent_thirdpartyupdatedon, ntv_account.ntv_referent_consentthirdparty, ntv_account.ntv_referent_consentprofilation, ntv_account.ntv_referent_profilationupdatedon, ntv_account.ntv_recipient, ntv_account.ntv_emailpec, ntv_account.ntv_ismandatesent, ntv_account.ntv_mandateoutcomecode, ntv_account.ntv_outcomemandatedate,\n\t\t\t ntv_account.ntv_fiscalnumber,ntv_account.ntv_isivagroup,ntv_account.ntv_isonlus,ntv_account.modifiedon,ntv_account.ntv_businesspartner,ntv_account.ntv_creditfiscalnumber\nFROM   ntv_account INNER JOIN\n             ntv_ntv_address ON ntv_account.accountid = ntv_ntv_address.ntv_accountid",
+						"sqlReaderQuery": "SELECT ntv_account.accountnumber AS CODICE_PARTNER, ntv_account.ntv_promotorinvitation AS DESCRIZIONE_PROMOCODE, ntv_account.ntv_agencyname AS NOME, ntv_account.accountclassificationcode AS TIPO_AGENZIA, ntv_account.accountclassificationcode AS TIPO_PARTNER, ntv_account.ntv_socialreason AS RAGIONE_SOCIALE, \n             ntv_account.statuscode AS STATO, ntv_account.ntv_agencyclasscode AS SEGMENTO_MERCATO, ntv_account.ntv_isbookingsourcegds AS FLG_BOOKING_SOURCE_GDS, ntv_account.ntv_isbookingsourceweb AS FLG_BOOKING_SOURCE_WEB, ntv_account.parentaccountid AS ADV_PADRE_ID, ntv_account.ntv_vatcode AS PIVA_CFS, ntv_account.ntv_iata AS CODICE_IATA, \n             ntv_account.ntv_cciaaregistrationnumber AS CODICE_REGISTRAZIONE, ntv_account.ntv_backoffice AS MID_BACKOFFICE, ntv_account.ntv_activationdate AS DATA_ATTIVAZIONE, ntv_account.createdon AS DATA_CREAZIONE, ntv_account.ntv_railwayagencytypecode AS NOME_HOLDING, ntv_account.description AS DESCRIZIONE, ntv_account.ntv_terminationdate AS DATA_CESSAZIONE_VENDITA, \n             ntv_account.emailaddress1 AS EMAIL_CONTATTO_AGENZIA, ntv_account.fax AS FAX_CONTATTO_AGENZIA, ntv_account.telephone1 AS TEL_FISSO_CONTATTO_AGENZIA, ntv_account.ntv_abicab AS ABICAB, ntv_account.ntv_cin AS CIN, ntv_account.ntv_iban AS IBAN, ntv_account.ntv_bankname AS NOME_BANCA, ntv_account.ntv_bankaccountnumber AS NUMERO_CONYO, ntv_account.ntv_banknation AS NAZIONE_BANCA, \n             ntv_account.ntv_swift AS SWIFT, ntv_account.ntv_bankaccountholder AS TITOLARE_CC, ntv_account.ntv_billingcentercode AS TIPO_CENTRO_FATTURAZIONE, ntv_account.ntv_paymentmethodcode AS METODO_PAGAMENTO, ntv_account.ntv_ivapercentage AS PERCENTUALE_IVA, ntv_account.ntv_paymentwaittimecode AS TERMINE_PAGAMENTO, ntv_account.ntv_referent_lastname AS COGNOME_REF_UNICO, \n             ntv_account.ntv_referent_firstname AS NOME_REF_UNICO, ntv_account.ntv_referent_fax AS FAX_REF_UNICO, ntv_account.ntv_referent_phone AS TELEFONO_FISSO_REF_UNICO, ntv_account.ntv_referent_phone AS TELEFONO_MOBILE_REF_UNICO, \n             ntv_ntv_address.ntv_city AS CITTA_SEDE_LEGALE, ntv_ntv_address.ntv_nation AS NAZIONE_SEDE_LEGALE, ntv_ntv_address.ntv_provincecode AS PROVINCIA_SEDE_LEGALE, ntv_ntv_address.ntv_postalcode AS CAP_SEDE_LEGALE, \n             ntv_ntv_address.ntv_street AS INDIRIZZO_SEDE_LEGALE, ntv_ntv_address.ntv_addresstypecode AS TIPO_CORPORATE, ntv_account.ntv_declaredsales AS FATTURATO_DICHIARATO,ntv_account.ntv_ntvowner AS OWNER_CORPORATE_NTV,ntv_account.ntv_contractstatuscode AS STATO_CONTRATTO,ntv_account.ntv_distributiontool AS DIST_TOOL_AZIENDA,ntv_account.ntv_bookingmodecode AS MODALITA_BOOKING,ntv_account.ntv_lodgecardtypecode AS TIPO_CARTA_LODGE,ntv_account.ntv_lodgecardnumber AS NUM_CARTA_LODGE,\n\t\t\t ntv_account.ntv_lodgecardholder AS INTESTATARIO_CARTA_LODGE,ntv_account.ntv_lodgecardenddate AS SCADENZA_CARTA_LODGE,ntv_account.ntv_referent_jobtitle AS Lavoro_REFERENTE,\n\t\t\t ntv_account.Id,ntv_ntv_address.ntv_city AS CITTA_FATTURAZIONE, ntv_ntv_address.ntv_nation AS PAESE_FATTURAZIONE, ntv_ntv_address.ntv_provincecode AS PROVINCIA_FATTURAZIONE, ntv_ntv_address.ntv_postalcode AS CAP_FATTURAZIONE, \n             ntv_ntv_address.ntv_street AS INDIRIZZO_FATTURAZIONE,ntv_ntv_address.ntv_city AS CITTA_SEDE_OPERATIVA, ntv_ntv_address.ntv_nation AS PAESE_SEDE_OPERATIVA, ntv_ntv_address.ntv_provincecode AS PROVINCIA_SEDE_OPERATIVA, ntv_ntv_address.ntv_postalcode AS CAP_SEDE_OPERATIVA, \n             ntv_ntv_address.ntv_street AS INDIRIZZO_SEDE_OPERATIVA,ntv_account.ntv_ivatypecode AS DESC_IVA,ntv_account.ntv_corporatetypecode AS CLASSIFICAZIONE,ntv_account.ntv_activitysectorcode AS SETTORE_ATTIVITA,ntv_account.ntv_notes AS DESC_TEXT,ntv_account.ntv_registrationchannelcode AS CANALE_DI_REGISTRAZIONE, ntv_account.ntv_travelpolicycode AS TRAVEL_POLICY, ntv_account.ntv_ispublicadministration AS FLG_PUBBLICA_AMMINISTRAZIONE,\n\t\t\t ntv_account.ntv_ciu AS CODICE_CIU, ntv_account.ntv_cig AS CODICE_CIG, ntv_account.ntv_cup AS CODICE_CUP,ntv_account.ntv_areacceptedmarketinginfo AS CONSENSO_INFO_MARK, ntv_account.ntv_referent_marketingupdatedon AS DATA_CONS_INFO_MARK, ntv_account.ntv_segmentenddate AS DATA_FINE_SEGMENTO, ntv_account.ntv_segmentstartdate AS DATA_INIZIO_SEGMENTO, ntv_account.ntv_travelscount AS NUMERO_VIAGGI, ntv_account.ntv_segmentcode AS SEGMENTO, ntv_account.ntv_segmentupdatedon AS DATA_AGG_SEGMENT, \n\t\t\t ntv_account.ntv_referent_thirdpartyupdatedon AS DATA_CONS_TERZE_PARTI, ntv_account.ntv_referent_consentthirdparty AS FLG_CONSENSO_TERZE_PARTI, ntv_account.ntv_referent_consentprofilation AS FLG_CONSENSO_PROFILAZIONE, ntv_account.ntv_referent_profilationupdatedon AS DATA_CONS_PROFILAZIONE, ntv_account.ntv_recipient AS CODICE_DESTINATARIO_FATTURA, ntv_account.ntv_emailpec AS EMAIL_COMUNICAZIONE_EC, ntv_account.ntv_ismandatesent AS FLG_MANDATO, ntv_account.ntv_mandateoutcomecode AS ESITO_CONFERIMENTO_MAND, ntv_account.ntv_outcomemandatedate AS DATA_ESITO_MANDATO_DF,\n\t\t\t ntv_account.ntv_fiscalnumber AS CODICE_FISCALE_PARTNER,ntv_account.ntv_isivagroup AS FLG_PIVA_GRUPPO,ntv_account.ntv_isonlus AS FLG_ONLUS,ntv_account.modifiedon AS DATA_AGGIORNAMENTO,ntv_account.ntv_businesspartner AS BUSINESS_PARTNER,ntv_account.ntv_creditfiscalnumber AS CODICE_FISCALE_CREDITO, ntv_ntv_corporatecluster.ntv_name AS CLUSTER_PROMOZIONI,ntv_account.ntv_clusterupdatedon AS DATA_AGG_CLUSTER_CORP\nFROM   ntv_account INNER JOIN\n             ntv_ntv_address ON ntv_account.accountid = ntv_ntv_address.ntv_accountid INNER JOIN\n             ntv_ntv_corporatecluster ON ntv_account.ntv_partnerclusterid = ntv_ntv_corporatecluster.ntv_corporateclusterid",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -108,7 +108,7 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "accountnumber",
+									"name": "CODICE_PARTNER",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -119,7 +119,18 @@
 							},
 							{
 								"source": {
-									"name": "ntv_agencyname",
+									"name": "DESCRIZIONE_PROMOCODE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "DESCRIZIONE_PROMOCODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NOME",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -130,7 +141,7 @@
 							},
 							{
 								"source": {
-									"name": "accountclassificationcode",
+									"name": "TIPO_AGENZIA",
 									"type": "Int32",
 									"physicalType": "int"
 								},
@@ -141,7 +152,18 @@
 							},
 							{
 								"source": {
-									"name": "ntv_socialreason",
+									"name": "TIPO_PARTNER",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "TIPO_PARTNER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RAGIONE_SOCIALE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -152,7 +174,7 @@
 							},
 							{
 								"source": {
-									"name": "address1_shippingmethodcode",
+									"name": "STATO",
 									"type": "Int32",
 									"physicalType": "int"
 								},
@@ -163,7 +185,7 @@
 							},
 							{
 								"source": {
-									"name": "paymenttermscode",
+									"name": "SEGMENTO_MERCATO",
 									"type": "Int32",
 									"physicalType": "int"
 								},
@@ -174,9 +196,9 @@
 							},
 							{
 								"source": {
-									"name": "accountcategorycode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "FLG_BOOKING_SOURCE_GDS",
+									"type": "Boolean",
+									"physicalType": "bit"
 								},
 								"sink": {
 									"name": "FLG_BOOKING_SOURCE_GDS",
@@ -185,9 +207,9 @@
 							},
 							{
 								"source": {
-									"name": "address1_freighttermscode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "FLG_BOOKING_SOURCE_WEB",
+									"type": "Boolean",
+									"physicalType": "bit"
 								},
 								"sink": {
 									"name": "FLG_BOOKING_SOURCE_WEB",
@@ -196,9 +218,9 @@
 							},
 							{
 								"source": {
-									"name": "accountratingcode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "ADV_PADRE_ID",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
 								},
 								"sink": {
 									"name": "ADV_PADRE_ID",
@@ -207,9 +229,9 @@
 							},
 							{
 								"source": {
-									"name": "preferredappointmenttimecode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "PIVA_CFS",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "PIVA_CFS",
@@ -218,9 +240,20 @@
 							},
 							{
 								"source": {
-									"name": "customertypecode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "CODICE_IATA",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CODICE_IATA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CODICE_REGISTRAZIONE",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "CODICE_REGISTRAZIONE",
@@ -229,9 +262,9 @@
 							},
 							{
 								"source": {
-									"name": "ownershipcode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "MID_BACKOFFICE",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "MID_BACKOFFICE",
@@ -240,7 +273,29 @@
 							},
 							{
 								"source": {
-									"name": "industrycode",
+									"name": "DATA_ATTIVAZIONE",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_ATTIVAZIONE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "DATA_CREAZIONE",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_CREAZIONE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "NOME_HOLDING",
 									"type": "Int32",
 									"physicalType": "int"
 								},
@@ -251,9 +306,9 @@
 							},
 							{
 								"source": {
-									"name": "businesstypecode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "DESCRIZIONE",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "DESCRIZIONE",
@@ -262,9 +317,20 @@
 							},
 							{
 								"source": {
-									"name": "address2_addresstypecode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "DATA_CESSAZIONE_VENDITA",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_CESSAZIONE_VENDITA",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "EMAIL_CONTATTO_AGENZIA",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "EMAIL_CONTATTO_AGENZIA",
@@ -273,9 +339,9 @@
 							},
 							{
 								"source": {
-									"name": "customersizecode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "FAX_CONTATTO_AGENZIA",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "FAX_CONTATTO_AGENZIA",
@@ -284,9 +350,9 @@
 							},
 							{
 								"source": {
-									"name": "address2_shippingmethodcode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "TEL_FISSO_CONTATTO_AGENZIA",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "TEL_FISSO_CONTATTO_AGENZIA",
@@ -295,9 +361,9 @@
 							},
 							{
 								"source": {
-									"name": "preferredappointmentdaycode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "ABICAB",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "ABICAB",
@@ -306,9 +372,9 @@
 							},
 							{
 								"source": {
-									"name": "address2_freighttermscode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "CIN",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "CIN",
@@ -317,9 +383,9 @@
 							},
 							{
 								"source": {
-									"name": "donotpostalmail",
-									"type": "Boolean",
-									"physicalType": "bit"
+									"name": "IBAN",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "IBAN",
@@ -328,9 +394,9 @@
 							},
 							{
 								"source": {
-									"name": "donotsendmm",
-									"type": "Boolean",
-									"physicalType": "bit"
+									"name": "NOME_BANCA",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "NOME_BANCA",
@@ -339,31 +405,9 @@
 							},
 							{
 								"source": {
-									"name": "creditonhold",
-									"type": "Boolean",
-									"physicalType": "bit"
-								},
-								"sink": {
-									"name": "ACCOUNT_NUMBER",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "donotbulkpostalmail",
-									"type": "Boolean",
-									"physicalType": "bit"
-								},
-								"sink": {
-									"name": "BANK_COUNTRY",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "isprivate",
-									"type": "Boolean",
-									"physicalType": "bit"
+									"name": "SWIFT",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "SWIFT",
@@ -372,9 +416,9 @@
 							},
 							{
 								"source": {
-									"name": "donotbulkemail",
-									"type": "Boolean",
-									"physicalType": "bit"
+									"name": "TITOLARE_CC",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "TITOLARE_CC",
@@ -383,9 +427,9 @@
 							},
 							{
 								"source": {
-									"name": "donotfax",
-									"type": "Boolean",
-									"physicalType": "bit"
+									"name": "TIPO_CENTRO_FATTURAZIONE",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "TIPO_CENTRO_FATTURAZIONE",
@@ -394,20 +438,9 @@
 							},
 							{
 								"source": {
-									"name": "donotemail",
-									"type": "Boolean",
-									"physicalType": "bit"
-								},
-								"sink": {
-									"name": "FLG_OVERCOMMISSIONING",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "marketingonly",
-									"type": "Boolean",
-									"physicalType": "bit"
+									"name": "METODO_PAGAMENTO",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "METODO_PAGAMENTO",
@@ -416,9 +449,9 @@
 							},
 							{
 								"source": {
-									"name": "followemail",
-									"type": "Boolean",
-									"physicalType": "bit"
+									"name": "PERCENTUALE_IVA",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "PERCENTUALE_IVA",
@@ -427,9 +460,9 @@
 							},
 							{
 								"source": {
-									"name": "merged",
-									"type": "Boolean",
-									"physicalType": "bit"
+									"name": "TERMINE_PAGAMENTO",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "TERMINE_PAGAMENTO",
@@ -438,31 +471,9 @@
 							},
 							{
 								"source": {
-									"name": "donotphone",
-									"type": "Boolean",
-									"physicalType": "bit"
-								},
-								"sink": {
-									"name": "CENTRO_FATT_BASE_ID",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "participatesinworkflow",
-									"type": "Boolean",
-									"physicalType": "bit"
-								},
-								"sink": {
-									"name": "CENTRO_FATT_OVER_ID",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "slaid",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "COGNOME_REF_UNICO",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "COGNOME_REF_UNICO",
@@ -471,7 +482,7 @@
 							},
 							{
 								"source": {
-									"name": "slaid_entitytype",
+									"name": "NOME_REF_UNICO",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -482,9 +493,9 @@
 							},
 							{
 								"source": {
-									"name": "transactioncurrencyid",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "FAX_REF_UNICO",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "FAX_REF_UNICO",
@@ -493,7 +504,7 @@
 							},
 							{
 								"source": {
-									"name": "transactioncurrencyid_entitytype",
+									"name": "TELEFONO_FISSO_REF_UNICO",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -504,9 +515,9 @@
 							},
 							{
 								"source": {
-									"name": "createdbyexternalparty",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "TELEFONO_MOBILE_REF_UNICO",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "TELEFONO_MOBILE_REF_UNICO",
@@ -515,7 +526,7 @@
 							},
 							{
 								"source": {
-									"name": "createdbyexternalparty_entitytype",
+									"name": "CITTA_SEDE_LEGALE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -526,9 +537,9 @@
 							},
 							{
 								"source": {
-									"name": "slainvokedid",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "NAZIONE_SEDE_LEGALE",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "NAZIONE_SEDE_LEGALE",
@@ -537,9 +548,9 @@
 							},
 							{
 								"source": {
-									"name": "slainvokedid_entitytype",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "PROVINCIA_SEDE_LEGALE",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "PROVINCIA_SEDE_LEGALE",
@@ -548,9 +559,9 @@
 							},
 							{
 								"source": {
-									"name": "originatingleadid",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "CAP_SEDE_LEGALE",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "CAP_SEDE_LEGALE",
@@ -559,7 +570,7 @@
 							},
 							{
 								"source": {
-									"name": "originatingleadid_entitytype",
+									"name": "INDIRIZZO_SEDE_LEGALE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -570,9 +581,9 @@
 							},
 							{
 								"source": {
-									"name": "territoryid",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "TIPO_CORPORATE",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "TIPO_CORPORATE",
@@ -581,9 +592,11 @@
 							},
 							{
 								"source": {
-									"name": "territoryid_entitytype",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "FATTURATO_DICHIARATO",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 38
 								},
 								"sink": {
 									"name": "FATTURATO_DICHIARATO",
@@ -592,18 +605,7 @@
 							},
 							{
 								"source": {
-									"name": "preferredserviceid",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "TMC_PRIMARIA_ID",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "preferredserviceid_entitytype",
+									"name": "OWNER_CORPORATE_NTV",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -614,9 +616,9 @@
 							},
 							{
 								"source": {
-									"name": "primarycontactid",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "STATO_CONTRATTO",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "STATO_CONTRATTO",
@@ -625,7 +627,7 @@
 							},
 							{
 								"source": {
-									"name": "primarycontactid_entitytype",
+									"name": "DIST_TOOL_AZIENDA",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -636,20 +638,9 @@
 							},
 							{
 								"source": {
-									"name": "parentaccountid",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "CODICE_ESTERNO_CORPORATE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "parentaccountid_entitytype",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "MODALITA_BOOKING",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "MODALITA_BOOKING",
@@ -658,20 +649,9 @@
 							},
 							{
 								"source": {
-									"name": "owningbusinessunit",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "PROMOCODE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "owningbusinessunit_entitytype",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "TIPO_CARTA_LODGE",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "TIPO_CARTA_LODGE",
@@ -680,9 +660,9 @@
 							},
 							{
 								"source": {
-									"name": "modifiedby",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "NUM_CARTA_LODGE",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "NUM_CARTA_LODGE",
@@ -691,7 +671,7 @@
 							},
 							{
 								"source": {
-									"name": "modifiedby_entitytype",
+									"name": "INTESTATARIO_CARTA_LODGE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -702,29 +682,18 @@
 							},
 							{
 								"source": {
-									"name": "modifiedonbehalfby_entitytype",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "SCADENZA_CARTA_LODGE",
+									"type": "DateTime",
+									"physicalType": "datetime"
 								},
 								"sink": {
-									"name": "JOB_TITLE_REFERENTE",
-									"type": "String"
+									"name": "SCADENZA_CARTA_LODGE",
+									"type": "DateTime"
 								}
 							},
 							{
 								"source": {
-									"name": "owninguser",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "INTEGRAZIONE_ID",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "owninguser_entitytype",
+									"name": "CITTA_FATTURAZIONE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -735,9 +704,9 @@
 							},
 							{
 								"source": {
-									"name": "owningteam",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "PAESE_FATTURAZIONE",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "PAESE_FATTURAZIONE",
@@ -746,9 +715,9 @@
 							},
 							{
 								"source": {
-									"name": "owningteam_entitytype",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "PROVINCIA_FATTURAZIONE",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "PROVINCIA_FATTURAZIONE",
@@ -757,9 +726,9 @@
 							},
 							{
 								"source": {
-									"name": "preferredequipmentid",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "CAP_FATTURAZIONE",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "CAP_FATTURAZIONE",
@@ -768,7 +737,7 @@
 							},
 							{
 								"source": {
-									"name": "preferredequipmentid_entitytype",
+									"name": "INDIRIZZO_FATTURAZIONE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -779,9 +748,9 @@
 							},
 							{
 								"source": {
-									"name": "createdonbehalfby",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "CITTA_SEDE_OPERATIVA",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "CITTA_SEDE_OPERATIVA",
@@ -790,7 +759,7 @@
 							},
 							{
 								"source": {
-									"name": "createdonbehalfby_entitytype",
+									"name": "PAESE_SEDE_OPERATIVA",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -801,9 +770,9 @@
 							},
 							{
 								"source": {
-									"name": "masterid",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "PROVINCIA_SEDE_OPERATIVA",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "PROVINCIA_SEDE_OPERATIVA",
@@ -812,7 +781,7 @@
 							},
 							{
 								"source": {
-									"name": "masterid_entitytype",
+									"name": "CAP_SEDE_OPERATIVA",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -823,9 +792,9 @@
 							},
 							{
 								"source": {
-									"name": "modifiedbyexternalparty",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "INDIRIZZO_SEDE_OPERATIVA",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "INDIRIZZO_SEDE_OPERATIVA",
@@ -834,64 +803,9 @@
 							},
 							{
 								"source": {
-									"name": "modifiedbyexternalparty_entitytype",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "EMAIL_ADDRESS_REFERENTE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "defaultpricelevelid",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "FLG_AZIENDA_PRIMARIA",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "defaultpricelevelid_entitytype",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "FLG_CEE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "createdby",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "FLG_PRIVACY",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "createdby_entitytype",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "FLG_SEPA",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "preferredsystemuserid",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "DESC_IVA",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "DESC_IVA",
@@ -900,9 +814,9 @@
 							},
 							{
 								"source": {
-									"name": "preferredsystemuserid_entitytype",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "CLASSIFICAZIONE",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "CLASSIFICAZIONE",
@@ -911,9 +825,9 @@
 							},
 							{
 								"source": {
-									"name": "ownerid_entitytype",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "SETTORE_ATTIVITA",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "SETTORE_ATTIVITA",
@@ -922,9 +836,185 @@
 							},
 							{
 								"source": {
-									"name": "sharesoutstanding",
+									"name": "DESC_TEXT",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "DESC_TEXT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CANALE_DI_REGISTRAZIONE",
 									"type": "Int32",
 									"physicalType": "int"
+								},
+								"sink": {
+									"name": "CANALE_DI_REGISTRAZIONE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TRAVEL_POLICY",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "TRAVEL_POLICY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FLG_PUBBLICA_AMMINISTRAZIONE",
+									"type": "Boolean",
+									"physicalType": "bit"
+								},
+								"sink": {
+									"name": "FLG_PUBBLICA_AMMINISTRAZIONE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CODICE_CIU",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CODICE_CIU",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CODICE_CIG",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CODICE_CIG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CODICE_CUP",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CODICE_CUP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CONSENSO_INFO_MARK",
+									"type": "Boolean",
+									"physicalType": "bit"
+								},
+								"sink": {
+									"name": "CONSENSO_INFO_MARK",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DATA_CONS_INFO_MARK",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_CONS_INFO_MARK",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "DATA_FINE_SEGMENTO",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_FINE_SEGMENTO",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "DATA_INIZIO_SEGMENTO",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_INIZIO_SEGMENTO",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "NUMERO_VIAGGI",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "NUMERO_VIAGGI",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "SEGMENTO",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "SEGMENTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DATA_AGG_SEGMENT",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_AGG_SEGMENT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "DATA_CONS_TERZE_PARTI",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_CONS_TERZE_PARTI",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "FLG_CONSENSO_TERZE_PARTI",
+									"type": "Boolean",
+									"physicalType": "bit"
+								},
+								"sink": {
+									"name": "FLG_CONSENSO_TERZE_PARTI",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FLG_CONSENSO_PROFILAZIONE",
+									"type": "Boolean",
+									"physicalType": "bit"
 								},
 								"sink": {
 									"name": "FLG_CONSENSO_PROFILAZIONE",
@@ -933,7 +1023,18 @@
 							},
 							{
 								"source": {
-									"name": "yominame",
+									"name": "DATA_CONS_PROFILAZIONE",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_CONS_PROFILAZIONE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "CODICE_DESTINATARIO_FATTURA",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -944,7 +1045,7 @@
 							},
 							{
 								"source": {
-									"name": "preferredsystemuseridyominame",
+									"name": "EMAIL_COMUNICAZIONE_EC",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -955,9 +1056,9 @@
 							},
 							{
 								"source": {
-									"name": "opendeals_date",
-									"type": "DateTime",
-									"physicalType": "datetime"
+									"name": "FLG_MANDATO",
+									"type": "Boolean",
+									"physicalType": "bit"
 								},
 								"sink": {
 									"name": "FLG_MANDATO",
@@ -966,9 +1067,9 @@
 							},
 							{
 								"source": {
-									"name": "modifiedbyexternalpartyyominame",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "ESITO_CONFERIMENTO_MAND",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "ESITO_CONFERIMENTO_MAND",
@@ -977,51 +1078,18 @@
 							},
 							{
 								"source": {
-									"name": "preferredsystemuseridname",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "DATA_ESITO_MANDATO_DF",
+									"type": "DateTime",
+									"physicalType": "datetime"
 								},
 								"sink": {
-									"name": "ABILITA_AC",
-									"type": "String"
+									"name": "DATA_ESITO_MANDATO_DF",
+									"type": "DateTime"
 								}
 							},
 							{
 								"source": {
-									"name": "address2_stateorprovince",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "LIMITE_AC",
-									"type": "Decimal"
-								}
-							},
-							{
-								"source": {
-									"name": "address2_country",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "PLAFOND_AC",
-									"type": "Decimal"
-								}
-							},
-							{
-								"source": {
-									"name": "address2_line2",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "STATO_AC",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "address1_line3",
+									"name": "CODICE_FISCALE_PARTNER",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -1032,9 +1100,9 @@
 							},
 							{
 								"source": {
-									"name": "onholdtime",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "FLG_PIVA_GRUPPO",
+									"type": "Boolean",
+									"physicalType": "bit"
 								},
 								"sink": {
 									"name": "FLG_PIVA_GRUPPO",
@@ -1043,9 +1111,9 @@
 							},
 							{
 								"source": {
-									"name": "owningbusinessunitname",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "FLG_ONLUS",
+									"type": "Boolean",
+									"physicalType": "bit"
 								},
 								"sink": {
 									"name": "FLG_ONLUS",
@@ -1054,7 +1122,18 @@
 							},
 							{
 								"source": {
-									"name": "parentaccountidname",
+									"name": "DATA_AGGIORNAMENTO",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_AGGIORNAMENTO",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "BUSINESS_PARTNER",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -1065,9 +1144,9 @@
 							},
 							{
 								"source": {
-									"name": "address1_utcoffset",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "CODICE_FISCALE_CREDITO",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "CODICE_FISCALE_CREDITO",
@@ -1076,66 +1155,9 @@
 							},
 							{
 								"source": {
-									"name": "numberofemployees",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "RICH_FIDO_AT_ID",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "modifiedbyexternalpartyname",
+									"name": "CLUSTER_PROMOZIONI",
 									"type": "String",
 									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "STATO_RICHIESTA",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "address2_county",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "PLAFOND_ATTIVATO",
-									"type": "Decimal"
-								}
-							},
-							{
-								"source": {
-									"name": "telephone3",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "PLAFOND_COMUNICATO",
-									"type": "Decimal"
-								}
-							},
-							{
-								"source": {
-									"name": "address2_city",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "PLAFOND_RICHIESTO",
-									"type": "Decimal"
-								}
-							},
-							{
-								"source": {
-									"name": "address2_latitude",
-									"type": "Decimal",
-									"physicalType": "decimal",
-									"scale": 5,
-									"precision": 38
 								},
 								"sink": {
 									"name": "CLUSTER_PROMOZIONI",
@@ -1144,7 +1166,7 @@
 							},
 							{
 								"source": {
-									"name": "createdon",
+									"name": "DATA_AGG_CLUSTER_CORP",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
