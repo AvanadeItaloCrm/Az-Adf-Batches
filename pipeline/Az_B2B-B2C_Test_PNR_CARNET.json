@@ -338,7 +338,7 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "Pagamento_SQL",
+									"referenceName": "AzureSqlTable2",
 									"type": "DatasetReference"
 								}
 							],
