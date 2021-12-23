@@ -5,7 +5,14 @@
 			{
 				"name": "Start Oracle",
 				"type": "Lookup",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Error Oracle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -127,14 +134,7 @@
 			{
 				"name": "Error Oracle",
 				"type": "Lookup",
-				"dependsOn": [
-					{
-						"activity": "If Condition1",
-						"dependencyConditions": [
-							"Failed"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -147,7 +147,7 @@
 					"source": {
 						"type": "OracleSource",
 						"oracleReaderQuery": {
-							"value": "@concat('SELECT sa_d365_svil.errore_sync_new(''',\nvariables('TableName'),\n'','','''Errore'') FROM DUAL;')",
+							"value": "@concat('SELECT sa_d365_svil.errore_sync_new(''',\nvariables('TableName'),\n''') FROM DUAL;')\n",
 							"type": "Expression"
 						},
 						"partitionOption": "None",
