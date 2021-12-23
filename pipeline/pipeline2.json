@@ -18,7 +18,7 @@
 					"source": {
 						"type": "OracleSource",
 						"oracleReaderQuery": {
-							"value": "@concat('insert into w_sincronizzazione_d365_log (id,dt_inizio_scrittura,stato_scrittura,dt_ultima_sinc) VALUES ((select max(id) + 1 as Massimo from w_sincronizzazione_d365_log),SYSDATE + 1,','''In corso'',','SYSDATE + 1);',\n'select max(id) as Massimo from w_sincronizzazione_d365_log;')",
+							"value": "@concat('SELECT sa_d365_svil.Inizio_Scrittura_New() as Rec FROM DUAL;')",
 							"type": "Expression"
 						},
 						"partitionOption": "None",
