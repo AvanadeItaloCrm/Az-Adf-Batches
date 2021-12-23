@@ -82,20 +82,19 @@
 						"value": "@lessOrEquals(activity('Start Oracle').output.firstRow.Rec,0)",
 						"type": "Expression"
 					},
-					"ifTrueActivities": [
+					"ifFalseActivities": [
 						{
-							"name": "Execute Pipeline1",
-							"type": "ExecutePipeline",
+							"name": "Fail1",
+							"type": "Fail",
 							"dependsOn": [],
 							"userProperties": [],
 							"typeProperties": {
-								"pipeline": {
-									"referenceName": "W_PROMOTER_BSS_D365_DS",
-									"type": "PipelineReference"
-								},
-								"waitOnCompletion": true
+								"message": "Un altro processo sta leggendo i dati",
+								"errorCode": "200"
 							}
-						},
+						}
+					],
+					"ifTrueActivities": [
 						{
 							"name": "Execute Pipeline2",
 							"type": "ExecutePipeline",
