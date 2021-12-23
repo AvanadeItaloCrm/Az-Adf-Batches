@@ -18,7 +18,7 @@
 					"source": {
 						"type": "OracleSource",
 						"oracleReaderQuery": {
-							"value": "@concat('SELECT sa_d365_svil.Inizio_Scrittura_New() as Rec FROM DUAL;')",
+							"value": "@concat('SELECT sa_d365_svil.Inizio_Scrittura_New as Rec FROM DUAL;')",
 							"type": "Expression"
 						},
 						"partitionOption": "None",
