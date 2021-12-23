@@ -79,7 +79,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"expression": {
-						"value": "@lessOrEquals(activity('Start Oracle').output.firstRow.Rec,0)",
+						"value": "@equals(activity('Start Oracle').output.firstRow.Rec,'ok')",
 						"type": "Expression"
 					},
 					"ifFalseActivities": [
