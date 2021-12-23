@@ -5,14 +5,7 @@
 			{
 				"name": "Start Oracle",
 				"type": "Lookup",
-				"dependsOn": [
-					{
-						"activity": "Error Oracle",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -134,7 +127,14 @@
 			{
 				"name": "Error Oracle",
 				"type": "Lookup",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "If Condition1",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
