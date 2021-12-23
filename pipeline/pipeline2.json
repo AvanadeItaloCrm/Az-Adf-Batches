@@ -115,7 +115,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"pipeline": {
-									"referenceName": "W_AC_MANDATO_D365_DS_TEST",
+									"referenceName": "W_AC_MANDATO_D365_DS",
 									"type": "PipelineReference"
 								},
 								"waitOnCompletion": true
