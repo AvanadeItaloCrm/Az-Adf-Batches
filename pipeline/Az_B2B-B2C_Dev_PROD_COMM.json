@@ -165,7 +165,7 @@
 									"mappings": [
 										{
 											"source": {
-												"name": "ntv_assetid",
+												"name": "Id",
 												"type": "Guid",
 												"physicalType": "uniqueidentifier"
 											},
@@ -176,7 +176,7 @@
 										},
 										{
 											"source": {
-												"name": "createdon",
+												"name": "SinkCreatedOn",
 												"type": "DateTime",
 												"physicalType": "datetime"
 											},
@@ -187,7 +187,7 @@
 										},
 										{
 											"source": {
-												"name": "modifiedon",
+												"name": "SinkModifiedOn",
 												"type": "DateTime",
 												"physicalType": "datetime"
 											},
@@ -198,7 +198,8 @@
 										},
 										{
 											"source": {
-												"name": "DateTime.Now",
+												"name": "statecode",
+												"type": "Int32",
 												"physicalType": "int"
 											},
 											"sink": {
@@ -208,7 +209,8 @@
 										},
 										{
 											"source": {
-												"name": "ntv_pruductid.ntv_productnumber",
+												"name": "statuscode",
+												"type": "Int32",
 												"physicalType": "int"
 											},
 											"sink": {
