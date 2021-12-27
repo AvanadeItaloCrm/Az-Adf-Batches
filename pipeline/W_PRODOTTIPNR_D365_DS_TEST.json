@@ -171,7 +171,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "BillingDB",
+						"referenceName": "TEST_W_PRODOTTIPNR_D365_DS_SQLSource",
 						"type": "DatasetReference"
 					}
 				],

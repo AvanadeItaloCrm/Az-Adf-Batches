@@ -171,7 +171,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "AzureSqlTable4",
+						"referenceName": "TEST_W_ABBONAMENTI_CARNET_D365_DS_SQLSource",
 						"type": "DatasetReference"
 					}
 				],
