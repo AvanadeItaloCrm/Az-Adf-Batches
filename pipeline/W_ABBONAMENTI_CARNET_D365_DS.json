@@ -93,7 +93,6 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "SELECT ntv_ntv_bss.ntv_codebss, ntv_ntv_bss.Id, ntv_ntv_station.ntv_codenavitaire, ntv_ntv_bss.ntv_position, ntv_ntv_bss.ntv_typology\nFROM   ntv_ntv_bss INNER JOIN\n             ntv_ntv_station ON ntv_ntv_bss.Id = ntv_ntv_station.ntv_stationid",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -108,20 +107,75 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "ntv_codebss",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "Id",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
 								},
 								"sink": {
-									"name": "CODICE_TVM",
+									"name": "CLIENTE_ACQUIRENTE_ID",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "Id",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "SinkCreatedOn",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "TIPOABB",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SinkModifiedOn",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "TIPO_PRODOTTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "statecode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "TARIFFA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "statuscode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "STAZIONE_PARTENZA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_producttype",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "STAZIONE_ARRIVO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_customerbuyerid_entitytype",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "INTEGRAZIONE_ID",
@@ -130,34 +184,78 @@
 							},
 							{
 								"source": {
-									"name": "ntv_codenavitaire",
+									"name": "createdonbehalfby_entitytype",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
 								"sink": {
-									"name": "STAZIONE",
+									"name": "STATO",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "ntv_position",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "ntv_productpromotionid",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
 								},
 								"sink": {
-									"name": "POSIZIONE",
+									"name": "ORDINE_ACQUISTO_ID",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "ntv_typology",
+									"name": "ntv_productpromotionid_entitytype",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
 								"sink": {
-									"name": "TIPO",
+									"name": "ADVCORP_ACQUIRENTE_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_partnerbuyerid",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "ADVCORP_INTESTATARIO_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_partnerbuyerid_entitytype",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CLIENTE_INTESTATARIO_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_partnerholderid",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "CODICE_ASSET",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_partnerholderid_entitytype",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "AMBIENTE",
 									"type": "String"
 								}
 							}
@@ -171,7 +269,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "W_ANAGRAFICA_TVM_D365_DS_SQLSource",
+						"referenceName": "W_ABBONAMENTI_CARNET_D365_DS_SQLSource",
 						"type": "DatasetReference"
 					}
 				],

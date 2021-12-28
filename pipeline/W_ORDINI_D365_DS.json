@@ -93,7 +93,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "SELECT ntv_ntv_bss.ntv_codebss, ntv_ntv_bss.Id, ntv_ntv_station.ntv_codenavitaire, ntv_ntv_bss.ntv_position, ntv_ntv_bss.ntv_typology\nFROM   ntv_ntv_bss INNER JOIN\n             ntv_ntv_station ON ntv_ntv_bss.Id = ntv_ntv_station.ntv_stationid",
+						"sqlReaderQuery": "SELECT ntv_ntv_order.ntv_ordernumber AS NUMERO_ORDINE, ntv_ntv_order.Id AS INTEGRAZIONE_ID, ntv_ntv_order.ntv_orderid AS TIPO_ORDINE, ntv_ntv_order.statuscode AS STATO, ntv_ntv_order.createdon AS DATA_ORDINE, ntv_ntv_order.ntv_closuredate AS DATA_CHIUSURA, ntv_ntv_order.ntv_originchannelcode AS PROVENIENZA_ORDINE, ntv_ntv_order.ntv_recordlocator AS PNR_PAGAMENTO, \n             ntv_ntv_order.ntv_grossamount AS PREZZO_TOTALE, ntv_ntv_order.ntv_ordernumber AS NOME_PRODOTTO, ntv_ntv_order.ntv_producttype AS TIPO_PRODOTTO, ntv_ntv_order.ntv_customerbuyerid AS CLIENTE_ACQUIRENTE_ID, ntv_ntv_order.ntv_buyertype AS TIPO_ACQUIRENTE, ntv_ntv_order.ntv_partnerbuyerid AS ADVCORP_ACQUIRENTE_ID, ntv_ntv_order.ntv_partnerholderid AS ADVCORP_INTESTATARIO_ID, \n             ntv_ntv_asset.ntv_assetnumber AS ASSET_ID, ntv_ntv_order.ntv_iva AS IVA, ntv_ntv_order.ntv_productname AS NOTE, ntv_ntv_order.ntv_customerholderid AS CLIENTE_INTESTATARIO_ID\nFROM   ntv_ntv_order INNER JOIN\n             ntv_ntv_asset ON ntv_ntv_order.ntv_ordernumber = ntv_ntv_asset.ntv_ordernumber",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -108,18 +108,18 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "ntv_codebss",
+									"name": "NUMERO_ORDINE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
 								"sink": {
-									"name": "CODICE_TVM",
+									"name": "NUMERO_ORDINE",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "Id",
+									"name": "INTEGRAZIONE_ID",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -130,34 +130,190 @@
 							},
 							{
 								"source": {
-									"name": "ntv_codenavitaire",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "TIPO_ORDINE",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
 								},
 								"sink": {
-									"name": "STAZIONE",
+									"name": "TIPO_ORDINE",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "ntv_position",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "STATO",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
-									"name": "POSIZIONE",
+									"name": "STATO",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "ntv_typology",
+									"name": "DATA_ORDINE",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_ORDINE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "DATA_CHIUSURA",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_CHIUSURA",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "PROVENIENZA_ORDINE",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "PROVENIENZA_ORDINE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PNR_PAGAMENTO",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
 								"sink": {
-									"name": "TIPO",
+									"name": "PNR_PAGAMENTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PREZZO_TOTALE",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 38
+								},
+								"sink": {
+									"name": "PREZZO_TOTALE",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "NOME_PRODOTTO",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NOME_PRODOTTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TIPO_PRODOTTO",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "TIPO_PRODOTTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CLIENTE_ACQUIRENTE_ID",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "CLIENTE_ACQUIRENTE_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TIPO_ACQUIRENTE",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "TIPO_ACQUIRENTE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ADVCORP_ACQUIRENTE_ID",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "ADVCORP_ACQUIRENTE_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ADVCORP_INTESTATARIO_ID",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "ADVCORP_INTESTATARIO_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ASSET_ID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "ASSET_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IVA",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "IVA",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "NOTE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NOTE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CLIENTE_INTESTATARIO_ID",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "CLIENTE_INTESTATARIO_ID",
 									"type": "String"
 								}
 							}
@@ -171,7 +327,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "W_ANAGRAFICA_TVM_D365_DS_SQLSource",
+						"referenceName": "W_ORDINI_D365_DS_SQLSource",
 						"type": "DatasetReference"
 					}
 				],
