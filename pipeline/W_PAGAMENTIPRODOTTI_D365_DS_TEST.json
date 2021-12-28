@@ -1,0 +1,411 @@
+{
+	"name": "W_PAGAMENTIPRODOTTI_D365_DS_TEST",
+	"properties": {
+		"activities": [
+			{
+				"name": "Start SP",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[batchSync].[InizioSQL_ORACLEBatchSync]",
+					"storedProcedureParameters": {
+						"NomeFile": {
+							"value": "",
+							"type": "String"
+						},
+						"TabellaImport": {
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureLinkedService",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Finally SP",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "End Oracle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[batchSync].[FineSQL_ORACLEBatchSync]",
+					"storedProcedureParameters": {
+						"TabellaImport": {
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureLinkedService",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Sql To Oracle",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Start Oracle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "OracleSink",
+						"writeBatchSize": 10000,
+						"preCopyScript": "truncate table sa_d365_test.W_PAGAMENTIPRODOTTI_D365_DS"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "PayID",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "INTEGRAZIONE_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AuthorizationCode",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "CODICE_AUTORIZZAZIONE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PaymentMethodCode",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "COD_METODO_PAGAMENTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "QuotedAmount",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "IMPORTO",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "AuthorizationStatus",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "STATO_AUTORIZZAZIONE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EIHFiscalId",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "CODICE_RICEVUTA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PaymentID",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "PAGAMENTO_NAV_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Transferred",
+									"type": "Boolean",
+									"physicalType": "bit"
+								},
+								"sink": {
+									"name": "TRASFERIMENTO_FLG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RecordLocator",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "PNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AccountName",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "INTESTATARIO_CONTO",
+									"type": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "TEST_W_PAGAMENTIPRODOTTI_D365_DS_SQLSource",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "TEST_W_PAGAMENTIPRODOTTI_D365_DS_OracleDB",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Start Oracle",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Start SP",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": {
+							"value": "@concat('SELECT sa_d365_test.iniziasync (''',\nvariables('TableName'),\n''') FROM DUAL;')",
+							"type": "Expression"
+						},
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "TEST_W_PAGAMENTIPRODOTTI_D365_DS_OracleDB",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "End Oracle",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Sql To Oracle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": {
+							"value": "@concat('SELECT sa_d365_test.finesync (''',\nvariables('TableName'),\n''') FROM DUAL;')",
+							"type": "Expression"
+						},
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "TEST_W_PAGAMENTIPRODOTTI_D365_DS_OracleDB",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "Error End Oracle",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Sql To Oracle",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": {
+							"value": "@concat('SELECT sa_d365_test.errore_sync (''',\nvariables('TableName'),\n''',''',variables('Error'),''') FROM DUAL;')",
+							"type": "Expression"
+						},
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "TEST_W_PAGAMENTIPRODOTTI_D365_DS_OracleDB",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "Error Finally SP",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Error End Oracle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[batchSync].[ErrorBatchSync]",
+					"storedProcedureParameters": {
+						"TabellaImport": {
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"Errore": {
+							"value": {
+								"value": "@pipeline().RunId",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"NomeFile": {
+							"value": "",
+							"type": "String"
+						},
+						"Modulo": {
+							"value": "Copy Data Sql To Oracle",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureLinkedService",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"variables": {
+			"TableName": {
+				"type": "String",
+				"defaultValue": "W_PAGAMENTIPRODOTTI_D365_DS"
+			},
+			"Error": {
+				"type": "String",
+				"defaultValue": "@pipeline().RunId"
+			}
+		},
+		"folder": {
+			"name": "Az_IntegrazioniBatch_Oracle_Test"
+		},
+		"annotations": []
+	}
+}
