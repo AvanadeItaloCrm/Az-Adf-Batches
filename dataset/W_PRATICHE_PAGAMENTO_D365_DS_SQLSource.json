@@ -2,7 +2,7 @@
 	"name": "W_PRATICHE_PAGAMENTO_D365_DS_SQLSource",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzSqlOracle_Dev_StagingArea",
+			"referenceName": "AzSqlOracle_Dev_DesDYN365",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -282,8 +282,8 @@
 			}
 		],
 		"typeProperties": {
-			"schema": "ntvdev",
-			"table": "Payments"
+			"schema": "dbo",
+			"table": "ntv_ntv_docpayment"
 		}
 	}
 }
