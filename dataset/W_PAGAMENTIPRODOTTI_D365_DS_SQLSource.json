@@ -1,0 +1,227 @@
+{
+	"name": "W_PAGAMENTIPRODOTTI_D365_DS_SQLSource",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzSqlOracle_Dev_StagingArea",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "PayID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "BookID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "PaymentAsc",
+				"type": "char"
+			},
+			{
+				"name": "AccountID",
+				"type": "varchar"
+			},
+			{
+				"name": "AccountName",
+				"type": "varchar"
+			},
+			{
+				"name": "AccountNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "AccountNumberID",
+				"type": "varchar"
+			},
+			{
+				"name": "AccountTransactionCode",
+				"type": "varchar"
+			},
+			{
+				"name": "ApprovalDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "AuthorizationCode",
+				"type": "varchar"
+			},
+			{
+				"name": "AuthorizationStatus",
+				"type": "varchar"
+			},
+			{
+				"name": "ChannelType",
+				"type": "varchar"
+			},
+			{
+				"name": "CollectedAmount",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 4
+			},
+			{
+				"name": "CreatedAgentID",
+				"type": "varchar"
+			},
+			{
+				"name": "CreatedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "Expiration",
+				"type": "varchar"
+			},
+			{
+				"name": "ModifiedAgentID",
+				"type": "varchar"
+			},
+			{
+				"name": "ModifiedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ParentPaymentID",
+				"type": "varchar"
+			},
+			{
+				"name": "PaymentAmount",
+				"type": "varchar"
+			},
+			{
+				"name": "PaymentID",
+				"type": "varchar"
+			},
+			{
+				"name": "PaymentMethodCode",
+				"type": "varchar"
+			},
+			{
+				"name": "PaymentMethodType",
+				"type": "varchar"
+			},
+			{
+				"name": "PaymentNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "QuotedAmount",
+				"type": "varchar"
+			},
+			{
+				"name": "ReconcilliationID",
+				"type": "varchar"
+			},
+			{
+				"name": "ReferenceID",
+				"type": "varchar"
+			},
+			{
+				"name": "ReferenceType",
+				"type": "varchar"
+			},
+			{
+				"name": "Status",
+				"type": "varchar"
+			},
+			{
+				"name": "VoucherID",
+				"type": "varchar"
+			},
+			{
+				"name": "VoucherTransactionID",
+				"type": "varchar"
+			},
+			{
+				"name": "EIHFiscalId",
+				"type": "varchar"
+			},
+			{
+				"name": "PosAsc",
+				"type": "varchar"
+			},
+			{
+				"name": "PosAgentCode",
+				"type": "varchar"
+			},
+			{
+				"name": "PosDomainCode",
+				"type": "varchar"
+			},
+			{
+				"name": "PosLocationCode",
+				"type": "varchar"
+			},
+			{
+				"name": "PosOrganizationCode",
+				"type": "varchar"
+			},
+			{
+				"name": "SPosAsc",
+				"type": "varchar"
+			},
+			{
+				"name": "SPosAgentCode",
+				"type": "varchar"
+			},
+			{
+				"name": "SPosDomainCode",
+				"type": "varchar"
+			},
+			{
+				"name": "SPosLocationCode",
+				"type": "varchar"
+			},
+			{
+				"name": "SPosOrganizationCode",
+				"type": "varchar"
+			},
+			{
+				"name": "Deposit",
+				"type": "bit"
+			},
+			{
+				"name": "Transferred",
+				"type": "bit"
+			},
+			{
+				"name": "RecordLocator",
+				"type": "varchar"
+			},
+			{
+				"name": "ReceivedBy",
+				"type": "varchar"
+			},
+			{
+				"name": "RecCreationDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "RecModifiedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "RecDeleted",
+				"type": "bit"
+			}
+		],
+		"typeProperties": {
+			"schema": "ntvdev",
+			"table": "Payments"
+		}
+	}
+}
