@@ -76,7 +76,7 @@
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "Start Oracle",
+						"activity": "Ultima Sinc",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -93,7 +93,10 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "SELECT ntv_ntv_promoter.modifiedon, ntv_ntv_promoter.ntv_lastname, ntv_ntv_promoter.ntv_id, ntv_ntv_promoter.ntv_name, ntv_ntv_promoter.statuscode, ntv_ntv_promoter.Id ,\nntv_ntv_station.ntv_name AS ntv_station_name, ntv_ntv_station.ntv_codenavitaire\nFROM ntv_ntv_station RIGHT OUTER JOIN\nntv_ntv_promoter ON ntv_ntv_station.ntv_stationid = ntv_ntv_promoter.ntv_stationid",
+						"sqlReaderQuery": {
+							"value": "@concat('SELECT ntv_ntv_promoter.modifiedon, ntv_ntv_promoter.ntv_lastname, ntv_ntv_promoter.ntv_id, ntv_ntv_promoter.ntv_name, ntv_ntv_promoter.statuscode, ntv_ntv_promoter.Id , ntv_ntv_station.ntv_name AS ntv_station_name, ntv_ntv_station.ntv_codenavitaire FROM ntv_ntv_station RIGHT OUTER JOIN ntv_ntv_promoter ON ntv_ntv_station.ntv_stationid = ntv_ntv_promoter.ntv_stationid WHERE ntv_ntv_station.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or ntv_ntv_promoter.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')\n",
+							"type": "Expression"
+						},
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -360,6 +363,41 @@
 						"type": "OracleSource",
 						"oracleReaderQuery": {
 							"value": "@concat('SELECT sa_d365_svil.errore_sync (''',\nvariables('TableName'),\n''',''',variables('Error'),''') FROM DUAL;')",
+							"type": "Expression"
+						},
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "W_PROMOTER_BSS_D365_DS_OracleDB",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "Ultima Sinc",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Start Oracle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": {
+							"value": "@concat('select dt_inizio_scrittura as Rec from sinc_log where tipo = ','''',\nvariables('TableName'),\n'''',' and UPPER(stato_lettura)=',\n'''',\n'COMPLETATO',\n'''',\n'and ROWNUM <=1 union select ',\n'''',\n'2010-01-01',\n'''',\n' as Rec FROM sinc_log order by Rec desc')",
 							"type": "Expression"
 						},
 						"partitionOption": "None",
