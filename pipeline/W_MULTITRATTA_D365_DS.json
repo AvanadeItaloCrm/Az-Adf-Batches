@@ -1,0 +1,752 @@
+{
+	"name": "W_MULTITRATTA_D365_DS",
+	"properties": {
+		"activities": [
+			{
+				"name": "Start SP",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[batchSync].[InizioSQL_ORACLEBatchSync]",
+					"storedProcedureParameters": {
+						"NomeFile": {
+							"value": "",
+							"type": "String"
+						},
+						"TabellaImport": {
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureLinkedService",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Finally SP",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "End Oracle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[batchSync].[FineSQL_ORACLEBatchSync]",
+					"storedProcedureParameters": {
+						"TabellaImport": {
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureLinkedService",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Sql To Oracle",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Ultima Sinc",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "OracleSink",
+						"writeBatchSize": 10000,
+						"preCopyScript": "truncate table sa_d365_svil.W_MULTITRATTA_D365_DS"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "CODICE_CARTA",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "CODICE_CARTA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INTEGRAZIONE_ID",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "INTEGRAZIONE_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CODICE_CARTA_WEB",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "CODICE_CARTA_WEB",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CODICE_CARTA_MIGRATA",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "CODICE_CARTA_MIGRATA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CODICE_CARTA_WEB_MIGRATA",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "CODICE_CARTA_WEB_MIGRATA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PNR_TECNICO_ACQUISTO",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "PNR_TECNICO_ACQUISTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DATA_DI_ACQUISTO",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_DI_ACQUISTO",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "VALORE_NOMINALE_NETTO",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 22
+								},
+								"sink": {
+									"name": "VALORE_NOMINALE_NETTO",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "IMPORTO_TOTALE_LORDO",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 22
+								},
+								"sink": {
+									"name": "IMPORTO_TOTALE_LORDO",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "IMPORTO_SCONTO_LORDO",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 22
+								},
+								"sink": {
+									"name": "IMPORTO_SCONTO_LORDO",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "IMPORTO_SCONTO_NETTO",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 22
+								},
+								"sink": {
+									"name": "IMPORTO_SCONTO_NETTO",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PERCENTUALE_SCONTO",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 22
+								},
+								"sink": {
+									"name": "PERCENTUALE_SCONTO",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "VALORE_NOMINALE_LORDO",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 22
+								},
+								"sink": {
+									"name": "VALORE_NOMINALE_LORDO",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PERCENTUALE_IVA",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 22
+								},
+								"sink": {
+									"name": "PERCENTUALE_IVA",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "IMPOSTA",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 22
+								},
+								"sink": {
+									"name": "IMPOSTA",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "IMPORTO_NETTO",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 22
+								},
+								"sink": {
+									"name": "IMPORTO_NETTO",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "CANALE_DI_ACQUISTO",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "CANALE_DI_ACQUISTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TIPOLOGIA",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "TIPOLOGIA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "STATO",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "STATO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DATA_SCADENZA_CARTA",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_SCADENZA_CARTA",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "RICHIESTA_FATTURA",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "RICHIESTA_FATTURA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DENOMINAZIONE",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "DENOMINAZIONE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PARTITA_IVA",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "PARTITA_IVA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EMAIL",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "EMAIL",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PARTICELLA_TOPO",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "PARTICELLA_TOPO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INDIRIZZO",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "INDIRIZZO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NUM_CIVICO",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "NUM_CIVICO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CITTA",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "CITTA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PROVINCIA",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "PROVINCIA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CAP",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "CAP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NAZIONE",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "NAZIONE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CONSENSO_MARKETING",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "CONSENSO_MARKETING",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CONSENSO_PROFILAZIONE",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "CONSENSO_PROFILAZIONE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RESIDUO_CARTA_MIGRATA",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 22
+								},
+								"sink": {
+									"name": "RESIDUO_CARTA_MIGRATA",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "CONSENSO_TERZE_PARTI",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "CONSENSO_TERZE_PARTI",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FRODATA_FLAG",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "FRODATA_FLAG",
+									"type": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "W_MULTITRATTA_D365_DS_SQLSource",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "W_MULTITRATTA_D365_DS_OracleDB",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Start Oracle",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Start SP",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": {
+							"value": "@concat('SELECT sa_d365_svil.iniziasync (''',\nvariables('TableName'),\n''') FROM DUAL;')",
+							"type": "Expression"
+						},
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "W_MULTITRATTA_D365_DS_OracleDB",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "End Oracle",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Sql To Oracle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": {
+							"value": "@concat('SELECT sa_d365_svil.finesync (''',\nvariables('TableName'),\n''') FROM DUAL;')",
+							"type": "Expression"
+						},
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "W_MULTITRATTA_D365_DS_OracleDB",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "Error End Oracle",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Sql To Oracle",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": {
+							"value": "@concat('SELECT sa_d365_svil.errore_sync (''',\nvariables('TableName'),\n''',''',variables('Error'),''') FROM DUAL;')",
+							"type": "Expression"
+						},
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "W_MULTITRATTA_D365_DS_OracleDB",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "Error Finally SP",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Error End Oracle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[batchSync].[ErrorBatchSync]",
+					"storedProcedureParameters": {
+						"TabellaImport": {
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"Errore": {
+							"value": {
+								"value": "@pipeline().RunId",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"NomeFile": {
+							"value": "",
+							"type": "String"
+						},
+						"Modulo": {
+							"value": "Copy Data Sql To Oracle",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureLinkedService",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Ultima Sinc",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Start Oracle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": {
+							"value": "@concat('select dt_inizio_scrittura as Rec from sinc_log where tipo = ','''',\nvariables('TableName'),\n'''',' and UPPER(stato_lettura)=',\n'''',\n'COMPLETATO',\n'''',\n'and ROWNUM <=1 union select ',\n'''',\n'2010-01-01',\n'''',\n' as Rec FROM sinc_log order by Rec desc')",
+							"type": "Expression"
+						},
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "W_MULTITRATTA_D365_DS_OracleDB",
+						"type": "DatasetReference"
+					}
+				}
+			}
+		],
+		"variables": {
+			"TableName": {
+				"type": "String",
+				"defaultValue": "W_MULTITRATTA_D365_DS"
+			},
+			"Error": {
+				"type": "String",
+				"defaultValue": "@pipeline().RunId"
+			}
+		},
+		"folder": {
+			"name": "Az_IntegrazioniBatch_Oracle"
+		},
+		"annotations": []
+	}
+}
