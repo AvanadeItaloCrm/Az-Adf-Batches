@@ -93,6 +93,10 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
+						"sqlReaderQuery": {
+							"value": "@concat('SELECT * FROM dbo.ntv_ntv_nation WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"type": "Expression"
+						},
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -344,7 +348,7 @@
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "W_PAG_CAMPI_OracleDB",
+						"referenceName": "W_ISO_NAZIONE_SR_D365_DS_OracleDB",
 						"type": "DatasetReference"
 					}
 				}
