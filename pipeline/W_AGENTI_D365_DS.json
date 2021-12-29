@@ -93,7 +93,10 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "SELECT ntv_ntv_agent.ntv_agentnumber, ntv_ntv_agent.ntv_firstname, ntv_ntv_agent.ntv_surname, ntv_ntv_agent.ntv_agenttypecode, ntv_ntv_agent.ntv_agentrole, ntv_ntv_agent.ntv_email, ntv_ntv_agent.ntv_mobilephone, ntv_ntv_agent.ntv_phone, \n             ntv_ntv_agent.ntv_fax, ntv_ntv_agent.Id, ntv_account.accountnumber, ntv_account.accountclassificationcode, ntv_ntv_agent.ntv_portalusername, ntv_ntv_agent.statuscode, ntv_ntv_agent.ntv_consentmarketinginfo, \n             ntv_ntv_agent.ntv_consentprofilation, ntv_ntv_agent.ntv_consentthirdparty, ntv_ntv_agent.ntv_marketingupdatedon, ntv_ntv_agent.ntv_profilationupdatedon, ntv_ntv_agent.ntv_thirdpartyupdatedon, ntv_ntv_agent.ntv_agentid\nFROM   ntv_ntv_agent INNER JOIN\n             ntv_account ON ntv_ntv_agent.ntv_accountid = ntv_account.accountid\nWHERE ntv_ntv_agent.modifiedon>'activity('Ultima Sinc').output.firstRow.Rec'\nor ntv_account.modifiedon>'activity('Ultima Sinc').output.firstRow.Rec'",
+						"sqlReaderQuery": {
+							"value": "@concat('SELECT ntv_ntv_agent.ntv_agentnumber, ntv_ntv_agent.ntv_firstname, ntv_ntv_agent.ntv_surname, ntv_ntv_agent.ntv_agenttypecode, ntv_ntv_agent.ntv_agentrole, ntv_ntv_agent.ntv_email, ntv_ntv_agent.ntv_mobilephone, ntv_ntv_agent.ntv_phone, ntv_ntv_agent.ntv_fax, ntv_ntv_agent.Id, ntv_account.accountnumber, ntv_account.accountclassificationcode, ntv_ntv_agent.ntv_portalusername, ntv_ntv_agent.statuscode, ntv_ntv_agent.ntv_consentmarketinginfo, ntv_ntv_agent.ntv_consentprofilation, ntv_ntv_agent.ntv_consentthirdparty, ntv_ntv_agent.ntv_marketingupdatedon, ntv_ntv_agent.ntv_profilationupdatedon, ntv_ntv_agent.ntv_thirdpartyupdatedon, ntv_ntv_agent.ntv_agentid FROM   ntv_ntv_agent  INNER JOIN ntv_account ON ntv_ntv_agent.ntv_accountid = ntv_account.accountid WHERE ntv_account.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or ntv_ntv_agent.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"type": "Expression"
+						},
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -416,7 +419,7 @@
 					"source": {
 						"type": "OracleSource",
 						"oracleReaderQuery": {
-							"value": "@concat('insert into [batchSync].[Sync](Inizio,Tipo) values (GETDATE(),',\n'''',activity('Start Oracle').output.firstRow.Rec ,'''); select max(id) as m from [batchSync].[Sync]')",
+							"value": "@concat('SELECT sa_d365_svil.finesync (''',\nvariables('TableName'),\n''') FROM DUAL;')",
 							"type": "Expression"
 						},
 						"partitionOption": "None",
@@ -539,7 +542,10 @@
 				"typeProperties": {
 					"source": {
 						"type": "OracleSource",
-						"oracleReaderQuery": "select dt_inizio_scrittura as Rec from sinc_log \nwhere tipo = 'W_AGENTI_D365_DS' and UPPER(stato_lettura)='COMPLETATO'\nand ROWNUM <=1\norder by dt_fine_lettura desc ",
+						"oracleReaderQuery": {
+							"value": "@concat('select dt_inizio_scrittura as Rec from sinc_log where tipo = ','''',\nvariables('TableName'),\n'''',' and UPPER(stato_lettura)=',\n'''',\n'COMPLETATO',\n'''',\n'and ROWNUM <=1 union select ',\n'''',\n'2010-01-01',\n'''',\n' as Rec FROM sinc_log order by Rec desc')",
+							"type": "Expression"
+						},
 						"partitionOption": "None",
 						"queryTimeout": "02:00:00"
 					},
