@@ -76,7 +76,7 @@
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "Start Oracle",
+						"activity": "Ultima Sinc",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -93,7 +93,10 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "SELECT ntv_ntv_customercluster.ntv_name, ntv_ntv_promotion.Id\nFROM   ntv_ntv_promotion INNER JOIN\n             ntv_ntv_ntv_customercluster_ntv_promotion ON ntv_ntv_promotion.ntv_promotionid = ntv_ntv_ntv_customercluster_ntv_promotion.ntv_promotionid INNER JOIN\n             ntv_ntv_customercluster ON ntv_ntv_ntv_customercluster_ntv_promotion.ntv_customerclusterid = ntv_ntv_customercluster.ntv_customerclusterid",
+						"sqlReaderQuery": {
+							"value": "@concat('SELECT ntv_ntv_customercluster.ntv_name, ntv_ntv_promotion.Id FROM   ntv_ntv_promotion INNER JOIN ntv_ntv_ntv_customercluster_ntv_promotion ON ntv_ntv_promotion.ntv_promotionid = ntv_ntv_ntv_customercluster_ntv_promotion.ntv_promotionid INNER JOIN ntv_ntv_customercluster ON ntv_ntv_ntv_customercluster_ntv_promotion.ntv_customerclusterid = ntv_ntv_customercluster.ntv_customerclusterid WHERE ntv_ntv_promotion.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or ntv_ntv_customercluster.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"type": "Expression"
+						},
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -294,6 +297,41 @@
 						"type": "OracleSource",
 						"oracleReaderQuery": {
 							"value": "@concat('SELECT sa_d365_svil.errore_sync (''',\nvariables('TableName'),\n''',''',variables('Error'),''') FROM DUAL;')",
+							"type": "Expression"
+						},
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "W_CLUSTERPROMO_OracleDB",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "Ultima Sinc",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Start Oracle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": {
+							"value": "@concat('select dt_inizio_scrittura as Rec from sinc_log where tipo = ','''',\nvariables('TableName'),\n'''',' and UPPER(stato_lettura)=',\n'''',\n'COMPLETATO',\n'''',\n'and ROWNUM <=1 union select ',\n'''',\n'2010-01-01',\n'''',\n' as Rec FROM sinc_log order by Rec desc')",
 							"type": "Expression"
 						},
 						"partitionOption": "None",
