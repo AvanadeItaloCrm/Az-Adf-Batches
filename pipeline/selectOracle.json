@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "OracleSource",
-						"oracleReaderQuery": "select dt_inizio_scrittura as Rec from sinc_log \nwhere tipo = 'Anagrafica_Aziendex' and UPPER(stato_lettura)='COMPLETATO'\nand ROWNUM <=1\nunion select '2010-01-01'  as dt FROM sinc_log\norder by dt desc",
+						"oracleReaderQuery": "select dt_inizio_scrittura as Rec from sinc_log \nwhere tipo = 'Anagrafica_Aziendex' and UPPER(stato_lettura)='COMPLETATO'\nand ROWNUM <=1\nunion select '2010-01-01'  as Rec FROM sinc_log\norder by Rec desc",
 						"partitionOption": "None",
 						"queryTimeout": "02:00:00"
 					},
