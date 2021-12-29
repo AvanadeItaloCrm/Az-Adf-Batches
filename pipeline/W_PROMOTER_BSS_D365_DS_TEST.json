@@ -76,7 +76,7 @@
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "Start Oracle",
+						"activity": "Ultima Sinc",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -93,7 +93,10 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "SELECT ntv_ntv_promoter.modifiedon, ntv_ntv_promoter.ntv_lastname, ntv_ntv_promoter.ntv_id, ntv_ntv_promoter.ntv_name, ntv_ntv_promoter.statuscode, ntv_ntv_promoter.Id ,\nntv_ntv_station.ntv_name AS ntv_station_name, ntv_ntv_station.ntv_codenavitaire\nFROM ntv_ntv_station RIGHT OUTER JOIN\nntv_ntv_promoter ON ntv_ntv_station.ntv_stationid = ntv_ntv_promoter.ntv_stationid",
+						"sqlReaderQuery": {
+							"value": "@concat('SELECT ntv_ntv_promoter.modifiedon, ntv_ntv_promoter.ntv_lastname, ntv_ntv_promoter.ntv_id, ntv_ntv_promoter.ntv_name, ntv_ntv_promoter.statuscode, ntv_ntv_promoter.Id , ntv_ntv_station.ntv_name AS ntv_station_name, ntv_ntv_station.ntv_codenavitaire FROM ntv_ntv_station RIGHT OUTER JOIN ntv_ntv_promoter ON ntv_ntv_station.ntv_stationid = ntv_ntv_promoter.ntv_stationid WHERE ntv_ntv_station.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or ntv_ntv_promoter.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')\n",
+							"type": "Expression"
+						},
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -374,7 +377,14 @@
 			{
 				"name": "Ultima Sinc",
 				"type": "Lookup",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Start Oracle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -394,7 +404,7 @@
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "W_TRANSAZIONE_FRODI_D365_DS_OracleDB",
+						"referenceName": "TEST_W_PROMOTER_BSS_D365_DS_OracleDB",
 						"type": "DatasetReference"
 					}
 				}

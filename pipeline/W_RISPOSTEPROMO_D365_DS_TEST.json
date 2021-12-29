@@ -76,7 +76,7 @@
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "Start Oracle",
+						"activity": "Ultima Sinc",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -93,7 +93,10 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "SELECT  Id, createdon , createdby , modifiedon , modifiedby , ntv_reponsedate , Id AS ID_CLIENTE, ntv_promotionid , ntv_note , ntv_responseoutcome, ntv_channel ,  ntv_contactid , ntv_bookingid\nFROM  dbo.ntv_ntv_promoresponse",
+						"sqlReaderQuery": {
+							"value": "@concat('SELECT  Id, createdon , createdby , modifiedon , modifiedby , ntv_reponsedate , Id AS ID_CLIENTE, ntv_promotionid , ntv_note , ntv_responseoutcome, ntv_channel ,  ntv_contactid , ntv_bookingid FROM  dbo.ntv_ntv_promoresponse WHERE ntv_ntv_promoresponse.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"type": "Expression"
+						},
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -429,7 +432,14 @@
 			{
 				"name": "Ultima Sinc",
 				"type": "Lookup",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Start Oracle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -449,7 +459,7 @@
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "W_TRANSAZIONE_FRODI_D365_DS_OracleDB",
+						"referenceName": "TEST_W_RISPOSTEPROMO_D365_DS_OracleDB",
 						"type": "DatasetReference"
 					}
 				}
