@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "OracleSource",
-						"oracleReaderQuery": "select dt_inizio_scrittura as Rec from sinc_log \nwhere tipo = 'Anagrafica_Aziendex' and UPPER(stato_lettura)='COMPLETATO'\nand ROWNUM <=1\norder by dt_fine_lettura desc ",
+						"oracleReaderQuery": "select dt_inizio_scrittura as Rec from sinc_log \nwhere tipo = 'Anagrafica_Aziendex' and UPPER(stato_lettura)='COMPLETATO'\nand ROWNUM <=1\nunion select '2010-01-01'  as dt FROM sinc_log\norder by dt desc",
 						"partitionOption": "None",
 						"queryTimeout": "02:00:00"
 					},
@@ -50,7 +50,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@if(equals(activity('Lookup1').output.firstRow.Rec,''),'2020/01/01',\nconcat('insert into [batchSync].[Sync](Inizio,Tipo) values (GETDATE(),',\n'''',activity('Lookup1').output.firstRow.Rec ,'''); select max(id) as m from [batchSync].[Sync]'))",
+							"value": "@if(equals(activity('Lookup1').output.firstRow,''),'2020/01/01',\nconcat('insert into [batchSync].[Sync](Inizio,Tipo) values (GETDATE(),',\n'''',activity('Lookup1').output.firstRow.Rec ,'''); select max(id) as m from [batchSync].[Sync]'))",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
