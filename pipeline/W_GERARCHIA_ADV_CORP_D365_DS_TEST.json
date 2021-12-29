@@ -76,7 +76,7 @@
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "Start Oracle",
+						"activity": "Ultima Sinc",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -595,7 +595,14 @@
 			{
 				"name": "Ultima Sinc",
 				"type": "Lookup",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Start Oracle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
