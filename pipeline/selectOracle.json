@@ -50,7 +50,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('insert into [batchSync].[Sync](Inizio,Tipo) values (GETDATE(),',\n'''', ,''')')",
+							"value": "@concat('insert into [batchSync].[Sync](Inizio,Tipo) values (GETDATE(),',\n'''',activity('Lookup1').output.firstRow.Rec ,''')')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
