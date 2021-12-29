@@ -531,7 +531,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "W_MULTITRATTA_D365_DS_SQLSource",
+						"referenceName": "TEST_W_MULTITRATTA_D365_DS_SQLSource",
 						"type": "DatasetReference"
 					}
 				],
