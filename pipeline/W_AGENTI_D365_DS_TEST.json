@@ -76,7 +76,7 @@
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "Start Oracle",
+						"activity": "Ultima Sinc",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -93,7 +93,10 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "SELECT ntv_ntv_agent.ntv_agentnumber, ntv_ntv_agent.ntv_firstname, ntv_ntv_agent.ntv_surname, ntv_ntv_agent.ntv_agenttypecode, ntv_ntv_agent.ntv_agentrole, ntv_ntv_agent.ntv_email, ntv_ntv_agent.ntv_mobilephone, ntv_ntv_agent.ntv_phone, \n             ntv_ntv_agent.ntv_fax, ntv_ntv_agent.Id, ntv_account.accountnumber, ntv_account.accountclassificationcode, ntv_ntv_agent.ntv_portalusername, ntv_ntv_agent.statuscode, ntv_ntv_agent.ntv_consentmarketinginfo, \n             ntv_ntv_agent.ntv_consentprofilation, ntv_ntv_agent.ntv_consentthirdparty, ntv_ntv_agent.ntv_marketingupdatedon, ntv_ntv_agent.ntv_profilationupdatedon, ntv_ntv_agent.ntv_thirdpartyupdatedon, ntv_ntv_agent.ntv_agentid\nFROM   ntv_ntv_agent INNER JOIN\n             ntv_account ON ntv_ntv_agent.ntv_accountid = ntv_account.accountid",
+						"sqlReaderQuery": {
+							"value": "@concat('SELECT ntv_ntv_agent.ntv_agentnumber, ntv_ntv_agent.ntv_firstname, ntv_ntv_agent.ntv_surname, ntv_ntv_agent.ntv_agenttypecode, ntv_ntv_agent.ntv_agentrole, ntv_ntv_agent.ntv_email, ntv_ntv_agent.ntv_mobilephone, ntv_ntv_agent.ntv_phone, ntv_ntv_agent.ntv_fax, ntv_ntv_agent.Id, ntv_account.accountnumber, ntv_account.accountclassificationcode, ntv_ntv_agent.ntv_portalusername, ntv_ntv_agent.statuscode, ntv_ntv_agent.ntv_consentmarketinginfo, ntv_ntv_agent.ntv_consentprofilation, ntv_ntv_agent.ntv_consentthirdparty, ntv_ntv_agent.ntv_marketingupdatedon, ntv_ntv_agent.ntv_profilationupdatedon, ntv_ntv_agent.ntv_thirdpartyupdatedon, ntv_ntv_agent.ntv_agentid FROM   ntv_ntv_agent  INNER JOIN ntv_account ON ntv_ntv_agent.ntv_accountid = ntv_account.accountid WHERE ntv_account.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or ntv_ntv_agent.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"type": "Expression"
+						},
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -520,7 +523,14 @@
 			{
 				"name": "Ultima Sinc",
 				"type": "Lookup",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Start Oracle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -540,7 +550,7 @@
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "W_TRANSAZIONE_FRODI_D365_DS_OracleDB",
+						"referenceName": "TEST_W_AGENTI_D365_DS_OracleDB",
 						"type": "DatasetReference"
 					}
 				}
