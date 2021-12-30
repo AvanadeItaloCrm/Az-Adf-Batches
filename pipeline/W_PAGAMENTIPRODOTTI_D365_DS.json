@@ -93,6 +93,10 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
+						"sqlReaderQuery": {
+							"value": "@concat('SELECT * FROM ntvdev.Payments WHERE ModifiedDate>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"type": "Expression"
+						},
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -422,7 +426,7 @@
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "W_PRATICHE_AUTORITA_D365_DS_OracleDB",
+						"referenceName": "W_PAGAMENTIPRODOTTI_D365_DS_OracleDB",
 						"type": "DatasetReference"
 					}
 				}
