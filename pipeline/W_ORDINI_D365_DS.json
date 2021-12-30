@@ -93,7 +93,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "SELECT ntv_ntv_order.ntv_ordernumber AS NUMERO_ORDINE, ntv_ntv_order.Id AS INTEGRAZIONE_ID,'''',variables('Acquisto Prodotto')  AS TIPO_ORDINE '''', ntv_ntv_order.statuscode AS STATO, ntv_ntv_order.createdon AS DATA_ORDINE, ntv_ntv_order.ntv_closuredate AS DATA_CHIUSURA, ntv_ntv_order.ntv_originchannelcode AS PROVENIENZA_ORDINE, ntv_ntv_order.ntv_recordlocator AS PNR_PAGAMENTO,    ntv_ntv_order.ntv_grossamount AS PREZZO_TOTALE, ntv_ntv_order.ntv_ordernumber AS NOME_PRODOTTO, ntv_ntv_order.ntv_producttype AS TIPO_PRODOTTO, ntv_ntv_order.ntv_customerbuyerid AS CLIENTE_ACQUIRENTE_ID, ntv_ntv_order.ntv_buyertype AS TIPO_ACQUIRENTE, ntv_account.accountnumber AS ADVCORP_ACQUIRENTE_ID, ntv_account.accountnumber AS ADVCORP_INTESTATARIO_ID, ntv_ntv_asset.ntv_assetnumber AS ASSET_ID, ntv_ntv_order.ntv_iva AS IVA, ntv_ntv_order.ntv_productname AS NOTE, ntv_contact.ntv_customernumber AS CLIENTE_INTESTATARIO_ID FROM   ntv_ntv_order INNER JOIN  ntv_account ON ntv_ntv_order.Id = ntv_account.Id AND ntv_ntv_order.ntv_partnerbuyerid = ntv_account.accountid AND ntv_ntv_order.ntv_partnerholderid = ntv_account.accountid INNER JOIN  ntv_ntv_asset ON ntv_ntv_order.ntv_ordernumber = ntv_ntv_asset.ntv_ordernumber INNER JOIN ntv_contact ON ntv_ntv_order.ntv_customerholderid = ntv_contact.contactid",
+						"sqlReaderQuery": "SELECT ntv_ntv_order.ntv_ordernumber AS NUMERO_ORDINE, ntv_ntv_order.Id AS INTEGRAZIONE_ID, ('Acquisto Prodotto')  AS TIPO_ORDINE, ntv_ntv_order.statuscode AS STATO, ntv_ntv_order.createdon AS DATA_ORDINE, ntv_ntv_order.ntv_closuredate AS DATA_CHIUSURA, ntv_ntv_order.ntv_originchannelcode AS PROVENIENZA_ORDINE, ntv_ntv_order.ntv_recordlocator AS PNR_PAGAMENTO,    ntv_ntv_order.ntv_grossamount AS PREZZO_TOTALE, ntv_ntv_order.ntv_ordernumber AS NOME_PRODOTTO, ntv_ntv_order.ntv_producttype AS TIPO_PRODOTTO, ntv_ntv_order.ntv_customerbuyerid AS CLIENTE_ACQUIRENTE_ID, ntv_ntv_order.ntv_buyertype AS TIPO_ACQUIRENTE, ntv_account.accountnumber AS ADVCORP_ACQUIRENTE_ID, ntv_account.accountnumber AS ADVCORP_INTESTATARIO_ID, ntv_ntv_asset.ntv_assetnumber AS ASSET_ID, ntv_ntv_order.ntv_iva AS IVA, ntv_ntv_order.ntv_productname AS NOTE, ntv_contact.ntv_customernumber AS CLIENTE_INTESTATARIO_ID FROM   ntv_ntv_order INNER JOIN  ntv_account ON ntv_ntv_order.Id = ntv_account.Id AND ntv_ntv_order.ntv_partnerbuyerid = ntv_account.accountid AND ntv_ntv_order.ntv_partnerholderid = ntv_account.accountid INNER JOIN  ntv_ntv_asset ON ntv_ntv_order.ntv_ordernumber = ntv_ntv_asset.ntv_ordernumber INNER JOIN ntv_contact ON ntv_ntv_order.ntv_customerholderid = ntv_contact.contactid",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -131,8 +131,8 @@
 							{
 								"source": {
 									"name": "TIPO_ORDINE",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "TIPO_ORDINE",
@@ -254,8 +254,8 @@
 							{
 								"source": {
 									"name": "ADVCORP_ACQUIRENTE_ID",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "ADVCORP_ACQUIRENTE_ID",
@@ -265,8 +265,8 @@
 							{
 								"source": {
 									"name": "ADVCORP_INTESTATARIO_ID",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "ADVCORP_INTESTATARIO_ID",
@@ -309,8 +309,8 @@
 							{
 								"source": {
 									"name": "CLIENTE_INTESTATARIO_ID",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "CLIENTE_INTESTATARIO_ID",
