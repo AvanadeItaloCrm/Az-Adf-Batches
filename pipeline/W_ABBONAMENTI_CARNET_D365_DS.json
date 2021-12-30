@@ -93,6 +93,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
+						"sqlReaderQuery": "SELECT ntv_contact.ntv_customernumber AS CLIENTE_ACQUIRENTE_ID, ntv_ntv_asset.ntv_productname AS TIPOABB, ntv_ntv_asset.ntv_producttype AS TIPO_PRODOTTO, ntv_ntv_asset.createdon AS DATA_ACQUISTO, ntv_ntv_asset.ntv_endvaliditydate AS DATA_FINE, ntv_ntv_asset.Id AS INTEGRAZIONE_ID, ntv_ntv_asset.statuscode AS STATO, \n             ntv_ntv_asset.ntv_ordernumber AS ORDINE_ACQUISTO_ID, ntv_account.accountnumber AS ADVCORP_ACQUIRENTE_ID, ntv_account_1.accountnumber AS ADVCORP_INTESTATARIO_ID, ntv_contact_1.ntv_customernumber AS CLIENTE_INTESTATARIO_ID, ntv_ntv_asset.ntv_assetnumber AS CODICE_ASSET, ntv_ntv_asset.ntv_deactivationdate AS DATA_DISATTIVAZIONE\nFROM   ntv_ntv_asset INNER JOIN\n             ntv_account ON ntv_ntv_asset.ntv_partnerbuyerid = ntv_account.accountid INNER JOIN\n             ntv_account AS ntv_account_1 ON ntv_ntv_asset.ntv_partnerholderid = ntv_account_1.accountid INNER JOIN\n             ntv_contact ON ntv_ntv_asset.ntv_customerbuyerid = ntv_contact.contactid INNER JOIN\n             ntv_contact AS ntv_contact_1 ON ntv_ntv_asset.ntv_customerholderid = ntv_contact_1.contactid",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -107,9 +108,9 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "Id",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "CLIENTE_ACQUIRENTE_ID",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "CLIENTE_ACQUIRENTE_ID",
@@ -118,9 +119,9 @@
 							},
 							{
 								"source": {
-									"name": "SinkCreatedOn",
-									"type": "DateTime",
-									"physicalType": "datetime"
+									"name": "TIPOABB",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "TIPOABB",
@@ -129,9 +130,9 @@
 							},
 							{
 								"source": {
-									"name": "SinkModifiedOn",
-									"type": "DateTime",
-									"physicalType": "datetime"
+									"name": "TIPO_PRODOTTO",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "TIPO_PRODOTTO",
@@ -140,42 +141,31 @@
 							},
 							{
 								"source": {
-									"name": "statecode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "DATA_ACQUISTO",
+									"type": "DateTime",
+									"physicalType": "datetime"
 								},
 								"sink": {
-									"name": "TARIFFA",
-									"type": "String"
+									"name": "DATA_ACQUISTO",
+									"type": "DateTime"
 								}
 							},
 							{
 								"source": {
-									"name": "statuscode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "DATA_FINE",
+									"type": "DateTime",
+									"physicalType": "datetime"
 								},
 								"sink": {
-									"name": "STAZIONE_PARTENZA",
-									"type": "String"
+									"name": "DATA_FINE",
+									"type": "DateTime"
 								}
 							},
 							{
 								"source": {
-									"name": "ntv_producttype",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "STAZIONE_ARRIVO",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_customerbuyerid_entitytype",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "INTEGRAZIONE_ID",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
 								},
 								"sink": {
 									"name": "INTEGRAZIONE_ID",
@@ -184,9 +174,9 @@
 							},
 							{
 								"source": {
-									"name": "createdonbehalfby_entitytype",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "STATO",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "STATO",
@@ -195,9 +185,9 @@
 							},
 							{
 								"source": {
-									"name": "ntv_productpromotionid",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "ORDINE_ACQUISTO_ID",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "ORDINE_ACQUISTO_ID",
@@ -206,7 +196,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_productpromotionid_entitytype",
+									"name": "ADVCORP_ACQUIRENTE_ID",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -217,9 +207,9 @@
 							},
 							{
 								"source": {
-									"name": "ntv_partnerbuyerid",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "ADVCORP_INTESTATARIO_ID",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "ADVCORP_INTESTATARIO_ID",
@@ -228,7 +218,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_partnerbuyerid_entitytype",
+									"name": "CLIENTE_INTESTATARIO_ID",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -239,9 +229,9 @@
 							},
 							{
 								"source": {
-									"name": "ntv_partnerholderid",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "CODICE_ASSET",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "CODICE_ASSET",
@@ -250,13 +240,13 @@
 							},
 							{
 								"source": {
-									"name": "ntv_partnerholderid_entitytype",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "DATA_DISATTIVAZIONE",
+									"type": "DateTime",
+									"physicalType": "datetime"
 								},
 								"sink": {
-									"name": "AMBIENTE",
-									"type": "String"
+									"name": "DATA_DISATTIVAZIONE",
+									"type": "DateTime"
 								}
 							}
 						],
