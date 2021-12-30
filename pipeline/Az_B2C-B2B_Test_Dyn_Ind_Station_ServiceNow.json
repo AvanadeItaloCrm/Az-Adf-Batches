@@ -95,7 +95,7 @@
 					"method": "GET"
 				},
 				"linkedServiceName": {
-					"referenceName": "crmtestbatches",
+					"referenceName": "crmtestbatchesServiceNow",
 					"type": "LinkedServiceReference"
 				}
 			},
@@ -129,7 +129,10 @@
 							"type": "String"
 						},
 						"Errore": {
-							"value": "@pipeline().RunId"
+							"value": {
+								"value": "@pipeline().RunId",
+								"type": "Expression"
+							}
 						},
 						"NomeFile": {
 							"value": ""
