@@ -5,10 +5,10 @@
 		"annotations": [],
 		"type": "AzureFunction",
 		"typeProperties": {
-			"functionAppUrl": "https://crmtestbatches.azurewebsites.net/https://crmtestapimgm.azure-api.net/crmtestbatchesdyn365out/v1/FStationServiceNow",
+			"functionAppUrl": "https://crmtestapimgm.azure-api.net/crmtestbatchesdyn365out/v1/FStationServiceNow",
 			"authentication": "MSI",
 			"resourceId": "",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIwZmExMWI5Ny0xOTk3LTQ0OTAtOTNjYy0xZjUyNmI4Y2UwYjYiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI5NDNkYjY2Yy05NGRkLTRmZTktOTNiYi1jZmE1YzcyNTQyMzkiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "integrationRuntimeSFH-TEST",
