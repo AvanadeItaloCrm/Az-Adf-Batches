@@ -31,7 +31,7 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureLinkedService",
+					"referenceName": "AzSqlOracle_Test_StagingArea",
 					"type": "LinkedServiceReference"
 				}
 			},
@@ -67,7 +67,7 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureLinkedService",
+					"referenceName": "AzSqlOracle_Test_StagingArea",
 					"type": "LinkedServiceReference"
 				}
 			},
@@ -93,7 +93,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "SELECT ntv_ntv_bss.ntv_codebss, ntv_ntv_bss.Id, ntv_ntv_station.ntv_codenavitaire, ntv_ntv_bss.ntv_position, ntv_ntv_bss.ntv_typology\nFROM   ntv_ntv_bss INNER JOIN\n             ntv_ntv_station ON ntv_ntv_bss.Id = ntv_ntv_station.ntv_stationid",
+						"sqlReaderQuery": "SELECT ntv_contact.ntv_customernumber AS CLIENTE_ACQUIRENTE_ID, ntv_ntv_asset.ntv_productname AS TIPOABB, ntv_ntv_asset.ntv_producttype AS TIPO_PRODOTTO, ntv_ntv_asset.createdon AS DATA_ACQUISTO, ntv_ntv_asset.ntv_endvaliditydate AS DATA_FINE, ntv_ntv_asset.Id AS INTEGRAZIONE_ID, ntv_ntv_asset.statuscode AS STATO, \n             ntv_ntv_asset.ntv_ordernumber AS ORDINE_ACQUISTO_ID, ntv_account.accountnumber AS ADVCORP_ACQUIRENTE_ID, ntv_account_1.accountnumber AS ADVCORP_INTESTATARIO_ID, ntv_contact_1.ntv_customernumber AS CLIENTE_INTESTATARIO_ID, ntv_ntv_asset.ntv_assetnumber AS CODICE_ASSET, ntv_ntv_asset.ntv_deactivationdate AS DATA_DISATTIVAZIONE\nFROM   ntv_ntv_asset INNER JOIN\n             ntv_account ON ntv_ntv_asset.ntv_partnerbuyerid = ntv_account.accountid INNER JOIN\n             ntv_account AS ntv_account_1 ON ntv_ntv_asset.ntv_partnerholderid = ntv_account_1.accountid INNER JOIN\n             ntv_contact ON ntv_ntv_asset.ntv_customerbuyerid = ntv_contact.contactid INNER JOIN\n             ntv_contact AS ntv_contact_1 ON ntv_ntv_asset.ntv_customerholderid = ntv_contact_1.contactid",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -108,18 +108,62 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "ntv_codebss",
+									"name": "CLIENTE_ACQUIRENTE_ID",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
 								"sink": {
-									"name": "CODICE_TVM",
+									"name": "CLIENTE_ACQUIRENTE_ID",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "Id",
+									"name": "TIPOABB",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "TIPOABB",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TIPO_PRODOTTO",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "TIPO_PRODOTTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DATA_ACQUISTO",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_ACQUISTO",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "DATA_FINE",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_FINE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "INTEGRAZIONE_ID",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -130,35 +174,79 @@
 							},
 							{
 								"source": {
-									"name": "ntv_codenavitaire",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "STATO",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
-									"name": "STAZIONE",
+									"name": "STATO",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "ntv_position",
+									"name": "ORDINE_ACQUISTO_ID",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
 								"sink": {
-									"name": "POSIZIONE",
+									"name": "ORDINE_ACQUISTO_ID",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "ntv_typology",
+									"name": "ADVCORP_ACQUIRENTE_ID",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
 								"sink": {
-									"name": "TIPO",
+									"name": "ADVCORP_ACQUIRENTE_ID",
 									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ADVCORP_INTESTATARIO_ID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "ADVCORP_INTESTATARIO_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CLIENTE_INTESTATARIO_ID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CLIENTE_INTESTATARIO_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CODICE_ASSET",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CODICE_ASSET",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DATA_DISATTIVAZIONE",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_DISATTIVAZIONE",
+									"type": "DateTime"
 								}
 							}
 						],
@@ -334,7 +422,7 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureLinkedService",
+					"referenceName": "AzSqlOracle_Test_StagingArea",
 					"type": "LinkedServiceReference"
 				}
 			},
@@ -368,7 +456,7 @@
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "W_TRANSAZIONE_FRODI_D365_DS_OracleDB",
+						"referenceName": "TEST_W_ABBONAMENTI_CARNET_D365_DS_OracleDB",
 						"type": "DatasetReference"
 					}
 				}
