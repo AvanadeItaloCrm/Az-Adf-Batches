@@ -1,0 +1,212 @@
+{
+	"name": "Booking_SQLSource",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzSqlOracle_Dev_StagingArea",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "BookGUID",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "CustomerCode",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "EmailAddress",
+				"type": "varchar"
+			},
+			{
+				"name": "CustomerNumber",
+				"type": "varchar"
+			},
+			{
+				"name": "FirstName",
+				"type": "varchar"
+			},
+			{
+				"name": "LastName",
+				"type": "varchar"
+			},
+			{
+				"name": "Title",
+				"type": "varchar"
+			},
+			{
+				"name": "HomePhone",
+				"type": "varchar"
+			},
+			{
+				"name": "OtherPhone",
+				"type": "varchar"
+			},
+			{
+				"name": "PaxCount",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "AuthorizedBalanceDue",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 4
+			},
+			{
+				"name": "BalanceDue",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 4
+			},
+			{
+				"name": "BookingID",
+				"type": "varchar"
+			},
+			{
+				"name": "BookingParentID",
+				"type": "varchar"
+			},
+			{
+				"name": "ChangeAllowed",
+				"type": "varchar"
+			},
+			{
+				"name": "PromotionCode",
+				"type": "varchar"
+			},
+			{
+				"name": "TotalCost",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 4
+			},
+			{
+				"name": "CreatedAgentID",
+				"type": "varchar"
+			},
+			{
+				"name": "CreatedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ModifiedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "PosDomainCode",
+				"type": "varchar"
+			},
+			{
+				"name": "ModifiedPosDomainCode",
+				"type": "varchar"
+			},
+			{
+				"name": "ExpiredDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "MessageId",
+				"type": "varchar"
+			},
+			{
+				"name": "ModifiedAgentID",
+				"type": "varchar"
+			},
+			{
+				"name": "ModifiedPosAgentCode",
+				"type": "varchar"
+			},
+			{
+				"name": "RecordLocator",
+				"type": "varchar"
+			},
+			{
+				"name": "ParentRecordLocator",
+				"type": "varchar"
+			},
+			{
+				"name": "PosAgentCode",
+				"type": "varchar"
+			},
+			{
+				"name": "PosLocationCode",
+				"type": "varchar"
+			},
+			{
+				"name": "ReceivedBy",
+				"type": "varchar"
+			},
+			{
+				"name": "ReceivedReference",
+				"type": "varchar"
+			},
+			{
+				"name": "SegmentCount",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "BookingStatus",
+				"type": "varchar"
+			},
+			{
+				"name": "SystemCode",
+				"type": "varchar"
+			},
+			{
+				"name": "ChannelType",
+				"type": "varchar"
+			},
+			{
+				"name": "IMEI",
+				"type": "varchar"
+			},
+			{
+				"name": "DeviceID",
+				"type": "varchar"
+			},
+			{
+				"name": "IpAddress",
+				"type": "varchar"
+			},
+			{
+				"name": "AddressLine",
+				"type": "varchar"
+			},
+			{
+				"name": "ModifiedPosLocationCode",
+				"type": "varchar"
+			},
+			{
+				"name": "ModifiedPosOrganizationCode",
+				"type": "varchar"
+			},
+			{
+				"name": "PosOrganizationCode",
+				"type": "varchar"
+			},
+			{
+				"name": "DistributionOption",
+				"type": "varchar"
+			},
+			{
+				"name": "InvoiceRequest",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "ntv",
+			"table": "v_Bookings"
+		}
+	}
+}
