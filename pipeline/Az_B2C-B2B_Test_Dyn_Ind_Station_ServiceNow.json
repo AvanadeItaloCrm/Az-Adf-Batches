@@ -95,7 +95,7 @@
 					"method": "GET"
 				},
 				"linkedServiceName": {
-					"referenceName": "crmtestbatchesServiceNow",
+					"referenceName": "crmtestbatches",
 					"type": "LinkedServiceReference"
 				}
 			},
