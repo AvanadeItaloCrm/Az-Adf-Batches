@@ -1,0 +1,927 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name"
+		},
+		"AzureLinkedService": {
+			"type": "string"
+		},
+		"AzSqlOracle_Dev_DesDYN365": {
+			"type": "string"
+		},
+		"OracleDB_DEV": {
+			"type": "string"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/ABBONAMENTI_CARNET')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Start SP",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[batchSync].[InizioSQL_ORACLEBatchSync]",
+							"storedProcedureParameters": {
+								"NomeFile": {
+									"value": "",
+									"type": "String"
+								},
+								"TabellaImport": {
+									"value": {
+										"value": "@variables('TableName')",
+										"type": "Expression"
+									},
+									"type": "String"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "[parameters('AzureLinkedService')]",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Finally SP",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "End Oracle",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[batchSync].[FineSQL_ORACLEBatchSync]",
+							"storedProcedureParameters": {
+								"TabellaImport": {
+									"value": {
+										"value": "@variables('TableName')",
+										"type": "Expression"
+									},
+									"type": "String"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "[parameters('AzureLinkedService')]",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Sql To Oracle",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "Ultima Sinc",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"sqlReaderQuery": {
+									"value": "@concat('SELECT ntv_contact.ntv_customernumber AS CLIENTE_ACQUIRENTE_ID, ntv_ntv_asset.ntv_productname AS TIPOABB, ntv_ntv_asset.ntv_producttype AS TIPO_PRODOTTO, ntv_ntv_asset.createdon AS DATA_ACQUISTO, ntv_ntv_asset.ntv_endvaliditydate AS DATA_FINE, ntv_ntv_asset.Id AS INTEGRAZIONE_ID, ntv_ntv_asset.statuscode AS STATO, ntv_ntv_asset.ntv_ordernumber AS ORDINE_ACQUISTO_ID, ntv_account.accountnumber AS ADVCORP_ACQUIRENTE_ID, ntv_account_1.accountnumber AS ADVCORP_INTESTATARIO_ID, ntv_contact_1.ntv_customernumber AS CLIENTE_INTESTATARIO_ID, ntv_ntv_asset.ntv_assetnumber AS CODICE_ASSET, ntv_ntv_asset.ntv_deactivationdate AS DATA_DISATTIVAZIONE FROM   ntv_ntv_asset INNER JOIN ntv_account ON ntv_ntv_asset.ntv_partnerbuyerid = ntv_account.accountid INNER JOIN ntv_account AS ntv_account_1 ON ntv_ntv_asset.ntv_partnerholderid = ntv_account_1.accountid INNER JOIN ntv_contact ON ntv_ntv_asset.ntv_customerbuyerid = ntv_contact.contactid INNER JOIN ntv_contact AS ntv_contact_1 ON ntv_ntv_asset.ntv_customerholderid = ntv_contact_1.contactid WHERE ntv_contact.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or ntv_ntv_asset.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or ntv_account.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or ntv_account_1.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or ntv_contact_1.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+									"type": "Expression"
+								},
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"sink": {
+								"type": "OracleSink",
+								"writeBatchSize": 10000,
+								"preCopyScript": "truncate table sa_d365_svil.W_ABBONAMENTI_CARNET_D365_DS"
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"name": "CLIENTE_ACQUIRENTE_ID",
+											"type": "String",
+											"physicalType": "nvarchar"
+										},
+										"sink": {
+											"name": "CLIENTE_ACQUIRENTE_ID",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "TIPOABB",
+											"type": "String",
+											"physicalType": "nvarchar"
+										},
+										"sink": {
+											"name": "TIPOABB",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "TIPO_PRODOTTO",
+											"type": "Int32",
+											"physicalType": "int"
+										},
+										"sink": {
+											"name": "TIPO_PRODOTTO",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "DATA_ACQUISTO",
+											"type": "DateTime",
+											"physicalType": "datetime"
+										},
+										"sink": {
+											"name": "DATA_ACQUISTO",
+											"type": "DateTime"
+										}
+									},
+									{
+										"source": {
+											"name": "DATA_FINE",
+											"type": "DateTime",
+											"physicalType": "datetime"
+										},
+										"sink": {
+											"name": "DATA_FINE",
+											"type": "DateTime"
+										}
+									},
+									{
+										"source": {
+											"name": "INTEGRAZIONE_ID",
+											"type": "Guid",
+											"physicalType": "uniqueidentifier"
+										},
+										"sink": {
+											"name": "INTEGRAZIONE_ID",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "STATO",
+											"type": "Int32",
+											"physicalType": "int"
+										},
+										"sink": {
+											"name": "STATO",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "ORDINE_ACQUISTO_ID",
+											"type": "String",
+											"physicalType": "nvarchar"
+										},
+										"sink": {
+											"name": "ORDINE_ACQUISTO_ID",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "ADVCORP_ACQUIRENTE_ID",
+											"type": "String",
+											"physicalType": "nvarchar"
+										},
+										"sink": {
+											"name": "ADVCORP_ACQUIRENTE_ID",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "ADVCORP_INTESTATARIO_ID",
+											"type": "String",
+											"physicalType": "nvarchar"
+										},
+										"sink": {
+											"name": "ADVCORP_INTESTATARIO_ID",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "CLIENTE_INTESTATARIO_ID",
+											"type": "String",
+											"physicalType": "nvarchar"
+										},
+										"sink": {
+											"name": "CLIENTE_INTESTATARIO_ID",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "CODICE_ASSET",
+											"type": "String",
+											"physicalType": "nvarchar"
+										},
+										"sink": {
+											"name": "CODICE_ASSET",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "DATA_DISATTIVAZIONE",
+											"type": "DateTime",
+											"physicalType": "datetime"
+										},
+										"sink": {
+											"name": "DATA_DISATTIVAZIONE",
+											"type": "DateTime"
+										}
+									}
+								],
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "W_ABBONAMENTI_CARNET_D365_DS_SQLSource",
+								"type": "DatasetReference"
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "W_ABBONAMENTI_CARNET_D365_DS_OracleDB",
+								"type": "DatasetReference"
+							}
+						]
+					},
+					{
+						"name": "Start Oracle",
+						"type": "Lookup",
+						"dependsOn": [
+							{
+								"activity": "Start SP",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "OracleSource",
+								"oracleReaderQuery": {
+									"value": "@concat('SELECT sa_d365_svil.iniziasync (''',\nvariables('TableName'),\n''') FROM DUAL;')",
+									"type": "Expression"
+								},
+								"partitionOption": "None",
+								"queryTimeout": "02:00:00"
+							},
+							"dataset": {
+								"referenceName": "W_ABBONAMENTI_CARNET_D365_DS_OracleDB",
+								"type": "DatasetReference"
+							}
+						}
+					},
+					{
+						"name": "End Oracle",
+						"type": "Lookup",
+						"dependsOn": [
+							{
+								"activity": "Sql To Oracle",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "OracleSource",
+								"oracleReaderQuery": {
+									"value": "@concat('SELECT sa_d365_svil.finesync (''',\nvariables('TableName'),\n''') FROM DUAL;')",
+									"type": "Expression"
+								},
+								"partitionOption": "None",
+								"queryTimeout": "02:00:00"
+							},
+							"dataset": {
+								"referenceName": "W_ABBONAMENTI_CARNET_D365_DS_OracleDB",
+								"type": "DatasetReference"
+							}
+						}
+					},
+					{
+						"name": "Error End Oracle",
+						"type": "Lookup",
+						"dependsOn": [
+							{
+								"activity": "Sql To Oracle",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "OracleSource",
+								"oracleReaderQuery": {
+									"value": "@concat('SELECT sa_d365_svil.errore_sync (''',\nvariables('TableName'),\n''',''',variables('Error'),''') FROM DUAL;')",
+									"type": "Expression"
+								},
+								"partitionOption": "None",
+								"queryTimeout": "02:00:00"
+							},
+							"dataset": {
+								"referenceName": "W_ABBONAMENTI_CARNET_D365_DS_OracleDB",
+								"type": "DatasetReference"
+							}
+						}
+					},
+					{
+						"name": "Error Finally SP",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Error End Oracle",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[batchSync].[ErrorBatchSync]",
+							"storedProcedureParameters": {
+								"TabellaImport": {
+									"value": {
+										"value": "@variables('TableName')",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"Errore": {
+									"value": {
+										"value": "@pipeline().RunId",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"NomeFile": {
+									"value": "",
+									"type": "String"
+								},
+								"Modulo": {
+									"value": "Copy Data Sql To Oracle",
+									"type": "String"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "[parameters('AzureLinkedService')]",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Ultima Sinc",
+						"type": "Lookup",
+						"dependsOn": [
+							{
+								"activity": "Start Oracle",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "OracleSource",
+								"oracleReaderQuery": {
+									"value": "@concat('select dt_inizio_scrittura as Rec from sinc_log where tipo = ','''',\nvariables('TableName'),\n'''',' and UPPER(stato_lettura)=',\n'''',\n'COMPLETATO',\n'''',\n'and ROWNUM <=1 union select ',\n'''',\n'2010-01-01',\n'''',\n' as Rec FROM sinc_log order by Rec desc')",
+									"type": "Expression"
+								},
+								"partitionOption": "None",
+								"queryTimeout": "02:00:00"
+							},
+							"dataset": {
+								"referenceName": "W_CANALEPROMO_OracleDB",
+								"type": "DatasetReference"
+							}
+						}
+					}
+				],
+				"variables": {
+					"TableName": {
+						"type": "String",
+						"defaultValue": "ABBONAMENTI_CARNET"
+					},
+					"Error": {
+						"type": "String",
+						"defaultValue": "@pipeline().RunId"
+					}
+				},
+				"folder": {
+					"name": "Az_IntegrazioniBatch_Oracle"
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/W_ABBONAMENTI_CARNET_D365_DS_SQLSource')]",
+				"[concat(variables('factoryId'), '/datasets/W_ABBONAMENTI_CARNET_D365_DS_OracleDB')]",
+				"[concat(variables('factoryId'), '/datasets/W_CANALEPROMO_OracleDB')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/W_ABBONAMENTI_CARNET_D365_DS_SQLSource')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "[parameters('AzSqlOracle_Dev_DesDYN365')]",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "Id",
+						"type": "uniqueidentifier"
+					},
+					{
+						"name": "SinkCreatedOn",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "SinkModifiedOn",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "statecode",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "statuscode",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "ntv_producttype",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "ntv_acquisitionchannelcode",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "ntv_customerbuyerid",
+						"type": "uniqueidentifier"
+					},
+					{
+						"name": "ntv_customerbuyerid_entitytype",
+						"type": "nvarchar"
+					},
+					{
+						"name": "createdonbehalfby",
+						"type": "uniqueidentifier"
+					},
+					{
+						"name": "createdonbehalfby_entitytype",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ntv_productpromotionid",
+						"type": "uniqueidentifier"
+					},
+					{
+						"name": "ntv_productpromotionid_entitytype",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ntv_partnerbuyerid",
+						"type": "uniqueidentifier"
+					},
+					{
+						"name": "ntv_partnerbuyerid_entitytype",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ntv_partnerholderid",
+						"type": "uniqueidentifier"
+					},
+					{
+						"name": "ntv_partnerholderid_entitytype",
+						"type": "nvarchar"
+					},
+					{
+						"name": "modifiedonbehalfby",
+						"type": "uniqueidentifier"
+					},
+					{
+						"name": "modifiedonbehalfby_entitytype",
+						"type": "nvarchar"
+					},
+					{
+						"name": "owningteam",
+						"type": "uniqueidentifier"
+					},
+					{
+						"name": "owningteam_entitytype",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ntv_productid",
+						"type": "uniqueidentifier"
+					},
+					{
+						"name": "ntv_productid_entitytype",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ntv_customerholderid",
+						"type": "uniqueidentifier"
+					},
+					{
+						"name": "ntv_customerholderid_entitytype",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ntv_productitemid",
+						"type": "uniqueidentifier"
+					},
+					{
+						"name": "ntv_productitemid_entitytype",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ntv_bookingid",
+						"type": "uniqueidentifier"
+					},
+					{
+						"name": "ntv_bookingid_entitytype",
+						"type": "nvarchar"
+					},
+					{
+						"name": "createdby",
+						"type": "uniqueidentifier"
+					},
+					{
+						"name": "createdby_entitytype",
+						"type": "nvarchar"
+					},
+					{
+						"name": "modifiedby",
+						"type": "uniqueidentifier"
+					},
+					{
+						"name": "modifiedby_entitytype",
+						"type": "nvarchar"
+					},
+					{
+						"name": "owninguser",
+						"type": "uniqueidentifier"
+					},
+					{
+						"name": "owninguser_entitytype",
+						"type": "nvarchar"
+					},
+					{
+						"name": "owningbusinessunit",
+						"type": "uniqueidentifier"
+					},
+					{
+						"name": "owningbusinessunit_entitytype",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ownerid",
+						"type": "uniqueidentifier"
+					},
+					{
+						"name": "ownerid_entitytype",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ntv_productpromotionname",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ntv_customerbuyeridname",
+						"type": "nvarchar"
+					},
+					{
+						"name": "versionnumber",
+						"type": "bigint",
+						"precision": 19
+					},
+					{
+						"name": "createdon",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "owningbusinessunitname",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ntv_partnerholderidyominame",
+						"type": "nvarchar"
+					},
+					{
+						"name": "modifiedbyyominame",
+						"type": "nvarchar"
+					},
+					{
+						"name": "owneridtype",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ntv_vat",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "modifiedbyname",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ntv_endvaliditydate",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "ntv_bookingidname",
+						"type": "nvarchar"
+					},
+					{
+						"name": "owneridname",
+						"type": "nvarchar"
+					},
+					{
+						"name": "overriddencreatedon",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "ntv_productidname",
+						"type": "nvarchar"
+					},
+					{
+						"name": "createdonbehalfbyyominame",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ntv_productpromotionidname",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ntv_startvaliditydate",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "ntv_productitemidname",
+						"type": "nvarchar"
+					},
+					{
+						"name": "timezoneruleversionnumber",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "ntv_assetid",
+						"type": "uniqueidentifier"
+					},
+					{
+						"name": "ntv_customerholderidname",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ntv_partnerbuyeridname",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ntv_customerbuyeridyominame",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ntv_deactivationdate",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "ntv_description",
+						"type": "nvarchar"
+					},
+					{
+						"name": "createdonbehalfbyname",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ntv_note",
+						"type": "nvarchar"
+					},
+					{
+						"name": "utcconversiontimezonecode",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "modifiedon",
+						"type": "datetime",
+						"precision": 23,
+						"scale": 3
+					},
+					{
+						"name": "importsequencenumber",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "owneridyominame",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ntv_assetnumber",
+						"type": "nvarchar"
+					},
+					{
+						"name": "createdbyname",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ntv_totalamount",
+						"type": "decimal",
+						"precision": 38,
+						"scale": 2
+					},
+					{
+						"name": "modifiedonbehalfbyname",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ntv_productname",
+						"type": "nvarchar"
+					},
+					{
+						"name": "createdbyyominame",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ntv_partnerbuyeridyominame",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ntv_partnerholderidname",
+						"type": "nvarchar"
+					},
+					{
+						"name": "modifiedonbehalfbyyominame",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ntv_customerholderidyominame",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ntv_ordernumber",
+						"type": "nvarchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "ntv_ntv_asset"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/W_ABBONAMENTI_CARNET_D365_DS_OracleDB')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "[parameters('OracleDB_DEV')]",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "OracleTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "SA_D365_SVIL",
+					"table": "W_ABBONAMENTI_CARNET_D365_DS"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/W_CANALEPROMO_OracleDB')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "[parameters('OracleDB_DEV')]",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "OracleTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "SA_D365_SVIL",
+					"table": "W_CANALEPROMO_D365_DS"
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
