@@ -1,5 +1,5 @@
 {
-	"name": "W_PRODOTTIPNR_D365_DS_TEST",
+	"name": "ABBONAMENTI_CARNET",
 	"properties": {
 		"activities": [
 			{
@@ -31,7 +31,7 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "AzSqlOracle_Test_StagingArea",
+					"referenceName": "AzureLinkedService",
 					"type": "LinkedServiceReference"
 				}
 			},
@@ -67,7 +67,7 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "AzSqlOracle_Test_StagingArea",
+					"referenceName": "AzureLinkedService",
 					"type": "LinkedServiceReference"
 				}
 			},
@@ -92,15 +92,20 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "AzureSqlSource",
-						"sqlReaderQuery": "select ntv_assetid,createdon,modifiedon,ntv_assetnumber,bo.RecordLocator\nfrom ntv_ntv_asset a\njoin ntv.v_Bookings b\non a.ntv_bookingid=b.BookGUID\njoin ntv.v_Bookings bo on\nbo.BookingID=b.BookingID",
-						"queryTimeout": "02:00:00",
-						"partitionOption": "None"
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
 					},
 					"sink": {
 						"type": "OracleSink",
 						"writeBatchSize": 10000,
-						"preCopyScript": "truncate table sa_d365_test.W_PRODOTTIPNR_D365_DS"
+						"preCopyScript": "truncate table sa_d365_svil.W_ABBONAMENTI_CARNET_D365_DS"
 					},
 					"enableStaging": false,
 					"translator": {
@@ -108,7 +113,62 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "ntv_assetid",
+									"name": "CLIENTE_ACQUIRENTE_ID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CLIENTE_ACQUIRENTE_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TIPOABB",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "TIPOABB",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TIPO_PRODOTTO",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "TIPO_PRODOTTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DATA_ACQUISTO",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_ACQUISTO",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "DATA_FINE",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_FINE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "INTEGRAZIONE_ID",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -119,46 +179,79 @@
 							},
 							{
 								"source": {
-									"name": "createdon",
-									"type": "DateTime",
-									"physicalType": "datetime"
+									"name": "STATO",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
-									"name": "DATA_CREAZIONE",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "modifiedon",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								},
-								"sink": {
-									"name": "DATA_MODIFICA",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "RecordLocator",
-									"type": "String",
-									"physicalType": "varchar"
-								},
-								"sink": {
-									"name": "PNR",
+									"name": "STATO",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "ntv_assetnumber",
+									"name": "ORDINE_ACQUISTO_ID",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
 								"sink": {
-									"name": "ASSET_ID",
+									"name": "ORDINE_ACQUISTO_ID",
 									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ADVCORP_ACQUIRENTE_ID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "ADVCORP_ACQUIRENTE_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ADVCORP_INTESTATARIO_ID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "ADVCORP_INTESTATARIO_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CLIENTE_INTESTATARIO_ID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CLIENTE_INTESTATARIO_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CODICE_ASSET",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CODICE_ASSET",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DATA_DISATTIVAZIONE",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_DISATTIVAZIONE",
+									"type": "DateTime"
 								}
 							}
 						],
@@ -171,13 +264,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "TEST_W_PRODOTTIPNR_D365_DS_SQLSource",
+						"referenceName": "ABBONAMENTI_CARNET",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "TEST_W_PRODOTTIPNR_D365_DS_OracleDB",
+						"referenceName": "W_ABBONAMENTI_CARNET_D365_DS_OracleDB",
 						"type": "DatasetReference"
 					}
 				]
@@ -205,14 +298,14 @@
 					"source": {
 						"type": "OracleSource",
 						"oracleReaderQuery": {
-							"value": "@concat('SELECT sa_d365_test.iniziasync (''',\nvariables('TableName'),\n''') FROM DUAL;')",
+							"value": "@concat('SELECT sa_d365_svil.iniziasync (''',\nvariables('TableName'),\n''') FROM DUAL;')",
 							"type": "Expression"
 						},
 						"partitionOption": "None",
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "TEST_W_PRODOTTIPNR_D365_DS_OracleDB",
+						"referenceName": "W_ABBONAMENTI_CARNET_D365_DS_OracleDB",
 						"type": "DatasetReference"
 					}
 				}
@@ -222,7 +315,7 @@
 				"type": "Lookup",
 				"dependsOn": [
 					{
-						"activity": "Sql To Oracle",
+						"activity": "Delete file",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -240,14 +333,14 @@
 					"source": {
 						"type": "OracleSource",
 						"oracleReaderQuery": {
-							"value": "@concat('SELECT sa_d365_test.finesync (''',\nvariables('TableName'),\n''') FROM DUAL;')",
+							"value": "@concat('SELECT sa_d365_svil.finesync (''',\nvariables('TableName'),\n''') FROM DUAL;')",
 							"type": "Expression"
 						},
 						"partitionOption": "None",
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "TEST_W_PRODOTTIPNR_D365_DS_OracleDB",
+						"referenceName": "W_ABBONAMENTI_CARNET_D365_DS_OracleDB",
 						"type": "DatasetReference"
 					}
 				}
@@ -275,14 +368,14 @@
 					"source": {
 						"type": "OracleSource",
 						"oracleReaderQuery": {
-							"value": "@concat('SELECT sa_d365_test.errore_sync (''',\nvariables('TableName'),\n''',''',variables('Error'),''') FROM DUAL;')",
+							"value": "@concat('SELECT sa_d365_svil.errore_sync (''',\nvariables('TableName'),\n''',''',variables('Error'),''') FROM DUAL;')",
 							"type": "Expression"
 						},
 						"partitionOption": "None",
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "TEST_W_PRODOTTIPNR_D365_DS_OracleDB",
+						"referenceName": "W_ABBONAMENTI_CARNET_D365_DS_OracleDB",
 						"type": "DatasetReference"
 					}
 				}
@@ -334,7 +427,7 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "AzSqlOracle_Test_StagingArea",
+					"referenceName": "AzureLinkedService",
 					"type": "LinkedServiceReference"
 				}
 			},
@@ -368,8 +461,105 @@
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "W_TRANSAZIONE_FRODI_D365_DS_OracleDB",
+						"referenceName": "W_CANALEPROMO_OracleDB",
 						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "Copy in Elaborated",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Sql To Oracle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "BilliFileCopyFile",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "BilliFileCopyFile",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Delete file",
+				"type": "Delete",
+				"dependsOn": [
+					{
+						"activity": "Copy in Elaborated",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "BillDeleteFileCsv",
+						"type": "DatasetReference"
+					},
+					"enableLogging": false,
+					"storeSettings": {
+						"type": "AzureFileStorageReadSettings",
+						"recursive": true,
+						"enablePartitionDiscovery": false
 					}
 				}
 			}
@@ -377,7 +567,7 @@
 		"variables": {
 			"TableName": {
 				"type": "String",
-				"defaultValue": "W_PRODOTTIPNR_D365_DS"
+				"defaultValue": "ABBONAMENTI_CARNET"
 			},
 			"Error": {
 				"type": "String",
@@ -385,7 +575,7 @@
 			}
 		},
 		"folder": {
-			"name": "Az_IntegrazioniBatch_Oracle_Test"
+			"name": "Az_IntegrazioniBatch_Oracle"
 		},
 		"annotations": []
 	}

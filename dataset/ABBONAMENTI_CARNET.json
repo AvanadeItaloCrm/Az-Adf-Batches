@@ -1,0 +1,27 @@
+{
+	"name": "ABBONAMENTI_CARNET",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "CRMClusterClienteChiamataBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "TransferCustomerProductsAbbCarnet_20210406.csv",
+				"folderPath": "Abbonamenti_Carnet",
+				"container": "batchfiles"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"type": "String"
+			}
+		]
+	}
+}
