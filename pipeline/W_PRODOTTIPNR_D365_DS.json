@@ -93,7 +93,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "SELECT ntv_ntv_bss.ntv_codebss, ntv_ntv_bss.Id, ntv_ntv_station.ntv_codenavitaire, ntv_ntv_bss.ntv_position, ntv_ntv_bss.ntv_typology\nFROM   ntv_ntv_bss INNER JOIN\n             ntv_ntv_station ON ntv_ntv_bss.Id = ntv_ntv_station.ntv_stationid",
+						"sqlReaderQuery": "select ntv_assetid,createdon,modifiedon,ntv_assetnumber,bo.RecordLocator\nfrom ntv_ntv_asset a\njoin ntv.v_Bookings b\non a.ntv_bookingid=b.BookGUID\njoin ntv.Bookings bo on\nbo.BookingID=b.BookingID",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -108,18 +108,7 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "ntv_codebss",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "CODICE_TVM",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "Id",
+									"name": "ntv_assetid",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -130,34 +119,45 @@
 							},
 							{
 								"source": {
-									"name": "ntv_codenavitaire",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "createdon",
+									"type": "DateTime",
+									"physicalType": "datetime"
 								},
 								"sink": {
-									"name": "STAZIONE",
+									"name": "DATA_CREAZIONE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "modifiedon",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_MODIFICA",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "RecordLocator",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "PNR",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "ntv_position",
+									"name": "ntv_assetnumber",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
 								"sink": {
-									"name": "POSIZIONE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_typology",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "TIPO",
+									"name": "ASSET_ID",
 									"type": "String"
 								}
 							}
@@ -171,7 +171,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "W_ANAGRAFICA_TVM_D365_DS_SQLSource",
+						"referenceName": "W_PRODOTTIPNR_D365_DS_SQLSource",
 						"type": "DatasetReference"
 					}
 				],
@@ -368,7 +368,7 @@
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "W_PROMOTER_BSS_D365_DS_OracleDB",
+						"referenceName": "W_PRODOTTIPNR_D365_DS_OracleDB",
 						"type": "DatasetReference"
 					}
 				}
