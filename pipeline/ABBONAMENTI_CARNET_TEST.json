@@ -112,8 +112,9 @@
 						"mappings": [
 							{
 								"source": {
+									"name": "NUMERO_ORDINE",
 									"type": "String",
-									"ordinal": 1
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "NUMERO_ORDINE",
@@ -122,18 +123,20 @@
 							},
 							{
 								"source": {
+									"name": "DATA_CREAZIONE",
 									"type": "String",
-									"ordinal": 2
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "DATA_CREAZIONE",
-									"type": "DateTime"
+									"type": "String"
 								}
 							},
 							{
 								"source": {
+									"name": "CANALE_SORGENTE",
 									"type": "String",
-									"ordinal": 3
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "CANALE_SORGENTE",
@@ -142,8 +145,9 @@
 							},
 							{
 								"source": {
+									"name": "INTESTATARIO",
 									"type": "String",
-									"ordinal": 4
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "INTESTATARIO",
@@ -152,8 +156,9 @@
 							},
 							{
 								"source": {
+									"name": "TIPO_INTESTATARIO",
 									"type": "String",
-									"ordinal": 5
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "TIPO_INTESTATARIO",
@@ -162,8 +167,9 @@
 							},
 							{
 								"source": {
+									"name": "PREZZO_PRODOTTO",
 									"type": "String",
-									"ordinal": 6
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "PREZZO_PRODOTTO",
@@ -172,8 +178,9 @@
 							},
 							{
 								"source": {
+									"name": "QUANTITA",
 									"type": "String",
-									"ordinal": 7
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "QUANTITA",
@@ -182,8 +189,9 @@
 							},
 							{
 								"source": {
+									"name": "IMPORTO_IVA",
 									"type": "String",
-									"ordinal": 8
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "IMPORTO_IVA",
@@ -192,8 +200,9 @@
 							},
 							{
 								"source": {
+									"name": "NOME_PRODOTTO",
 									"type": "String",
-									"ordinal": 9
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "NOME_PRODOTTO",
@@ -202,8 +211,9 @@
 							},
 							{
 								"source": {
+									"name": "TIPO_PRODOTTO",
 									"type": "String",
-									"ordinal": 10
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "TIPO_PRODOTTO",
@@ -212,8 +222,9 @@
 							},
 							{
 								"source": {
+									"name": "DESCRIZIONE",
 									"type": "String",
-									"ordinal": 11
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "DESCRIZIONE",
@@ -222,8 +233,9 @@
 							},
 							{
 								"source": {
+									"name": "COD_PRODOTTO",
 									"type": "String",
-									"ordinal": 12
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "CODICE_PRODOTTO",
@@ -232,8 +244,9 @@
 							},
 							{
 								"source": {
+									"name": "STAZ_PARTENZA",
 									"type": "String",
-									"ordinal": 13
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "CITTA_PARTENZA",
@@ -242,8 +255,9 @@
 							},
 							{
 								"source": {
+									"name": "STAZ_ARRIVO",
 									"type": "String",
-									"ordinal": 14
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "CITTA_ARRIVO",
@@ -252,8 +266,9 @@
 							},
 							{
 								"source": {
+									"name": "AMBIENTE",
 									"type": "String",
-									"ordinal": 15
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "AMBIENTE",
@@ -262,28 +277,31 @@
 							},
 							{
 								"source": {
+									"name": "INIZIO_VALIDITA",
 									"type": "String",
-									"ordinal": 16
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "INIZIO_VALIDITA",
-									"type": "DateTime"
+									"type": "String"
 								}
 							},
 							{
 								"source": {
+									"name": "FINE_VALIDITA",
 									"type": "String",
-									"ordinal": 17
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "FINE_VALIDITA",
-									"type": "DateTime"
+									"type": "String"
 								}
 							},
 							{
 								"source": {
+									"name": "DATI_NTV",
 									"type": "String",
-									"ordinal": 18
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "DATI_NTV",
@@ -292,8 +310,9 @@
 							},
 							{
 								"source": {
+									"name": "TESTO_IVA",
 									"type": "String",
-									"ordinal": 19
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "TESTO_IVA",
@@ -302,8 +321,9 @@
 							},
 							{
 								"source": {
+									"name": "METODO_PAGAMENTO",
 									"type": "String",
-									"ordinal": 20
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "METODO_PAGAMENTO",
@@ -312,8 +332,9 @@
 							},
 							{
 								"source": {
+									"name": "NUM_RICEVUTA",
 									"type": "String",
-									"ordinal": 21
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "NUM_RICEVUTA",
