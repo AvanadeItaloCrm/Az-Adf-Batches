@@ -450,7 +450,7 @@
 										"userProperties": [],
 										"typeProperties": {
 											"packageLocation": {
-												"packagePath": "SqlToDyn/NTV.Az.Batches.Dyn365.CC/Dev_ImpCampaign_Invio.dtsx",
+												"packagePath": "NTV.Az.Batches.Dyn365.CC_Test/NTV.Az.Batches.Dyn365.CC_Test/Test_ImpCampaign_Invio.dtsx",
 												"type": "SSISDB"
 											},
 											"environmentPath": null,
