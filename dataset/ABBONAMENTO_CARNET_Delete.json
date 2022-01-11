@@ -1,0 +1,18 @@
+{
+	"name": "ABBONAMENTO_CARNET_Delete",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "CRMClusterClienteChiamataBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "Abbonamenti_Carnet",
+				"container": "batchfiles"
+			}
+		}
+	}
+}

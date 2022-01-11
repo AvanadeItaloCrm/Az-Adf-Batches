@@ -417,14 +417,14 @@
 					"source": {
 						"type": "OracleSource",
 						"oracleReaderQuery": {
-							"value": "@concat('SELECT sa_d365_test.finesync (''',\nvariables('TableName'),\n''') FROM DUAL;')",
+							"value": "@concat('SELECT sa_d365_svil.finesync (''',\nvariables('TableName'),\n''') FROM DUAL;')",
 							"type": "Expression"
 						},
 						"partitionOption": "None",
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "TEST_ABBONAMENTI_CARNET",
+						"referenceName": "ABBONAMENTI_CARNET_OracleDev",
 						"type": "DatasetReference"
 					}
 				}
@@ -452,7 +452,7 @@
 					"source": {
 						"type": "OracleSource",
 						"oracleReaderQuery": {
-							"value": "@concat('SELECT sa_d365_test.errore_sync (''',\nvariables('TableName'),\n''',''',variables('Error'),''') FROM DUAL;')",
+							"value": "@concat('SELECT sa_d365_svil.errore_sync (''',\nvariables('TableName'),\n''',''',variables('Error'),''') FROM DUAL;')",
 							"type": "Expression"
 						},
 						"partitionOption": "None",
@@ -632,7 +632,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "TEST_ABBONAMENTO_CARNET_Delete",
+						"referenceName": "ABBONAMENTO_CARNET_Delete",
 						"type": "DatasetReference"
 					},
 					"enableLogging": false,
