@@ -12,9 +12,13 @@
 					"name": "source1"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"name": "sink1"
+				}
+			],
 			"transformations": [],
-			"script": "source(output(\n\t\tNUMERO_ORDINE as string,\n\t\tDATA_CREAZIONE as date,\n\t\tCANALE_SORGENTE as string,\n\t\tINTESTATARIO as string,\n\t\tTIPO_INTESTATARIO as string,\n\t\tPREZZO_PRODOTTO as short,\n\t\tQUANTITA as double,\n\t\tIMPORTO_IVA as string,\n\t\tNOME_PRODOTTO as string,\n\t\tTIPO_PRODOTTO as string,\n\t\tDESCRIZIONE as string,\n\t\tCOD_PRODOTTO as string,\n\t\tSTAZ_PARTENZA as string,\n\t\tSTAZ_ARRIVO as string,\n\t\tAMBIENTE as string,\n\t\tINIZIO_VALIDITA as date,\n\t\tFINE_VALIDITA as string,\n\t\tDATI_NTV as string,\n\t\tTESTO_IVA as string,\n\t\tMETODO_PAGAMENTO as string,\n\t\tNUM_RICEVUTA as long\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source1"
+			"script": "source(output(\n\t\tNUMERO_ORDINE as string,\n\t\tDATA_CREAZIONE as date,\n\t\tCANALE_SORGENTE as string,\n\t\tINTESTATARIO as string,\n\t\tTIPO_INTESTATARIO as string,\n\t\tPREZZO_PRODOTTO as short,\n\t\tQUANTITA as double,\n\t\tIMPORTO_IVA as string,\n\t\tNOME_PRODOTTO as string,\n\t\tTIPO_PRODOTTO as string,\n\t\tDESCRIZIONE as string,\n\t\tCOD_PRODOTTO as string,\n\t\tSTAZ_PARTENZA as string,\n\t\tSTAZ_ARRIVO as string,\n\t\tAMBIENTE as string,\n\t\tINIZIO_VALIDITA as date,\n\t\tFINE_VALIDITA as string,\n\t\tDATI_NTV as string,\n\t\tTESTO_IVA as string,\n\t\tMETODO_PAGAMENTO as string,\n\t\tNUM_RICEVUTA as long\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source1\nsource1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tsaveOrder: 1) ~> sink1"
 		}
 	}
 }
