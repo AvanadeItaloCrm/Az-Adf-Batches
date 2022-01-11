@@ -104,8 +104,7 @@
 					},
 					"sink": {
 						"type": "OracleSink",
-						"writeBatchSize": 10000,
-						"preCopyScript": "truncate table sa_d365_svil.W_ABBONAMENTI_CARNET_D365_DS"
+						"writeBatchSize": 10000
 					},
 					"enableStaging": false,
 					"translator": {
@@ -113,145 +112,212 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "CLIENTE_ACQUIRENTE_ID",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"ordinal": 1
 								},
 								"sink": {
-									"name": "CLIENTE_ACQUIRENTE_ID",
+									"name": "NUMERO_ORDINE",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "TIPOABB",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"ordinal": 2
 								},
 								"sink": {
-									"name": "TIPOABB",
+									"name": "DATA_CREAZIONE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 3
+								},
+								"sink": {
+									"name": "CANALE_SORGENTE",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
+									"type": "String",
+									"ordinal": 4
+								},
+								"sink": {
+									"name": "INTESTATARIO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 5
+								},
+								"sink": {
+									"name": "TIPO_INTESTATARIO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 6
+								},
+								"sink": {
+									"name": "PREZZO_PRODOTTO",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 7
+								},
+								"sink": {
+									"name": "QUANTITA",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 8
+								},
+								"sink": {
+									"name": "IMPORTO_IVA",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 9
+								},
+								"sink": {
+									"name": "NOME_PRODOTTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 10
+								},
+								"sink": {
 									"name": "TIPO_PRODOTTO",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "TIPO_PRODOTTO",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "DATA_ACQUISTO",
-									"type": "DateTime",
-									"physicalType": "datetime"
+									"type": "String",
+									"ordinal": 11
 								},
 								"sink": {
-									"name": "DATA_ACQUISTO",
+									"name": "DESCRIZIONE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 12
+								},
+								"sink": {
+									"name": "CODICE_PRODOTTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 13
+								},
+								"sink": {
+									"name": "CITTA_PARTENZA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 14
+								},
+								"sink": {
+									"name": "CITTA_ARRIVO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 15
+								},
+								"sink": {
+									"name": "AMBIENTE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 16
+								},
+								"sink": {
+									"name": "INIZIO_VALIDITA",
 									"type": "DateTime"
 								}
 							},
 							{
 								"source": {
-									"name": "DATA_FINE",
-									"type": "DateTime",
-									"physicalType": "datetime"
+									"type": "String",
+									"ordinal": 17
 								},
 								"sink": {
-									"name": "DATA_FINE",
+									"name": "FINE_VALIDITA",
 									"type": "DateTime"
 								}
 							},
 							{
 								"source": {
-									"name": "INTEGRAZIONE_ID",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "INTEGRAZIONE_ID",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "STATO",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "STATO",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ORDINE_ACQUISTO_ID",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"ordinal": 18
 								},
 								"sink": {
-									"name": "ORDINE_ACQUISTO_ID",
+									"name": "DATI_NTV",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "ADVCORP_ACQUIRENTE_ID",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"ordinal": 19
 								},
 								"sink": {
-									"name": "ADVCORP_ACQUIRENTE_ID",
+									"name": "TESTO_IVA",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "ADVCORP_INTESTATARIO_ID",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"ordinal": 20
 								},
 								"sink": {
-									"name": "ADVCORP_INTESTATARIO_ID",
+									"name": "METODO_PAGAMENTO",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "CLIENTE_INTESTATARIO_ID",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"ordinal": 21
 								},
 								"sink": {
-									"name": "CLIENTE_INTESTATARIO_ID",
+									"name": "NUM_RICEVUTA",
 									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "CODICE_ASSET",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "CODICE_ASSET",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "DATA_DISATTIVAZIONE",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								},
-								"sink": {
-									"name": "DATA_DISATTIVAZIONE",
-									"type": "DateTime"
 								}
 							}
 						],
@@ -264,13 +330,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "ABBONAMENTI_CARNET",
+						"referenceName": "ABBONAMENTI_CARNET_TEST",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "W_ABBONAMENTI_CARNET_D365_DS_OracleDB",
+						"referenceName": "TEST_ABBONAMENTI_CARNET",
 						"type": "DatasetReference"
 					}
 				]
@@ -297,15 +363,11 @@
 				"typeProperties": {
 					"source": {
 						"type": "OracleSource",
-						"oracleReaderQuery": {
-							"value": "@concat('SELECT sa_d365_svil.iniziasync (''',\nvariables('TableName'),\n''') FROM DUAL;')",
-							"type": "Expression"
-						},
 						"partitionOption": "None",
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "W_ABBONAMENTI_CARNET_D365_DS_OracleDB",
+						"referenceName": "TEST_ABBONAMENTI_CARNET",
 						"type": "DatasetReference"
 					}
 				}
@@ -368,7 +430,7 @@
 					"source": {
 						"type": "OracleSource",
 						"oracleReaderQuery": {
-							"value": "@concat('SELECT sa_d365_svil.errore_sync (''',\nvariables('TableName'),\n''',''',variables('Error'),''') FROM DUAL;')",
+							"value": "@concat('SELECT sa_d365_test.errore_sync (''',\nvariables('TableName'),\n''',''',variables('Error'),''') FROM DUAL;')",
 							"type": "Expression"
 						},
 						"partitionOption": "None",
@@ -453,15 +515,11 @@
 				"typeProperties": {
 					"source": {
 						"type": "OracleSource",
-						"oracleReaderQuery": {
-							"value": "@concat('select dt_inizio_scrittura as Rec from sinc_log where tipo = ','''',\nvariables('TableName'),\n'''',' and UPPER(stato_lettura)=',\n'''',\n'COMPLETATO',\n'''',\n'and ROWNUM <=1 union select ',\n'''',\n'2010-01-01',\n'''',\n' as Rec FROM sinc_log order by Rec desc')",
-							"type": "Expression"
-						},
 						"partitionOption": "None",
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "W_CANALEPROMO_OracleDB",
+						"referenceName": "TEST_ABBONAMENTI_CARNET",
 						"type": "DatasetReference"
 					}
 				}
