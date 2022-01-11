@@ -1,0 +1,27 @@
+{
+	"name": "ABBONAMENTI_CARNET_TEST",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage_Test",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "TransferCustomerProductsAbbCarnet_20210406.csv",
+				"folderPath": "Abbonamento_Carnet",
+				"container": "batchfiles"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"type": "String"
+			}
+		]
+	}
+}
