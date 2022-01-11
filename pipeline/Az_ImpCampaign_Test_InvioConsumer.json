@@ -1,0 +1,493 @@
+{
+	"name": "Az_ImpCampaign_Test_InvioConsumer",
+	"properties": {
+		"activities": [
+			{
+				"name": "Consumer File",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "ConsumerFile_csv",
+						"type": "DatasetReference"
+					},
+					"fieldList": [
+						"childItems"
+					],
+					"storeSettings": {
+						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
+					}
+				}
+			},
+			{
+				"name": "ForEach Consumer",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Consumer File",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Consumer File').output.childItems",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "If Condition Consumer",
+							"type": "IfCondition",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"expression": {
+									"value": "@startswith(item().name,variables('InizioNomeFile'))",
+									"type": "Expression"
+								},
+								"ifTrueActivities": [
+									{
+										"name": "csvImpCampaign_InvioConsumer",
+										"type": "Copy",
+										"dependsOn": [
+											{
+												"activity": "Start SP",
+												"dependencyConditions": [
+													"Succeeded"
+												]
+											}
+										],
+										"policy": {
+											"timeout": "7.00:00:00",
+											"retry": 0,
+											"retryIntervalInSeconds": 30,
+											"secureOutput": false,
+											"secureInput": false
+										},
+										"userProperties": [],
+										"typeProperties": {
+											"source": {
+												"type": "DelimitedTextSource",
+												"storeSettings": {
+													"type": "AzureBlobStorageReadSettings",
+													"recursive": true,
+													"wildcardFolderPath": "dem_consumer",
+													"wildcardFileName": {
+														"value": "@item().name",
+														"type": "Expression"
+													},
+													"enablePartitionDiscovery": false
+												},
+												"formatSettings": {
+													"type": "DelimitedTextReadSettings",
+													"skipLineCount": 1
+												}
+											},
+											"sink": {
+												"type": "AzureSqlSink",
+												"disableMetricsCollection": false
+											},
+											"enableStaging": false,
+											"translator": {
+												"type": "TabularTranslator",
+												"mappings": [
+													{
+														"source": {
+															"type": "String",
+															"physicalType": "String",
+															"ordinal": 1
+														},
+														"sink": {
+															"name": "Message_ID",
+															"type": "String",
+															"physicalType": "varchar"
+														}
+													},
+													{
+														"source": {
+															"type": "String",
+															"physicalType": "String",
+															"ordinal": 2
+														},
+														"sink": {
+															"name": "Delivery_ID",
+															"type": "String",
+															"physicalType": "varchar"
+														}
+													},
+													{
+														"source": {
+															"type": "String",
+															"physicalType": "String",
+															"ordinal": 3
+														},
+														"sink": {
+															"name": "Campaign_ID",
+															"type": "String",
+															"physicalType": "varchar"
+														}
+													},
+													{
+														"source": {
+															"type": "String",
+															"physicalType": "String",
+															"ordinal": 4
+														},
+														"sink": {
+															"name": "Event_Date",
+															"type": "DateTime",
+															"physicalType": "datetime"
+														}
+													},
+													{
+														"source": {
+															"type": "String",
+															"physicalType": "String",
+															"ordinal": 5
+														},
+														"sink": {
+															"name": "Email_Address",
+															"type": "String",
+															"physicalType": "varchar"
+														}
+													},
+													{
+														"source": {
+															"type": "String",
+															"physicalType": "String",
+															"ordinal": 6
+														},
+														"sink": {
+															"name": "Codice_Cliente",
+															"type": "String",
+															"physicalType": "varchar"
+														}
+													},
+													{
+														"source": {
+															"type": "String",
+															"physicalType": "String",
+															"ordinal": 7
+														},
+														"sink": {
+															"name": "Subject",
+															"type": "String",
+															"physicalType": "varchar"
+														}
+													},
+													{
+														"source": {
+															"type": "String",
+															"physicalType": "String",
+															"ordinal": 8
+														},
+														"sink": {
+															"name": "Status",
+															"type": "String",
+															"physicalType": "varchar"
+														}
+													},
+													{
+														"source": {
+															"type": "String",
+															"physicalType": "String",
+															"ordinal": 9
+														},
+														"sink": {
+															"name": "Failure_Type",
+															"type": "String",
+															"physicalType": "varchar"
+														}
+													},
+													{
+														"source": {
+															"type": "String",
+															"physicalType": "String",
+															"ordinal": 10
+														},
+														"sink": {
+															"name": "Reason",
+															"type": "String",
+															"physicalType": "varchar"
+														}
+													},
+													{
+														"source": {
+															"type": "String",
+															"physicalType": "String",
+															"ordinal": 11
+														},
+														"sink": {
+															"name": "Transazionale",
+															"type": "String",
+															"physicalType": "varchar"
+														}
+													}
+												],
+												"typeConversion": true,
+												"typeConversionSettings": {
+													"allowDataTruncation": true,
+													"treatBooleanAsNumber": false
+												}
+											}
+										},
+										"inputs": [
+											{
+												"referenceName": "ImpCampaign_InvioConsumerProperty",
+												"type": "DatasetReference"
+											}
+										],
+										"outputs": [
+											{
+												"referenceName": "ImpCampaign_InvioTestDB",
+												"type": "DatasetReference"
+											}
+										]
+									},
+									{
+										"name": "Start SP",
+										"type": "SqlServerStoredProcedure",
+										"dependsOn": [],
+										"policy": {
+											"timeout": "7.00:00:00",
+											"retry": 0,
+											"retryIntervalInSeconds": 30,
+											"secureOutput": false,
+											"secureInput": false
+										},
+										"userProperties": [],
+										"typeProperties": {
+											"storedProcedureName": "[batchSync].[InizioBatchSync]",
+											"storedProcedureParameters": {
+												"NomeFile": {
+													"value": {
+														"value": "@variables('InizioNomeFile')",
+														"type": "Expression"
+													},
+													"type": "String"
+												},
+												"TabellaImport": {
+													"value": {
+														"value": "@variables('TableName')",
+														"type": "Expression"
+													},
+													"type": "String"
+												}
+											}
+										},
+										"linkedServiceName": {
+											"referenceName": "AzureSqlTestStagingArea",
+											"type": "LinkedServiceReference"
+										}
+									},
+									{
+										"name": "Copy in Elaborated Consumer",
+										"type": "Copy",
+										"dependsOn": [
+											{
+												"activity": "csvImpCampaign_InvioConsumer",
+												"dependencyConditions": [
+													"Succeeded"
+												]
+											}
+										],
+										"policy": {
+											"timeout": "7.00:00:00",
+											"retry": 0,
+											"retryIntervalInSeconds": 30,
+											"secureOutput": false,
+											"secureInput": false
+										},
+										"userProperties": [],
+										"typeProperties": {
+											"source": {
+												"type": "DelimitedTextSource",
+												"storeSettings": {
+													"type": "AzureBlobStorageReadSettings",
+													"recursive": true,
+													"wildcardFolderPath": "dem_consumer",
+													"wildcardFileName": {
+														"value": "@item().name",
+														"type": "Expression"
+													},
+													"enablePartitionDiscovery": false
+												},
+												"formatSettings": {
+													"type": "DelimitedTextReadSettings"
+												}
+											},
+											"sink": {
+												"type": "DelimitedTextSink",
+												"storeSettings": {
+													"type": "AzureBlobStorageWriteSettings"
+												},
+												"formatSettings": {
+													"type": "DelimitedTextWriteSettings",
+													"quoteAllText": true,
+													"fileExtension": ".txt"
+												}
+											},
+											"enableStaging": false,
+											"translator": {
+												"type": "TabularTranslator",
+												"typeConversion": true,
+												"typeConversionSettings": {
+													"allowDataTruncation": true,
+													"treatBooleanAsNumber": false
+												}
+											}
+										},
+										"inputs": [
+											{
+												"referenceName": "ImpCampaign_InvioCopyFile",
+												"type": "DatasetReference"
+											}
+										],
+										"outputs": [
+											{
+												"referenceName": "ImpCampaign_InvioConsumerMovieFile",
+												"type": "DatasetReference"
+											}
+										]
+									},
+									{
+										"name": "Delete Consumer file",
+										"type": "Delete",
+										"dependsOn": [
+											{
+												"activity": "Copy in Elaborated Consumer",
+												"dependencyConditions": [
+													"Succeeded"
+												]
+											}
+										],
+										"policy": {
+											"timeout": "7.00:00:00",
+											"retry": 0,
+											"retryIntervalInSeconds": 30,
+											"secureOutput": false,
+											"secureInput": false
+										},
+										"userProperties": [],
+										"typeProperties": {
+											"dataset": {
+												"referenceName": "ImpCampaign_InvioConsumerDelete",
+												"type": "DatasetReference"
+											},
+											"enableLogging": false,
+											"storeSettings": {
+												"type": "AzureBlobStorageReadSettings",
+												"recursive": true,
+												"enablePartitionDiscovery": false
+											}
+										}
+									},
+									{
+										"name": "Finally SP",
+										"type": "SqlServerStoredProcedure",
+										"dependsOn": [
+											{
+												"activity": "da db a Dyn365",
+												"dependencyConditions": [
+													"Succeeded"
+												]
+											}
+										],
+										"policy": {
+											"timeout": "7.00:00:00",
+											"retry": 0,
+											"retryIntervalInSeconds": 30,
+											"secureOutput": false,
+											"secureInput": false
+										},
+										"userProperties": [],
+										"typeProperties": {
+											"storedProcedureName": "[batchSync].[FineBatchSync]",
+											"storedProcedureParameters": {
+												"TabellaImport": {
+													"value": {
+														"value": "@variables('TableName')",
+														"type": "Expression"
+													},
+													"type": "String"
+												}
+											}
+										},
+										"linkedServiceName": {
+											"referenceName": "AzureSqlTestStagingArea",
+											"type": "LinkedServiceReference"
+										}
+									},
+									{
+										"name": "da db a Dyn365",
+										"type": "ExecuteSSISPackage",
+										"dependsOn": [
+											{
+												"activity": "csvImpCampaign_InvioConsumer",
+												"dependencyConditions": [
+													"Succeeded"
+												]
+											}
+										],
+										"policy": {
+											"timeout": "7.00:00:00",
+											"retry": 0,
+											"retryIntervalInSeconds": 30,
+											"secureOutput": false,
+											"secureInput": false
+										},
+										"userProperties": [],
+										"typeProperties": {
+											"packageLocation": {
+												"packagePath": "SqlToDyn/NTV.Az.Batches.Dyn365.CC/Dev_ImpCampaign_Invio.dtsx",
+												"type": "SSISDB"
+											},
+											"environmentPath": null,
+											"connectVia": {
+												"referenceName": "Italo-devtest-IntegrationRuntimeSSIS",
+												"type": "IntegrationRuntimeReference"
+											},
+											"loggingLevel": "Verbose"
+										}
+									}
+								]
+							}
+						}
+					]
+				}
+			}
+		],
+		"variables": {
+			"TableName": {
+				"type": "String",
+				"defaultValue": "AggImpCampaign_Invio"
+			},
+			"InizioNomeFile": {
+				"type": "String",
+				"defaultValue": "ConsumerDEM_broadlog_"
+			}
+		},
+		"folder": {
+			"name": "Az_IntegrazioneBatch_Test"
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-10-01T13:12:25Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
