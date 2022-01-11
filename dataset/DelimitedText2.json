@@ -1,0 +1,109 @@
+{
+	"name": "DelimitedText2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage_Test",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "TransferCustomerProductsAbbCarnet_20210406.csv",
+				"folderPath": "Abbonamento_Carnet",
+				"container": "batchfiles"
+			},
+			"columnDelimiter": ";",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "NUMERO_ORDINE",
+				"type": "String"
+			},
+			{
+				"name": "DATA_CREAZIONE",
+				"type": "String"
+			},
+			{
+				"name": "CANALE_SORGENTE",
+				"type": "String"
+			},
+			{
+				"name": "INTESTATARIO",
+				"type": "String"
+			},
+			{
+				"name": "TIPO_INTESTATARIO",
+				"type": "String"
+			},
+			{
+				"name": "PREZZO_PRODOTTO",
+				"type": "String"
+			},
+			{
+				"name": "QUANTITA",
+				"type": "String"
+			},
+			{
+				"name": "IMPORTO_IVA",
+				"type": "String"
+			},
+			{
+				"name": "NOME_PRODOTTO",
+				"type": "String"
+			},
+			{
+				"name": "TIPO_PRODOTTO",
+				"type": "String"
+			},
+			{
+				"name": "DESCRIZIONE",
+				"type": "String"
+			},
+			{
+				"name": "COD_PRODOTTO",
+				"type": "String"
+			},
+			{
+				"name": "STAZ_PARTENZA",
+				"type": "String"
+			},
+			{
+				"name": "STAZ_ARRIVO",
+				"type": "String"
+			},
+			{
+				"name": "AMBIENTE",
+				"type": "String"
+			},
+			{
+				"name": "INIZIO_VALIDITA",
+				"type": "String"
+			},
+			{
+				"name": "FINE_VALIDITA",
+				"type": "String"
+			},
+			{
+				"name": "DATI_NTV",
+				"type": "String"
+			},
+			{
+				"name": "TESTO_IVA",
+				"type": "String"
+			},
+			{
+				"name": "METODO_PAGAMENTO",
+				"type": "String"
+			},
+			{
+				"name": "NUM_RICEVUTA",
+				"type": "String"
+			}
+		]
+	}
+}
