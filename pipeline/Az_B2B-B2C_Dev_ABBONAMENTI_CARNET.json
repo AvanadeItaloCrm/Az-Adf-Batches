@@ -1,5 +1,5 @@
 {
-	"name": "Az_B2B-B2C_Test_ABBONAMENTI_CARNET",
+	"name": "Az_B2B-B2C_Dev_ABBONAMENTI_CARNET",
 	"properties": {
 		"activities": [
 			{
@@ -654,7 +654,7 @@
 			}
 		},
 		"folder": {
-			"name": "Az_IntegrazioneBatch_Test"
+			"name": "Az_IntegrazioniBatch"
 		},
 		"annotations": []
 	}
