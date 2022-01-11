@@ -1,0 +1,19 @@
+{
+	"name": "TEST_ABBONAMENTO_CARNET_Delete",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage_Test",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "TransferCustomerProductsAbbCarnet_20210406.csv",
+				"folderPath": "Abbonamento_Carnet",
+				"container": "batchfiles"
+			}
+		}
+	}
+}
