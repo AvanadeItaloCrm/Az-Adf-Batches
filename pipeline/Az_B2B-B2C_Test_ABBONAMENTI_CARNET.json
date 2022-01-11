@@ -31,7 +31,7 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureLinkedService",
+					"referenceName": "AzSqlOracle_Test_StagingArea",
 					"type": "LinkedServiceReference"
 				}
 			},
@@ -67,7 +67,7 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureLinkedService",
+					"referenceName": "AzSqlOracle_Test_StagingArea",
 					"type": "LinkedServiceReference"
 				}
 			},
@@ -104,7 +104,8 @@
 					},
 					"sink": {
 						"type": "OracleSink",
-						"writeBatchSize": 10000
+						"writeBatchSize": 10000,
+						"preCopyScript": "truncate table sa_d365_test.ABBONAMENTO_CARNET"
 					},
 					"enableStaging": false,
 					"translator": {
@@ -510,7 +511,7 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureLinkedService",
+					"referenceName": "AzSqlOracle_Test_StagingArea",
 					"type": "LinkedServiceReference"
 				}
 			},

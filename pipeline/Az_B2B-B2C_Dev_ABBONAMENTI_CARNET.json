@@ -104,7 +104,8 @@
 					},
 					"sink": {
 						"type": "OracleSink",
-						"writeBatchSize": 10000
+						"writeBatchSize": 10000,
+						"preCopyScript": "truncate table sa_d365_svil.ABBONAMENTO_CARNET"
 					},
 					"enableStaging": false,
 					"translator": {
@@ -129,7 +130,7 @@
 								},
 								"sink": {
 									"name": "DATA_CREAZIONE",
-									"type": "String"
+									"type": "DateTime"
 								}
 							},
 							{
@@ -283,7 +284,7 @@
 								},
 								"sink": {
 									"name": "INIZIO_VALIDITA",
-									"type": "String"
+									"type": "DateTime"
 								}
 							},
 							{
@@ -294,7 +295,7 @@
 								},
 								"sink": {
 									"name": "FINE_VALIDITA",
-									"type": "String"
+									"type": "DateTime"
 								}
 							},
 							{
@@ -351,13 +352,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "ABBONAMENTI_CARNET_TEST",
+						"referenceName": "ABBONAMENTI_CARNET",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "TEST_ABBONAMENTI_CARNET",
+						"referenceName": "ABBONAMENTI_CARNET_OracleDev",
 						"type": "DatasetReference"
 					}
 				]
@@ -388,7 +389,7 @@
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "TEST_ABBONAMENTI_CARNET",
+						"referenceName": "ABBONAMENTI_CARNET_OracleDev",
 						"type": "DatasetReference"
 					}
 				}
@@ -458,7 +459,7 @@
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "TEST_ABBONAMENTI_CARNET",
+						"referenceName": "ABBONAMENTI_CARNET_OracleDev",
 						"type": "DatasetReference"
 					}
 				}
@@ -540,7 +541,7 @@
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "TEST_ABBONAMENTI_CARNET",
+						"referenceName": "ABBONAMENTI_CARNET_OracleDev",
 						"type": "DatasetReference"
 					}
 				}
@@ -599,13 +600,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "ABBONAMENTI_CARNET_TEST",
+						"referenceName": "ABBONAMENTI_CARNET",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "TEST_ABBONAMENTI_CARNET_COPY",
+						"referenceName": "ABBONAMENTI_CARNET_COPY",
 						"type": "DatasetReference"
 					}
 				]
