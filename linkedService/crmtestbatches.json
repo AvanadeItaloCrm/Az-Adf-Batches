@@ -5,10 +5,10 @@
 		"annotations": [],
 		"type": "AzureFunction",
 		"typeProperties": {
-			"functionAppUrl": "https://crmtestbatches.azurewebsites.net",
+			"functionAppUrl": "https://crmtestbatchesdyn365out.azurewebsites.net",
 			"authentication": "MSI",
 			"resourceId": "",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIyYTA2Mjk4ZC04MThkLTRhNjMtOWNjMi0xMjYzOTUyZGQ3YzciLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI1ZjliNTU1ZC0zNGZiLTQwMDQtOWExOS1lZmM1OGFkMDdkNWQiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "integrationRuntimeSFH-TEST",
