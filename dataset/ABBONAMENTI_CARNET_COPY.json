@@ -1,0 +1,26 @@
+{
+	"name": "ABBONAMENTI_CARNET_COPY",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "CRMClusterClientiBlobStorageFile",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "Abbonamenti_Carnet/Elaborated",
+				"container": "batchfiles"
+			},
+			"columnDelimiter": ";",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"type": "String"
+			}
+		]
+	}
+}
