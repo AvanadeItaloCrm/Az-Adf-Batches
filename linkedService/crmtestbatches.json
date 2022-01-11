@@ -6,9 +6,8 @@
 		"type": "AzureFunction",
 		"typeProperties": {
 			"functionAppUrl": "https://crmtestbatchesdyn365out.azurewebsites.net",
-			"authentication": "MSI",
-			"resourceId": "",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI1ZjliNTU1ZC0zNGZiLTQwMDQtOWExOS1lZmM1OGFkMDdkNWQiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"authentication": "Anonymous",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJhNmZkMTc5ZC00NjE1LTRiOTAtYmZkNi0wNmExMWJmN2ZkNmEiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "integrationRuntimeSFH-TEST",
