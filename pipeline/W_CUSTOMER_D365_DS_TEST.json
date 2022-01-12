@@ -243,16 +243,6 @@
 							},
 							{
 								"source": {
-									"name": "ntv_ispmr",
-									"physicalType": "bit"
-								},
-								"sink": {
-									"name": "FLG_DIPENDENTE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
 									"name": "ntv_viptypecode",
 									"type": "Int32",
 									"physicalType": "int"
