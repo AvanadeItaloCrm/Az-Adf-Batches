@@ -1,5 +1,5 @@
 {
-	"name": "OracleSyncSuccess",
+	"name": "OracleFullSyncSuccess",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "OracleDB_TEST",
