@@ -102,7 +102,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"pipeline": {
-									"referenceName": "W_AGENTI_D365_DS",
+									"referenceName": "W_AGENTI_D365_DS_TEST",
 									"type": "PipelineReference"
 								},
 								"waitOnCompletion": true
