@@ -35,7 +35,8 @@
 						}
 					},
 					"sink": {
-						"type": "AzureSqlSink"
+						"type": "AzureSqlSink",
+						"disableMetricsCollection": false
 					},
 					"enableStaging": false,
 					"translator": {
@@ -87,13 +88,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "CRMClusterDFTransfer",
+						"referenceName": "Test_CRMClusterDFTrasfer",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "CRMClusterDFTransferDB",
+						"referenceName": "Test_CRMClusterDFTransferDB",
 						"type": "DatasetReference"
 					}
 				]
@@ -220,13 +221,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "CRMClusterDFTransfer",
+						"referenceName": "Test_CRMClusterDFTrasfer",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "CRMClusterDFTransferMoveFile",
+						"referenceName": "Test_CRMClusterDFTransferMoveFile",
 						"type": "DatasetReference"
 					}
 				]
@@ -252,7 +253,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "CRMClusterDFTransferDelete",
+						"referenceName": "Test_CRMClusterDFTransferDelete",
 						"type": "DatasetReference"
 					},
 					"enableLogging": false,
@@ -320,7 +321,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"packageLocation": {
-						"packagePath": "SqlToDyn/NTV.Az.Batches.Dyn365.CC/Dev_CRMClusterClienti.dtsx",
+						"packagePath": "NTV.Az.Batches.Dyn365.CC_Test/NTV.Az.Batches.Dyn365.CC_Test/Test_CRMClusterClienti.dtsx",
 						"type": "SSISDB"
 					},
 					"environmentPath": null,
