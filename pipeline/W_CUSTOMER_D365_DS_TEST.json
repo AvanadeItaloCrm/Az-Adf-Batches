@@ -243,9 +243,8 @@
 							},
 							{
 								"source": {
-									"name": "ntv_employeeid",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "ntv_ispmr",
+									"physicalType": "bit"
 								},
 								"sink": {
 									"name": "FLG_DIPENDENTE",
