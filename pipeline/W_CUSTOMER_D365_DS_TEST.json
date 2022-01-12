@@ -103,7 +103,7 @@
 					"sink": {
 						"type": "OracleSink",
 						"writeBatchSize": 10000,
-						"preCopyScript": "truncate table sa_d365_test.W_CUSTUMER_D365_DS"
+						"preCopyScript": "truncate table sa_d365_test.W_CUSTOMER_D365_DS"
 					},
 					"enableStaging": false,
 					"translator": {
