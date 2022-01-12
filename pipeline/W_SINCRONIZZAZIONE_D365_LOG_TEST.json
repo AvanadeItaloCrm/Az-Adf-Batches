@@ -582,6 +582,9 @@
 				"defaultValue": "W_SINCRONIZZAZIONE_D365_LOG"
 			}
 		},
+		"folder": {
+			"name": "Az_IntegrazioniBatch_Oracle_Test"
+		},
 		"annotations": []
 	}
 }
