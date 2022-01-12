@@ -53,14 +53,14 @@
 					"source": {
 						"type": "OracleSource",
 						"oracleReaderQuery": {
-							"value": "@concat('SELECT sa_d365_svil.finesync_new FROM DUAL;')",
+							"value": "@concat('SELECT sa_d365_test.finesync_new FROM DUAL;')",
 							"type": "Expression"
 						},
 						"partitionOption": "None",
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "Prova",
+						"referenceName": "OracleFullSyncSuccess",
 						"type": "DatasetReference"
 					}
 				}
@@ -563,14 +563,14 @@
 					"source": {
 						"type": "OracleSource",
 						"oracleReaderQuery": {
-							"value": "@concat('SELECT sa_d365_svil.errore_sync_new(''',\nvariables('TableName'),\n''') FROM DUAL;')\n",
+							"value": "@concat('SELECT sa_d365_test.errore_sync_new(''',\nvariables('TableName'),\n''') FROM DUAL;')\n",
 							"type": "Expression"
 						},
 						"partitionOption": "None",
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "Prova",
+						"referenceName": "OracleFullSyncError",
 						"type": "DatasetReference"
 					}
 				}
