@@ -1,5 +1,5 @@
 {
-	"name": "W_AC_MANDATO_D365_DS_TEST",
+	"name": "Az_B2B-B2C_Test_TrasferMTB",
 	"properties": {
 		"activities": [
 			{
@@ -92,18 +92,20 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "AzureSqlSource",
-						"sqlReaderQuery": {
-							"value": "@concat('SELECT Id, ntv_validityenddate, ntv_validitystartdate, ntv_mandatesubscriptiondate, ntv_bankbic, ntv_causal, ntv_subscriberfiscalnumber, ntv_debitaccountiban, ntv_sddmandateid, ntv_accountid, ntv_mandatesigningplace, ntv_collectiontypecode, ntv_sequencetypecode FROM   ntv_ntv_sddmandate WHERE ntv_ntv_sddmandate.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
-							"type": "Expression"
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
 						},
-						"queryTimeout": "02:00:00",
-						"partitionOption": "None"
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
 					},
 					"sink": {
 						"type": "OracleSink",
 						"writeBatchSize": 10000,
-						"preCopyScript": "truncate table sa_d365_test.W_AC_MANDATO_D365_DS"
+						"preCopyScript": "truncate table sa_d365_test.ABBONAMENTI_CARNET"
 					},
 					"enableStaging": false,
 					"translator": {
@@ -111,155 +113,232 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "Id",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "INTEGRAZIONE_ID",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_validityenddate",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								},
-								"sink": {
-									"name": "DATA_SCADENZA",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_validitystartdate",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								},
-								"sink": {
-									"name": "DATA_INIZIO_VALIDITA",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_mandatesubscriptiondate",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								},
-								"sink": {
-									"name": "DATA_SOTTOSCRIZIONE_MANDATO",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_bankbic",
+									"name": "NUMERO_ORDINE",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "String"
 								},
 								"sink": {
-									"name": "BIC_BANCA_TITOLARE_CC_ADDE",
+									"name": "NUMERO_ORDINE",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "ntv_causal",
+									"name": "DATA_CREAZIONE",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "String"
 								},
 								"sink": {
-									"name": "INFORMAZIONI_CAUSALE",
+									"name": "DATA_CREAZIONE",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "ntv_subscriberfiscalnumber",
+									"name": "CANALE_SORGENTE",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "String"
 								},
 								"sink": {
-									"name": "CODICE_FISCALE_SOTTOSCRITTORE",
+									"name": "CANALE_SORGENTE",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "ntv_debitaccountiban",
+									"name": "INTESTATARIO",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "String"
 								},
 								"sink": {
-									"name": "IBAN_CONTO_DEBITORE",
+									"name": "INTESTATARIO",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "ntv_sddmandateid",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "IDENTIFICATIVO_DEL_MANDATO",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_accountid",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "ID_PARTNER",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_mandatesigningplace",
+									"name": "TIPO_INTESTATARIO",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "String"
 								},
 								"sink": {
-									"name": "LUOGO_SOTTOSCRIZIONE_MANDATO",
+									"name": "TIPO_INTESTATARIO",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "ntv_debtorname",
+									"name": "PREZZO_PRODOTTO",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "String"
 								},
 								"sink": {
-									"name": "NOME_DEL_DEBITORE",
+									"name": "PREZZO_PRODOTTO",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "QUANTITA",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "QUANTITA",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "IMPORTO_IVA",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "IMPORTO_IVA",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "NOME_PRODOTTO",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "NOME_PRODOTTO",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "ntv_collectiontypecode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "TIPO_PRODOTTO",
+									"type": "String",
+									"physicalType": "String"
 								},
 								"sink": {
-									"name": "TIPO_INCASSO",
+									"name": "TIPO_PRODOTTO",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "ntv_sequencetypecode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "DESCRIZIONE",
+									"type": "String",
+									"physicalType": "String"
 								},
 								"sink": {
-									"name": "TIPO_SEQUENZA_SDD",
+									"name": "DESCRIZIONE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "COD_PRODOTTO",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CODICE_PRODOTTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "STAZ_PARTENZA",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CITTA_PARTENZA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "STAZ_ARRIVO",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CITTA_ARRIVO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AMBIENTE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "AMBIENTE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INIZIO_VALIDITA",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "INIZIO_VALIDITA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FINE_VALIDITA",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "FINE_VALIDITA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DATI_NTV",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "DATI_NTV",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TESTO_IVA",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TESTO_IVA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "METODO_PAGAMENTO",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "METODO_PAGAMENTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NUM_RICEVUTA",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "NUM_RICEVUTA",
 									"type": "String"
 								}
 							}
@@ -273,13 +352,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "W_AC_MANDATO_D365_DS_SQLSource",
+						"referenceName": "ABBONAMENTI_CARNET_TEST",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "TEST_W_AC_MANDATO_D365_DS_OracleDB",
+						"referenceName": "TEST_ABBONAMENTI_CARNET",
 						"type": "DatasetReference"
 					}
 				]
@@ -306,15 +385,11 @@
 				"typeProperties": {
 					"source": {
 						"type": "OracleSource",
-						"oracleReaderQuery": {
-							"value": "@concat('SELECT sa_d365_test.iniziasync (''',\nvariables('TableName'),\n''') FROM DUAL;')",
-							"type": "Expression"
-						},
 						"partitionOption": "None",
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "TEST_W_AC_MANDATO_D365_DS_OracleDB",
+						"referenceName": "TEST_ABBONAMENTI_CARNET",
 						"type": "DatasetReference"
 					}
 				}
@@ -324,7 +399,7 @@
 				"type": "Lookup",
 				"dependsOn": [
 					{
-						"activity": "Sql To Oracle",
+						"activity": "Delete file",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -349,42 +424,7 @@
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "TEST_W_AC_MANDATO_D365_DS_OracleDB",
-						"type": "DatasetReference"
-					}
-				}
-			},
-			{
-				"name": "Ultima Sinc",
-				"type": "Lookup",
-				"dependsOn": [
-					{
-						"activity": "Start Oracle",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"source": {
-						"type": "OracleSource",
-						"oracleReaderQuery": {
-							"value": "@concat('select dt_inizio_scrittura as Rec from sinc_log where tipo = ','''',\nvariables('TableName'),\n'''',' and UPPER(stato_lettura)=',\n'''',\n'COMPLETATO',\n'''',\n'and ROWNUM <=1 union select ',\n'''',\n'2010-01-01',\n'''',\n' as Rec FROM sinc_log order by Rec desc')",
-							"type": "Expression"
-						},
-						"partitionOption": "None",
-						"queryTimeout": "02:00:00"
-					},
-					"dataset": {
-						"referenceName": "TEST_W_AC_MANDATO_D365_DS_OracleDB",
+						"referenceName": "TEST_ABBONAMENTI_CARNET",
 						"type": "DatasetReference"
 					}
 				}
@@ -415,14 +455,11 @@
 							"value": "@concat('SELECT sa_d365_test.errore_sync (''',\nvariables('TableName'),\n''',''',variables('Error'),''') FROM DUAL;')",
 							"type": "Expression"
 						},
-						"partitionOption": "PhysicalPartitionsOfTable",
-						"partitionSettings": {
-							"partitionNames": []
-						},
+						"partitionOption": "None",
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "TEST_W_AC_MANDATO_D365_DS_OracleDB",
+						"referenceName": "TEST_ABBONAMENTI_CARNET",
 						"type": "DatasetReference"
 					}
 				}
@@ -477,12 +514,140 @@
 					"referenceName": "AzSqlOracle_Test_StagingArea",
 					"type": "LinkedServiceReference"
 				}
+			},
+			{
+				"name": "Ultima Sinc",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Start Oracle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "TEST_ABBONAMENTI_CARNET",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "Copy in Elaborated",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Sql To Oracle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ABBONAMENTI_CARNET_TEST",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "TEST_ABBONAMENTI_CARNET_COPY",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Delete file",
+				"type": "Delete",
+				"dependsOn": [
+					{
+						"activity": "Copy in Elaborated",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "TEST_ABBONAMENTO_CARNET_Delete",
+						"type": "DatasetReference"
+					},
+					"enableLogging": false,
+					"storeSettings": {
+						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
+						"enablePartitionDiscovery": false
+					}
+				}
 			}
 		],
 		"variables": {
 			"TableName": {
 				"type": "String",
-				"defaultValue": "W_AC_MANDATO_D365_DS"
+				"defaultValue": "ABBONAMENTI_CARNET"
 			},
 			"Error": {
 				"type": "String",
@@ -490,7 +655,7 @@
 			}
 		},
 		"folder": {
-			"name": "Az_IntegrazioniBatch_Oracle_Test"
+			"name": "Az_IntegrazioneBatch_Test"
 		},
 		"annotations": []
 	}

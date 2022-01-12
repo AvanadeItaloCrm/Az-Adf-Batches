@@ -1,0 +1,662 @@
+{
+	"name": "Az_B2B-B2C_Dev_ABBONAMENTI_CARNET_copy1",
+	"properties": {
+		"activities": [
+			{
+				"name": "Start SP",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[batchSync].[InizioSQL_ORACLEBatchSync]",
+					"storedProcedureParameters": {
+						"NomeFile": {
+							"value": "",
+							"type": "String"
+						},
+						"TabellaImport": {
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureLinkedService",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Finally SP",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "End Oracle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[batchSync].[FineSQL_ORACLEBatchSync]",
+					"storedProcedureParameters": {
+						"TabellaImport": {
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureLinkedService",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Sql To Oracle",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Ultima Sinc",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "OracleSink",
+						"writeBatchSize": 10000,
+						"preCopyScript": "truncate table sa_d365_svil.ABBONAMENTI_CARNET"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "NUMERO_ORDINE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "NUMERO_ORDINE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DATA_CREAZIONE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "DATA_CREAZIONE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "CANALE_SORGENTE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CANALE_SORGENTE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INTESTATARIO",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "INTESTATARIO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TIPO_INTESTATARIO",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TIPO_INTESTATARIO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PREZZO_PRODOTTO",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PREZZO_PRODOTTO",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "QUANTITA",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "QUANTITA",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "IMPORTO_IVA",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "IMPORTO_IVA",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "NOME_PRODOTTO",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "NOME_PRODOTTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TIPO_PRODOTTO",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TIPO_PRODOTTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DESCRIZIONE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "DESCRIZIONE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "COD_PRODOTTO",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CODICE_PRODOTTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "STAZ_PARTENZA",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CITTA_PARTENZA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "STAZ_ARRIVO",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CITTA_ARRIVO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AMBIENTE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "AMBIENTE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INIZIO_VALIDITA",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "INIZIO_VALIDITA",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "FINE_VALIDITA",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "FINE_VALIDITA",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "DATI_NTV",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "DATI_NTV",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TESTO_IVA",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TESTO_IVA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "METODO_PAGAMENTO",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "METODO_PAGAMENTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NUM_RICEVUTA",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "NUM_RICEVUTA",
+									"type": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ABBONAMENTI_CARNET",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ABBONAMENTI_CARNET_OracleDev",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Start Oracle",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Start SP",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "ABBONAMENTI_CARNET_OracleDev",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "End Oracle",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Delete file",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": {
+							"value": "@concat('SELECT sa_d365_svil.finesync (''',\nvariables('TableName'),\n''') FROM DUAL;')",
+							"type": "Expression"
+						},
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "ABBONAMENTI_CARNET_OracleDev",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "Error End Oracle",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Sql To Oracle",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": {
+							"value": "@concat('SELECT sa_d365_svil.errore_sync (''',\nvariables('TableName'),\n''',''',variables('Error'),''') FROM DUAL;')",
+							"type": "Expression"
+						},
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "ABBONAMENTI_CARNET_OracleDev",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "Error Finally SP",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Error End Oracle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[batchSync].[ErrorBatchSync]",
+					"storedProcedureParameters": {
+						"TabellaImport": {
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"Errore": {
+							"value": {
+								"value": "@pipeline().RunId",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"NomeFile": {
+							"value": "",
+							"type": "String"
+						},
+						"Modulo": {
+							"value": "Copy Data Sql To Oracle",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureLinkedService",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Ultima Sinc",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Start Oracle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "ABBONAMENTI_CARNET_OracleDev",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "Copy in Elaborated",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Sql To Oracle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ABBONAMENTI_CARNET",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ABBONAMENTI_CARNET_COPY",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Delete file",
+				"type": "Delete",
+				"dependsOn": [
+					{
+						"activity": "Copy in Elaborated",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "ABBONAMENTO_CARNET_Delete",
+						"type": "DatasetReference"
+					},
+					"enableLogging": false,
+					"storeSettings": {
+						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
+						"enablePartitionDiscovery": false
+					}
+				}
+			}
+		],
+		"variables": {
+			"TableName": {
+				"type": "String",
+				"defaultValue": "ABBONAMENTI_CARNET"
+			},
+			"Error": {
+				"type": "String",
+				"defaultValue": "@pipeline().RunId"
+			}
+		},
+		"folder": {
+			"name": "Az_IntegrazioniBatch"
+		},
+		"annotations": []
+	}
+}
