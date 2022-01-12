@@ -1,0 +1,185 @@
+{
+	"name": "Test_TrasferMTB_SQLSourceDB",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlTestStagingArea",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "CODICE_CARTA",
+				"type": "varchar"
+			},
+			{
+				"name": "INTEGRAZIONE_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "CODICE_CARTA_WEB",
+				"type": "varchar"
+			},
+			{
+				"name": "CODICE_CARTA_MIGRATA",
+				"type": "varchar"
+			},
+			{
+				"name": "CODICE_CARTA_WEB_MIGRATA",
+				"type": "varchar"
+			},
+			{
+				"name": "PNR_TECNICO_ACQUISTO",
+				"type": "varchar"
+			},
+			{
+				"name": "DATA_DI_ACQUISTO",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "VALORE_NOMINALE_NETTO",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 2
+			},
+			{
+				"name": "IMPORTO_TOTALE_LORDO",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 2
+			},
+			{
+				"name": "IMPORTO_SCONTO_LORDO",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 2
+			},
+			{
+				"name": "IMPORTO_SCONTO_NETTO",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 2
+			},
+			{
+				"name": "PERCENTUALE_SCONTO",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 2
+			},
+			{
+				"name": "VALORE_NOMINALE_LORDO",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 2
+			},
+			{
+				"name": "PERCENTUALE_IVA",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 2
+			},
+			{
+				"name": "IMPOSTA",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 2
+			},
+			{
+				"name": "IMPORTO_NETTO",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 2
+			},
+			{
+				"name": "CANALE_DI_ACQUISTO",
+				"type": "varchar"
+			},
+			{
+				"name": "TIPOLOGIA",
+				"type": "varchar"
+			},
+			{
+				"name": "STATO",
+				"type": "varchar"
+			},
+			{
+				"name": "DATA_SCADENZA_CARTA",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "RICHIESTA_FATTURA",
+				"type": "varchar"
+			},
+			{
+				"name": "DENOMINAZIONE",
+				"type": "varchar"
+			},
+			{
+				"name": "PARTITA_IVA",
+				"type": "varchar"
+			},
+			{
+				"name": "EMAIL",
+				"type": "varchar"
+			},
+			{
+				"name": "PARTICELLA_TOPO",
+				"type": "varchar"
+			},
+			{
+				"name": "INDIRIZZO",
+				"type": "varchar"
+			},
+			{
+				"name": "NUM_CIVICO",
+				"type": "varchar"
+			},
+			{
+				"name": "CITTA",
+				"type": "varchar"
+			},
+			{
+				"name": "PROVINCIA",
+				"type": "varchar"
+			},
+			{
+				"name": "CAP",
+				"type": "varchar"
+			},
+			{
+				"name": "NAZIONE",
+				"type": "varchar"
+			},
+			{
+				"name": "CONSENSO_MARKETING",
+				"type": "varchar"
+			},
+			{
+				"name": "CONSENSO_PROFILAZIONE",
+				"type": "varchar"
+			},
+			{
+				"name": "RESIDUO_CARTA_MIGRATA",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 2
+			},
+			{
+				"name": "CONSENSO_TERZE_PARTI",
+				"type": "varchar"
+			},
+			{
+				"name": "FRODATA_FLAG",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "batchSync",
+			"table": "Multitratta"
+		}
+	}
+}

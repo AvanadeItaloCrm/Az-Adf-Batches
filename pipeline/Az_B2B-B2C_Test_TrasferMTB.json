@@ -15,7 +15,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[batchSync].[InizioSQL_ORACLEBatchSync]",
+					"storedProcedureName": "[batchSync].[InizioBatchSync]",
 					"storedProcedureParameters": {
 						"NomeFile": {
 							"value": "",
@@ -31,7 +31,7 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "AzSqlOracle_Test_StagingArea",
+					"referenceName": "AzureSqlTestStagingArea",
 					"type": "LinkedServiceReference"
 				}
 			},
@@ -40,7 +40,7 @@
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "End Oracle",
+						"activity": "Delete file",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -55,7 +55,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[batchSync].[FineSQL_ORACLEBatchSync]",
+					"storedProcedureName": "[batchSync].[FineBatchSync]",
 					"storedProcedureParameters": {
 						"TabellaImport": {
 							"value": {
@@ -67,16 +67,16 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "AzSqlOracle_Test_StagingArea",
+					"referenceName": "AzureSqlTestStagingArea",
 					"type": "LinkedServiceReference"
 				}
 			},
 			{
-				"name": "Sql To Oracle",
+				"name": "Csv To SQL",
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "Ultima Sinc",
+						"activity": "Start SP",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -103,9 +103,7 @@
 						}
 					},
 					"sink": {
-						"type": "OracleSink",
-						"writeBatchSize": 10000,
-						"preCopyScript": "truncate table sa_d365_test.ABBONAMENTI_CARNET"
+						"type": "AzureSqlSink"
 					},
 					"enableStaging": false,
 					"translator": {
@@ -113,233 +111,430 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "NUMERO_ORDINE",
+									"name": "CODICE_CARTA",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "NUMERO_ORDINE",
-									"type": "String"
+									"name": "CODICE_CARTA",
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							},
 							{
 								"source": {
-									"name": "DATA_CREAZIONE",
+									"name": "CODICE_CARTA_WEB",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "DATA_CREAZIONE",
-									"type": "String"
+									"name": "CODICE_CARTA_WEB",
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							},
 							{
 								"source": {
-									"name": "CANALE_SORGENTE",
+									"name": "CODICE_CARTA_MIGRATA",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "CANALE_SORGENTE",
-									"type": "String"
+									"name": "CODICE_CARTA_MIGRATA",
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							},
 							{
 								"source": {
-									"name": "INTESTATARIO",
+									"name": "CODICE_CARTA_WEB_MIGRATA",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "INTESTATARIO",
-									"type": "String"
+									"name": "CODICE_CARTA_WEB_MIGRATA",
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							},
 							{
 								"source": {
-									"name": "TIPO_INTESTATARIO",
+									"name": "PNR_TECNICO_RESIDUO",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "TIPO_INTESTATARIO",
-									"type": "String"
+									"name": "PNR_TECNICO_ACQUISTO",
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							},
 							{
 								"source": {
-									"name": "PREZZO_PRODOTTO",
+									"name": "DATA_ACQUISTO",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "PREZZO_PRODOTTO",
-									"type": "Decimal"
+									"name": "DATA_DI_ACQUISTO",
+									"type": "DateTime",
+									"physicalType": "datetime"
 								}
 							},
 							{
 								"source": {
-									"name": "QUANTITA",
+									"name": "VALORE_NOM_NETTO",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "QUANTITA",
-									"type": "Decimal"
+									"name": "VALORE_NOMINALE_NETTO",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 22
 								}
 							},
 							{
 								"source": {
-									"name": "IMPORTO_IVA",
+									"name": "IMPORTO_SCONTO_LORDO",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "IMPORTO_IVA",
-									"type": "Decimal"
+									"name": "IMPORTO_TOTALE_LORDO",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 22
 								}
 							},
 							{
 								"source": {
-									"name": "NOME_PRODOTTO",
+									"name": "IMPORTO_SCONTO_LORDO",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "NOME_PRODOTTO",
-									"type": "String"
+									"name": "IMPORTO_SCONTO_LORDO",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 22
 								}
 							},
 							{
 								"source": {
-									"name": "TIPO_PRODOTTO",
+									"name": "IMPORTO_SCONTO_NETTO",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "TIPO_PRODOTTO",
-									"type": "String"
+									"name": "IMPORTO_SCONTO_NETTO",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 22
 								}
 							},
 							{
 								"source": {
-									"name": "DESCRIZIONE",
+									"name": "PERCENTUALE_SCONTO",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "DESCRIZIONE",
-									"type": "String"
+									"name": "PERCENTUALE_SCONTO",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 22
 								}
 							},
 							{
 								"source": {
-									"name": "COD_PRODOTTO",
+									"name": "VALORE_NOM_LORDO",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "CODICE_PRODOTTO",
-									"type": "String"
+									"name": "VALORE_NOMINALE_LORDO",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 22
 								}
 							},
 							{
 								"source": {
-									"name": "STAZ_PARTENZA",
+									"name": "PERC_IVA",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "CITTA_PARTENZA",
-									"type": "String"
+									"name": "PERCENTUALE_IVA",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 22
 								}
 							},
 							{
 								"source": {
-									"name": "STAZ_ARRIVO",
+									"name": "IMPOSTA",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "CITTA_ARRIVO",
-									"type": "String"
+									"name": "IMPOSTA",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 22
 								}
 							},
 							{
 								"source": {
-									"name": "AMBIENTE",
+									"name": "IMPORTO_SCONTO_NETTO",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "AMBIENTE",
-									"type": "String"
+									"name": "IMPORTO_NETTO",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 22
 								}
 							},
 							{
 								"source": {
-									"name": "INIZIO_VALIDITA",
+									"name": "CANALE_DI_ACQUISTO",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "INIZIO_VALIDITA",
-									"type": "String"
+									"name": "CANALE_DI_ACQUISTO",
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							},
 							{
 								"source": {
-									"name": "FINE_VALIDITA",
+									"name": "TIPOLOGIA",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "FINE_VALIDITA",
-									"type": "String"
+									"name": "TIPOLOGIA",
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							},
 							{
 								"source": {
-									"name": "DATI_NTV",
+									"name": "STATO_CARTA",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "DATI_NTV",
-									"type": "String"
+									"name": "STATO",
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							},
 							{
 								"source": {
-									"name": "TESTO_IVA",
+									"name": "DATA_SCADENZA_CARTA",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "TESTO_IVA",
-									"type": "String"
+									"name": "DATA_SCADENZA_CARTA",
+									"type": "DateTime",
+									"physicalType": "datetime"
 								}
 							},
 							{
 								"source": {
-									"name": "METODO_PAGAMENTO",
+									"name": "RICHIESTA_FATTURA",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "METODO_PAGAMENTO",
-									"type": "String"
+									"name": "RICHIESTA_FATTURA",
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							},
 							{
 								"source": {
-									"name": "NUM_RICEVUTA",
+									"name": "DENOMINAZIONE",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
-									"name": "NUM_RICEVUTA",
-									"type": "String"
+									"name": "DENOMINAZIONE",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "PARTITA_IVA",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PARTITA_IVA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "EMAIL",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "EMAIL",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "INDIRIZZO_PART_TOPONOMASTICA",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PARTICELLA_TOPO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "INDIRIZZO_STRADA",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "INDIRIZZO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "INDIRIZZO_NUM_CIVICO",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "NUM_CIVICO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "INDIRIZZO_COMUNE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CITTA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "INDIRIZZO_PROVINCIA",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "PROVINCIA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "INDIRIZZO_CAP",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CAP",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "INDIRIZZO_NAZIONE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "NAZIONE",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CONSENSO_MARKETING",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CONSENSO_MARKETING",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CONSENSO_PROFILAZIONE",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CONSENSO_PROFILAZIONE",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "RESIDUO_CARTA_MIGRATA",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "RESIDUO_CARTA_MIGRATA",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 22
+								}
+							},
+							{
+								"source": {
+									"name": "CONSENSO_MARKETING_TERZE_PARTI",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "CONSENSO_TERZE_PARTI",
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							}
 						],
@@ -352,126 +547,25 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "ABBONAMENTI_CARNET_TEST",
+						"referenceName": "TrasferMTB_TEST",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "TEST_ABBONAMENTI_CARNET",
+						"referenceName": "Test_TrasferMTB_SQLSourceDB",
 						"type": "DatasetReference"
 					}
 				]
-			},
-			{
-				"name": "Start Oracle",
-				"type": "Lookup",
-				"dependsOn": [
-					{
-						"activity": "Start SP",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"source": {
-						"type": "OracleSource",
-						"partitionOption": "None",
-						"queryTimeout": "02:00:00"
-					},
-					"dataset": {
-						"referenceName": "TEST_ABBONAMENTI_CARNET",
-						"type": "DatasetReference"
-					}
-				}
-			},
-			{
-				"name": "End Oracle",
-				"type": "Lookup",
-				"dependsOn": [
-					{
-						"activity": "Delete file",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"source": {
-						"type": "OracleSource",
-						"oracleReaderQuery": {
-							"value": "@concat('SELECT sa_d365_test.finesync (''',\nvariables('TableName'),\n''') FROM DUAL;')",
-							"type": "Expression"
-						},
-						"partitionOption": "None",
-						"queryTimeout": "02:00:00"
-					},
-					"dataset": {
-						"referenceName": "TEST_ABBONAMENTI_CARNET",
-						"type": "DatasetReference"
-					}
-				}
-			},
-			{
-				"name": "Error End Oracle",
-				"type": "Lookup",
-				"dependsOn": [
-					{
-						"activity": "Sql To Oracle",
-						"dependencyConditions": [
-							"Failed"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"source": {
-						"type": "OracleSource",
-						"oracleReaderQuery": {
-							"value": "@concat('SELECT sa_d365_test.errore_sync (''',\nvariables('TableName'),\n''',''',variables('Error'),''') FROM DUAL;')",
-							"type": "Expression"
-						},
-						"partitionOption": "None",
-						"queryTimeout": "02:00:00"
-					},
-					"dataset": {
-						"referenceName": "TEST_ABBONAMENTI_CARNET",
-						"type": "DatasetReference"
-					}
-				}
 			},
 			{
 				"name": "Error Finally SP",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "Error End Oracle",
+						"activity": "Csv To SQL",
 						"dependencyConditions": [
-							"Succeeded"
+							"Failed"
 						]
 					}
 				],
@@ -499,51 +593,12 @@
 								"type": "Expression"
 							},
 							"type": "String"
-						},
-						"NomeFile": {
-							"value": "",
-							"type": "String"
-						},
-						"Modulo": {
-							"value": "Copy Data Sql To Oracle",
-							"type": "String"
 						}
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "AzSqlOracle_Test_StagingArea",
+					"referenceName": "AzureSqlTestStagingArea",
 					"type": "LinkedServiceReference"
-				}
-			},
-			{
-				"name": "Ultima Sinc",
-				"type": "Lookup",
-				"dependsOn": [
-					{
-						"activity": "Start Oracle",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"source": {
-						"type": "OracleSource",
-						"partitionOption": "None",
-						"queryTimeout": "02:00:00"
-					},
-					"dataset": {
-						"referenceName": "TEST_ABBONAMENTI_CARNET",
-						"type": "DatasetReference"
-					}
 				}
 			},
 			{
@@ -551,7 +606,7 @@
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "Sql To Oracle",
+						"activity": "Csv To SQL",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -600,13 +655,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "ABBONAMENTI_CARNET_TEST",
+						"referenceName": "TrasferMTB_TEST",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "TEST_ABBONAMENTI_CARNET_COPY",
+						"referenceName": "Test_TrasferMTB_Copy",
 						"type": "DatasetReference"
 					}
 				]
@@ -632,7 +687,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "TEST_ABBONAMENTO_CARNET_Delete",
+						"referenceName": "Test_TrasferMTB_Delete",
 						"type": "DatasetReference"
 					},
 					"enableLogging": false,
@@ -647,7 +702,7 @@
 		"variables": {
 			"TableName": {
 				"type": "String",
-				"defaultValue": "ABBONAMENTI_CARNET"
+				"defaultValue": "Multitratta"
 			},
 			"Error": {
 				"type": "String",

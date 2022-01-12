@@ -1,0 +1,26 @@
+{
+	"name": "Test_TrasferMTB_Copy",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage_Test",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "TrasferMTB/Elaborated",
+				"container": "batchfiles"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"type": "String"
+			}
+		]
+	}
+}
