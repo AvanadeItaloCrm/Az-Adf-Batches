@@ -18,14 +18,14 @@
 					"source": {
 						"type": "OracleSource",
 						"oracleReaderQuery": {
-							"value": "@concat('SELECT sa_d365_svil.IniziaSync_NEW as Rec FROM DUAL;')",
+							"value": "@concat('SELECT sa_d365_test.IniziaSync_NEW as Rec FROM DUAL;')",
 							"type": "Expression"
 						},
 						"partitionOption": "None",
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "Prova",
+						"referenceName": "OracleFullSyncStart",
 						"type": "DatasetReference"
 					}
 				}
