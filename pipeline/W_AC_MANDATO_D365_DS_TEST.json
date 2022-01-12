@@ -93,6 +93,10 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
+						"sqlReaderQuery": {
+							"value": "@concat('SELECT * FROM dbo.ntv_contact WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"type": "Expression"
+						},
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -112,392 +116,150 @@
 									"physicalType": "uniqueidentifier"
 								},
 								"sink": {
-									"name": "CODICE_PARTNER",
+									"name": "INTEGRAZIONE_ID",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "SinkCreatedOn",
+									"name": "ntv_validityenddate",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
 								"sink": {
-									"name": "DESCRIZIONE_PROMOCODE",
-									"type": "String"
+									"name": "DATA_SCADENZA",
+									"type": "DateTime"
 								}
 							},
 							{
 								"source": {
-									"name": "SinkModifiedOn",
+									"name": "ntv_validitystartdate",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
 								"sink": {
-									"name": "NOME",
-									"type": "String"
+									"name": "DATA_INIZIO_VALIDITA",
+									"type": "DateTime"
 								}
 							},
 							{
 								"source": {
-									"name": "statecode",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "TIPO_AGENZIA",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "statuscode",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "TIPO_PARTNER",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "owninguser",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "RAGIONE_SOCIALE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "owninguser_entitytype",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "STATO",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "createdonbehalfby",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "SEGMENTO_MERCATO",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "createdonbehalfby_entitytype",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "FLG_BOOKING_SOURCE_GDS",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "owningbusinessunit",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "FLG_BOOKING_SOURCE_WEB",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "owningbusinessunit_entitytype",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "ADV_PADRE_ID",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "owningteam",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "PIVA_CFS",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "owningteam_entitytype",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "CODICE_IATA",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "modifiedby",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "CODICE_REGISTRAZIONE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "modifiedby_entitytype",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "MID_BACKOFFICE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "modifiedonbehalfby",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "NOME_HOLDING",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "modifiedonbehalfby_entitytype",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "DESCRIZIONE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ownerid_entitytype",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "EMAIL_CONTATTO_AGENZIA",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "createdonbehalfbyyominame",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "FAX_CONTATTO_AGENZIA",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "owneridname",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "TEL_FISSO_CONTATTO_AGENZIA",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "importsequencenumber",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "ABICAB",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "modifiedbyyominame",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "CIN",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_departure",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "IBAN",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "utcconversiontimezonecode",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "NOME_BANCA",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "createdbyyominame",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "ACCOUNT_NUMBER",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "modifiedbyname",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "BANK_COUNTRY",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "timezoneruleversionnumber",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "SWIFT",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_cashbackblackmarketid",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "TITOLARE_CC",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "owneridtype",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "TIPO_CENTRO_FATTURAZIONE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "owneridyominame",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "FLG_OVERCOMMISSIONING",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_arrival",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "METODO_PAGAMENTO",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "modifiedonbehalfbyyominame",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "TERMINE_PAGAMENTO",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "createdbyname",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "CENTRO_FATT_BASE_ID",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "createdon",
+									"name": "ntv_mandatesubscriptiondate",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
 								"sink": {
-									"name": "CENTRO_FATT_OVER_ID",
+									"name": "DATA_SOTTOSCRIZIONE_MANDATO",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_bankbic",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "BIC_BANCA_TITOLARE_CC_ADDE",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "owningbusinessunitname",
+									"name": "ntv_causal",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
 								"sink": {
-									"name": "COGNOME_REF_UNICO",
+									"name": "INFORMAZIONI_CAUSALE",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "createdonbehalfbyname",
+									"name": "ntv_subscriberfiscalnumber",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
 								"sink": {
-									"name": "NOME_REF_UNICO",
+									"name": "CODICE_FISCALE_SOTTOSCRITTORE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_debitaccountiban",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "IBAN_CONTO_DEBITORE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_sddmandateid",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "IDENTIFICATIVO_DEL_MANDATO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_accountid",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "ID_PARTNER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_mandatesigningplace",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "LUOGO_SOTTOSCRIZIONE_MANDATO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_debtorname",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NOME_DEL_DEBITORE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_collectiontypecode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "TIPO_INCASSO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ntv_sequencetypecode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "TIPO_SEQUENZA_SDD",
 									"type": "String"
 								}
 							}
@@ -511,7 +273,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "W_ADV_CORP_D365_DS_SQLSource",
+						"referenceName": "W_AC_MANDATO_D365_DS_SQLSource",
 						"type": "DatasetReference"
 					}
 				],
@@ -622,9 +384,98 @@
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "W_TRANSAZIONE_FRODI_D365_DS_OracleDB",
+						"referenceName": "TEST_W_AC_MANDATO_D365_DS_OracleDB",
 						"type": "DatasetReference"
 					}
+				}
+			},
+			{
+				"name": "Error End Oracle",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Sql To Oracle",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": {
+							"value": "@concat('SELECT sa_d365_test.errore_sync (''',\nvariables('TableName'),\n''',''',variables('Error'),''') FROM DUAL;')",
+							"type": "Expression"
+						},
+						"partitionOption": "PhysicalPartitionsOfTable",
+						"partitionSettings": {
+							"partitionNames": []
+						},
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "TEST_W_AC_MANDATO_D365_DS_OracleDB",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "Error Finally SP",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Error End Oracle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[batchSync].[ErrorBatchSync]",
+					"storedProcedureParameters": {
+						"TabellaImport": {
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"Errore": {
+							"value": {
+								"value": "@pipeline().RunId",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"NomeFile": {
+							"value": "",
+							"type": "String"
+						},
+						"Modulo": {
+							"value": "Copy Data Sql To Oracle",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzSqlOracle_Test_StagingArea",
+					"type": "LinkedServiceReference"
 				}
 			}
 		],
