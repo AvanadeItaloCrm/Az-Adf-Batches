@@ -243,6 +243,14 @@
 							},
 							{
 								"source": {
+									"name": "ntv_employeeid"
+								},
+								"sink": {
+									"name": "FLG_DIPENDENTE"
+								}
+							},
+							{
+								"source": {
 									"name": "ntv_viptypecode",
 									"type": "Int32",
 									"physicalType": "int"
