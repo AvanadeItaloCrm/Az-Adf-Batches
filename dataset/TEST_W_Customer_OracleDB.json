@@ -10,7 +10,7 @@
 		"schema": [],
 		"typeProperties": {
 			"schema": "SA_D365_TEST",
-			"table": "W_CUSTUMER_D365_DS"
+			"table": "W_CUSTOMER_D365_DS"
 		}
 	}
 }
