@@ -1,5 +1,5 @@
 {
-	"name": "Az_B2B-B2C_Test_PNR_ABBONAMENTI",
+	"name": "Az_B2B-B2C_Dev_PNR_ABBONAMENTI",
 	"properties": {
 		"activities": [
 			{
@@ -31,7 +31,7 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureSqlTestStagingArea",
+					"referenceName": "AzureLinkedService",
 					"type": "LinkedServiceReference"
 				}
 			},
@@ -67,7 +67,7 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureSqlTestStagingArea",
+					"referenceName": "AzureLinkedService",
 					"type": "LinkedServiceReference"
 				}
 			},
@@ -175,13 +175,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "TEST_PNR_ABBONAMENTI_SQLSourceDes",
+						"referenceName": "PNR_ABBONAMENTI_SQLSourceDB",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "PNR_ABBONAMENTI_stagingareatest",
+						"referenceName": "PNR_ABBONAMENTI_devstagingarea",
 						"type": "DatasetReference"
 					}
 				]
@@ -225,7 +225,7 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureSqlTestStagingArea",
+					"referenceName": "AzureLinkedService",
 					"type": "LinkedServiceReference"
 				}
 			}
@@ -237,7 +237,7 @@
 			}
 		},
 		"folder": {
-			"name": "Az_IntegrazioneBatch_Test"
+			"name": "Az_IntegrazioniBatch"
 		},
 		"annotations": [],
 		"lastPublishTime": "2021-10-04T10:34:30Z"

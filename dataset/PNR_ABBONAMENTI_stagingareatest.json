@@ -1,0 +1,47 @@
+{
+	"name": "PNR_ABBONAMENTI_stagingareatest",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlTestStagingArea",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ID_TESTATA_PNR",
+				"type": "varchar"
+			},
+			{
+				"name": "CREATED",
+				"type": "varchar"
+			},
+			{
+				"name": "LAST_UPD",
+				"type": "varchar"
+			},
+			{
+				"name": "TIMESTAMP",
+				"type": "varchar"
+			},
+			{
+				"name": "COD_ABBONAMENTO",
+				"type": "varchar"
+			},
+			{
+				"name": "IDDATASRC",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "IDLOAD",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "batchSync",
+			"table": "PNR_ABBONAMENTI"
+		}
+	}
+}

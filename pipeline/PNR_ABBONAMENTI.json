@@ -507,9 +507,6 @@
 				"defaultValue": "PNR_ABBONAMENTI"
 			}
 		},
-		"folder": {
-			"name": "Az_IntegrazioneBatch_Test"
-		},
 		"annotations": [],
 		"lastPublishTime": "2021-10-04T10:34:30Z"
 	}
