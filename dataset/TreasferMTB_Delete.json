@@ -1,0 +1,19 @@
+{
+	"name": "TreasferMTB_Delete",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage_Dev",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "CRM_TransferMultitrattaTransactionsData_20211127.csv",
+				"folderPath": "TrasferMTB",
+				"container": "batchfiles"
+			}
+		}
+	}
+}

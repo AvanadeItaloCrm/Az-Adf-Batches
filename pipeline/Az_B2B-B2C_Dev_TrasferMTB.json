@@ -1,0 +1,566 @@
+{
+	"name": "Az_B2B-B2C_Dev_TrasferMTB",
+	"properties": {
+		"activities": [
+			{
+				"name": "Start SP",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[batchSync].[InizioBatchSync]",
+					"storedProcedureParameters": {
+						"NomeFile": {
+							"value": "",
+							"type": "String"
+						},
+						"TabellaImport": {
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDbCrmStagingArea",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Finally SP",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Delete file",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[batchSync].[FineBatchSync]",
+					"storedProcedureParameters": {
+						"TabellaImport": {
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDbCrmStagingArea",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Csv To SQL",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Start SP",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"type": "String",
+									"ordinal": 1
+								},
+								"sink": {
+									"name": "CODICE_CARTA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"sink": {
+									"name": "INTEGRAZIONE_ID",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"sink": {
+									"name": "CODICE_CARTA_WEB",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"sink": {
+									"name": "CODICE_CARTA_MIGRATA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"sink": {
+									"name": "CODICE_CARTA_WEB_MIGRATA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"sink": {
+									"name": "PNR_TECNICO_ACQUISTO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"sink": {
+									"name": "DATA_DI_ACQUISTO",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"sink": {
+									"name": "VALORE_NOMINALE_NETTO",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 22
+								}
+							},
+							{
+								"sink": {
+									"name": "IMPORTO_TOTALE_LORDO",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 22
+								}
+							},
+							{
+								"sink": {
+									"name": "IMPORTO_SCONTO_LORDO",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 22
+								}
+							},
+							{
+								"sink": {
+									"name": "IMPORTO_SCONTO_NETTO",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 22
+								}
+							},
+							{
+								"sink": {
+									"name": "PERCENTUALE_SCONTO",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 22
+								}
+							},
+							{
+								"sink": {
+									"name": "VALORE_NOMINALE_LORDO",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 22
+								}
+							},
+							{
+								"sink": {
+									"name": "PERCENTUALE_IVA",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 22
+								}
+							},
+							{
+								"sink": {
+									"name": "IMPOSTA",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 22
+								}
+							},
+							{
+								"sink": {
+									"name": "IMPORTO_NETTO",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 22
+								}
+							},
+							{
+								"sink": {
+									"name": "CANALE_DI_ACQUISTO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"sink": {
+									"name": "TIPOLOGIA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"sink": {
+									"name": "STATO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"sink": {
+									"name": "DATA_SCADENZA_CARTA",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"sink": {
+									"name": "RICHIESTA_FATTURA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"sink": {
+									"name": "DENOMINAZIONE",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"sink": {
+									"name": "PARTITA_IVA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"sink": {
+									"name": "EMAIL",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"sink": {
+									"name": "PARTICELLA_TOPO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"sink": {
+									"name": "INDIRIZZO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"sink": {
+									"name": "NUM_CIVICO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"sink": {
+									"name": "CITTA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"sink": {
+									"name": "PROVINCIA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"sink": {
+									"name": "CAP",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"sink": {
+									"name": "NAZIONE",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"sink": {
+									"name": "CONSENSO_MARKETING",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"sink": {
+									"name": "CONSENSO_PROFILAZIONE",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"sink": {
+									"name": "RESIDUO_CARTA_MIGRATA",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 22
+								}
+							},
+							{
+								"sink": {
+									"name": "CONSENSO_TERZE_PARTI",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"sink": {
+									"name": "FRODATA_FLAG",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "TrasferMTB_csv",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "trasferMTB_SQLSourceDB",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Error Finally SP",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Csv To SQL",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[batchSync].[ErrorBatchSync]",
+					"storedProcedureParameters": {
+						"TabellaImport": {
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"Errore": {
+							"value": {
+								"value": "@pipeline().RunId",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDbCrmStagingArea",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Copy in Elaborated",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Csv To SQL",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "TrasferMTB_csv",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "TrasferMTB_Copycsv",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Delete file",
+				"type": "Delete",
+				"dependsOn": [
+					{
+						"activity": "Copy in Elaborated",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "TreasferMTB_Delete",
+						"type": "DatasetReference"
+					},
+					"enableLogging": false,
+					"storeSettings": {
+						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
+						"enablePartitionDiscovery": false
+					}
+				}
+			}
+		],
+		"variables": {
+			"TableName": {
+				"type": "String",
+				"defaultValue": "Multitratta"
+			},
+			"Error": {
+				"type": "String",
+				"defaultValue": "@pipeline().RunId"
+			}
+		},
+		"folder": {
+			"name": "Az_IntegrazioniBatch"
+		},
+		"annotations": []
+	}
+}
