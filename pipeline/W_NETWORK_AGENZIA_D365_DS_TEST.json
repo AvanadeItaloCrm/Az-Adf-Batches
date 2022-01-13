@@ -171,7 +171,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "TEST_W_SINTESI_FRODI_D365_DS_SQLSource",
+						"referenceName": "TEST_W_NETWORK_AGENZIA_D365_DS_SQLSourceDB",
 						"type": "DatasetReference"
 					}
 				],
@@ -368,7 +368,7 @@
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "W_TRANSAZIONE_FRODI_D365_DS_OracleDB",
+						"referenceName": "W_NETWORK_AGENZIA_D365_DS_OracleDB",
 						"type": "DatasetReference"
 					}
 				}

@@ -1,0 +1,12 @@
+{
+	"name": "TEST_PNR_CARNET_SQLSourceDB",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlTestStagingArea",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	}
+}

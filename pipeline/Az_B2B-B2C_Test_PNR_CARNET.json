@@ -16,16 +16,12 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "OracleSource",
-						"oracleReaderQuery": {
-							"value": "@concat('SELECT sa_d365_svil.ControlloSync (''',\nvariables('TableName'),\n''') as Rec FROM DUAL;')",
-							"type": "Expression"
-						},
-						"partitionOption": "None",
-						"queryTimeout": "02:00:00"
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
 					},
 					"dataset": {
-						"referenceName": "TEST_PNR_CARNET_OracleDB",
+						"referenceName": "TEST_PNR_CARNET_SQLSourceDB",
 						"type": "DatasetReference"
 					}
 				}
@@ -73,7 +69,7 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"storedProcedureName": "[batchSync].[InizioSQL_ORACLEBatchSync]",
+								"storedProcedureName": "[batchSync].[InizioBatchSync]",
 								"storedProcedureParameters": {
 									"NomeFile": {
 										"value": "",
@@ -89,7 +85,7 @@
 								}
 							},
 							"linkedServiceName": {
-								"referenceName": "AzureSqlDbCrmStagingArea",
+								"referenceName": "AzureSqlTestStagingArea",
 								"type": "LinkedServiceReference"
 							}
 						},
