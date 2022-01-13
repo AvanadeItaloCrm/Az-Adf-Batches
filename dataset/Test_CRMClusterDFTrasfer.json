@@ -14,9 +14,9 @@
 				"folderPath": "DF_TransferMandateResultsADV",
 				"container": "batchfiles"
 			},
-			"columnDelimiter": ";",
+			"columnDelimiter": ",",
 			"escapeChar": "\\",
-			"firstRowAsHeader": false,
+			"firstRowAsHeader": true,
 			"quoteChar": ""
 		},
 		"schema": [

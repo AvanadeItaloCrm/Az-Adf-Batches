@@ -30,8 +30,7 @@
 							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
-							"type": "DelimitedTextReadSettings",
-							"skipLineCount": 1
+							"type": "DelimitedTextReadSettings"
 						}
 					},
 					"sink": {
@@ -44,9 +43,9 @@
 						"mappings": [
 							{
 								"source": {
+									"name": "\"Codice Partner\"",
 									"type": "String",
-									"physicalType": "String",
-									"ordinal": 1
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "Codice_Partner",
@@ -56,9 +55,9 @@
 							},
 							{
 								"source": {
+									"name": "\"Stato Mandato\"",
 									"type": "String",
-									"physicalType": "String",
-									"ordinal": 2
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "Stato_Mandato",
@@ -68,9 +67,9 @@
 							},
 							{
 								"source": {
+									"name": "\"Data Esito\"",
 									"type": "String",
-									"physicalType": "String",
-									"ordinal": 3
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "Data_Esito",
