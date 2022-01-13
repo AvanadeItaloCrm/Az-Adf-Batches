@@ -321,7 +321,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"packageLocation": {
-						"packagePath": "NTV.Az.Batches.Dyn365.CC_Test/NTV.Az.Batches.Dyn365.CC_Test/Test_CRMClusterClienti.dtsx",
+						"packagePath": "NTV.Az.Batches.Dyn365.CC_Test/NTV.Az.Batches.Dyn365.CC_Test/Test_CRMClusterDF_TransferMandateResultsADV.dtsx",
 						"type": "SSISDB"
 					},
 					"environmentPath": null,
