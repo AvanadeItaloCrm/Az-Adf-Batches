@@ -93,7 +93,10 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "SELECT ntv_ntv_bss.ntv_codebss, ntv_ntv_bss.Id, ntv_ntv_station.ntv_codenavitaire, ntv_ntv_bss.ntv_position, ntv_ntv_bss.ntv_typology\nFROM   ntv_ntv_bss INNER JOIN\n             ntv_ntv_station ON ntv_ntv_bss.Id = ntv_ntv_station.ntv_stationid",
+						"sqlReaderQuery": {
+							"value": "@concat('SELECT ntv_account.accountnumber, ntv_ntv_network.Id, ntv_ntv_network.ntv_name FROM   ntv_ntv_network INNER JOIN ntv_ntv_network_account ON ntv_ntv_network.ntv_networkid = ntv_ntv_network_account.ntv_networkid INNER JOIN ntv_account ON ntv_ntv_network_account.accountid = ntv_account.accountid WHERE ntv_ntv_network.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"type": "Expression"
+						},
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -171,7 +174,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "W_ANAGRAFICA_TVM_D365_DS_SQLSource",
+						"referenceName": "TEST_W_NETWORK_AGENZIA_D365_DS_SQLSourceDB",
 						"type": "DatasetReference"
 					}
 				],
@@ -368,7 +371,7 @@
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "W_PAG_CAMPI_OracleDB",
+						"referenceName": "W_NETWORK_AGENZIA_D365_DS_OracleDB",
 						"type": "DatasetReference"
 					}
 				}

@@ -55,7 +55,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": " [batchSync].[FineSQL_ORACLEBatchSync]",
+					"storedProcedureName": "[batchSync].[FineSQL_ORACLEBatchSync]",
 					"storedProcedureParameters": {
 						"TabellaImport": {
 							"value": {
@@ -93,7 +93,10 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "SELECT ntv_ntv_bss.ntv_codebss, ntv_ntv_bss.Id, ntv_ntv_station.ntv_codenavitaire, ntv_ntv_bss.ntv_position, ntv_ntv_bss.ntv_typology\nFROM   ntv_ntv_bss INNER JOIN\n             ntv_ntv_station ON ntv_ntv_bss.Id = ntv_ntv_station.ntv_stationid",
+						"sqlReaderQuery": {
+							"value": "@concat('SELECT ntv_account.accountnumber, ntv_ntv_network.Id, ntv_ntv_network.ntv_name FROM   ntv_ntv_network INNER JOIN ntv_ntv_network_account ON ntv_ntv_network.ntv_networkid = ntv_ntv_network_account.ntv_networkid INNER JOIN ntv_account ON ntv_ntv_network_account.accountid = ntv_account.accountid WHERE ntv_ntv_network.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"type": "Expression"
+						},
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -108,12 +111,12 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "ntv_codebss",
+									"name": "accountnumber",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
 								"sink": {
-									"name": "CODICE_TVM",
+									"name": "CODICE_ADV",
 									"type": "String"
 								}
 							},
@@ -124,40 +127,18 @@
 									"physicalType": "uniqueidentifier"
 								},
 								"sink": {
-									"name": "INTEGRAZIONE_ID",
+									"name": "ID_NETWORK",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "ntv_codenavitaire",
+									"name": "ntv_name",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
 								"sink": {
-									"name": "STAZIONE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_position",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "POSIZIONE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_typology",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "TIPO",
+									"name": "NOME_NETWORK",
 									"type": "String"
 								}
 							}
