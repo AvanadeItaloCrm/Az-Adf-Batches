@@ -1,0 +1,331 @@
+{
+	"name": "Az_B2B-B2C_Test_PNR_CARNETprova",
+	"properties": {
+		"activities": [
+			{
+				"name": "Start SP",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[batchSync].[InizioBatchSync]",
+					"storedProcedureParameters": {
+						"NomeFile": {
+							"value": "",
+							"type": "String"
+						},
+						"TabellaImport": {
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDbCrmStagingArea",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Finally SP",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "D365 To StagingArea",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[batchSync].[FineBatchSync]",
+					"storedProcedureParameters": {
+						"TabellaImport": {
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureSqlTestStagingArea",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "D365 To StagingArea",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Start SP",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "SELECT ntv_ntv_assetitem.ntv_recordlocator, ntv_ntv_assetitem.ntv_deactivationdate, ntv_ntv_assetitem.modifiedon,  ntv_ntv_asset.ntv_assetnumber\nFROM   ntv_ntv_assetitem INNER JOIN\n             ntv_ntv_asset ON ntv_ntv_assetitem.ntv_assetid = ntv_ntv_asset.ntv_assetid",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "DynamicRange",
+						"partitionSettings": {
+							"partitionUpperBound": "",
+							"partitionLowerBound": ""
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": ""
+								},
+								"sink": {
+									"name": "ROW_ID",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": ""
+								},
+								"sink": {
+									"name": "CREATED",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": ""
+								},
+								"sink": {
+									"name": "LAST_UPD",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": ""
+								},
+								"sink": {
+									"name": "TIMESTAMP",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": ""
+								},
+								"sink": {
+									"name": "COD_PRODOTTO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": ""
+								},
+								"sink": {
+									"name": "TIPO_PRODOTTO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": ""
+								},
+								"sink": {
+									"name": "DESC_PRODOTTO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": ""
+								},
+								"sink": {
+									"name": "DATA_PRODOTTO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": ""
+								},
+								"sink": {
+									"name": "DATA_INIZIO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": ""
+								},
+								"sink": {
+									"name": "DATA_SCADENZA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": ""
+								},
+								"sink": {
+									"name": "NUM_ORDINE",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": ""
+								},
+								"sink": {
+									"name": "COD_ORD_ESTERNO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": ""
+								},
+								"sink": {
+									"name": "PREZZO",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 6,
+									"precision": 20
+								}
+							},
+							{
+								"source": {
+									"name": ""
+								},
+								"sink": {
+									"name": "IDDATASRC",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "TEST_PNR_CARNET_SQLSource",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "PNR_CARNET_stagingareatest",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Error Finally SP",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "D365 To StagingArea",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[batchSync].[ErrorBatchSync]",
+					"storedProcedureParameters": {
+						"TabellaImport": {
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"Errore": {
+							"value": {
+								"value": "@pipeline().RunId",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureSqlTestStagingArea",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"variables": {
+			"TableName": {
+				"type": "String",
+				"defaultValue": "PNR_CARNET"
+			}
+		},
+		"folder": {
+			"name": "Az_IntegrazioneBatch_Test"
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-10-04T10:34:30Z"
+	}
+}
