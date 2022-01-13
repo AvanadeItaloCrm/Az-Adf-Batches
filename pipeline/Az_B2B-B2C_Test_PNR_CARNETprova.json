@@ -31,7 +31,7 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureSqlDbCrmStagingArea",
+					"referenceName": "AzureSqlTestStagingArea",
 					"type": "LinkedServiceReference"
 				}
 			},
@@ -93,13 +93,9 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "SELECT ntv_ntv_assetitem.ntv_recordlocator, ntv_ntv_assetitem.ntv_deactivationdate, ntv_ntv_assetitem.modifiedon,  ntv_ntv_asset.ntv_assetnumber\nFROM   ntv_ntv_assetitem INNER JOIN\n             ntv_ntv_asset ON ntv_ntv_assetitem.ntv_assetid = ntv_ntv_asset.ntv_assetid",
+						"sqlReaderQuery": "SELECT ntv_ntv_assetitem.ntv_recordlocator AS ID_TESTATA_PNR, ntv_ntv_assetitem.ntv_deactivationdate AS CREATED, ntv_ntv_assetitem.modifiedon AS LAST_UPD, ntv_ntv_assetitem.modifiedon AS TIMESTAMP, ntv_ntv_asset.ntv_assetnumber AS COD_CARNET\nFROM   ntv_ntv_assetitem INNER JOIN\n             ntv_ntv_asset ON ntv_ntv_assetitem.ntv_assetid = ntv_ntv_asset.ntv_assetid",
 						"queryTimeout": "02:00:00",
-						"partitionOption": "DynamicRange",
-						"partitionSettings": {
-							"partitionUpperBound": "",
-							"partitionLowerBound": ""
-						}
+						"partitionOption": "None"
 					},
 					"sink": {
 						"type": "AzureSqlSink",
@@ -111,37 +107,45 @@
 						"mappings": [
 							{
 								"source": {
-									"name": ""
+									"name": "ID_TESTATA_PNR",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
-									"name": "ROW_ID",
+									"name": "ID_TESTATA_PNR",
 									"type": "String",
 									"physicalType": "varchar"
 								}
 							},
 							{
 								"source": {
-									"name": ""
-								},
-								"sink": {
 									"name": "CREATED",
 									"type": "DateTime",
 									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "CREATED",
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							},
 							{
 								"source": {
-									"name": ""
-								},
-								"sink": {
 									"name": "LAST_UPD",
 									"type": "DateTime",
 									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "LAST_UPD",
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							},
 							{
 								"source": {
-									"name": ""
+									"name": "TIMESTAMP",
+									"type": "DateTime",
+									"physicalType": "datetime"
 								},
 								"sink": {
 									"name": "TIMESTAMP",
@@ -151,104 +155,14 @@
 							},
 							{
 								"source": {
-									"name": ""
+									"name": "COD_CARNET",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
-									"name": "COD_PRODOTTO",
+									"name": "COD_CARNET",
 									"type": "String",
 									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": ""
-								},
-								"sink": {
-									"name": "TIPO_PRODOTTO",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": ""
-								},
-								"sink": {
-									"name": "DESC_PRODOTTO",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": ""
-								},
-								"sink": {
-									"name": "DATA_PRODOTTO",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": ""
-								},
-								"sink": {
-									"name": "DATA_INIZIO",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": ""
-								},
-								"sink": {
-									"name": "DATA_SCADENZA",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": ""
-								},
-								"sink": {
-									"name": "NUM_ORDINE",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": ""
-								},
-								"sink": {
-									"name": "COD_ORD_ESTERNO",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": ""
-								},
-								"sink": {
-									"name": "PREZZO",
-									"type": "Decimal",
-									"physicalType": "decimal",
-									"scale": 6,
-									"precision": 20
-								}
-							},
-							{
-								"source": {
-									"name": ""
-								},
-								"sink": {
-									"name": "IDDATASRC",
-									"type": "Int32",
-									"physicalType": "int"
 								}
 							}
 						],
