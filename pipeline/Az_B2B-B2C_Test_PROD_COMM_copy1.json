@@ -268,38 +268,12 @@
 							},
 							{
 								"source": {
-									"name": "ntv_partnerbuyerid",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "NUM_COUPON",
-									"type": "Decimal",
-									"physicalType": "decimal",
-									"scale": 6,
-									"precision": 20
-								}
-							},
-							{
-								"source": {
 									"name": "ntv_partnerbuyerid_entitytype",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "IDDATASRC",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_partnerholderid",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "IDLOAD",
 									"type": "Int32",
 									"physicalType": "int"
 								}
