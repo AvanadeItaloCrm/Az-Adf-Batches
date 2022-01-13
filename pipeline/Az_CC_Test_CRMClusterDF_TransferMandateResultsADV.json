@@ -43,7 +43,7 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "\"Codice Partner\"",
+									"name": "Codice Partner",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -55,7 +55,7 @@
 							},
 							{
 								"source": {
-									"name": "\"Stato Mandato\"",
+									"name": "Stato Mandato",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -67,7 +67,7 @@
 							},
 							{
 								"source": {
-									"name": "\"Data Esito\"",
+									"name": "Data Esito",
 									"type": "String",
 									"physicalType": "String"
 								},
