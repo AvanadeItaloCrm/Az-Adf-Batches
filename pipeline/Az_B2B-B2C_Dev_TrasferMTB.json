@@ -112,8 +112,9 @@
 						"mappings": [
 							{
 								"source": {
+									"name": "CODICE_CARTA",
 									"type": "String",
-									"ordinal": 1
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "CODICE_CARTA",
@@ -122,13 +123,11 @@
 								}
 							},
 							{
-								"sink": {
-									"name": "INTEGRAZIONE_ID",
+								"source": {
+									"name": "CODICE_CARTA_WEB",
 									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "CODICE_CARTA_WEB",
 									"type": "String",
@@ -136,6 +135,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "CODICE_CARTA_MIGRATA",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "CODICE_CARTA_MIGRATA",
 									"type": "String",
@@ -143,6 +147,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "CODICE_CARTA_WEB_MIGRATA",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "CODICE_CARTA_WEB_MIGRATA",
 									"type": "String",
@@ -150,6 +159,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "PNR_TECNICO_RESIDUO",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "PNR_TECNICO_ACQUISTO",
 									"type": "String",
@@ -157,6 +171,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "DATA_ACQUISTO",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "DATA_DI_ACQUISTO",
 									"type": "DateTime",
@@ -164,6 +183,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "VALORE_NOM_NETTO",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "VALORE_NOMINALE_NETTO",
 									"type": "Decimal",
@@ -173,6 +197,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "CORRISPETTIVO_LORDO",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "IMPORTO_TOTALE_LORDO",
 									"type": "Decimal",
@@ -182,6 +211,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "IMPORTO_SCONTO_LORDO",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "IMPORTO_SCONTO_LORDO",
 									"type": "Decimal",
@@ -191,6 +225,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "IMPORTO_SCONTO_NETTO",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "IMPORTO_SCONTO_NETTO",
 									"type": "Decimal",
@@ -200,6 +239,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "PERCENTUALE_SCONTO",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "PERCENTUALE_SCONTO",
 									"type": "Decimal",
@@ -209,6 +253,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "VALORE_NOM_LORDO",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "VALORE_NOMINALE_LORDO",
 									"type": "Decimal",
@@ -218,6 +267,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "PERC_IVA",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "PERCENTUALE_IVA",
 									"type": "Decimal",
@@ -227,6 +281,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "IMPOSTA",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "IMPOSTA",
 									"type": "Decimal",
@@ -236,6 +295,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "CORRISPETTIVO_NETTO",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "IMPORTO_NETTO",
 									"type": "Decimal",
@@ -245,6 +309,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "CANALE_DI_ACQUISTO",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "CANALE_DI_ACQUISTO",
 									"type": "String",
@@ -252,6 +321,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "TIPOLOGIA",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "TIPOLOGIA",
 									"type": "String",
@@ -259,6 +333,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "STATO_CARTA",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "STATO",
 									"type": "String",
@@ -266,6 +345,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "DATA_SCADENZA_CARTA",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "DATA_SCADENZA_CARTA",
 									"type": "DateTime",
@@ -273,6 +357,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "RICHIESTA_FATTURA",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "RICHIESTA_FATTURA",
 									"type": "String",
@@ -280,6 +369,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "DENOMINAZIONE",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "DENOMINAZIONE",
 									"type": "String",
@@ -287,6 +381,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "PARTITA_IVA",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "PARTITA_IVA",
 									"type": "String",
@@ -294,6 +393,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "EMAIL",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "EMAIL",
 									"type": "String",
@@ -301,6 +405,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "INDIRIZZO_PART_TOPONOMASTICA",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "PARTICELLA_TOPO",
 									"type": "String",
@@ -308,6 +417,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "INDIRIZZO_STRADA",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "INDIRIZZO",
 									"type": "String",
@@ -315,6 +429,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "INDIRIZZO_NUM_CIVICO",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "NUM_CIVICO",
 									"type": "String",
@@ -322,6 +441,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "INDIRIZZO_COMUNE",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "CITTA",
 									"type": "String",
@@ -329,6 +453,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "INDIRIZZO_PROVINCIA",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "PROVINCIA",
 									"type": "String",
@@ -336,6 +465,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "INDIRIZZO_CAP",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "CAP",
 									"type": "String",
@@ -343,6 +477,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "INDIRIZZO_NAZIONE",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "NAZIONE",
 									"type": "String",
@@ -350,6 +489,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "CONSENSO_MARKETING",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "CONSENSO_MARKETING",
 									"type": "String",
@@ -357,6 +501,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "CONSENSO_PROFILAZIONE",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "CONSENSO_PROFILAZIONE",
 									"type": "String",
@@ -364,6 +513,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "RESIDUO_CARTA_MIGRATA",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "RESIDUO_CARTA_MIGRATA",
 									"type": "Decimal",
@@ -373,15 +527,13 @@
 								}
 							},
 							{
+								"source": {
+									"name": "CONSENSO_MARKETING_TERZE_PARTI",
+									"type": "String",
+									"physicalType": "String"
+								},
 								"sink": {
 									"name": "CONSENSO_TERZE_PARTI",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"sink": {
-									"name": "FRODATA_FLAG",
 									"type": "String",
 									"physicalType": "varchar"
 								}
