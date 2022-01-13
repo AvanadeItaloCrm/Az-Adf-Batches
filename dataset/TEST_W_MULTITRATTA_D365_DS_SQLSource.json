@@ -178,7 +178,7 @@
 			}
 		],
 		"typeProperties": {
-			"schema": "ntvdev",
+			"schema": "batchSync",
 			"table": "Multitratta"
 		}
 	}
