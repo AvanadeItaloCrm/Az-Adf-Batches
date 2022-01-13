@@ -111,12 +111,12 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "ntv_codebss",
+									"name": "accountnumber",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
 								"sink": {
-									"name": "CODICE_TVM",
+									"name": "CODICE_ADV",
 									"type": "String"
 								}
 							},
@@ -127,40 +127,18 @@
 									"physicalType": "uniqueidentifier"
 								},
 								"sink": {
-									"name": "INTEGRAZIONE_ID",
+									"name": "ID_NETWORK",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "ntv_codenavitaire",
+									"name": "ntv_name",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
 								"sink": {
-									"name": "STAZIONE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_position",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "POSIZIONE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_typology",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "TIPO",
+									"name": "NOME_NETWORK",
 									"type": "String"
 								}
 							}
