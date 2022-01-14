@@ -93,12 +93,9 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
+						"sqlReaderQuery": "SELECT ntv_ntv_asset.ntv_assetid AS ROW_ID, ntv_ntv_asset.createdon AS CREATED, ntv_ntv_asset.modifiedon AS LAST_UPD, GETDATE() AS TIMESTAMP, ntv_ntv_product.ntv_productnumber AS COD_PRODOTTO, ntv_ntv_product.ntv_producttype AS TIPO_PRODOTTO, ntv_ntv_product.ntv_description AS DESC_PRODOTTO, ntv_ntv_asset.createdon AS DATA_PRODOTTO, \n             ntv_ntv_asset.ntv_startvaliditydate AS DATA_INIZIO, ntv_ntv_asset.ntv_endvaliditydate AS DATA_SCADENZA, ntv_ntv_asset.ntv_ordernumber AS NUM_ORDINE, ntv_ntv_asset.ntv_totalamount AS PREZZO\nFROM   ntv_ntv_asset INNER JOIN\n             ntv_ntv_product ON ntv_ntv_asset.ntv_productid = ntv_ntv_product.ntv_productid",
 						"queryTimeout": "02:00:00",
-						"partitionOption": "DynamicRange",
-						"partitionSettings": {
-							"partitionUpperBound": "",
-							"partitionLowerBound": ""
-						}
+						"partitionOption": "None"
 					},
 					"sink": {
 						"type": "AzureSqlSink",
@@ -110,7 +107,7 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "Id",
+									"name": "ROW_ID",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -122,7 +119,7 @@
 							},
 							{
 								"source": {
-									"name": "SinkCreatedOn",
+									"name": "CREATED",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
@@ -134,7 +131,7 @@
 							},
 							{
 								"source": {
-									"name": "SinkModifiedOn",
+									"name": "LAST_UPD",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
@@ -146,9 +143,9 @@
 							},
 							{
 								"source": {
-									"name": "statecode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "TIMESTAMP",
+									"type": "DateTime",
+									"physicalType": "datetime"
 								},
 								"sink": {
 									"name": "TIMESTAMP",
@@ -158,9 +155,9 @@
 							},
 							{
 								"source": {
-									"name": "statuscode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "COD_PRODOTTO",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "COD_PRODOTTO",
@@ -170,7 +167,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_producttype",
+									"name": "TIPO_PRODOTTO",
 									"type": "Int32",
 									"physicalType": "int"
 								},
@@ -182,9 +179,9 @@
 							},
 							{
 								"source": {
-									"name": "ntv_acquisitionchannelcode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "DESC_PRODOTTO",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "DESC_PRODOTTO",
@@ -194,9 +191,9 @@
 							},
 							{
 								"source": {
-									"name": "ntv_customerbuyerid",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "DATA_PRODOTTO",
+									"type": "DateTime",
+									"physicalType": "datetime"
 								},
 								"sink": {
 									"name": "DATA_PRODOTTO",
@@ -206,9 +203,9 @@
 							},
 							{
 								"source": {
-									"name": "ntv_customerbuyerid_entitytype",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "DATA_INIZIO",
+									"type": "DateTime",
+									"physicalType": "datetime"
 								},
 								"sink": {
 									"name": "DATA_INIZIO",
@@ -218,9 +215,9 @@
 							},
 							{
 								"source": {
-									"name": "createdonbehalfby",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "DATA_SCADENZA",
+									"type": "DateTime",
+									"physicalType": "datetime"
 								},
 								"sink": {
 									"name": "DATA_SCADENZA",
@@ -230,7 +227,7 @@
 							},
 							{
 								"source": {
-									"name": "createdonbehalfby_entitytype",
+									"name": "NUM_ORDINE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -242,21 +239,11 @@
 							},
 							{
 								"source": {
-									"name": "ntv_productpromotionid",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "COD_ORD_ESTERNO",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_productpromotionid_entitytype",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "PREZZO",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 38
 								},
 								"sink": {
 									"name": "PREZZO",
@@ -267,11 +254,6 @@
 								}
 							},
 							{
-								"source": {
-									"name": "ntv_partnerbuyerid_entitytype",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
 								"sink": {
 									"name": "IDDATASRC",
 									"type": "Int32",
