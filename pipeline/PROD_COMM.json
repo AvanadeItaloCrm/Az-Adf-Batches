@@ -1,5 +1,5 @@
 {
-	"name": "Az_B2B-B2C_Test_PROD_COMM",
+	"name": "PROD_COMM",
 	"properties": {
 		"activities": [
 			{
@@ -506,9 +506,6 @@
 				"type": "String",
 				"defaultValue": "PROD_COMM"
 			}
-		},
-		"folder": {
-			"name": "Az_IntegrazioneBatch_Test"
 		},
 		"annotations": [],
 		"lastPublishTime": "2021-10-04T10:34:30Z"
