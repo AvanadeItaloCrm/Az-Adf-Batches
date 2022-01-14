@@ -14,10 +14,10 @@
 				"folderPath": "DF_TransferMandateResultsADV",
 				"container": "batchfiles"
 			},
-			"columnDelimiter": ",",
+			"columnDelimiter": ";",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
-			"quoteChar": "\""
+			"quoteChar": ""
 		},
 		"schema": [
 			{
