@@ -1,0 +1,453 @@
+{
+	"name": "Az_CC_Test_Testata_PNR",
+	"properties": {
+		"activities": [
+			{
+				"name": "Start SP",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[batchSync].[InizioBatchSync]",
+					"storedProcedureParameters": {
+						"NomeFile": {
+							"value": "",
+							"type": "String"
+						},
+						"TabellaImport": {
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureSqlTestStagingArea",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Finally SP",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Sql To Oracle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[batchSync].[FineBatchSync]",
+					"storedProcedureParameters": {
+						"TabellaImport": {
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureSqlTestStagingArea",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Sql To Oracle",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Start SP",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "OracleSink",
+						"writeBatchSize": 10000,
+						"preCopyScript": "truncate table sa_d365_svil.testata_pnr"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Row_ID",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "ROW_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Created",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "CREATED",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Last_UPD",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "LAST_UPD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TimeStamp",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "TIMESTAMP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PNR",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "PNR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Num_Itinerari",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "NUM_ITINERARI",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Num_Passeggeri",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "NUM_PASSEGGERI",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Costo_Totale",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 4,
+									"precision": 18
+								},
+								"sink": {
+									"name": "COSTO_TOTALE",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Stato_Biglietto",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "STATO_BIGLIETTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Data_Creazione",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_CREAZIONE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Data_Modifica",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_MODIFICA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Balance_Due",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 4,
+									"precision": 18
+								},
+								"sink": {
+									"name": "BALANCE_DUE",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Created_Org",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "CREATED_ORG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Created_Loc",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "CREATED_LOC",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Created_Dom",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "CREATED_DOM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Created_Agent",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "CREATED_AGENT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Modified_Org",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "MODIFIED_ORG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Modified_Loc",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "MODIFIED_LOC",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Modified_Dom",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "MODIFIED_DOM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Modified_Agent",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "MODIFIED_AGENT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Received_By",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "RECEIVED_BY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PNR_Padre",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "PNR_PADRE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IDDataSRC",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "IDDATASRC",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IDLoad",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "IDLOAD",
+									"type": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Testata_PNR_SQL",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Testata_PNR_OracleDB",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Error Finally SP",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Sql To Oracle",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[batchSync].[ErrorBatchSync]",
+					"storedProcedureParameters": {
+						"TabellaImport": {
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"Errore": {
+							"value": {
+								"value": "@pipeline().RunId",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureSqlTestStagingArea",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"variables": {
+			"TableName": {
+				"type": "String",
+				"defaultValue": "Testata_PNR"
+			}
+		},
+		"folder": {
+			"name": "Az_IntegrazioneBatch_Test"
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-10-04T10:34:30Z"
+	}
+}
