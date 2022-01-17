@@ -2,7 +2,7 @@
 	"name": "TEST_W_ADV_CORP_D365_DS_SQLSource",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzureLinkedService",
+			"referenceName": "AzSqlOracle_Test_DesDYN365",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -1706,8 +1706,8 @@
 			}
 		],
 		"typeProperties": {
-			"schema": "batchSync",
-			"table": "v_W_ADV_CORP_D365_DS"
+			"schema": "dbo",
+			"table": "ntv_account"
 		}
 	}
 }
