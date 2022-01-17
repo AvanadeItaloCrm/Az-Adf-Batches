@@ -10,6 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": "@item().name",
 				"folderPath": "crm_evolution/italo_impresa",
 				"container": "adobe"
 			},
