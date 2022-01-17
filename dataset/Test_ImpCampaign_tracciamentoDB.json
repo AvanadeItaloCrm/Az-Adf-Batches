@@ -1,0 +1,66 @@
+{
+	"name": "Test_ImpCampaign_tracciamentoDB",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlTestStagingArea",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ROW_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Delivery_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "Email_Address",
+				"type": "varchar"
+			},
+			{
+				"name": "Subject",
+				"type": "varchar"
+			},
+			{
+				"name": "Event_Date",
+				"type": "varchar"
+			},
+			{
+				"name": "Event_Type",
+				"type": "varchar"
+			},
+			{
+				"name": "Url",
+				"type": "varchar"
+			},
+			{
+				"name": "Codice_Cliente",
+				"type": "varchar"
+			},
+			{
+				"name": "Message_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "Campaign_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "Tracking_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "Transazionale",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "batchSync",
+			"table": "AggImpCampaign_Tracciamento"
+		}
+	}
+}
