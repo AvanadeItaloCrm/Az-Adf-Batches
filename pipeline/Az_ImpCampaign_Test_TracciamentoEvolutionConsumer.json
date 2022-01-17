@@ -100,8 +100,7 @@
 												}
 											},
 											"sink": {
-												"type": "SqlServerSink",
-												"disableMetricsCollection": false
+												"type": "AzureSqlSink"
 											},
 											"enableStaging": false,
 											"translator": {
@@ -255,7 +254,7 @@
 										],
 										"outputs": [
 											{
-												"referenceName": "ImpCampaign_TracciamentoDB",
+												"referenceName": "Test_CRMClusterDFTransferDB",
 												"type": "DatasetReference"
 											}
 										]
@@ -463,7 +462,7 @@
 												"referenceName": "Italo-devtest-IntegrationRuntimeSSIS",
 												"type": "IntegrationRuntimeReference"
 											},
-											"loggingLevel": "Verbose"
+											"loggingLevel": "Basic"
 										}
 									}
 								]
