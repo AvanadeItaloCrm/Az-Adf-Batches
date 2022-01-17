@@ -35,7 +35,8 @@
 						}
 					},
 					"sink": {
-						"type": "AzureSqlSink"
+						"type": "AzureSqlSink",
+						"disableMetricsCollection": false
 					},
 					"enableStaging": false,
 					"translator": {
@@ -99,13 +100,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "CRMClusteringClienteChiamataProperty",
+						"referenceName": "Test_CRMClusteringClienteChiamataProperty",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "CRMClusteringClienteChiamataDB",
+						"referenceName": "TEST_CRMClusteringClienteChiamataDB",
 						"type": "DatasetReference"
 					}
 				]
@@ -139,7 +140,7 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureSqlDbCrmStagingArea",
+					"referenceName": "AzureSqlTestStagingArea",
 					"type": "LinkedServiceReference"
 				}
 			},
@@ -197,13 +198,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "CRMClusteringClienteChiamataCopyFile",
+						"referenceName": "Test_CRMClusteringClienteChiamataProperty",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "CRMClusteringClienteChiamataMoveFile",
+						"referenceName": "TEST_CRMClusteringClienteChiamataMoveFile",
 						"type": "DatasetReference"
 					}
 				]
@@ -229,7 +230,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "CRMClusteringClienteChiamataCopyFile",
+						"referenceName": "Test_CRMClusterDFTrasfer",
 						"type": "DatasetReference"
 					},
 					"enableLogging": false,
@@ -272,7 +273,7 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureSqlDbCrmStagingArea",
+					"referenceName": "AzureSqlTestStagingArea",
 					"type": "LinkedServiceReference"
 				}
 			},
@@ -359,7 +360,7 @@
 			}
 		},
 		"folder": {
-			"name": "Az_IntegrazioniBatch"
+			"name": "Az_IntegrazioneBatch_Test"
 		},
 		"annotations": [],
 		"lastPublishTime": "2021-10-01T13:12:25Z"

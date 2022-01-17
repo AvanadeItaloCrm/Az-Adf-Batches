@@ -1,0 +1,36 @@
+{
+	"name": "Test_CRMClusteringClienteChiamataProperty",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage_Test",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "CRMClusteringClienteChiamata.csv",
+				"folderPath": "CRMClusteringClienteChiamata",
+				"container": "batchfiles"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			}
+		]
+	}
+}

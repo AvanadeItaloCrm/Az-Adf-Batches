@@ -1,0 +1,48 @@
+{
+	"name": "TEST_CRMClusteringClienteChiamataDB",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzSqlOracle_Test_StagingArea",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Codice_Cliente",
+				"type": "varchar"
+			},
+			{
+				"name": "Cluster_Chiamata",
+				"type": "varchar"
+			},
+			{
+				"name": "Valore_Cliente_Chiamata",
+				"type": "varchar"
+			},
+			{
+				"name": "Promozioni_Chiamata",
+				"type": "varchar"
+			},
+			{
+				"name": "ntv_callclusterid",
+				"type": "varchar"
+			},
+			{
+				"name": "Data_Importazione",
+				"type": "smalldatetime",
+				"precision": 16,
+				"scale": 0
+			}
+		],
+		"typeProperties": {
+			"schema": "batchSync",
+			"table": "AggClusteringClenteChiamata"
+		}
+	}
+}
