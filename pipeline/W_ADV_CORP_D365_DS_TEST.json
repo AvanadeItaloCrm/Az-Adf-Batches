@@ -94,7 +94,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "SELECT * FROM batchSync.v_W_ADV_CORP_D365_DS ",
+							"value": "@concat('SELECT * FROM batchSync.v_W_ADV_CORP_D365_DS WHERE corporatecluster_modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or ntv_account_modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or ntv_ntv_address_modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
