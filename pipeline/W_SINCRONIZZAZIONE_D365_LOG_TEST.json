@@ -128,7 +128,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"pipeline": {
-									"referenceName": "W_ADV_CORP_D365_DS_TEST",
+									"referenceName": "W_ADV_CORP_D365_DS_TEST_old",
 									"type": "PipelineReference"
 								},
 								"waitOnCompletion": true
