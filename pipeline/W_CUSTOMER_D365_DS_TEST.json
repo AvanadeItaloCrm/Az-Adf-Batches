@@ -94,7 +94,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT * FROM batchSync.v_ntv_contact WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"value": "SELECT * FROM batchSync.v_ntv_contact ",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -145,8 +145,8 @@
 							{
 								"source": {
 									"name": "ntv_iscdc",
-									"type": "Boolean",
-									"physicalType": "bit"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "FLG_CLUB",
@@ -161,6 +161,17 @@
 								},
 								"sink": {
 									"name": "CODICE_CLIENTE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Id",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "INTEGRAZIONE_ID",
 									"type": "String"
 								}
 							},
@@ -222,8 +233,8 @@
 							{
 								"source": {
 									"name": "ntv_iscreditcardprofiled",
-									"type": "Boolean",
-									"physicalType": "bit"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "FLG_PROFILO_CC",
@@ -233,8 +244,8 @@
 							{
 								"source": {
 									"name": "ntv_ispmr",
-									"type": "Boolean",
-									"physicalType": "bit"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "FLG_PMR",
@@ -243,10 +254,13 @@
 							},
 							{
 								"source": {
-									"name": "ntv_employeeid"
+									"name": "ntv_employeeid",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
 								},
 								"sink": {
-									"name": "FLG_DIPENDENTE"
+									"name": "FLG_DIPENDENTE",
+									"type": "String"
 								}
 							},
 							{
@@ -263,8 +277,8 @@
 							{
 								"source": {
 									"name": "ntv_isambassador",
-									"type": "Boolean",
-									"physicalType": "bit"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "FLG_AMBASSADOR",
@@ -328,9 +342,9 @@
 							},
 							{
 								"source": {
-									"name": "ntv_preferredtransportmean",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "accountrolecode",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "TRASPORTO_ABITUALE",
@@ -461,8 +475,8 @@
 							{
 								"source": {
 									"name": "ntv_consentprofilation",
-									"type": "Boolean",
-									"physicalType": "bit"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "FLG_CONSENSO_PROFILAZIONE",
@@ -472,8 +486,8 @@
 							{
 								"source": {
 									"name": "ntv_consentmarketinginfo",
-									"type": "Boolean",
-									"physicalType": "bit"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "FLG_CONSENSO_MARKETING",
@@ -488,6 +502,61 @@
 								},
 								"sink": {
 									"name": "SEGMENTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "address1_city",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CITTA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "address1_country",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "STATO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "territorycode",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "PROVINCIA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "address1_stateorprovince",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "INDIRIZZO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "address1_postofficebox",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CAP",
 									"type": "String"
 								}
 							},
@@ -526,6 +595,17 @@
 							},
 							{
 								"source": {
+									"name": "ntv_callclusterupdatedon",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_AGG_CLUSTER_PROMO",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
 									"name": "ntv_customerinvitation",
 									"type": "String",
 									"physicalType": "nvarchar"
@@ -538,8 +618,8 @@
 							{
 								"source": {
 									"name": "ntv_thirdpartyconsent",
-									"type": "Boolean",
-									"physicalType": "bit"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "FLG_CONSENSO_TERZE_PARTI",
@@ -632,14 +712,6 @@
 								"sink": {
 									"name": "DATA_AGGIORNAMENTO",
 									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "Id"
-								},
-								"sink": {
-									"name": "INTEGRAZIONE_ID"
 								}
 							}
 						],
