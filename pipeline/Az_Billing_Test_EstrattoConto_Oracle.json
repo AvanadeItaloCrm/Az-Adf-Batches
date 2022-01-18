@@ -67,7 +67,7 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureSqlDbCrmStagingArea",
+					"referenceName": "AzureSqlTestStagingArea",
 					"type": "LinkedServiceReference"
 				}
 			},
@@ -92,7 +92,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"packageLocation": {
-						"packagePath": "SqlToDyn/NTV.Az.Batches.Dyn365.CC/Dev_EstrattiConto_Corporate_Oracle.dtsx",
+						"packagePath": "NTV.Az.Batches.Dyn365.CC_Test/NTV.Az.Batches.Dyn365.CC_Test/Test_EstrattiConto_Corporate_Oracle.dtsx",
 						"type": "SSISDB"
 					},
 					"environmentPath": null,
@@ -129,8 +129,7 @@
 						"queryTimeout": "02:00:00"
 					},
 					"sink": {
-						"type": "SqlServerSink",
-						"disableMetricsCollection": false
+						"type": "AzureSqlSink"
 					},
 					"enableStaging": false,
 					"translator": {
@@ -579,13 +578,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "OracleDBPropertyEstrattoConto",
+						"referenceName": "TEST_OracleDBPropertyEstrattoConto",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "OracleToSqlEstrattoContoProperty",
+						"referenceName": "Test_OracleToSqlEstrattoContoProperty",
 						"type": "DatasetReference"
 					}
 				]
@@ -635,7 +634,7 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureSqlDbCrmStagingArea",
+					"referenceName": "AzureSqlTestStagingArea",
 					"type": "LinkedServiceReference"
 				}
 			}
@@ -647,7 +646,7 @@
 			}
 		},
 		"folder": {
-			"name": "Az_IntegrazioniBatch"
+			"name": "Az_IntegrazioneBatch_Test"
 		},
 		"annotations": [],
 		"lastPublishTime": "2021-10-06T13:20:20Z"
