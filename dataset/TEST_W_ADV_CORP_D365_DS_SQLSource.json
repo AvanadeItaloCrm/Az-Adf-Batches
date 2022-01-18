@@ -2,7 +2,7 @@
 	"name": "TEST_W_ADV_CORP_D365_DS_SQLSource",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzureLinkedService",
+			"referenceName": "AzureSqlTestStagingArea",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
