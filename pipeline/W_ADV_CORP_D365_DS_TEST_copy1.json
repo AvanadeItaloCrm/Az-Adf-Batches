@@ -122,6 +122,17 @@
 							},
 							{
 								"source": {
+									"name": "EMAIL_COMUNICAZIONE_PEC",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "EMAIL_COMUNICAZIONE_PEC",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
 									"name": "DESCRIZIONE_PROMOCODE",
 									"type": "String",
 									"physicalType": "nvarchar"
@@ -1188,7 +1199,8 @@
 									"name": "DATA_AGG_CLUSTER_CORP",
 									"type": "DateTime"
 								}
-							}
+							},
+							null
 						],
 						"typeConversion": true,
 						"typeConversionSettings": {
