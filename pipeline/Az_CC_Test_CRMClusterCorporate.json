@@ -218,7 +218,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Test__CRMClusterCorporateProperty",
+						"referenceName": "Test_CRMClusterCorporateDelete",
 						"type": "DatasetReference"
 					},
 					"enableLogging": false,
