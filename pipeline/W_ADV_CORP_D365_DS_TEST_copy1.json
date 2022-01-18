@@ -94,7 +94,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT * FROM batchSync.v_W_ADV_CORP_D365_DS WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or ntv_account.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or ntv_ntv_address.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"value": "SELECT * FROM batchSync.v_W_ADV_CORP_D365_DS ",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -122,17 +122,6 @@
 							},
 							{
 								"source": {
-									"name": "EMAIL_COMUNICAZIONE_PEC",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "EMAIL_COMUNICAZIONE_PEC",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
 									"name": "DESCRIZIONE_PROMOCODE",
 									"type": "String",
 									"physicalType": "nvarchar"
@@ -211,8 +200,8 @@
 							{
 								"source": {
 									"name": "FLG_BOOKING_SOURCE_GDS",
-									"type": "Boolean",
-									"physicalType": "bit"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "FLG_BOOKING_SOURCE_GDS",
@@ -222,8 +211,8 @@
 							{
 								"source": {
 									"name": "FLG_BOOKING_SOURCE_WEB",
-									"type": "Boolean",
-									"physicalType": "bit"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "FLG_BOOKING_SOURCE_WEB",
@@ -906,8 +895,8 @@
 							{
 								"source": {
 									"name": "FLG_PUBBLICA_AMMINISTRAZIONE",
-									"type": "Boolean",
-									"physicalType": "bit"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "FLG_PUBBLICA_AMMINISTRAZIONE",
@@ -1038,8 +1027,8 @@
 							{
 								"source": {
 									"name": "FLG_CONSENSO_TERZE_PARTI",
-									"type": "Boolean",
-									"physicalType": "bit"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "FLG_CONSENSO_TERZE_PARTI",
@@ -1049,8 +1038,8 @@
 							{
 								"source": {
 									"name": "FLG_CONSENSO_PROFILAZIONE",
-									"type": "Boolean",
-									"physicalType": "bit"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "FLG_CONSENSO_PROFILAZIONE",
@@ -1081,9 +1070,20 @@
 							},
 							{
 								"source": {
+									"name": "EMAIL_COMUNICAZIONE_PEC",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "EMAIL_COMUNICAZIONE_PEC",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
 									"name": "FLG_MANDATO",
-									"type": "Boolean",
-									"physicalType": "bit"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "FLG_MANDATO",
@@ -1126,8 +1126,8 @@
 							{
 								"source": {
 									"name": "FLG_PIVA_GRUPPO",
-									"type": "Boolean",
-									"physicalType": "bit"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "FLG_PIVA_GRUPPO",
@@ -1137,8 +1137,8 @@
 							{
 								"source": {
 									"name": "FLG_ONLUS",
-									"type": "Boolean",
-									"physicalType": "bit"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "FLG_ONLUS",
@@ -1199,8 +1199,7 @@
 									"name": "DATA_AGG_CLUSTER_CORP",
 									"type": "DateTime"
 								}
-							},
-							null
+							}
 						],
 						"typeConversion": true,
 						"typeConversionSettings": {
