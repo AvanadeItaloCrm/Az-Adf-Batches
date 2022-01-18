@@ -1,0 +1,32 @@
+{
+	"name": "Test_CRMClusterCorporateMovieFile",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage_Test",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "CRMClusterCorporate/Elaborated",
+				"container": "batchfiles"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			}
+		]
+	}
+}
