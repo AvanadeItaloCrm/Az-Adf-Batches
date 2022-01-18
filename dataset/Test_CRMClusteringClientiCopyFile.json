@@ -1,0 +1,19 @@
+{
+	"name": "Test_CRMClusteringClientiCopyFile",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage_Test",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "CRMClusteringClienti.csv",
+				"folderPath": "CRMClusteringClienti",
+				"container": "batchfiles"
+			}
+		}
+	}
+}
