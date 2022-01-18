@@ -595,17 +595,6 @@
 							},
 							{
 								"source": {
-									"name": "ntv_callclusterupdatedon",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								},
-								"sink": {
-									"name": "DATA_AGG_CLUSTER_PROMO",
-									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
 									"name": "ntv_customerinvitation",
 									"type": "String",
 									"physicalType": "nvarchar"
