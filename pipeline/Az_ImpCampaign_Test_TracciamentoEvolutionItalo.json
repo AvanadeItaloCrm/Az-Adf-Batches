@@ -386,7 +386,7 @@
 										"userProperties": [],
 										"typeProperties": {
 											"dataset": {
-												"referenceName": "ImpCampaign_InvioEvolutionItaloDelete",
+												"referenceName": "Test_ImpCampaign_TracciamentoEvolutionItalo",
 												"type": "DatasetReference"
 											},
 											"enableLogging": false,

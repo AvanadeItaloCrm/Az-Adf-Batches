@@ -1,0 +1,19 @@
+{
+	"name": "Test_ImpCampaign_TracciamentoEvolutionItalo",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AdobeConsumerBS",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "trackinglogrcp_20210928_122740.csv",
+				"folderPath": "crm_evolution/italo_impresa",
+				"container": "adobe"
+			}
+		}
+	}
+}
