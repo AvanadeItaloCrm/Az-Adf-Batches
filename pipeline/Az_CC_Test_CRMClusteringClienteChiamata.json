@@ -230,7 +230,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Test_CRMClusterDFTrasfer",
+						"referenceName": "Test_CRMClusteringClienteChiamataDelete",
 						"type": "DatasetReference"
 					},
 					"enableLogging": false,
@@ -298,7 +298,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"packageLocation": {
-						"packagePath": "SqlToDyn/NTV.Az.Batches.Dyn365.CC/Dev_CRMClusteringClienteChiamata.dtsx",
+						"packagePath": "NTV.Az.Batches.Dyn365.CC_Test/NTV.Az.Batches.Dyn365.CC_Test/Test_CRMClusteringClienteChiamata.dtsx",
 						"type": "SSISDB"
 					},
 					"environmentPath": null,
@@ -348,7 +348,7 @@
 					}
 				},
 				"linkedServiceName": {
-					"referenceName": "AzureSqlDbCrmStagingArea",
+					"referenceName": "AzureSqlTestStagingArea",
 					"type": "LinkedServiceReference"
 				}
 			}
