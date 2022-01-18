@@ -254,9 +254,9 @@
 							},
 							{
 								"source": {
-									"name": "ntv_employeeid",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "isbackofficecustomer",
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "FLG_DIPENDENTE",
