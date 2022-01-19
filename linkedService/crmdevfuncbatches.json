@@ -7,11 +7,7 @@
 		"typeProperties": {
 			"functionAppUrl": "https://crmdevfuncbatches.azurewebsites.net",
 			"authentication": "Anonymous",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIyZmUwYTIwZS1iYjU1LTRlYjItOGE0OC01MGUzMDExOTRjOTUiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
-		},
-		"connectVia": {
-			"referenceName": "integrationRuntimeSFH-DEV",
-			"type": "IntegrationRuntimeReference"
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDM0QzNDRDgwLTNCOUQtNDhGNi1BODExLUE2Q0NFRTQ1NDk1Q18yNTY1YzBiNi0xZTM4LTQyZDgtYTYyOC1hODQxNmQ0ZmU3ODQiDQp9"
 		}
 	}
 }
