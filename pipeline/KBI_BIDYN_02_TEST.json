@@ -6,7 +6,14 @@
 			{
 				"name": "BIDYN02-To-Customer02",
 				"type": "Copy",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Start SP",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -147,7 +154,14 @@
 				"name": "End Success SP",
 				"description": "Scrive record di log su tabella:\nbatchSync.Sync",
 				"type": "SqlServerStoredProcedure",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "BIDYN02-To-Customer02",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -177,7 +191,14 @@
 				"name": "End Fail SP",
 				"description": "Scrive record di log su tabella:\nbatchSync.Sync",
 				"type": "SqlServerStoredProcedure",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "BIDYN02-To-Customer02",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -219,6 +240,12 @@
 				}
 			}
 		],
+		"parameters": {
+			"TableName": {
+				"type": "string",
+				"defaultValue": "DynInd_Customer_02"
+			}
+		},
 		"folder": {
 			"name": "Az_IntegrazioniBatch_Oracle_Test"
 		},
