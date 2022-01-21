@@ -149,8 +149,16 @@
 			},
 			{
 				"name": "End Success SP",
+				"description": "Scrive record di log su tabella:\nbatchSync.Sync",
 				"type": "SqlServerStoredProcedure",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "BIDYN01-To-Customer01",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -158,7 +166,20 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[batchSync].[FineSQL_ORACLEBatchSync]",
+					"storedProcedureParameters": {
+						"TabellaImport": {
+							"value": "@variables('TableName')",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzSqlOracle_Test_StagingArea",
+					"type": "LinkedServiceReference"
+				}
 			}
 		],
 		"folder": {
