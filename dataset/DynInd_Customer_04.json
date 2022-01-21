@@ -1,0 +1,40 @@
+{
+	"name": "DynInd_Customer_04",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlTestStagingArea",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "CustomerCode",
+				"type": "varchar"
+			},
+			{
+				"name": "Month",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Year",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PurchaseChannel",
+				"type": "varchar"
+			},
+			{
+				"name": "TripCounter",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "ntv",
+			"table": "DynInd_Customer_04"
+		}
+	}
+}
