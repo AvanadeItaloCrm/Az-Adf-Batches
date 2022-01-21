@@ -108,6 +108,37 @@
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "Start SP",
+				"description": "Scrive record di log su tabella:\n[batchSync].[InizioSQL_ORACLEBatchSync]",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[batchSync].[InizioSQL_ORACLEBatchSync]",
+					"storedProcedureParameters": {
+						"NomeFile": {
+							"value": "",
+							"type": "String"
+						},
+						"TabellaImport": {
+							"value": "@variables('TableName')",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzSqlOracle_Test_StagingArea",
+					"type": "LinkedServiceReference"
+				}
 			}
 		],
 		"folder": {
