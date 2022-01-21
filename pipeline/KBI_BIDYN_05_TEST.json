@@ -50,7 +50,7 @@
 									"type": "String"
 								},
 								"sink": {
-									"name": "Class",
+									"name": "ProductName",
 									"type": "String",
 									"physicalType": "varchar"
 								}
