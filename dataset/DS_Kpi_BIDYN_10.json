@@ -1,0 +1,16 @@
+{
+	"name": "DS_Kpi_BIDYN_10",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "OracleDB_TEST",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "OracleTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "SA_D365_TEST",
+			"table": "BIDYN_10"
+		}
+	}
+}
