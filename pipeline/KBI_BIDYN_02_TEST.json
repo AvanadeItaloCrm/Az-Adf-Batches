@@ -132,16 +132,8 @@
 				"typeProperties": {
 					"storedProcedureName": "[batchSync].[InizioSQL_ORACLEBatchSync]",
 					"storedProcedureParameters": {
-						"NomeFile": {
-							"value": "",
-							"type": "String"
-						},
 						"TabellaImport": {
-							"value": {
-								"value": "@variables('TableName')",
-								"type": "Expression"
-							},
-							"type": "String"
+							"value": "@variables('TableName')"
 						}
 					}
 				},
@@ -243,6 +235,12 @@
 		"parameters": {
 			"TableName": {
 				"type": "string",
+				"defaultValue": "DynInd_Customer_02"
+			}
+		},
+		"variables": {
+			"TableName": {
+				"type": "String",
 				"defaultValue": "DynInd_Customer_02"
 			}
 		},
