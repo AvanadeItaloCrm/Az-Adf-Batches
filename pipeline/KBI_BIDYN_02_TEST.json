@@ -243,12 +243,6 @@
 				"defaultValue": "DynInd_Customer_02"
 			}
 		},
-		"variables": {
-			"TableName": {
-				"type": "String",
-				"defaultValue": "DynInd_Customer_02"
-			}
-		},
 		"folder": {
 			"name": "Az_IntegrazioniBatch_Oracle_Test"
 		},
