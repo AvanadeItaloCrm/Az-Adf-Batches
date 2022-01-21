@@ -30,13 +30,13 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "DATA_VENDITA",
-									"type": "DateTime"
+									"name": "CANALE",
+									"type": "String"
 								},
 								"sink": {
-									"name": "SalesDate",
-									"type": "DateTime",
-									"physicalType": "date"
+									"name": "Channel",
+									"type": "String",
+									"physicalType": "nchar"
 								}
 							},
 							{
@@ -54,13 +54,24 @@
 							},
 							{
 								"source": {
-									"name": "STAZIONE",
-									"type": "String"
+									"name": "MESE",
+									"type": "Decimal"
 								},
 								"sink": {
-									"name": "Station",
-									"type": "String",
-									"physicalType": "nchar"
+									"name": "Month",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "ANNO",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "Year",
+									"type": "Int32",
+									"physicalType": "int"
 								}
 							}
 						],
@@ -79,7 +90,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "DynInd_Station_08",
+						"referenceName": "Dyn_Station_09",
 						"type": "DatasetReference"
 					}
 				]
