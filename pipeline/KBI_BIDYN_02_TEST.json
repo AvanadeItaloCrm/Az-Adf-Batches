@@ -240,12 +240,6 @@
 				}
 			}
 		],
-		"parameters": {
-			"TableName": {
-				"type": "string",
-				"defaultValue": "DynInd_Customer_02"
-			}
-		},
 		"variables": {
 			"TableName": {
 				"type": "String",
