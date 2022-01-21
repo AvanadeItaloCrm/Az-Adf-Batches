@@ -6,7 +6,14 @@
 			{
 				"name": "BIDYN06-To-Customer06",
 				"type": "Copy",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Start SP",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -99,8 +106,137 @@
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "Start SP",
+				"description": "Scrive record di log su tabella:\nbatchSync.Sync",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[batchSync].[InizioSQL_ORACLEBatchSync]",
+					"storedProcedureParameters": {
+						"TabellaImport": {
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"NomeFile": {
+							"value": "",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzSqlOracle_Test_StagingArea",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "End Success SP",
+				"description": "Scrive record di log su tabella:\nbatchSync.Sync",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "BIDYN06-To-Customer06",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[batchSync].[FineSQL_ORACLEBatchSync]",
+					"storedProcedureParameters": {
+						"TabellaImport": {
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzSqlOracle_Test_StagingArea",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "End Fail SP",
+				"description": "Scrive record di log su tabella:\nbatchSync.Sync",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "BIDYN06-To-Customer06",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[batchSync].[ErrorBatchSync]",
+					"storedProcedureParameters": {
+						"TabellaImport": {
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"Errore": {
+							"value": {
+								"value": "@pipeline().RunId",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"NomeFile": {
+							"value": "",
+							"type": "String"
+						},
+						"Modulo": {
+							"value": "Copy Data Sql To Oracle",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzSqlOracle_Test_StagingArea",
+					"type": "LinkedServiceReference"
+				}
 			}
 		],
+		"variables": {
+			"TableName": {
+				"type": "String",
+				"defaultValue": "DynInd_Customer_06"
+			}
+		},
 		"folder": {
 			"name": "Az_IntegrazioniBatch_Oracle_Test"
 		},
