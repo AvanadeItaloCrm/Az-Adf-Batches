@@ -133,7 +133,10 @@
 					"storedProcedureName": "[batchSync].[InizioSQL_ORACLEBatchSync]",
 					"storedProcedureParameters": {
 						"TabellaImport": {
-							"value": "@variables('TableName')",
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
 							"type": "String"
 						},
 						"NomeFile": {
