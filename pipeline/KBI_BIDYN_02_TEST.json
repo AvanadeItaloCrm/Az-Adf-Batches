@@ -136,7 +136,7 @@
 							"value": "@variables('TableName')",
 							"type": "String"
 						},
-						"Filename": {
+						"NomeFile": {
 							"value": "",
 							"type": "String"
 						}
