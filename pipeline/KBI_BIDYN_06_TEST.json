@@ -23,7 +23,7 @@
 					},
 					"sink": {
 						"type": "AzureSqlSink",
-						"tableOption": {
+						"preCopyScript": {
 							"value": "TRUNCATE TABLE [ntv].[DynInd_Customer_06]",
 							"type": "Expression"
 						},
