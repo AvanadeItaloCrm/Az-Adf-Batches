@@ -2,7 +2,7 @@
 	"name": "TEST_W_AGENTI_D365_DS_SQLSource",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzSqlOracle_Test_DesDYN365",
+			"referenceName": "AzureSqlTestStagingArea",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -309,8 +309,8 @@
 			}
 		],
 		"typeProperties": {
-			"schema": "dbo",
-			"table": "ntv_ntv_agent"
+			"schema": "batchSync",
+			"table": "v_ntv_ntv_agent"
 		}
 	}
 }
