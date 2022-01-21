@@ -1,0 +1,28 @@
+{
+	"name": "Dyn_Station_10",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlTestStagingArea",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Amount",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 2
+			},
+			{
+				"name": "Year",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "ntv",
+			"table": "DynInd_Station_10"
+		}
+	}
+}

@@ -30,17 +30,6 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "CANALE",
-									"type": "String"
-								},
-								"sink": {
-									"name": "Channel",
-									"type": "String",
-									"physicalType": "nchar"
-								}
-							},
-							{
-								"source": {
 									"name": "VENDUTO",
 									"type": "Decimal"
 								},
@@ -49,18 +38,7 @@
 									"type": "Decimal",
 									"physicalType": "decimal",
 									"scale": 2,
-									"precision": 18
-								}
-							},
-							{
-								"source": {
-									"name": "MESE",
-									"type": "Decimal"
-								},
-								"sink": {
-									"name": "Month",
-									"type": "Int32",
-									"physicalType": "int"
+									"precision": 22
 								}
 							},
 							{
@@ -90,7 +68,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "Dyn_Station_09",
+						"referenceName": "Dyn_Station_10",
 						"type": "DatasetReference"
 					}
 				]
