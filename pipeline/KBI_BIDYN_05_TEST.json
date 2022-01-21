@@ -46,24 +46,26 @@
 							},
 							{
 								"source": {
-									"name": "CANALE_ACQUISTO",
+									"name": "NOME_PRODOTTO",
 									"type": "String"
 								},
 								"sink": {
-									"name": "PurchaseChannel",
+									"name": "Class",
 									"type": "String",
 									"physicalType": "varchar"
 								}
 							},
 							{
 								"source": {
-									"name": "NUMERO_VIAGGI",
+									"name": "IMPORTO_LORDO",
 									"type": "Decimal"
 								},
 								"sink": {
-									"name": "TripCounter",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "ValueOfExpense",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 18
 								}
 							},
 							{
