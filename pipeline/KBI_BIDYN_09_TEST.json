@@ -1,10 +1,10 @@
 {
-	"name": "KBI_BIDYN_08_TEST",
+	"name": "KBI_BIDYN_09_TEST",
 	"properties": {
 		"description": "Flusso che legge da Oracle e scrive su DB Sql di Staging area",
 		"activities": [
 			{
-				"name": "BIDYN08-To-Station_08",
+				"name": "BIDYN09-To-Station_09",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -73,7 +73,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "DS_Kpi_BIDYN_08",
+						"referenceName": "DS_Kpi_BIDYN_09",
 						"type": "DatasetReference"
 					}
 				],

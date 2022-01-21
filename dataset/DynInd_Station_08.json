@@ -1,5 +1,5 @@
 {
-	"name": "DynInd_Station_09",
+	"name": "DynInd_Station_08",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureSqlTestStagingArea",
