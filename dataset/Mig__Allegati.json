@@ -1,0 +1,95 @@
+{
+	"name": "Mig__Allegati",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Mig_STGAzure",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migration"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ESTENSIONE_FILE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NOME_FILE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "REVISION_NUMBER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FILE_SIZE",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 0
+			},
+			{
+				"name": "SRCTYPE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NOME_FILE_COMPRESSO",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NOME_FILE_DECOMPRESSO",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NOME_FILE_FINALE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SR_NUM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CREATO_DA",
+				"type": "nvarchar"
+			},
+			{
+				"name": "MODIFICATO_DA",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DT_CREAZIONE",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "DT_MODIFICA",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "DT_FILE",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "LOTTO",
+				"type": "decimal",
+				"precision": 22,
+				"scale": 0
+			},
+			{
+				"name": "BatchId",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "stg",
+			"table": "M_ALLEGATI"
+		}
+	}
+}

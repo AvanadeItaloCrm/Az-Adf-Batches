@@ -1,0 +1,40 @@
+{
+	"name": "Mig_Allegato_Destination",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "mig_crmdevdyn365data",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"DestinationFile": {
+				"type": "string",
+				"defaultValue": "incident"
+			},
+			"FileName": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "Migration"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().FileName",
+					"type": "Expression"
+				},
+				"container": {
+					"value": "@dataset().DestinationFile",
+					"type": "Expression"
+				}
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
