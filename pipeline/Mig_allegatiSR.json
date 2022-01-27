@@ -1,0 +1,219 @@
+{
+	"name": "Mig_allegatiSR",
+	"properties": {
+		"activities": [
+			{
+				"name": "Get Metadata",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "Mig_Allegato1601",
+						"type": "DatasetReference",
+						"parameters": {
+							"FileSource": "staging-incident"
+						}
+					},
+					"fieldList": [
+						"itemName"
+					],
+					"storeSettings": {
+						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
+					}
+				}
+			},
+			{
+				"name": "Stored procedure1",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Get Metadata",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[datav].[pr_MetadataAllegati]",
+					"storedProcedureParameters": {
+						"Filenames": {
+							"value": {
+								"value": "@activity('Get Metadata').output.itemName",
+								"type": "Expression"
+							}
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "Mig_STGAzure",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Lookup1",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Stored procedure1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "\nSELECT B.SR_NUM+'_'+B.NOME_FILE+'.'+B.ESTENSIONE_FILE AS NOMEFILE\n  FROM [datav].[Metadata_crmdevdyn365data] A WITH (NOLOCK)\n\n  join [stg].[M_ALLEGATI] B WITH (NOLOCK)\n  ON A.FileName=CONCAT(CONCAT(B.NOME_FILE,'.'),B.ESTENSIONE_FILE)\n",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "Mig__Allegati",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Lookup1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "FILENAME_COMPLETO",
+					"value": {
+						"value": "@activity('Lookup1').output.value",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Set variable1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"metadata": [
+								{
+									"name": "Category",
+									"value": "Documentazione Generica"
+								}
+							]
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Mig_Allegato1601",
+						"type": "DatasetReference",
+						"parameters": {
+							"Filename": "16-01.txt",
+							"FileSource": "staging-incident"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Mig_Allegato_Destination",
+						"type": "DatasetReference",
+						"parameters": {
+							"DestinationFile": "incident",
+							"FileName": {
+								"value": "@replace(replace(string(variables('FILENAME_COMPLETO')),'[{\"NOMEFILE\":\"' , ''),'\"}]','')",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			}
+		],
+		"variables": {
+			"FILENAME_COMPLETO": {
+				"type": "Array"
+			}
+		},
+		"folder": {
+			"name": "Migration"
+		},
+		"annotations": []
+	}
+}
