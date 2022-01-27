@@ -16,9 +16,10 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Mig_Allegato1601",
+						"referenceName": "Mig_staging_incident",
 						"type": "DatasetReference",
 						"parameters": {
+							"Filename": "*",
 							"FileSource": "staging-incident"
 						}
 					},
@@ -36,46 +37,11 @@
 				}
 			},
 			{
-				"name": "Stored procedure1",
-				"type": "SqlServerStoredProcedure",
-				"dependsOn": [
-					{
-						"activity": "Get Metadata",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"storedProcedureName": "[datav].[pr_MetadataAllegati]",
-					"storedProcedureParameters": {
-						"Filenames": {
-							"value": {
-								"value": "@activity('Get Metadata').output.itemName",
-								"type": "Expression"
-							}
-						}
-					}
-				},
-				"linkedServiceName": {
-					"referenceName": "Mig_STGAzure",
-					"type": "LinkedServiceReference"
-				}
-			},
-			{
 				"name": "Lookup1",
 				"type": "Lookup",
 				"dependsOn": [
 					{
-						"activity": "Stored procedure1",
+						"activity": "ForEach1",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -104,31 +70,11 @@
 				}
 			},
 			{
-				"name": "Set variable1",
-				"type": "SetVariable",
-				"dependsOn": [
-					{
-						"activity": "Lookup1",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"variableName": "FILENAME_COMPLETO",
-					"value": {
-						"value": "@activity('Lookup1').output.value",
-						"type": "Expression"
-					}
-				}
-			},
-			{
 				"name": "Copy data1",
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "Set variable1",
+						"activity": "Append variable1",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -183,10 +129,10 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Mig_Allegato1601",
+						"referenceName": "Mig_staging_incident",
 						"type": "DatasetReference",
 						"parameters": {
-							"Filename": "16-01.txt",
+							"Filename": "*",
 							"FileSource": "staging-incident"
 						}
 					}
@@ -204,6 +150,76 @@
 						}
 					}
 				]
+			},
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Get Metadata",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Get Metadata').output.itemName",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Stored procedure",
+							"type": "SqlServerStoredProcedure",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"storedProcedureName": "[datav].[pr_MetadataAllegati]",
+								"storedProcedureParameters": {
+									"Filenames": {
+										"value": {
+											"value": "@activity('Get Metadata').output.itemName",
+											"type": "Expression"
+										}
+									}
+								}
+							},
+							"linkedServiceName": {
+								"referenceName": "Mig_STGAzure",
+								"type": "LinkedServiceReference"
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Append variable1",
+				"type": "AppendVariable",
+				"dependsOn": [
+					{
+						"activity": "Lookup1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "FILENAME_COMPLETO",
+					"value": {
+						"value": "@activity('Lookup1').output.value",
+						"type": "Expression"
+					}
+				}
 			}
 		],
 		"variables": {
