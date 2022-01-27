@@ -1,5 +1,5 @@
 {
-	"name": "Mig_Allegato1601",
+	"name": "Mig_staging_incident",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "mig_crmdevdyn365data",
@@ -7,8 +7,7 @@
 		},
 		"parameters": {
 			"Filename": {
-				"type": "string",
-				"defaultValue": "16-01.txt"
+				"type": "array"
 			},
 			"FileSource": {
 				"type": "string"
