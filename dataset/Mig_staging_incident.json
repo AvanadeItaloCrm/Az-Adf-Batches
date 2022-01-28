@@ -7,8 +7,7 @@
 		},
 		"parameters": {
 			"Filename": {
-				"type": "string",
-				"defaultValue": "16-01.txt"
+				"type": "string"
 			},
 			"FileSource": {
 				"type": "string",
