@@ -244,7 +244,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"Filename": {
-											"value": "@variables('FILENAME_COMPLETO')",
+											"value": "@array(variables('FILENAME_COMPLETO'))",
 											"type": "Expression"
 										},
 										"FileSource": "staging-incident"
