@@ -72,6 +72,11 @@
 				}
 			}
 		],
+		"parameters": {
+			"ParamPipeline2": {
+				"type": "string"
+			}
+		},
 		"variables": {
 			"FileName": {
 				"type": "String"
