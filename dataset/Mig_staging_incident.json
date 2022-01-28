@@ -10,7 +10,8 @@
 				"type": "string"
 			},
 			"FileSource": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "staging-incident"
 			}
 		},
 		"folder": {
