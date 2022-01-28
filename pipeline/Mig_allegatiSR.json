@@ -187,7 +187,7 @@
 								"storedProcedureParameters": {
 									"Filenames": {
 										"value": {
-											"value": "@array(item())",
+											"value": "@item().name",
 											"type": "Expression"
 										}
 									}
