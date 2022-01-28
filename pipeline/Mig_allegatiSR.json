@@ -175,11 +175,18 @@
 						{
 							"name": "If Condition1",
 							"type": "IfCondition",
-							"dependsOn": [],
+							"dependsOn": [
+								{
+									"activity": "Set variable2",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@equals(item().Filename,activity('Get Metadata_copy1').output.itemName)",
+									"value": "@equals(item().Filename,activity('Execute Pipeline1').value)",
 									"type": "Expression"
 								},
 								"ifTrueActivities": [
@@ -289,6 +296,39 @@
 									}
 								]
 							}
+						},
+						{
+							"name": "Set variable2",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "Execute Pipeline1",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "OutputPipeline2",
+								"value": {
+									"value": "@activity('Execute Pipeline1').output",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "Execute Pipeline1",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "Mig_IterazioneAllegati",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
 						}
 					]
 				}
@@ -312,65 +352,18 @@
 					"referenceName": "Mig_STGAzure",
 					"type": "LinkedServiceReference"
 				}
-			},
-			{
-				"name": "Get Metadata_copy1",
-				"type": "GetMetadata",
-				"dependsOn": [],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"dataset": {
-						"referenceName": "Mig_staging_incident",
-						"type": "DatasetReference",
-						"parameters": {
-							"Filename": "*",
-							"FileSource": "staging-incident"
-						}
-					},
-					"fieldList": [
-						"childItems",
-						"itemName"
-					],
-					"storeSettings": {
-						"type": "AzureBlobStorageReadSettings",
-						"recursive": true,
-						"enablePartitionDiscovery": false
-					},
-					"formatSettings": {
-						"type": "DelimitedTextReadSettings"
-					}
-				}
-			},
-			{
-				"name": "ForEach3",
-				"type": "ForEach",
-				"dependsOn": [
-					{
-						"activity": "Get Metadata_copy1",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"items": {
-						"value": "@activity('Get Metadata_copy1').output.childItems",
-						"type": "Expression"
-					},
-					"isSequential": true
-				}
 			}
 		],
+		"parameters": {
+			"ParamPipeline2": {
+				"type": "string"
+			}
+		},
 		"variables": {
 			"FILENAME_COMPLETO": {
+				"type": "String"
+			},
+			"OutputPipeline2": {
 				"type": "String"
 			}
 		},
