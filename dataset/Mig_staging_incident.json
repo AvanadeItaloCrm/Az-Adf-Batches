@@ -10,7 +10,7 @@
 				"type": "string"
 			},
 			"FileSource": {
-				"type": "string",
+				"type": "array",
 				"defaultValue": "staging-incident"
 			}
 		},

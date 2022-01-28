@@ -189,7 +189,16 @@
 								"secureOutput": false,
 								"secureInput": false
 							},
-							"userProperties": [],
+							"userProperties": [
+								{
+									"name": "Source",
+									"value": "@{'staging-incident'}//@{'*'}"
+								},
+								{
+									"name": "Destination",
+									"value": "@{'incident'}//@{replace(replace(string(variables('FILENAME_COMPLETO')),'[{\"NOMEFILE\":\"' , ''),'\"}]','')}"
+								}
+							],
 							"typeProperties": {
 								"source": {
 									"type": "DelimitedTextSource",
