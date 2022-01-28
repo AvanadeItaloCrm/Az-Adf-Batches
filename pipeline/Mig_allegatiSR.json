@@ -243,7 +243,10 @@
 									"referenceName": "Mig_staging_incident",
 									"type": "DatasetReference",
 									"parameters": {
-										"Filename": "*",
+										"Filename": {
+											"value": "@variables('FILENAME_COMPLETO')",
+											"type": "Expression"
+										},
 										"FileSource": "staging-incident"
 									}
 								}
