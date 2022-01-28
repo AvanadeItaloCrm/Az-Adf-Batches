@@ -7,7 +7,7 @@
 		},
 		"parameters": {
 			"Filename": {
-				"type": "string"
+				"type": "array"
 			},
 			"FileSource": {
 				"type": "string",
