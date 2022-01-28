@@ -314,6 +314,11 @@
 				}
 			}
 		],
+		"parameters": {
+			"ParamPipeline": {
+				"type": "string"
+			}
+		},
 		"variables": {
 			"FILENAME_COMPLETO": {
 				"type": "String"
