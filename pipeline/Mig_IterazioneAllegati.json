@@ -159,7 +159,7 @@
 				}
 			},
 			{
-				"name": "Get Metadata_copy1",
+				"name": "Get Metadata1",
 				"type": "GetMetadata",
 				"dependsOn": [
 					{
@@ -200,11 +200,11 @@
 				}
 			},
 			{
-				"name": "ForEach1_copy1",
+				"name": "ForEach",
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "Get Metadata_copy1",
+						"activity": "Get Metadata1",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -213,7 +213,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('Get Metadata').output.childItems",
+						"value": "@activity('Get Metadata1').output.childItems",
 						"type": "Expression"
 					},
 					"isSequential": true,
@@ -254,7 +254,7 @@
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "ForEach1_copy1",
+						"activity": "ForEach",
 						"dependencyConditions": [
 							"Succeeded"
 						]
