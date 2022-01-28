@@ -11,7 +11,7 @@
 				"defaultValue": "incident"
 			},
 			"FileName": {
-				"type": "array"
+				"type": "string"
 			}
 		},
 		"folder": {
