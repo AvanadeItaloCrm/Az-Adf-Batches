@@ -179,7 +179,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@equals(item().Filename,activity('Execute Pipeline1').value)",
+									"value": "@equals(item().Filename,pipeline().parameters.ParamPipeline2)",
 									"type": "Expression"
 								},
 								"ifTrueActivities": [
