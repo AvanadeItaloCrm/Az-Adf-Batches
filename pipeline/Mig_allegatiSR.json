@@ -316,7 +316,7 @@
 		],
 		"parameters": {
 			"ParamPipeline": {
-				"type": "array"
+				"type": "string"
 			}
 		},
 		"variables": {
