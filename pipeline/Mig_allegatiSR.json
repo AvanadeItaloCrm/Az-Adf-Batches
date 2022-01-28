@@ -5,7 +5,14 @@
 			{
 				"name": "Get Metadata",
 				"type": "GetMetadata",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Truncate Metadata_crmdevdyn365data",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -37,11 +44,11 @@
 				}
 			},
 			{
-				"name": "Lookup1",
+				"name": "Vista dei file non importati",
 				"type": "Lookup",
 				"dependsOn": [
 					{
-						"activity": "ForEach1",
+						"activity": "Load AllegatiSR",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -58,12 +65,12 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "\nSELECT B.SR_NUM+'_'+B.NOME_FILE+'.'+B.ESTENSIONE_FILE AS NOMEFILE\n  FROM [datav].[Metadata_crmdevdyn365data] A WITH (NOLOCK)\n\n  join [stg].[M_ALLEGATI] B WITH (NOLOCK)\n  ON A.FileName=CONCAT(CONCAT(B.NOME_FILE,'.'),B.ESTENSIONE_FILE)\n",
+						"sqlReaderQuery": "",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
 					"dataset": {
-						"referenceName": "Mig__Allegati",
+						"referenceName": "Mig_SR_Allegati",
 						"type": "DatasetReference"
 					},
 					"firstRowOnly": false
@@ -206,7 +213,7 @@
 				"type": "AppendVariable",
 				"dependsOn": [
 					{
-						"activity": "Lookup1",
+						"activity": "Vista dei file non importati",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -215,9 +222,58 @@
 				"userProperties": [],
 				"typeProperties": {
 					"variableName": "FILENAME_COMPLETO",
-					"value": {
-						"value": "@activity('Lookup1').output.value",
-						"type": "Expression"
+					"value": ""
+				}
+			},
+			{
+				"name": "Load AllegatiSR",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "ForEach1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[datav].[pr_Load_AllegatiSR]"
+				},
+				"linkedServiceName": {
+					"referenceName": "Mig_STGAzure",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Truncate Metadata_crmdevdyn365data",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "TRUNCATE TABLE [datav].[Metadata_crmdevdyn365data]",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "Mig_stgMetadati",
+						"type": "DatasetReference"
 					}
 				}
 			}

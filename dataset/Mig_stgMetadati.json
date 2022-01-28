@@ -1,0 +1,29 @@
+{
+	"name": "Mig_stgMetadati",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Mig_STGAzure",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migration"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "FileName",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "datav",
+			"table": "Metadata_crmdevdyn365data"
+		}
+	}
+}
