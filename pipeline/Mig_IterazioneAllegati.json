@@ -98,11 +98,6 @@
 				}
 			}
 		],
-		"parameters": {
-			"ParamPipeline1": {
-				"type": "string"
-			}
-		},
 		"variables": {
 			"FileName": {
 				"type": "String"
