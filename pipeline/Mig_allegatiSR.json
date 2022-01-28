@@ -175,14 +175,7 @@
 						{
 							"name": "If Condition1",
 							"type": "IfCondition",
-							"dependsOn": [
-								{
-									"activity": "Set variable2",
-									"dependencyConditions": [
-										"Succeeded"
-									]
-								}
-							],
+							"dependsOn": [],
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
@@ -296,39 +289,6 @@
 									}
 								]
 							}
-						},
-						{
-							"name": "Set variable2",
-							"type": "SetVariable",
-							"dependsOn": [
-								{
-									"activity": "Execute Pipeline1",
-									"dependencyConditions": [
-										"Succeeded"
-									]
-								}
-							],
-							"userProperties": [],
-							"typeProperties": {
-								"variableName": "OutputPipeline2",
-								"value": {
-									"value": "@activity('Execute Pipeline1').output",
-									"type": "Expression"
-								}
-							}
-						},
-						{
-							"name": "Execute Pipeline1",
-							"type": "ExecutePipeline",
-							"dependsOn": [],
-							"userProperties": [],
-							"typeProperties": {
-								"pipeline": {
-									"referenceName": "Mig_IterazioneAllegati",
-									"type": "PipelineReference"
-								},
-								"waitOnCompletion": true
-							}
 						}
 					]
 				}
@@ -355,7 +315,7 @@
 			}
 		],
 		"parameters": {
-			"ParamPipeline2": {
+			"ParamPipeline": {
 				"type": "string"
 			}
 		},
