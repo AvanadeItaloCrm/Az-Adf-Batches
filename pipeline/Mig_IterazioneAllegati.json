@@ -5,7 +5,14 @@
 			{
 				"name": "Get Metadata",
 				"type": "GetMetadata",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Stored procedure1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -125,6 +132,26 @@
 				"userProperties": [],
 				"typeProperties": {
 					"storedProcedureName": "[log].[pr_UpdateIsImported_Allegati]"
+				},
+				"linkedServiceName": {
+					"referenceName": "Mig_STGAzure",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Stored procedure1",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[datav].[pr_Truncate_Allegati]"
 				},
 				"linkedServiceName": {
 					"referenceName": "Mig_STGAzure",
