@@ -7,10 +7,10 @@
 		},
 		"parameters": {
 			"Filename": {
-				"type": "string"
+				"type": "array"
 			},
 			"FileSource": {
-				"type": "array",
+				"type": "string",
 				"defaultValue": "staging-incident"
 			}
 		},
