@@ -87,7 +87,7 @@
 								},
 								"waitOnCompletion": true,
 								"parameters": {
-									"ParamPipeline": {
+									"ParamPipeline2": {
 										"value": "@variables('FileName')",
 										"type": "Expression"
 									}

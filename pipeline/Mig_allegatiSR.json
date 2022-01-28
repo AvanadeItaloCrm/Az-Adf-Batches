@@ -315,15 +315,12 @@
 			}
 		],
 		"parameters": {
-			"ParamPipeline": {
+			"ParamPipeline2": {
 				"type": "string"
 			}
 		},
 		"variables": {
 			"FILENAME_COMPLETO": {
-				"type": "String"
-			},
-			"OutputPipeline2": {
 				"type": "String"
 			}
 		},
