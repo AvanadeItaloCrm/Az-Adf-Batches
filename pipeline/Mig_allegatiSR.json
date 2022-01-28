@@ -65,7 +65,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "SELECT SR_FileName\nFROM [datav].[AllegatiSR]\nWHERE IsImported=0",
+						"sqlReaderQuery": "SELECT SR_FileName,filename\nFROM [datav].[AllegatiSR]\nWHERE IsImported=0",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -170,112 +170,124 @@
 						"value": "@activity('Vista dei file non importati').output.value",
 						"type": "Expression"
 					},
+					"isSequential": true,
 					"activities": [
 						{
-							"name": "Copy data1",
-							"type": "Copy",
-							"dependsOn": [
-								{
-									"activity": "Append variable1",
-									"dependencyConditions": [
-										"Succeeded"
-									]
-								}
-							],
-							"policy": {
-								"timeout": "7.00:00:00",
-								"retry": 0,
-								"retryIntervalInSeconds": 30,
-								"secureOutput": false,
-								"secureInput": false
-							},
-							"userProperties": [
-								{
-									"name": "Source",
-									"value": "@{'staging-incident'}//@{'*'}"
-								},
-								{
-									"name": "Destination",
-									"value": "@{'incident'}//@{replace(replace(string(variables('FILENAME_COMPLETO')),'[{\"NOMEFILE\":\"' , ''),'\"}]','')}"
-								}
-							],
-							"typeProperties": {
-								"source": {
-									"type": "DelimitedTextSource",
-									"storeSettings": {
-										"type": "AzureBlobStorageReadSettings",
-										"recursive": true,
-										"enablePartitionDiscovery": false
-									},
-									"formatSettings": {
-										"type": "DelimitedTextReadSettings"
-									}
-								},
-								"sink": {
-									"type": "DelimitedTextSink",
-									"storeSettings": {
-										"type": "AzureBlobStorageWriteSettings",
-										"metadata": [
-											{
-												"name": "Category",
-												"value": "Documentazione Generica"
-											}
-										]
-									},
-									"formatSettings": {
-										"type": "DelimitedTextWriteSettings",
-										"quoteAllText": true,
-										"fileExtension": ".txt"
-									}
-								},
-								"enableStaging": false,
-								"translator": {
-									"type": "TabularTranslator",
-									"typeConversion": true,
-									"typeConversionSettings": {
-										"allowDataTruncation": true,
-										"treatBooleanAsNumber": false
-									}
-								}
-							},
-							"inputs": [
-								{
-									"referenceName": "Mig_staging_incident",
-									"type": "DatasetReference",
-									"parameters": {
-										"Filename": {
-											"value": "@array(variables('FILENAME_COMPLETO'))",
-											"type": "Expression"
-										},
-										"FileSource": "staging-incident"
-									}
-								}
-							],
-							"outputs": [
-								{
-									"referenceName": "Mig_Allegato_Destination",
-									"type": "DatasetReference",
-									"parameters": {
-										"DestinationFile": "incident",
-										"FileName": {
-											"value": "@replace(replace(string(variables('FILENAME_COMPLETO')),'[{\"NOMEFILE\":\"' , ''),'\"}]','')",
-											"type": "Expression"
-										}
-									}
-								}
-							]
-						},
-						{
-							"name": "Append variable1",
-							"type": "AppendVariable",
+							"name": "If Condition1",
+							"type": "IfCondition",
 							"dependsOn": [],
 							"userProperties": [],
 							"typeProperties": {
-								"variableName": "FILENAME_COMPLETO",
-								"value": {
-									"value": "@item().SR_FileName",
+								"expression": {
+									"value": "@equals(item().Filename,activity('Get Metadata_copy1').output.itemName)",
 									"type": "Expression"
-								}
+								},
+								"ifTrueActivities": [
+									{
+										"name": "Copy data1",
+										"type": "Copy",
+										"dependsOn": [
+											{
+												"activity": "Set variable1",
+												"dependencyConditions": [
+													"Succeeded"
+												]
+											}
+										],
+										"policy": {
+											"timeout": "7.00:00:00",
+											"retry": 0,
+											"retryIntervalInSeconds": 30,
+											"secureOutput": false,
+											"secureInput": false
+										},
+										"userProperties": [
+											{
+												"name": "Source",
+												"value": "@{'staging-incident'}//@{'*'}"
+											},
+											{
+												"name": "Destination",
+												"value": "@{'incident'}//@{replace(replace(string(variables('FILENAME_COMPLETO')),'[{\"NOMEFILE\":\"' , ''),'\"}]','')}"
+											}
+										],
+										"typeProperties": {
+											"source": {
+												"type": "DelimitedTextSource",
+												"storeSettings": {
+													"type": "AzureBlobStorageReadSettings",
+													"recursive": true,
+													"enablePartitionDiscovery": false
+												},
+												"formatSettings": {
+													"type": "DelimitedTextReadSettings"
+												}
+											},
+											"sink": {
+												"type": "DelimitedTextSink",
+												"storeSettings": {
+													"type": "AzureBlobStorageWriteSettings",
+													"metadata": [
+														{
+															"name": "Category",
+															"value": "Documentazione Generica"
+														}
+													]
+												},
+												"formatSettings": {
+													"type": "DelimitedTextWriteSettings",
+													"quoteAllText": true,
+													"fileExtension": ".txt"
+												}
+											},
+											"enableStaging": false,
+											"translator": {
+												"type": "TabularTranslator",
+												"typeConversion": true,
+												"typeConversionSettings": {
+													"allowDataTruncation": true,
+													"treatBooleanAsNumber": false
+												}
+											}
+										},
+										"inputs": [
+											{
+												"referenceName": "Mig_staging_incident",
+												"type": "DatasetReference",
+												"parameters": {
+													"Filename": "*",
+													"FileSource": "staging-incident"
+												}
+											}
+										],
+										"outputs": [
+											{
+												"referenceName": "Mig_Allegato_Destination",
+												"type": "DatasetReference",
+												"parameters": {
+													"DestinationFile": "incident",
+													"FileName": {
+														"value": "@replace(replace(string(variables('FILENAME_COMPLETO')),'[{\"NOMEFILE\":\"' , ''),'\"}]','')",
+														"type": "Expression"
+													}
+												}
+											}
+										]
+									},
+									{
+										"name": "Set variable1",
+										"type": "SetVariable",
+										"dependsOn": [],
+										"userProperties": [],
+										"typeProperties": {
+											"variableName": "FILENAME_COMPLETO",
+											"value": {
+												"value": "@item().SR_FileName",
+												"type": "Expression"
+											}
+										}
+									}
+								]
 							}
 						}
 					]
@@ -300,11 +312,66 @@
 					"referenceName": "Mig_STGAzure",
 					"type": "LinkedServiceReference"
 				}
+			},
+			{
+				"name": "Get Metadata_copy1",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "Mig_staging_incident",
+						"type": "DatasetReference",
+						"parameters": {
+							"Filename": "*",
+							"FileSource": "staging-incident"
+						}
+					},
+					"fieldList": [
+						"childItems",
+						"itemName"
+					],
+					"storeSettings": {
+						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
+					}
+				}
+			},
+			{
+				"name": "ForEach3",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Get Metadata_copy1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Get Metadata_copy1').output.childItems",
+						"type": "Expression"
+					},
+					"isSequential": true
+				}
 			}
 		],
 		"variables": {
 			"FILENAME_COMPLETO": {
-				"type": "Array"
+				"type": "String"
 			}
 		},
 		"folder": {
