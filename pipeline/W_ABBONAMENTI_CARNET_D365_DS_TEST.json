@@ -94,7 +94,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT * FROM batchSync.v_ntv_ntv_asset WHERE ntv_contact.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or ntv_ntv_asset.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or ntv_account.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or ntv_account_1.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or ntv_contact_1.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"value": "@concat('SELECT * FROM batchSync.v_ntv_ntv_asset WHERE c.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or ass.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or a.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or a1.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or c1.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
