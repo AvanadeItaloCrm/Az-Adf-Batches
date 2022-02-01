@@ -5,6 +5,11 @@
 			"referenceName": "MassiveImports_BlobStorageLS",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"FileName": {
+				"type": "string"
+			}
+		},
 		"folder": {
 			"name": "D365_MassiveImports"
 		},
@@ -13,6 +18,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().Filename",
+					"type": "Expression"
+				},
 				"container": "massiveimports"
 			},
 			"columnDelimiter": ";",
