@@ -106,6 +106,21 @@
 						"preCopyScript": "truncate table sa_d365_test.W_ISO_NAZIONE_SR_D365_DS"
 					},
 					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"logSettings": {
+						"enableCopyActivityLog": true,
+						"copyActivityLogSettings": {
+							"logLevel": "Warning",
+							"enableReliableLogging": false
+						},
+						"logLocationSettings": {
+							"linkedServiceName": {
+								"referenceName": "AzureBlobStorage_Test",
+								"type": "LinkedServiceReference"
+							},
+							"path": "batchfiles/Errors"
+						}
+					},
 					"translator": {
 						"type": "TabularTranslator",
 						"mappings": [
