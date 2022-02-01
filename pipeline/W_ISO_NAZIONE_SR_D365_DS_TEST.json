@@ -94,7 +94,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT * FROM dbo.ntv_ntv_nation WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"value": "@concat('SELECT ntv_isonation,iif(ntv_issepa=0,''N'',''Y'') as ntv_issepa,ntv_name FROM ntv_ntv_nation WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -122,8 +122,9 @@
 							},
 							{
 								"source": {
-									"name": "ntv_area",
-									"physicalType": "datetime"
+									"name": "ntv_issepa",
+									"type": "Boolean",
+									"physicalType": "bit"
 								},
 								"sink": {
 									"name": "CLASSIFICAZIONE_AREA",
