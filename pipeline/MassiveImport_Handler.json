@@ -100,15 +100,24 @@
 							"metadata": [
 								{
 									"name": "DisplayName",
-									"value": ""
+									"value": {
+										"value": "@variables('NewFile_DisplayName')",
+										"type": "Expression"
+									}
 								},
 								{
 									"name": "Category",
-									"value": ""
+									"value": {
+										"value": "@variables('NewFile_Category')",
+										"type": "Expression"
+									}
 								},
 								{
 									"name": "CategoryCode",
-									"value": ""
+									"value": {
+										"value": "@variables('NewFile_CategoryCode')",
+										"type": "Expression"
+									}
 								},
 								{
 									"name": "link",
@@ -180,6 +189,15 @@
 			"SASTokenURL": {
 				"type": "String",
 				"defaultValue": "sp=r&st=2022-02-01T12:03:40Z&se=2027-02-01T20:03:40Z&spr=https&sv=2020-08-04&sr=c&sig=jy%2BiJ6O%2FIOtMMy56WRmIifwB8y6%2FTgdl%2Bt32%2FJMMEiM%3D"
+			},
+			"NewFile_DisplayName": {
+				"type": "String"
+			},
+			"NewFile_Category": {
+				"type": "String"
+			},
+			"NewFile_CategoryCode": {
+				"type": "String"
 			}
 		},
 		"folder": {
