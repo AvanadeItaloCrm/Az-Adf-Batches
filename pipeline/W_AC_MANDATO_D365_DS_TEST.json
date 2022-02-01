@@ -94,7 +94,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT Id, ntv_validityenddate, ntv_validitystartdate, ntv_mandatesubscriptiondate, ntv_bankbic, ntv_causal, ntv_subscriberfiscalnumber, ntv_debitaccountiban, ntv_sddmandateid, ntv_accountid, ntv_mandatesigningplace, ntv_collectiontypecode, ntv_sequencetypecode, ntv_debtorname  FROM   ntv_ntv_sddmandate WHERE ntv_ntv_sddmandate.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"value": "@concat('SELECT * FROM batchSync.v_ntv_ntv_sddmandate WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
