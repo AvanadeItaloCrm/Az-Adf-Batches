@@ -22,6 +22,26 @@
 					"method": "GET",
 					"disableCertValidation": true
 				}
+			},
+			{
+				"name": "Set Category Name",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "GetBlobMetadata",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "MetadataType",
+					"value": {
+						"value": "@activity('GetBlobMetadata').output.ADFWebActivityResponseHeaders['x-ms-meta-Category']",
+						"type": "Expression"
+					}
+				}
 			}
 		],
 		"parameters": {
