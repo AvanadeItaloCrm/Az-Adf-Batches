@@ -94,7 +94,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT ntv_isonation,iif(ntv_issepa=0,''N'',''Y'') as ntv_issepa,ntv_name FROM ntv_ntv_nation union select null as ntv_isonation,''y'' as ntv_issepa,''ntv_namesssssssssssssssgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggssssssssssssssssssssssssssssssssssssssssssss'' ntv_name FROM ntv_ntv_nation WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"value": "@concat('SELECT ntv_isonation,iif(ntv_issepa=0,''N'',''Y'') as ntv_issepa,ntv_name FROM ntv_ntv_nation union select null as ntv_isonation,''y'' as ntv_issepa,''ntv_namessssssss'' ntv_name FROM ntv_ntv_nation WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
