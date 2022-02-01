@@ -1,0 +1,52 @@
+{
+	"name": "MassiveImport_Handler",
+	"properties": {
+		"activities": [
+			{
+				"name": "GetBlobMetadata",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": {
+						"value": "@concat(pipeline().parameters.BlobStorageURL,'/',pipeline().parameters.FolderPath,'/',pipeline().parameters.FileName, '?' ,variables('SASTokenURL'))",
+						"type": "Expression"
+					},
+					"method": "GET",
+					"disableCertValidation": true
+				}
+			}
+		],
+		"parameters": {
+			"BlobStorageURL": {
+				"type": "string"
+			},
+			"FolderPath": {
+				"type": "string"
+			},
+			"FileName": {
+				"type": "string"
+			}
+		},
+		"variables": {
+			"MetadataType": {
+				"type": "String"
+			},
+			"SASTokenURL": {
+				"type": "String",
+				"defaultValue": "sp=r&st=2022-02-01T12:03:40Z&se=2027-02-01T20:03:40Z&spr=https&sv=2020-08-04&sr=c&sig=jy%2BiJ6O%2FIOtMMy56WRmIifwB8y6%2FTgdl%2Bt32%2FJMMEiM%3D"
+			}
+		},
+		"folder": {
+			"name": "D365_MassiveImports"
+		},
+		"annotations": []
+	}
+}
