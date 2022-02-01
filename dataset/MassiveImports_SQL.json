@@ -1,0 +1,33 @@
+{
+	"name": "MassiveImports_SQL",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "MassiveImports_SQL_LS",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"TableName": {
+				"type": "string"
+			},
+			"TableSchema": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "D365_MassiveImports"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": {
+				"value": "@dataset().TableSchema",
+				"type": "Expression"
+			},
+			"table": {
+				"value": "@dataset().TableName",
+				"type": "Expression"
+			}
+		}
+	}
+}
