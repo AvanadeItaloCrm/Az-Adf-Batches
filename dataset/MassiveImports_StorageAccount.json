@@ -1,0 +1,24 @@
+{
+	"name": "MassiveImports_StorageAccount",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "MassiveImports_BlobStorageLS",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "D365_MassiveImports"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "massiveimports"
+			},
+			"columnDelimiter": ";",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
