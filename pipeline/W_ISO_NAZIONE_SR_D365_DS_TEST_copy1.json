@@ -107,6 +107,7 @@
 					},
 					"enableStaging": false,
 					"enableSkipIncompatibleRow": true,
+					"validateDataConsistency": true,
 					"logSettings": {
 						"enableCopyActivityLog": true,
 						"copyActivityLogSettings": {
