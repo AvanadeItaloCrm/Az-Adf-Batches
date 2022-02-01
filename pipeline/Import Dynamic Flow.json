@@ -15,15 +15,9 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[dbo].[Massive_Imports]",
-					"storedProcedureParameters": {
-						"TableName": {
-							"value": {
-								"value": "@pipeline().parameters.CreateTableSP_Name",
-								"type": "Expression"
-							},
-							"type": "String"
-						}
+					"storedProcedureName": {
+						"value": "@pipeline().parameters.CreateTableSP_Name",
+						"type": "Expression"
 					}
 				},
 				"linkedServiceName": {
@@ -69,12 +63,8 @@
 					},
 					"enableStaging": false,
 					"translator": {
-						"type": "TabularTranslator",
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
-						}
+						"value": "@activity('Get Mapping IN').output",
+						"type": "Expression"
 					}
 				},
 				"inputs": [
@@ -262,17 +252,7 @@
 				"inputs": [
 					{
 						"referenceName": "MassiveImports_SQL",
-						"type": "DatasetReference",
-						"parameters": {
-							"TableName": {
-								"value": "@activity('Import Type Switch').output.TableName",
-								"type": "Expression"
-							},
-							"TableSchema": {
-								"value": "@activity('Import Type Switch').output.TableSchema",
-								"type": "Expression"
-							}
-						}
+						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
@@ -306,14 +286,32 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": {
+						"value": "@pipeline().parameters.DeleteTableSP_Name",
+						"type": "Expression"
+					},
+					"storedProcedureParameters": {
+						"TableName": {
+							"value": {
+								"value": "@variables('CreatedTableName')",
+								"type": "Expression"
+							}
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "MassiveImports_SQL_LS",
+					"type": "LinkedServiceReference"
+				}
 			},
 			{
 				"name": "Get Mapping IN",
 				"type": "Lookup",
 				"dependsOn": [
 					{
-						"activity": "Create Table Import",
+						"activity": "Set CreatedTableName",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -355,6 +353,26 @@
 						"type": "DatasetReference"
 					}
 				}
+			},
+			{
+				"name": "Set CreatedTableName",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Create Table Import",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "CreatedTableName",
+					"value": {
+						"value": "@activity('Create Table Import').output.TableName",
+						"type": "Expression"
+					}
+				}
 			}
 		],
 		"parameters": {
@@ -378,6 +396,11 @@
 			},
 			"CategoryName": {
 				"type": "string"
+			}
+		},
+		"variables": {
+			"CreatedTableName": {
+				"type": "String"
 			}
 		},
 		"folder": {
