@@ -1,0 +1,160 @@
+{
+	"name": "Import Dynamic Flow",
+	"properties": {
+		"activities": [
+			{
+				"name": "Create Table Import",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[Massive_Imports]",
+					"storedProcedureParameters": {
+						"TableName": {
+							"value": {
+								"value": "@pipeline().parameters.CreateTableSP_Name",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "MassiveImports_SQL_LS",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Get CSV Records",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Create Table Import",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "MassiveImports_StorageAccount",
+						"type": "DatasetReference",
+						"parameters": {
+							"FileName": {
+								"value": "@pipeline().parameters.FileName",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "MassiveImports_SQL",
+						"type": "DatasetReference",
+						"parameters": {
+							"TableName": {
+								"value": "@activity('Create Table Import').output.TableName",
+								"type": "Expression"
+							},
+							"TableSchema": {
+								"value": "@activity('Create Table Import').output.TableSchema",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			},
+			{
+				"name": "Execute SSIS",
+				"type": "ExecuteSSISPackage",
+				"dependsOn": [
+					{
+						"activity": "Get CSV Records",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"packageLocation": {
+						"type": "SSISDB"
+					},
+					"environmentPath": null,
+					"connectVia": {
+						"referenceName": "Italo-devtest-IntegrationRuntimeSSIS",
+						"type": "IntegrationRuntimeReference"
+					},
+					"loggingLevel": "Basic"
+				}
+			}
+		],
+		"parameters": {
+			"CreateTableSP_Name": {
+				"type": "string"
+			},
+			"PackagePath": {
+				"type": "string"
+			},
+			"EnvironmentPath": {
+				"type": "string"
+			},
+			"FileName": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "D365_MassiveImports"
+		},
+		"annotations": []
+	}
+}
