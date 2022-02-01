@@ -74,7 +74,22 @@
 											"referenceName": "Import Dynamic Flow",
 											"type": "PipelineReference"
 										},
-										"waitOnCompletion": true
+										"waitOnCompletion": true,
+										"parameters": {
+											"CreateTableSP_Name": "dbo.sp_Massive_Imports_AmministrazionePromocode",
+											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/AmministrazionePromocode.dtsx",
+											"EnvironmentPath": "DEV",
+											"FileName": {
+												"value": "@pipeline().parameters.FileName",
+												"type": "Expression"
+											},
+											"DeleteTableSP_Name": "dbo.sp_DeleteMassiveImportsTable",
+											"FindFlowMappingsSP_Name": "dbo.sp_FindFlowMappings",
+											"CategoryName": {
+												"value": "@variables('MetadataType')",
+												"type": "Expression"
+											}
+										}
 									}
 								}
 							]
@@ -101,15 +116,6 @@
 			"SASTokenURL": {
 				"type": "String",
 				"defaultValue": "sp=r&st=2022-02-01T12:03:40Z&se=2027-02-01T20:03:40Z&spr=https&sv=2020-08-04&sr=c&sig=jy%2BiJ6O%2FIOtMMy56WRmIifwB8y6%2FTgdl%2Bt32%2FJMMEiM%3D"
-			},
-			"NewFile_DisplayName": {
-				"type": "String"
-			},
-			"NewFile_Category": {
-				"type": "String"
-			},
-			"NewFile_CategoryCode": {
-				"type": "String"
 			}
 		},
 		"folder": {
