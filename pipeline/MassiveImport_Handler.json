@@ -62,7 +62,22 @@
 					},
 					"cases": [
 						{
-							"value": "AMMINISTRAZIONEPROMOCODE"
+							"value": "AMMINISTRAZIONEPROMOCODE",
+							"activities": [
+								{
+									"name": "Execute Import",
+									"type": "ExecutePipeline",
+									"dependsOn": [],
+									"userProperties": [],
+									"typeProperties": {
+										"pipeline": {
+											"referenceName": "Import Dynamic Flow",
+											"type": "PipelineReference"
+										},
+										"waitOnCompletion": true
+									}
+								}
+							]
 						}
 					]
 				}
