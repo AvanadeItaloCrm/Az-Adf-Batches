@@ -1,0 +1,29 @@
+{
+	"name": "MassiveImports_Trigger_DEV",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "MassiveImport_Handler",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"BlobStorageURL": "https://crmdevdyn365data.blob.core.windows.net",
+					"FolderPath": "@triggerBody().folderPath",
+					"FileName": "@triggerBody().fileName"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/massiveimports/blobs/",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/ae9204f7-a24b-4876-b3cc-7adf107242e0/resourceGroups/crm-dev-core/providers/Microsoft.Storage/storageAccounts/crmdevdyn365data",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}
