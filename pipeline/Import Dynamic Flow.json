@@ -117,9 +117,16 @@
 				"userProperties": [],
 				"typeProperties": {
 					"packageLocation": {
+						"packagePath": {
+							"value": "@pipeline().parameters.PackagePath",
+							"type": "Expression"
+						},
 						"type": "SSISDB"
 					},
-					"environmentPath": null,
+					"environmentPath": {
+						"value": "@pipeline().parameters.EnvironmentPath",
+						"type": "Expression"
+					},
 					"connectVia": {
 						"referenceName": "Italo-devtest-IntegrationRuntimeSSIS",
 						"type": "IntegrationRuntimeReference"
