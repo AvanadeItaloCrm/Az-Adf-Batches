@@ -42,6 +42,124 @@
 						"type": "Expression"
 					}
 				}
+			},
+			{
+				"name": "Import Type Switch",
+				"type": "Switch",
+				"dependsOn": [
+					{
+						"activity": "Set Category Name",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"on": {
+						"value": "@toUpper(trim(variables('MetadataType')))",
+						"type": "Expression"
+					},
+					"cases": [
+						{
+							"value": "AMMINISTRAZIONEPROMOCODE"
+						}
+					]
+				}
+			},
+			{
+				"name": "Write Result File",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Import Type Switch",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "SELECT 1",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"metadata": [
+								{
+									"name": "DisplayName",
+									"value": ""
+								},
+								{
+									"name": "Category",
+									"value": ""
+								},
+								{
+									"name": "CategoryCode",
+									"value": ""
+								},
+								{
+									"name": "link",
+									"value": "null"
+								}
+							]
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "MassiveImports_SQL",
+						"type": "DatasetReference",
+						"parameters": {
+							"TableName": {
+								"value": "@activity('Import Type Switch').output.TableName",
+								"type": "Expression"
+							},
+							"TableSchema": {
+								"value": "@activity('Import Type Switch').output.TableSchema",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "MassiveImports_StorageAccount",
+						"type": "DatasetReference",
+						"parameters": {
+							"FileName": {
+								"value": "@replace(pipeline().parameters.FileName, '.csv','Report.csv')",
+								"type": "Expression"
+							}
+						}
+					}
+				]
 			}
 		],
 		"parameters": {
