@@ -405,7 +405,7 @@
 				"typeProperties": {
 					"variableName": "CreatedTableName",
 					"value": {
-						"value": "@activity('Create Table Import').output.TableName",
+						"value": "@activity('Create Table Import').output.tableName",
 						"type": "Expression"
 					}
 				}
