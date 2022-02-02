@@ -97,10 +97,6 @@
 						},
 						"type": "SSISDB"
 					},
-					"environmentPath": {
-						"value": "@pipeline().parameters.EnvironmentPath",
-						"type": "Expression"
-					},
 					"connectVia": {
 						"referenceName": "Italo-devtest-IntegrationRuntimeSSIS",
 						"type": "IntegrationRuntimeReference"
