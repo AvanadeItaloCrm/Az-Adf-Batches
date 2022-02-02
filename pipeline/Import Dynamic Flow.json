@@ -186,7 +186,14 @@
 					},
 					"dataset": {
 						"referenceName": "MassiveImports_SQL",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"TableName": {
+								"value": "@variables('CreatedTableName')",
+								"type": "Expression"
+							},
+							"TableSchema": "dbo"
+						}
 					}
 				}
 			},
@@ -267,7 +274,14 @@
 				"inputs": [
 					{
 						"referenceName": "MassiveImports_SQL",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"TableName": {
+								"value": "@variables('CreatedTableName')",
+								"type": "Expression"
+							},
+							"TableSchema": "dbo"
+						}
 					}
 				],
 				"outputs": [
@@ -365,7 +379,14 @@
 					},
 					"dataset": {
 						"referenceName": "MassiveImports_SQL",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"TableName": {
+								"value": "@variables('CreatedTableName')",
+								"type": "Expression"
+							},
+							"TableSchema": "dbo"
+						}
 					}
 				}
 			},
@@ -415,6 +436,15 @@
 		},
 		"variables": {
 			"CreatedTableName": {
+				"type": "String"
+			},
+			"NewFile_DisplayName": {
+				"type": "String"
+			},
+			"NewFile_Category": {
+				"type": "String"
+			},
+			"NewFile_CategoryCode": {
 				"type": "String"
 			}
 		},
