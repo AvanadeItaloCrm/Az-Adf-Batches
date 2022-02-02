@@ -123,7 +123,7 @@
 				"type": "Lookup",
 				"dependsOn": [
 					{
-						"activity": "Execute SSIS",
+						"activity": "Set NewFile_DisplayName",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -420,6 +420,26 @@
 							},
 							"TableSchema": "dbo"
 						}
+					}
+				}
+			},
+			{
+				"name": "Set NewFile_DisplayName",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Execute SSIS",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "NewFile_DisplayName",
+					"value": {
+						"value": "@replace(pipeline().parameters.FileName, '.csv', '_result.csv')",
+						"type": "Expression"
 					}
 				}
 			}
