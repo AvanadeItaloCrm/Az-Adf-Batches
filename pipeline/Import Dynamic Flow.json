@@ -455,10 +455,12 @@
 				"type": "String"
 			},
 			"NewFile_Category": {
-				"type": "String"
+				"type": "String",
+				"defaultValue": "Risultato"
 			},
 			"NewFile_CategoryCode": {
-				"type": "String"
+				"type": "String",
+				"defaultValue": "999"
 			}
 		},
 		"folder": {
