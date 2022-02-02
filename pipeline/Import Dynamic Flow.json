@@ -40,7 +40,7 @@
 					},
 					"enableStaging": false,
 					"translator": {
-						"value": "@activity('Get Mapping IN').output",
+						"value": "@json(activity('Get Mapping IN').output.firstRow.column_name)",
 						"type": "Expression"
 					}
 				},
