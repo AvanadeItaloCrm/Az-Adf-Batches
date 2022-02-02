@@ -84,7 +84,7 @@
 												"type": "Expression"
 											},
 											"DeleteTableSP_Name": "dbo.sp_DeleteMassiveImportsTable",
-											"FindFlowMappingsSP_Name": "dbo.sp_FindFlowMappings",
+											"FindFlowMappingsSP_Name": "dbo.sp_MassiveImports_getColumnMapping",
 											"CategoryName": {
 												"value": "@variables('MetadataType')",
 												"type": "Expression"
