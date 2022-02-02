@@ -261,7 +261,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"FileName": {
-								"value": "@replace(pipeline().parameters.FileName, '.csv','_result.csv')",
+								"value": "@replace(pipeline().parameters.FileName, '.CSV','_RESULT.CSV')",
 								"type": "Expression"
 							}
 						}
@@ -438,7 +438,7 @@
 				"typeProperties": {
 					"variableName": "NewFile_DisplayName",
 					"value": {
-						"value": "@replace(pipeline().parameters.DisplayName, '.csv', '_result.csv')",
+						"value": "@replace(pipeline().parameters.DisplayName, '.CSV', '_RESULT.CSV')",
 						"type": "Expression"
 					}
 				}
