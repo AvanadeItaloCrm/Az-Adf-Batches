@@ -133,7 +133,7 @@
 					},
 					"loggingLevel": "Basic",
 					"projectParameters": {
-						"MassiveImportCode": {
+						"MassiveImportRef": {
 							"value": {
 								"value": "@split(pipeline().parameters.FileName, '_')[0]",
 								"type": "Expression"
