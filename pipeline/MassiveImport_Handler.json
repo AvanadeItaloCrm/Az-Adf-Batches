@@ -65,7 +65,7 @@
 							"value": "AMMINISTRAZIONI PROMOCODE",
 							"activities": [
 								{
-									"name": "Execute Import",
+									"name": "Execute Amministrazioni Promocode",
 									"type": "ExecutePipeline",
 									"dependsOn": [],
 									"userProperties": [],
@@ -97,6 +97,178 @@
 									}
 								}
 							]
+						},
+						{
+							"value": "TRATTE PROMOZIONI",
+							"activities": [
+								{
+									"name": "Execute Tratte Promozioni",
+									"type": "ExecutePipeline",
+									"dependsOn": [],
+									"userProperties": [],
+									"typeProperties": {
+										"pipeline": {
+											"referenceName": "Import Dynamic Flow",
+											"type": "PipelineReference"
+										},
+										"waitOnCompletion": true,
+										"parameters": {
+											"CreateTableSP_Name": "dbo.sp_MassiveImports_TrattePromozioni",
+											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/TrattePromozioni.dtsx",
+											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
+											"FileName": {
+												"value": "@pipeline().parameters.FileName",
+												"type": "Expression"
+											},
+											"DeleteTableSP_Name": "dbo.sp_MassiveImports_DeleteTable",
+											"FindFlowMappingsSP_Name": "dbo.sp_MassiveImports_getColumnMapping",
+											"CategoryName": {
+												"value": "@variables('MetadataType')",
+												"type": "Expression"
+											},
+											"DisplayName": {
+												"value": "@variables('FileDisplayName')",
+												"type": "Expression"
+											}
+										}
+									}
+								}
+							]
+						},
+						{
+							"value": "FRODI",
+							"activities": [
+								{
+									"name": "Execute Frodi",
+									"type": "ExecutePipeline",
+									"dependsOn": [],
+									"userProperties": [],
+									"typeProperties": {
+										"pipeline": {
+											"referenceName": "Import Dynamic Flow",
+											"type": "PipelineReference"
+										},
+										"waitOnCompletion": true,
+										"parameters": {
+											"CreateTableSP_Name": "dbo.sp_MassiveImports_Frodi",
+											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/Frodi.dtsx",
+											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
+											"FileName": {
+												"value": "@pipeline().parameters.FileName",
+												"type": "Expression"
+											},
+											"DeleteTableSP_Name": "dbo.sp_MassiveImports_DeleteTable",
+											"FindFlowMappingsSP_Name": "dbo.sp_MassiveImports_getColumnMapping",
+											"CategoryName": {
+												"value": "@variables('MetadataType')",
+												"type": "Expression"
+											},
+											"DisplayName": {
+												"value": "@variables('FileDisplayName')",
+												"type": "Expression"
+											}
+										}
+									}
+								}
+							]
+						},
+						{
+							"value": "TRATTE PROMOZIONI ELETTORALI",
+							"activities": [
+								{
+									"name": "Execute Tratte Promozioni Elettorali",
+									"type": "ExecutePipeline",
+									"dependsOn": [],
+									"userProperties": [],
+									"typeProperties": {
+										"pipeline": {
+											"referenceName": "Import Dynamic Flow",
+											"type": "PipelineReference"
+										},
+										"waitOnCompletion": true,
+										"parameters": {
+											"CreateTableSP_Name": "dbo.sp_MassiveImports_TrattePromozioniElettorali",
+											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImport/TrattePromozioniElettorali.dtsx",
+											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
+											"FileName": {
+												"value": "@pipeline().parameters.FileName",
+												"type": "Expression"
+											},
+											"DeleteTableSP_Name": "dbo.sp_MassiveImports_DeleteTable",
+											"FindFlowMappingsSP_Name": "dbo.sp_MassiveImports_getColumnMapping",
+											"CategoryName": {
+												"value": "@variables('MetadataType')",
+												"type": "Expression"
+											},
+											"DisplayName": {
+												"value": "@variables('FileDisplayName')",
+												"type": "Expression"
+											}
+										}
+									}
+								}
+							]
+						},
+						{
+							"value": "CHARGEBACK",
+							"activities": [
+								{
+									"name": "Execute Chargeback",
+									"type": "ExecutePipeline",
+									"dependsOn": [],
+									"userProperties": [],
+									"typeProperties": {
+										"pipeline": {
+											"referenceName": "Import Dynamic Flow",
+											"type": "PipelineReference"
+										},
+										"waitOnCompletion": true,
+										"parameters": {
+											"CreateTableSP_Name": "dbo.sp_MassiveImports_AmministrazionePromocode",
+											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/AmministrazionePromocode.dtsx",
+											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
+											"FileName": {
+												"value": "@pipeline().parameters.FileName",
+												"type": "Expression"
+											},
+											"DeleteTableSP_Name": "dbo.sp_MassiveImports_DeleteTable",
+											"FindFlowMappingsSP_Name": "dbo.sp_MassiveImports_getColumnMapping",
+											"CategoryName": {
+												"value": "@variables('MetadataType')",
+												"type": "Expression"
+											},
+											"DisplayName": {
+												"value": "@variables('FileDisplayName')",
+												"type": "Expression"
+											}
+										}
+									}
+								}
+							]
+						},
+						{
+							"value": "RIASSEGNAZIONE AGENZIE"
+						},
+						{
+							"value": "AGENTI PARTNER"
+						},
+						{
+							"value": "SEGMENTI CORPORATE PARTNER"
+						},
+						{
+							"value": "TRANSAZIONI CASHBACK"
+						},
+						{
+							"value": "PROMOZIONI CASHBACK"
+						},
+						{
+							"value": "OFFERTE CASHBACK"
+						},
+						{
+							"value": "ASSOCIAZIONI OFFERTE CASHBACK"
+						},
+						{
+							"value": "AGGIORNAMENTO CLUSTER BSS"
 						}
 					]
 				}
