@@ -62,13 +62,10 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"TableName": {
-								"value": "@activity('Create Table Import').output.TableName",
+								"value": "@activity('Create_Table_Import').output.firstRow.tableName",
 								"type": "Expression"
 							},
-							"TableSchema": {
-								"value": "@activity('Create Table Import').output.TableSchema",
-								"type": "Expression"
-							}
+							"TableSchema": "dbo"
 						}
 					}
 				]
