@@ -62,7 +62,7 @@
 					},
 					"cases": [
 						{
-							"value": "AMMINISTRAZIONEPROMOCODE",
+							"value": "AMMINISTRAZIONE PROMOCODE",
 							"activities": [
 								{
 									"name": "Execute Import",
