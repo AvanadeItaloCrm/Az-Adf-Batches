@@ -18,6 +18,12 @@
 					"storedProcedureName": {
 						"value": "@pipeline().parameters.CreateTableSP_Name",
 						"type": "Expression"
+					},
+					"storedProcedureParameters": {
+						"tableName": {
+							"value": "",
+							"type": "String"
+						}
 					}
 				},
 				"linkedServiceName": {
