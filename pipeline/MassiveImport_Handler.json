@@ -78,7 +78,7 @@
 										"parameters": {
 											"CreateTableSP_Name": "dbo.sp_Massive_Imports_AmministrazionePromocode",
 											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/AmministrazionePromocode.dtsx",
-											"EnvironmentPath": "DEV",
+											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
 											"FileName": {
 												"value": "@pipeline().parameters.FileName",
 												"type": "Expression"
