@@ -28,7 +28,7 @@
 				"type": "SetVariable",
 				"dependsOn": [
 					{
-						"activity": "GetBlobMetadata",
+						"activity": "Set DisplayName",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -88,6 +88,10 @@
 											"CategoryName": {
 												"value": "@variables('MetadataType')",
 												"type": "Expression"
+											},
+											"DisplayName": {
+												"value": "@variables('FileDisplayName')",
+												"type": "Expression"
 											}
 										}
 									}
@@ -100,8 +104,22 @@
 			{
 				"name": "Set DisplayName",
 				"type": "SetVariable",
-				"dependsOn": [],
-				"userProperties": []
+				"dependsOn": [
+					{
+						"activity": "GetBlobMetadata",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "FileDisplayName",
+					"value": {
+						"value": "@activity('GetBlobMetadata').output.ADFWebActivityResponseHeaders['x-ms-meta-DisplayName']",
+						"type": "Expression"
+					}
+				}
 			}
 		],
 		"parameters": {
