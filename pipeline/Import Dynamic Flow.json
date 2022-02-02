@@ -108,6 +108,12 @@
 								"value": "@split(pipeline().parameters.FileName, '_')[0]",
 								"type": "Expression"
 							}
+						},
+						"TabName": {
+							"value": {
+								"value": "@variables('CreatedTableName')",
+								"type": "Expression"
+							}
 						}
 					}
 				}
