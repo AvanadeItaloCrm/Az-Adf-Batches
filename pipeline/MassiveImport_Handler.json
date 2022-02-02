@@ -83,7 +83,7 @@
 												"value": "@pipeline().parameters.FileName",
 												"type": "Expression"
 											},
-											"DeleteTableSP_Name": "dbo.sp_DeleteMassiveImportsTable",
+											"DeleteTableSP_Name": "dbo.sp_MassiveImports_DeleteTable",
 											"FindFlowMappingsSP_Name": "dbo.sp_MassiveImports_getColumnMapping",
 											"CategoryName": {
 												"value": "@variables('MetadataType')",

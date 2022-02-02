@@ -297,7 +297,8 @@
 							"value": {
 								"value": "@variables('CreatedTableName')",
 								"type": "Expression"
-							}
+							},
+							"type": "String"
 						}
 					}
 				},
