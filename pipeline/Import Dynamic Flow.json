@@ -465,6 +465,9 @@
 			},
 			"CategoryName": {
 				"type": "string"
+			},
+			"DisplayName": {
+				"type": "string"
 			}
 		},
 		"variables": {

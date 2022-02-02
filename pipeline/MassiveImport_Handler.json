@@ -96,6 +96,12 @@
 						}
 					]
 				}
+			},
+			{
+				"name": "Set DisplayName",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": []
 			}
 		],
 		"parameters": {
@@ -116,6 +122,9 @@
 			"SASTokenURL": {
 				"type": "String",
 				"defaultValue": "sp=r&st=2022-02-01T12:03:40Z&se=2027-02-01T20:03:40Z&spr=https&sv=2020-08-04&sr=c&sig=jy%2BiJ6O%2FIOtMMy56WRmIifwB8y6%2FTgdl%2Bt32%2FJMMEiM%3D"
+			},
+			"FileDisplayName": {
+				"type": "String"
 			}
 		},
 		"folder": {
