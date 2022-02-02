@@ -1,0 +1,126 @@
+{
+	"name": "MassiveImport_Handler",
+	"properties": {
+		"activities": [
+			{
+				"name": "GetBlobMetadata",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": {
+						"value": "@concat(pipeline().parameters.BlobStorageURL,'/',pipeline().parameters.FolderPath,'/',pipeline().parameters.FileName, '?' ,variables('SASTokenURL'))",
+						"type": "Expression"
+					},
+					"method": "GET",
+					"disableCertValidation": true
+				}
+			},
+			{
+				"name": "Set Category Name",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "GetBlobMetadata",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "MetadataType",
+					"value": {
+						"value": "@activity('GetBlobMetadata').output.ADFWebActivityResponseHeaders['x-ms-meta-Category']",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Import Type Switch",
+				"type": "Switch",
+				"dependsOn": [
+					{
+						"activity": "Set Category Name",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"on": {
+						"value": "@toUpper(trim(variables('MetadataType')))",
+						"type": "Expression"
+					},
+					"cases": [
+						{
+							"value": "AMMINISTRAZIONEPROMOCODE",
+							"activities": [
+								{
+									"name": "Execute Import",
+									"type": "ExecutePipeline",
+									"dependsOn": [],
+									"userProperties": [],
+									"typeProperties": {
+										"pipeline": {
+											"referenceName": "Import Dynamic Flow",
+											"type": "PipelineReference"
+										},
+										"waitOnCompletion": true,
+										"parameters": {
+											"CreateTableSP_Name": "dbo.sp_Massive_Imports_AmministrazionePromocode",
+											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/AmministrazionePromocode.dtsx",
+											"EnvironmentPath": "DEV",
+											"FileName": {
+												"value": "@pipeline().parameters.FileName",
+												"type": "Expression"
+											},
+											"DeleteTableSP_Name": "dbo.sp_DeleteMassiveImportsTable",
+											"FindFlowMappingsSP_Name": "dbo.sp_FindFlowMappings",
+											"CategoryName": {
+												"value": "@variables('MetadataType')",
+												"type": "Expression"
+											}
+										}
+									}
+								}
+							]
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"BlobStorageURL": {
+				"type": "string"
+			},
+			"FolderPath": {
+				"type": "string"
+			},
+			"FileName": {
+				"type": "string"
+			}
+		},
+		"variables": {
+			"MetadataType": {
+				"type": "String"
+			},
+			"SASTokenURL": {
+				"type": "String",
+				"defaultValue": "sp=r&st=2022-02-01T12:03:40Z&se=2027-02-01T20:03:40Z&spr=https&sv=2020-08-04&sr=c&sig=jy%2BiJ6O%2FIOtMMy56WRmIifwB8y6%2FTgdl%2Bt32%2FJMMEiM%3D"
+			}
+		},
+		"folder": {
+			"name": "D365_MassiveImports"
+		},
+		"annotations": []
+	}
+}

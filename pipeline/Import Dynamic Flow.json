@@ -1,0 +1,418 @@
+{
+	"name": "Import Dynamic Flow",
+	"properties": {
+		"activities": [
+			{
+				"name": "Create Table Import",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": {
+						"value": "@pipeline().parameters.CreateTableSP_Name",
+						"type": "Expression"
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "MassiveImports_SQL_LS",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Get CSV Records",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Get Mapping IN",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"value": "@activity('Get Mapping IN').output",
+						"type": "Expression"
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "MassiveImports_StorageAccount",
+						"type": "DatasetReference",
+						"parameters": {
+							"FileName": {
+								"value": "@pipeline().parameters.FileName",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "MassiveImports_SQL",
+						"type": "DatasetReference",
+						"parameters": {
+							"TableName": {
+								"value": "@activity('Create Table Import').output.TableName",
+								"type": "Expression"
+							},
+							"TableSchema": {
+								"value": "@activity('Create Table Import').output.TableSchema",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			},
+			{
+				"name": "Execute SSIS",
+				"type": "ExecuteSSISPackage",
+				"dependsOn": [
+					{
+						"activity": "Get CSV Records",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"packageLocation": {
+						"packagePath": {
+							"value": "@pipeline().parameters.PackagePath",
+							"type": "Expression"
+						},
+						"type": "SSISDB"
+					},
+					"environmentPath": {
+						"value": "@pipeline().parameters.EnvironmentPath",
+						"type": "Expression"
+					},
+					"connectVia": {
+						"referenceName": "Italo-devtest-IntegrationRuntimeSSIS",
+						"type": "IntegrationRuntimeReference"
+					},
+					"loggingLevel": "Basic"
+				}
+			},
+			{
+				"name": "Get Mapping OUT",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Execute SSIS",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": {
+							"value": "@pipeline().parameters.FindFlowMappingsSP_Name",
+							"type": "Expression"
+						},
+						"storedProcedureParameters": {
+							"Category": {
+								"type": "String",
+								"value": {
+									"value": "@pipeline().parameters.CategoryName",
+									"type": "Expression"
+								}
+							},
+							"Operation": {
+								"type": "String",
+								"value": "OUT"
+							}
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "MassiveImports_SQL",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "Write Result File",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Get Mapping OUT",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "SELECT 1",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"metadata": [
+								{
+									"name": "DisplayName",
+									"value": {
+										"value": "@variables('NewFile_DisplayName')",
+										"type": "Expression"
+									}
+								},
+								{
+									"name": "Category",
+									"value": {
+										"value": "@variables('NewFile_Category')",
+										"type": "Expression"
+									}
+								},
+								{
+									"name": "CategoryCode",
+									"value": {
+										"value": "@variables('NewFile_CategoryCode')",
+										"type": "Expression"
+									}
+								},
+								{
+									"name": "link",
+									"value": "null"
+								}
+							]
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "MassiveImports_SQL",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "MassiveImports_StorageAccount",
+						"type": "DatasetReference",
+						"parameters": {
+							"FileName": {
+								"value": "@replace(pipeline().parameters.FileName, '.csv','Report.csv')",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			},
+			{
+				"name": "Delete Temp Table",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Write Result File",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": {
+						"value": "@pipeline().parameters.DeleteTableSP_Name",
+						"type": "Expression"
+					},
+					"storedProcedureParameters": {
+						"TableName": {
+							"value": {
+								"value": "@variables('CreatedTableName')",
+								"type": "Expression"
+							}
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "MassiveImports_SQL_LS",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Get Mapping IN",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Set CreatedTableName",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": {
+							"value": "@pipeline().parameters.FindFlowMappingsSP_Name",
+							"type": "Expression"
+						},
+						"storedProcedureParameters": {
+							"Category": {
+								"type": "String",
+								"value": {
+									"value": "@pipeline().parameters.CategoryName",
+									"type": "Expression"
+								}
+							},
+							"Operation": {
+								"type": "String",
+								"value": "IN"
+							}
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "MassiveImports_SQL",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "Set CreatedTableName",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Create Table Import",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "CreatedTableName",
+					"value": {
+						"value": "@activity('Create Table Import').output.TableName",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"CreateTableSP_Name": {
+				"type": "string"
+			},
+			"PackagePath": {
+				"type": "string"
+			},
+			"EnvironmentPath": {
+				"type": "string"
+			},
+			"FileName": {
+				"type": "string"
+			},
+			"DeleteTableSP_Name": {
+				"type": "string"
+			},
+			"FindFlowMappingsSP_Name": {
+				"type": "string"
+			},
+			"CategoryName": {
+				"type": "string"
+			}
+		},
+		"variables": {
+			"CreatedTableName": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "D365_MassiveImports"
+		},
+		"annotations": []
+	}
+}
