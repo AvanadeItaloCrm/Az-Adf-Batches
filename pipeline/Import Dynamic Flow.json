@@ -131,7 +131,15 @@
 						"referenceName": "Italo-devtest-IntegrationRuntimeSSIS",
 						"type": "IntegrationRuntimeReference"
 					},
-					"loggingLevel": "Basic"
+					"loggingLevel": "Basic",
+					"projectParameters": {
+						"MassiveImportCode": {
+							"value": {
+								"value": "@split(pipeline().parameters.FileName, '_')[0]",
+								"type": "Expression"
+							}
+						}
+					}
 				}
 			},
 			{
