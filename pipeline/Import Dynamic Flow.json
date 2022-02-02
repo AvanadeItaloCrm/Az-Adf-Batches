@@ -405,7 +405,8 @@
 						},
 						"storedProcedureParameters": {
 							"tableName": {
-								"type": "String"
+								"type": "String",
+								"value": "-"
 							}
 						},
 						"queryTimeout": "02:00:00",
