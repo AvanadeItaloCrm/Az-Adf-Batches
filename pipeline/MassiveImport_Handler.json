@@ -224,8 +224,8 @@
 										},
 										"waitOnCompletion": true,
 										"parameters": {
-											"CreateTableSP_Name": "dbo.sp_MassiveImports_AmministrazionePromocode",
-											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/AmministrazionePromocode.dtsx",
+											"CreateTableSP_Name": "dbo.sp_MassiveImports_Chargeback",
+											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/Chargeback.dtsx",
 											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
 											"FileName": {
 												"value": "@pipeline().parameters.FileName",
@@ -247,7 +247,41 @@
 							]
 						},
 						{
-							"value": "RIASSEGNAZIONE AGENZIE"
+							"value": "RIASSEGNAZIONE AGENZIE",
+							"activities": [
+								{
+									"name": "Execute Riassegnazione Agenzie",
+									"type": "ExecutePipeline",
+									"dependsOn": [],
+									"userProperties": [],
+									"typeProperties": {
+										"pipeline": {
+											"referenceName": "Import Dynamic Flow",
+											"type": "PipelineReference"
+										},
+										"waitOnCompletion": true,
+										"parameters": {
+											"CreateTableSP_Name": "dbo.sp_MassiveImports_RiassegnazioneAgenzie",
+											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/RiassegnazioneAgenzie.dtsx",
+											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
+											"FileName": {
+												"value": "@pipeline().parameters.FileName",
+												"type": "Expression"
+											},
+											"DeleteTableSP_Name": "dbo.sp_MassiveImports_DeleteTable",
+											"FindFlowMappingsSP_Name": "dbo.sp_MassiveImports_getColumnMapping",
+											"CategoryName": {
+												"value": "@variables('MetadataType')",
+												"type": "Expression"
+											},
+											"DisplayName": {
+												"value": "@variables('FileDisplayName')",
+												"type": "Expression"
+											}
+										}
+									}
+								}
+							]
 						},
 						{
 							"value": "AGENTI PARTNER"
