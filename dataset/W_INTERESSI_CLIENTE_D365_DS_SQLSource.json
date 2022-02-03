@@ -1746,7 +1746,7 @@
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "ntv_account"
+			"table": "ntv_contact"
 		}
 	}
 }
