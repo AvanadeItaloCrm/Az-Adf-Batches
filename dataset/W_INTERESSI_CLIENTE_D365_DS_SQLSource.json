@@ -2,7 +2,7 @@
 	"name": "W_INTERESSI_CLIENTE_D365_DS_SQLSource",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "Az_AzureLinkedService_DEV_Dyn365",
+			"referenceName": "AzureSqlTestStagingArea",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -1746,7 +1746,7 @@
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "ntv_contact"
+			"table": "ntv_account"
 		}
 	}
 }
