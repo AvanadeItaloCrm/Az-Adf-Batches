@@ -94,7 +94,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT ntv_ntv_bss.ntv_codebss, ntv_ntv_bss.Id, ntv_ntv_station.ntv_codenavitaire, ntv_ntv_bss.ntv_position, ntv_ntv_bss.ntv_typology FROM   ntv_ntv_bss INNER JOIN  ntv_ntv_station ON ntv_ntv_bss.Id = ntv_ntv_station.ntv_stationid WHERE ntv_ntv_station.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or ntv_ntv_bss.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"value": "@concat('SELECT * FROM batchSync.v_W_ANAGRAFICA_TVM_D365_DS  WHERE s.Expr35>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or b.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
