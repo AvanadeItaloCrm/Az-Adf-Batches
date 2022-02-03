@@ -94,7 +94,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT * FROM batchSync.v_W_ANAGRAFICA_TVM_D365_DS  WHERE b_modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or s_modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"value": "@concat('SELECT * FROM batchSync.v_W_ANAGRAFICA_TVM_D365_DS WHERE b_modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or s_modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -111,7 +111,7 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "ntv_codebss",
+									"name": "CODICE_TVM",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -122,7 +122,7 @@
 							},
 							{
 								"source": {
-									"name": "Id",
+									"name": "INTEGRAZIONE_ID",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -133,7 +133,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_codenavitaire",
+									"name": "STAZIONE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -144,7 +144,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_position",
+									"name": "POSIZIONE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -155,7 +155,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_typology",
+									"name": "TIPO",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
