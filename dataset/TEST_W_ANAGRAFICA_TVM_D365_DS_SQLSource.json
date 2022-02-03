@@ -2,7 +2,7 @@
 	"name": "TEST_W_ANAGRAFICA_TVM_D365_DS_SQLSource",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzSqlOracle_Test_DesDYN365",
+			"referenceName": "AzSqlOracle_Test_StagingArea",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -250,8 +250,8 @@
 			}
 		],
 		"typeProperties": {
-			"schema": "dbo",
-			"table": "ntv_ntv_bss"
+			"schema": "batchSync",
+			"table": "v_W_ANAGRAFICA_TVM_D365_DS"
 		}
 	}
 }
