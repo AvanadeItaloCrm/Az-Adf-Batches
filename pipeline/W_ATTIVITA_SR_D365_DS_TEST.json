@@ -94,7 +94,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT * FROM dbo.ntv_task WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"value": "@concat('SELECT * FROM batchSync.W_ATTIVITA_SR_D365_DS WHERE DATA_MODIFICA>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -111,7 +111,7 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "activityid",
+									"name": "NUM_ATTIVITA",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -122,7 +122,7 @@
 							},
 							{
 								"source": {
-									"name": "subject",
+									"name": "DESCRIZIONE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -133,9 +133,9 @@
 							},
 							{
 								"source": {
-									"name": "statuscode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "STATO",
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "STATO",
@@ -144,9 +144,9 @@
 							},
 							{
 								"source": {
-									"name": "prioritycode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "PRIORITA",
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "PRIORITA",
@@ -155,7 +155,7 @@
 							},
 							{
 								"source": {
-									"name": "createdon",
+									"name": "DATA_APERTURA",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
@@ -166,7 +166,7 @@
 							},
 							{
 								"source": {
-									"name": "modifiedon",
+									"name": "DATA_MODIFICA",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
@@ -177,7 +177,7 @@
 							},
 							{
 								"source": {
-									"name": "createdby",
+									"name": "CREATA_DA",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -188,7 +188,7 @@
 							},
 							{
 								"source": {
-									"name": "modifiedby",
+									"name": "MODIFICATA_DA",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -199,7 +199,7 @@
 							},
 							{
 								"source": {
-									"name": "description",
+									"name": "COMMENTI",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -210,7 +210,7 @@
 							},
 							{
 								"source": {
-									"name": "Id",
+									"name": "INTEGRAZIONE_ID",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -221,7 +221,7 @@
 							},
 							{
 								"source": {
-									"name": "regardingobjectid",
+									"name": "SERVICEREQUEST_ID",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -232,9 +232,9 @@
 							},
 							{
 								"source": {
-									"name": "statecode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "STATO_LAVORAZIONE_ATTIVITA",
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "STATO_LAVORAZIONE_ATTIVITA",
