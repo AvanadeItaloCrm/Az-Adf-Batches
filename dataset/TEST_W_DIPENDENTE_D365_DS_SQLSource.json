@@ -2,7 +2,7 @@
 	"name": "TEST_W_DIPENDENTE_D365_DS_SQLSource",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzSqlOracle_Test_DesDYN365",
+			"referenceName": "AzureSqlTestStagingArea",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
