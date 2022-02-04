@@ -94,7 +94,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT * FROM dbo.ntv_ntv_customhierarchymodel WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"value": "@concat('SELECT ntv_customhierarchymodelid INTEGRAZIONE_ID, ntv_accountnumber ADV_CORP_ID,ntv_parentaccountnumber ADV_CORP_PADRE_ID,batchSync.FV(''ntv_ntv_customhierarchymodel'',''ntv_relationtypology'', ntv_relationtypology) TIPOLOGIA_RELAZIONE FROM ntv_ntv_customhierarchymodel WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -111,7 +111,7 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "ntv_customhierarchymodelid",
+									"name": "INTEGRAZIONE_ID",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -122,7 +122,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_accountnumber",
+									"name": "ADV_CORP_ID",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -133,7 +133,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_parentaccountnumber",
+									"name": "ADV_CORP_PADRE_ID",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -144,9 +144,9 @@
 							},
 							{
 								"source": {
-									"name": "ntv_relationtypology",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "TIPOLOGIA_RELAZIONE",
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "TIPOLOGIA_RELAZIONE",
