@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "select concat('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',Codice) Chiave, Cluster Valore from [batchSync].[AggClusterClienti]",
+						"sqlReaderQuery": "select concat('aaaaaa333333333333333333333333333333333333333333aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',Codice) Chiave, Cluster Valore from [batchSync].[AggClusterClienti]",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
