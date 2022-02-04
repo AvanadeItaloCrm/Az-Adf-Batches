@@ -114,6 +114,9 @@
 								"value": "@variables('CreatedTableName')",
 								"type": "Expression"
 							}
+						},
+						"Dyn365ClientId": {
+							"value": "0e4c4884-3aa4-4b80-869a-c49f4985b0aa"
 						}
 					}
 				}
