@@ -2,7 +2,7 @@
 	"name": "TEST_W_TRANSAZIONE_FRODI_D365_DS_SQLSource",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzSqlOracle_Test_DesDYN365",
+			"referenceName": "AzSqlOracle_Test_StagingArea",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -315,7 +315,7 @@
 			}
 		],
 		"typeProperties": {
-			"schema": "dbo",
+			"schema": "batchSync",
 			"table": "ntv_ntv_fraudload"
 		}
 	}
