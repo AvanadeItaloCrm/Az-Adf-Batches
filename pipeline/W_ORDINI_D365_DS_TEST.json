@@ -94,7 +94,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT ntv_ntv_order.ntv_ordernumber AS NUMERO_ORDINE, ntv_ntv_order.Id AS INTEGRAZIONE_ID, ''Acquisto Prodotto''  AS TIPO_ORDINE , ntv_ntv_order.statuscode AS STATO, ntv_ntv_order.createdon AS DATA_ORDINE, ntv_ntv_order.ntv_closuredate AS DATA_CHIUSURA, ntv_ntv_order.ntv_originchannelcode AS PROVENIENZA_ORDINE, ntv_ntv_order.ntv_recordlocator AS PNR_PAGAMENTO,    ntv_ntv_order.ntv_grossamount AS PREZZO_TOTALE, ntv_ntv_order.ntv_ordernumber AS NOME_PRODOTTO, ntv_ntv_order.ntv_producttype AS TIPO_PRODOTTO, ntv_ntv_order.ntv_customerbuyerid AS CLIENTE_ACQUIRENTE_ID, ntv_ntv_order.ntv_buyertype AS TIPO_ACQUIRENTE, ntv_account.accountnumber AS ADVCORP_ACQUIRENTE_ID, ntv_account.accountnumber AS ADVCORP_INTESTATARIO_ID, ntv_ntv_asset.ntv_assetnumber AS ASSET_ID, ntv_ntv_order.ntv_iva AS IVA, ntv_ntv_order.ntv_productname AS NOTE, ntv_contact.ntv_customernumber AS CLIENTE_INTESTATARIO_ID FROM   ntv_ntv_order INNER JOIN  ntv_account ON ntv_ntv_order.Id = ntv_account.Id AND ntv_ntv_order.ntv_partnerbuyerid = ntv_account.accountid AND ntv_ntv_order.ntv_partnerholderid = ntv_account.accountid INNER JOIN  ntv_ntv_asset ON ntv_ntv_order.ntv_ordernumber = ntv_ntv_asset.ntv_ordernumber INNER JOIN ntv_contact ON ntv_ntv_order.ntv_customerholderid = ntv_contact.contactid WHERE ntv_contact.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or ntv_ntv_asset.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or ntv_account.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or ntv_ntv_order.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"value": "@concat('SELECT o.ntv_ordernumber AS NUMERO_ORDINE, o.Id AS INTEGRAZIONE_ID, ''Acquisto Prodotto'' AS TIPO_ORDINE ,batchSync.FV(''ntv_ntv_order'',''statuscode'', o.statuscode) AS STATO, o.createdon AS DATA_ORDINE, o.ntv_closuredate AS DATA_CHIUSURA, batchSync.FV(''ntv_ntv_order'',''ntv_originchannelcode'',o.ntv_originchannelcode) AS PROVENIENZA_ORDINE, o.ntv_recordlocator AS PNR_PAGAMENTO,o.ntv_grossamount AS PREZZO_TOTALE, o.ntv_ordernumber AS NOME_PRODOTTO, batchSync.FV(''ntv_ntv_order'',''ntv_producttype'',o.ntv_producttype) AS TIPO_PRODOTTO, o.ntv_customerbuyerid AS CLIENTE_ACQUIRENTE_ID,batchSync.FV(''ntv_ntv_order'',''ntv_buyertype'', o.ntv_buyertype) AS TIPO_ACQUIRENTE, a.accountnumber AS ADVCORP_ACQUIRENTE_ID, a.accountnumber AS ADVCORP_INTESTATARIO_ID, ass.ntv_assetnumber AS ASSET_ID, o.ntv_iva AS IVA, o.ntv_productname AS NOTE, c.ntv_customernumber AS CLIENTE_INTESTATARIO_ID FROM ntv_ntv_order o INNER JOIN  ntv_account a ON o.Id = a.Id AND o.ntv_partnerbuyerid = a.accountid AND o.ntv_partnerholderid = a.accountid INNER JOIN  ntv_ntv_asset ass ON o.ntv_ordernumber = ass.ntv_ordernumber INNER JOIN ntv_contact c ON o.ntv_customerholderid = c.contactid WHERE c.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or ass.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or a.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or o.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -111,18 +111,18 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "ntv_codebss",
+									"name": "NUMERO_ORDINE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
 								"sink": {
-									"name": "CODICE_TVM",
+									"name": "NUMERO_ORDINE",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "Id",
+									"name": "INTEGRAZIONE_ID",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -133,34 +133,190 @@
 							},
 							{
 								"source": {
-									"name": "ntv_codenavitaire",
+									"name": "TIPO_ORDINE",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								},
 								"sink": {
-									"name": "STAZIONE",
+									"name": "TIPO_ORDINE",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "ntv_position",
+									"name": "STATO",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								},
 								"sink": {
-									"name": "POSIZIONE",
+									"name": "STATO",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "ntv_typology",
+									"name": "DATA_ORDINE",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_ORDINE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "DATA_CHIUSURA",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_CHIUSURA",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "PROVENIENZA_ORDINE",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "PROVENIENZA_ORDINE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PNR_PAGAMENTO",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
 								"sink": {
-									"name": "TIPO",
+									"name": "PNR_PAGAMENTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PREZZO_TOTALE",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 38
+								},
+								"sink": {
+									"name": "PREZZO_TOTALE",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "NOME_PRODOTTO",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NOME_PRODOTTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TIPO_PRODOTTO",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "TIPO_PRODOTTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CLIENTE_ACQUIRENTE_ID",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "CLIENTE_ACQUIRENTE_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TIPO_ACQUIRENTE",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "TIPO_ACQUIRENTE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ADVCORP_ACQUIRENTE_ID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "ADVCORP_ACQUIRENTE_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ADVCORP_INTESTATARIO_ID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "ADVCORP_INTESTATARIO_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ASSET_ID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "ASSET_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IVA",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "IVA",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "NOTE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NOTE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CLIENTE_INTESTATARIO_ID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CLIENTE_INTESTATARIO_ID",
 									"type": "String"
 								}
 							}
