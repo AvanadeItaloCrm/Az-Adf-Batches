@@ -94,7 +94,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT * FROM dbo.ntv_account WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"value": "@concat('SELECT Id INTEGRAZIONE_ID,id CORPORATE_ID,batchSync.FV(''contact'',''ntv_segmentcode'',ntv_segmentcode) SEGMENTO,ntv_segmentstartdate DATA_INIZIO_SEGMENTO,ntv_segmentenddate DATA_FINE_SEGMENTO,ntv_segmentupdatedon DATA_AGGIORNAMENTO,ntv_travelscount NUMERO_VIAGGI_QUAL FROM dbo.ntv_account WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -111,7 +111,7 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "Id",
+									"name": "INTEGRAZIONE_ID",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -122,9 +122,9 @@
 							},
 							{
 								"source": {
-									"name": "ntv_serviceguid",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"name": "CORPORATE_ID",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
 								},
 								"sink": {
 									"name": "CORPORATE_ID",
@@ -133,9 +133,9 @@
 							},
 							{
 								"source": {
-									"name": "ntv_segmentcode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "SEGMENTO",
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "SEGMENTO",
@@ -144,7 +144,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_segmentenddate",
+									"name": "DATA_FINE_SEGMENTO",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
@@ -155,7 +155,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_segmentstartdate",
+									"name": "DATA_INIZIO_SEGMENTO",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
@@ -166,7 +166,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_segmentupdatedon",
+									"name": "DATA_AGGIORNAMENTO",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
@@ -177,7 +177,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_travelscount",
+									"name": "NUMERO_VIAGGI_QUAL",
 									"type": "Int32",
 									"physicalType": "int"
 								},
