@@ -94,7 +94,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT * FROM dbo.ntv_ntv_address WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"value": "@concat('SELECT ntv_city CITTA,ntv_nation NAZIONE,batchSync.FV(''ntv_ntv_address'',''ntv_provincecode'', ntv_provincecode) PROVINCIA,ntv_postalcode CAP,Id INTEGRAZIONE_ID FROM ntv_ntv_address WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -111,7 +111,7 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "ntv_city",
+									"name": "CITTA",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -122,7 +122,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_nation",
+									"name": "NAZIONE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -133,9 +133,9 @@
 							},
 							{
 								"source": {
-									"name": "ntv_provincecode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "PROVINCIA",
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "PROVINCIA",
@@ -144,7 +144,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_postalcode",
+									"name": "CAP",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -155,7 +155,7 @@
 							},
 							{
 								"source": {
-									"name": "Id",
+									"name": "INTEGRAZIONE_ID",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
