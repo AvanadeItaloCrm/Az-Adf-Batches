@@ -94,7 +94,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT * FROM dbo.ntv_ntv_fraudsummary WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"value": "@concat('SELECT * FROM batchSync.v_ntv_ntv_fraudsummary WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -111,7 +111,7 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "ntv_fraudsummaryid",
+									"name": "CARICAMENTO_ID",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -122,7 +122,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_filename",
+									"name": "NOME_FILE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -133,7 +133,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_year",
+									"name": "ANNO",
 									"type": "Int32",
 									"physicalType": "int"
 								},
@@ -144,7 +144,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_month",
+									"name": "MESE",
 									"type": "Int32",
 									"physicalType": "int"
 								},
@@ -155,7 +155,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_monthtext",
+									"name": "MESE_DESC",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -166,7 +166,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_trxnumber",
+									"name": "NR_TRX",
 									"type": "Int32",
 									"physicalType": "int"
 								},
@@ -177,7 +177,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_fraudtrxnumber",
+									"name": "NR_TRX_FRAUDOLENTE",
 									"type": "Int32",
 									"physicalType": "int"
 								},
@@ -188,7 +188,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_fraudamount",
+									"name": "IMPORTO_FRODI",
 									"type": "Decimal",
 									"physicalType": "decimal",
 									"scale": 2,
@@ -201,7 +201,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_paymentmethod",
+									"name": "METODO_PAGAMENTO",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -212,7 +212,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_merchantnumber",
+									"name": "CODICE_COMMERCIANTE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -223,7 +223,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_merchantdesc",
+									"name": "CODICE_COMMERCIANTE_DESC",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -234,7 +234,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_sign",
+									"name": "INSEGNA",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -245,7 +245,7 @@
 							},
 							{
 								"source": {
-									"name": "Id",
+									"name": "INTEGRAZIONE_ID",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -256,7 +256,7 @@
 							},
 							{
 								"source": {
-									"name": "createdon",
+									"name": "DATA_CARICAMENTO",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
