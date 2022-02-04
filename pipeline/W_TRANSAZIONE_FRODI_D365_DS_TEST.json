@@ -345,12 +345,6 @@
 								}
 							},
 							{
-								"sink": {
-									"name": "TIPO_FILE",
-									"type": "String"
-								}
-							},
-							{
 								"source": {
 									"name": "INTEGRAZIONE_ID",
 									"type": "Guid",

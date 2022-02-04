@@ -2,14 +2,14 @@
 	"name": "W_TRANSAZIONE_CRGBACK_D365_DS_OracleDB",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "OracleDB_TEST",
+			"referenceName": "OracleDB_DEV",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
 		"type": "OracleTable",
 		"schema": [],
 		"typeProperties": {
-			"schema": "SA_D365_TEST",
+			"schema": "SA_D365_SVIL",
 			"table": "W_TRANSAZIONE_CRGBACK_D365_DS"
 		}
 	}
