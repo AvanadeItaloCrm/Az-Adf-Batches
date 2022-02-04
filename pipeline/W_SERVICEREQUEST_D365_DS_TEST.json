@@ -94,7 +94,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT * FROM dbo.ntv_incident WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"value": "@concat('SELECT * FROM batchSync.v_ntv_incident WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -111,7 +111,7 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "ticketnumber",
+									"name": "SR_NUM",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -122,7 +122,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_srcategoryid",
+									"name": "CATEGORIA",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -133,7 +133,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_srsubcategoryid",
+									"name": "SOTTOCATEGORIA",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -144,7 +144,7 @@
 							},
 							{
 								"source": {
-									"name": "SinkCreatedOn",
+									"name": "DATA_APERTURA",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
@@ -155,9 +155,9 @@
 							},
 							{
 								"source": {
-									"name": "ntv_interationchanneltype",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "CANALE_INTERAZIONE",
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "CANALE_INTERAZIONE",
@@ -166,9 +166,9 @@
 							},
 							{
 								"source": {
-									"name": "ntv_directioncode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "TIPO_INTERAZIONE",
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "TIPO_INTERAZIONE",
@@ -177,7 +177,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_callernumber",
+									"name": "NUMERO_CHIAMANTE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -188,9 +188,9 @@
 							},
 							{
 								"source": {
-									"name": "statecode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "STATO",
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "STATO",
@@ -199,9 +199,9 @@
 							},
 							{
 								"source": {
-									"name": "prioritycode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "PRIORITA",
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "PRIORITA",
@@ -210,7 +210,7 @@
 							},
 							{
 								"source": {
-									"name": "createdby",
+									"name": "CREATO_DA",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -221,7 +221,18 @@
 							},
 							{
 								"source": {
-									"name": "owninguser",
+									"name": "GRUPPO",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "GRUPPO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OWNER",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -232,7 +243,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_assigndate",
+									"name": "DATA_ASSEGNAZIONE",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
@@ -243,7 +254,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_closuredate",
+									"name": "DATA_CHIUSURA",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
@@ -254,7 +265,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_outcomeid",
+									"name": "ESITO",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -265,7 +276,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_srreasonid",
+									"name": "MOTIVO",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -276,7 +287,18 @@
 							},
 							{
 								"source": {
-									"name": "ntv_bookingid",
+									"name": "INTEGRAZIONE_ID",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "INTEGRAZIONE_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PNR",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -287,7 +309,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_originchannelid",
+									"name": "PARTNER_FORNITORE",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -298,7 +320,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_orderid",
+									"name": "ORDINE_ID",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -309,7 +331,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_note",
+									"name": "NOTE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -320,7 +342,29 @@
 							},
 							{
 								"source": {
-									"name": "ntv_money_pnrcode",
+									"name": "PAGAMENTO_NAV_ID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "PAGAMENTO_NAV_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CODICE_AUTORIZZ_PAG",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CODICE_AUTORIZZ_PAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PNR_SCARICO_BORSELLINO",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -331,7 +375,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_money_amount",
+									"name": "IMPORTO_DA_RIMBORSARE",
 									"type": "Decimal",
 									"physicalType": "decimal",
 									"scale": 4,
@@ -344,7 +388,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_money_lastname",
+									"name": "COGNOME_RIMBORSO",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -355,7 +399,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_money_firstname",
+									"name": "NOME_RIMBORSO",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -366,7 +410,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_money_fiscalcode",
+									"name": "CODIFCE_FISCALE_RIMBORSO",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -377,7 +421,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_money_vatcode",
+									"name": "P_IVA_RIMBORSO",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -388,7 +432,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_money_emissiondate",
+									"name": "DATA_EMISS_BONIFICO",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
@@ -399,7 +443,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_money_iban",
+									"name": "IBAN",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -410,7 +454,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_money_biccode",
+									"name": "SWIFT",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -421,7 +465,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_money_bank",
+									"name": "BANCA",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -432,7 +476,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_wc_disputedpnr",
+									"name": "PNR_CONTESTATO",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -443,7 +487,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_wc_pnrcancellationresult",
+									"name": "ESITO_CANCELLAZIONE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -454,7 +498,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_wc_paypaltnxcode",
+									"name": "TRANS_PAY_PAL_ID",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -465,7 +509,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_wc_addendum1",
+									"name": "ADDENDUM_1",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -476,7 +520,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_wc_addendum2",
+									"name": "ADDENDUM_2",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -487,7 +531,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_wc_purchasechannel",
+									"name": "CANALE_ACQUISTO",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -498,7 +542,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_wc_purchasestation",
+									"name": "STAZIONE_ACQUISTO",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -509,7 +553,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_wc_purchasedate",
+									"name": "DATA_ACQUISTO",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
@@ -520,7 +564,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_wc_paymentmethod",
+									"name": "METODO_PAGAMENTO",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -531,7 +575,18 @@
 							},
 							{
 								"source": {
-									"name": "ntv_wc_sendcircuitrequestdate",
+									"name": "IMPORTO_OPERAZIONE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "IMPORTO_OPERAZIONE",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "DATA_RICHIESTA_CIRCUITO",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
@@ -542,7 +597,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_wc_liquidationdate",
+									"name": "DATA_LIQUIDAZIONE",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
@@ -553,7 +608,7 @@
 							},
 							{
 								"source": {
-									"name": "parentcaseid",
+									"name": "SR_PADRE",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -564,7 +619,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_money_clientaddress",
+									"name": "INDIRIZZO_RIMBORSO",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -575,7 +630,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_wc_cardpan",
+									"name": "PAN_CARTA",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -586,7 +641,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_money_email",
+									"name": "EMAIL_RIMBORSO",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -597,7 +652,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_money_ccowner",
+									"name": "INTESTATARIO_CONTO",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -608,7 +663,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_money_ccnumber",
+									"name": "NUMERO_CONTO",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -619,18 +674,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_wc_ceevatcode",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "P_IVA_CEE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_money_sapclientcode",
+									"name": "CODICE_CLIENTE_SAP",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -641,7 +685,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_ctichannel",
+									"name": "CANALE_CTI",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -652,51 +696,18 @@
 							},
 							{
 								"source": {
-									"name": "ntv_connectionid",
+									"name": "FRODE",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								},
 								"sink": {
-									"name": "CONNESSIONE_ID",
+									"name": "FRODE",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "contractdetailid",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "CODICE_CONTATTO_ID",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_webnote",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "NOTE_WEB",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_ecbill",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "NUM_EC_FATTURA",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_callstartdate",
+									"name": "DATA_ORA_INIZIO_CHIAMATA",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
@@ -707,10 +718,70 @@
 							},
 							{
 								"source": {
-									"name": "Id"
+									"name": "CONNESSIONE_ID",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
-									"name": "INTEGRAZIONE_ID"
+									"name": "CONNESSIONE_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CODICE_CONTATTO_ID",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "CODICE_CONTATTO_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CODICE_VOUCHER",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 4,
+									"precision": 38
+								},
+								"sink": {
+									"name": "CODICE_VOUCHER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NOTE_WEB",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NOTE_WEB",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DATA_RICEZIONE",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_RICEZIONE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "NUM_EC_FATTURA",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NUM_EC_FATTURA",
+									"type": "String"
 								}
 							}
 						],
