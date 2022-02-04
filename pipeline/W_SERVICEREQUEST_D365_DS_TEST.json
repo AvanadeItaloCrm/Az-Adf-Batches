@@ -674,6 +674,17 @@
 							},
 							{
 								"source": {
+									"name": "P_IVA_CEE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "P_IVA_CEE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
 									"name": "CODICE_CLIENTE_SAP",
 									"type": "String",
 									"physicalType": "nvarchar"
@@ -741,10 +752,8 @@
 							{
 								"source": {
 									"name": "CODICE_VOUCHER",
-									"type": "Decimal",
-									"physicalType": "decimal",
-									"scale": 4,
-									"precision": 38
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "CODICE_VOUCHER",
