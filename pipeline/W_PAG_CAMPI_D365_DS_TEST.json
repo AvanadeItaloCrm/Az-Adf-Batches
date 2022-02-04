@@ -94,7 +94,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT PaymentFieldID, PayID, Name, Value, PayID AS PAGAMENTO_NAV_ID FROM ntvdev.PaymentFields WHERE PaymentFields.RecModifiedDate>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"value": "@concat('SELECT pf.PaymentFieldID INTEGRAZIONE_ID, p.PaymentID PAGAMENTO_CRM_ID, Name NOME, Value VALORE, p.PayID AS PAGAMENTO_NAV_ID FROM ntv.PaymentFields pf join ntv.Payments p on p.PayID=pf.PayID WHERE pf.RecModifiedDate>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -111,7 +111,7 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "PaymentFieldID",
+									"name": "INTEGRAZIONE_ID",
 									"type": "Int64",
 									"physicalType": "bigint"
 								},
@@ -122,9 +122,9 @@
 							},
 							{
 								"source": {
-									"name": "PayID",
-									"type": "Int64",
-									"physicalType": "bigint"
+									"name": "PAGAMENTO_CRM_ID",
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "PAGAMENTO_CRM_ID",
@@ -133,7 +133,7 @@
 							},
 							{
 								"source": {
-									"name": "Name",
+									"name": "NOME",
 									"type": "String",
 									"physicalType": "varchar"
 								},
@@ -144,7 +144,7 @@
 							},
 							{
 								"source": {
-									"name": "Value",
+									"name": "VALORE",
 									"type": "String",
 									"physicalType": "varchar"
 								},
