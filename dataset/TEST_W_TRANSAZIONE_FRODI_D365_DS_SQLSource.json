@@ -316,7 +316,7 @@
 		],
 		"typeProperties": {
 			"schema": "batchSync",
-			"table": "ntv_ntv_fraudload"
+			"table": "v_ntv_ntv_fraudload"
 		}
 	}
 }
