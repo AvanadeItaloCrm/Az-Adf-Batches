@@ -94,7 +94,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT * FROM dbo.ntv_ntv_employee WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"value": "@concat('SELECT ntv_employeecode CODICE_DIPENDENTE, ntv_surname COGNOME,ntv_firstname NOME,ntv_phone TEL_FISSO ,ntv_mobilephone TEL_MOBILE,ntv_email EMAIL,ntv_stationoffice UFFICIO,ntv_jobtitle JOB_TITLE,ntv_positiontype POSIZIONE,batchsync.fv(''ntv_account'',''statuscode'',statuscode) STATO, statuscode,ID INTEGRAZIONE_ID,ntv_userid UTENZA_DIPENDENTE FROM ntv_ntv_employee WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
