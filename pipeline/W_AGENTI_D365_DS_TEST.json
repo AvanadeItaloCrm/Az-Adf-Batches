@@ -94,7 +94,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT ag.ntv_agentnumber, ag.ntv_firstname, ag.ntv_surname, ag.ntv_agenttypecode, ag.ntv_agentrole, \nag.ntv_email, ag.ntv_mobilephone, ag.ntv_phone, ag.ntv_fax, \nag.Id, ac.accountnumber, ac.accountclassificationcode,\nag.ntv_portalusername, ag.statuscode, ag.ntv_consentmarketinginfo,\nag.ntv_consentprofilation, ag.ntv_consentthirdparty, ag.ntv_marketingupdatedon, ag.ntv_profilationupdatedon, ag.ntv_thirdpartyupdatedon, ag.ntv_agentid \nFROM   batchSync.v_ntv_ntv_agent ag  INNER JOIN batchSync.v_ntv_account ac ON ag.ntv_accountid = ac.accountid \nWHERE ac.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or ac.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"value": "@concat('SELECT * from batchSync.v_ntv_ntv_agent WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -111,7 +111,7 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "ntv_agentnumber",
+									"name": "CODICE_AGENTE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -122,7 +122,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_firstname",
+									"name": "NOME",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -133,7 +133,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_surname",
+									"name": "COGNOME",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -144,9 +144,9 @@
 							},
 							{
 								"source": {
-									"name": "ntv_agenttypecode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "TIPO_AGENTE",
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "TIPO_AGENTE",
@@ -155,7 +155,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_agentrole",
+									"name": "QUALIFICA",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -166,7 +166,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_email",
+									"name": "EMAIL",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -177,18 +177,18 @@
 							},
 							{
 								"source": {
-									"name": "ntv_mobilephone",
+									"name": "TELEFONO_MOBILE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
 								"sink": {
-									"name": "TELOFONO_MOBILE",
+									"name": "TELEFONO_MOBILE",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"name": "ntv_phone",
+									"name": "TELEFONO_FISSO",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -199,7 +199,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_fax",
+									"name": "FAX",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -210,7 +210,7 @@
 							},
 							{
 								"source": {
-									"name": "Id",
+									"name": "INTEGRAZIONE_ID",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -221,7 +221,7 @@
 							},
 							{
 								"source": {
-									"name": "accountnumber",
+									"name": "ADV_CORP_ID",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -232,9 +232,9 @@
 							},
 							{
 								"source": {
-									"name": "accountclassificationcode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "TIPO",
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "TIPO",
@@ -243,7 +243,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_portalusername",
+									"name": "USERNAME_NAVITAIRE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -254,9 +254,9 @@
 							},
 							{
 								"source": {
-									"name": "statuscode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "STATO",
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "STATO",
@@ -265,9 +265,9 @@
 							},
 							{
 								"source": {
-									"name": "ntv_consentmarketinginfo",
-									"type": "Boolean",
-									"physicalType": "bit"
+									"name": "CONSENSO_INFORMATIVE_MARK",
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "CONSENSO_INFORMATIVE_MARK",
@@ -276,9 +276,9 @@
 							},
 							{
 								"source": {
-									"name": "ntv_consentprofilation",
-									"type": "Boolean",
-									"physicalType": "bit"
+									"name": "CONSENSO_PROFILAZIONE",
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "CONSENSO_PROFILAZIONE",
@@ -287,9 +287,9 @@
 							},
 							{
 								"source": {
-									"name": "ntv_consentthirdparty",
-									"type": "Boolean",
-									"physicalType": "bit"
+									"name": "CONSENSO_TERZE_PARTI",
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "CONSENSO_TERZE_PARTI",
@@ -298,7 +298,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_marketingupdatedon",
+									"name": "DATA_AGG_CONS_INFOR_MARK",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
@@ -309,7 +309,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_profilationupdatedon",
+									"name": "DATA_AGG_PROFIAZIONE",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
@@ -320,7 +320,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_thirdpartyupdatedon",
+									"name": "DATA_AGG_CONS_TERZE",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
@@ -331,9 +331,9 @@
 							},
 							{
 								"source": {
-									"name": "ntv_agentid",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "CODICE_CLIENTE",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "CODICE_CLIENTE",
