@@ -1,0 +1,25 @@
+{
+	"name": "SqlDev",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzSqlOracle_Dev_StagingArea",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Chiave",
+				"type": "varchar"
+			},
+			{
+				"name": "Valore",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "TestErroriPipeline"
+		}
+	}
+}
