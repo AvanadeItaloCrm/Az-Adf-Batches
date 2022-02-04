@@ -111,7 +111,7 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "ntv_employeecode",
+									"name": "CODICE_DIPENDENTE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -122,7 +122,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_surname",
+									"name": "COGNOME",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -133,7 +133,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_firstname",
+									"name": "NOME",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -144,7 +144,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_phone",
+									"name": "TEL_FISSO",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -155,7 +155,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_mobilephone",
+									"name": "TEL_MOBILE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -166,7 +166,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_email",
+									"name": "EMAIL",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -177,7 +177,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_stationoffice",
+									"name": "UFFICIO",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -188,7 +188,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_jobtitle",
+									"name": "JOB_TITLE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -199,7 +199,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_positiontype",
+									"name": "POSIZIONE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -210,9 +210,9 @@
 							},
 							{
 								"source": {
-									"name": "statuscode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "STATO",
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "STATO",
@@ -221,7 +221,7 @@
 							},
 							{
 								"source": {
-									"name": "Id",
+									"name": "INTEGRAZIONE_ID",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -232,7 +232,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_userid",
+									"name": "UTENZA_DIPENDENTE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
