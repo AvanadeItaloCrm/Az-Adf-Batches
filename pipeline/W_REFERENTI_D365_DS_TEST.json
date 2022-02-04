@@ -94,7 +94,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT * FROM dbo.ntv_ntv_referent WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"value": "@concat('SELECT * FROM batchSync.v_ntv_ntv_referent WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -111,7 +111,7 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "ntv_firstname",
+									"name": "NOME",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -122,7 +122,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_surname",
+									"name": "COGNOME",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -133,7 +133,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_email",
+									"name": "EMAIL",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -144,9 +144,9 @@
 							},
 							{
 								"source": {
-									"name": "ntv_referenttypecode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "TITOLO",
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "TITOLO",
@@ -155,7 +155,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_mobilephone",
+									"name": "TELOFONO_MOBILE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -166,7 +166,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_phone",
+									"name": "TELEFONO_FISSO",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -177,7 +177,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_fax",
+									"name": "FAX",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -188,7 +188,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_jobtitle",
+									"name": "JOB_TITLE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -199,7 +199,7 @@
 							},
 							{
 								"source": {
-									"name": "Id",
+									"name": "INTEGRAZIONE_ID",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -210,7 +210,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_referentid",
+									"name": "ADV_CORP_ID",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -336,10 +336,7 @@
 							"value": "@concat('SELECT sa_d365_test.errore_sync (''',\nvariables('TableName'),\n''',''',variables('Error'),''') FROM DUAL;')",
 							"type": "Expression"
 						},
-						"partitionOption": "PhysicalPartitionsOfTable",
-						"partitionSettings": {
-							"partitionNames": []
-						},
+						"partitionOption": "None",
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
