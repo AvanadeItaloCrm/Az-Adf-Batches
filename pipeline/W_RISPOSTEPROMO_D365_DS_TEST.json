@@ -94,7 +94,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT  Id, createdon , createdby , modifiedon , modifiedby , ntv_reponsedate , Id AS ID_CLIENTE, ntv_promotionid , ntv_note , ntv_responseoutcome, ntv_channel ,  ntv_contactid , ntv_bookingid FROM  dbo.ntv_ntv_promoresponse WHERE ntv_ntv_promoresponse.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"value": "@concat('SELECT  * FROM  batchSync.v_ntv_ntv_promoresponse WHERE DATA_AGGIORNAMENTO>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -111,7 +111,7 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "Id",
+									"name": "INTEGRAZIONE_ID",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -122,7 +122,7 @@
 							},
 							{
 								"source": {
-									"name": "createdon",
+									"name": "DATA_CREAZIONE",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
@@ -133,7 +133,7 @@
 							},
 							{
 								"source": {
-									"name": "createdby",
+									"name": "CREATO_DA",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -144,7 +144,7 @@
 							},
 							{
 								"source": {
-									"name": "modifiedon",
+									"name": "DATA_AGGIORNAMENTO",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
@@ -155,7 +155,7 @@
 							},
 							{
 								"source": {
-									"name": "modifiedby",
+									"name": "AGGIORNATO_DA",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -166,7 +166,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_reponsedate",
+									"name": "DATA_RISPOSTA",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
@@ -188,7 +188,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_promotionid",
+									"name": "ID_PROMO",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -199,7 +199,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_note",
+									"name": "NOTE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -210,7 +210,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_responseoutcome",
+									"name": "RISPOSTA",
 									"type": "Int32",
 									"physicalType": "int"
 								},
@@ -221,7 +221,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_channel",
+									"name": "CANALE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -232,7 +232,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_contactid",
+									"name": "CODICE_CLIENTE",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -243,7 +243,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_bookingid",
+									"name": "PNR",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
