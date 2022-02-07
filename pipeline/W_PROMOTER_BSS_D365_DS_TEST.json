@@ -94,7 +94,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT ntv_ntv_promoter.modifiedon, ntv_ntv_promoter.ntv_lastname, ntv_ntv_promoter.ntv_id, ntv_ntv_promoter.ntv_name, ntv_ntv_promoter.statuscode, ntv_ntv_promoter.Id , ntv_ntv_station.ntv_name AS ntv_station_name, ntv_ntv_station.ntv_codenavitaire FROM ntv_ntv_station RIGHT OUTER JOIN ntv_ntv_promoter ON ntv_ntv_station.ntv_stationid = ntv_ntv_promoter.ntv_stationid WHERE ntv_ntv_station.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or ntv_ntv_promoter.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')\n",
+							"value": "@concat('SELECT * FROM batchSync.v_W_PROMOTER_BSS_D365_DS WHERE MODON_STAZIONE>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or DATA_MODIFICA>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -111,7 +111,7 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "Id",
+									"name": "INTEGRAZIONE_ID",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -122,7 +122,7 @@
 							},
 							{
 								"source": {
-									"name": "modifiedon",
+									"name": "DATA_MODIFICA",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
@@ -133,7 +133,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_lastname",
+									"name": "COGNOME_OPERATORE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -144,7 +144,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_id",
+									"name": "PROMOTORE_ID",
 									"type": "Int32",
 									"physicalType": "int"
 								},
@@ -155,7 +155,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_name",
+									"name": "NOME_OPERATORE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -166,9 +166,9 @@
 							},
 							{
 								"source": {
-									"name": "statuscode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "STATO",
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "STATO",
@@ -177,7 +177,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_station_name",
+									"name": "DESC_STAZIONE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -188,7 +188,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_codenavitaire",
+									"name": "STAZIONE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
