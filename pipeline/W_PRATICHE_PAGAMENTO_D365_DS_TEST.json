@@ -94,7 +94,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT * FROM dbo.ntv_ntv_docpayment WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"value": "@concat('SELECT * FROM batchSync.v_ntv_ntv_docpayment WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -111,7 +111,7 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "Id",
+									"name": "INTEGRAZIONE_ID",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -122,7 +122,7 @@
 							},
 							{
 								"source": {
-									"name": "createdon",
+									"name": "DATA_CREAZ_PAGAMENTO",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
@@ -133,7 +133,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_pnrcreationdate",
+									"name": "DATA_CREAZ_PNR",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
@@ -144,7 +144,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_paymentamount",
+									"name": "IMPORTO_PAGAMENTO",
 									"type": "Decimal",
 									"physicalType": "decimal",
 									"scale": 2,
@@ -157,7 +157,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_pnramount",
+									"name": "IMPORTO_PNR",
 									"type": "Decimal",
 									"physicalType": "decimal",
 									"scale": 2,
@@ -170,7 +170,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_iddevice",
+									"name": "DEVICE_ID",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -181,7 +181,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_authoritydocumentid",
+									"name": "PRATICA_AUTORITA_ID",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -192,7 +192,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_imei",
+									"name": "IMEI",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -203,7 +203,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_ipaddress",
+									"name": "IP",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -214,7 +214,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_notes",
+									"name": "NOTE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -225,7 +225,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_idpayment",
+									"name": "PAGAMENTO_NAV_ID",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -236,7 +236,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_paymentstatus",
+									"name": "STATO_PAGAMENTO",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -247,7 +247,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_pnr",
+									"name": "PNR",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -258,7 +258,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_paymentmethod",
+									"name": "TIPO_PAGAMENTO",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -269,7 +269,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_cardowner",
+									"name": "TITOLARE_CARTA",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -280,7 +280,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_paypalidtext",
+									"name": "PAYPAL_ID",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -291,7 +291,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_accountnumber",
+									"name": "NUMERO_CONTO",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -302,7 +302,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_channel",
+									"name": "CANALE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -313,7 +313,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_merchantcodetext",
+									"name": "CODICE_COMMERCIANTE_ID",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -324,7 +324,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_paymentdate",
+									"name": "DATA_PAGAMENTO",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
