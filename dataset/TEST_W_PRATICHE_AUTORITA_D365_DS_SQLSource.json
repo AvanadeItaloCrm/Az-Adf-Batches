@@ -2,7 +2,7 @@
 	"name": "TEST_W_PRATICHE_AUTORITA_D365_DS_SQLSource",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzSqlOracle_Test_DesDYN365",
+			"referenceName": "AzSqlOracle_Test_StagingArea",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -287,8 +287,8 @@
 			}
 		],
 		"typeProperties": {
-			"schema": "dbo",
-			"table": "ntv_ntv_authoritydocument"
+			"schema": "batchSync",
+			"table": "v_ntv_ntv_authoritydocument"
 		}
 	}
 }
