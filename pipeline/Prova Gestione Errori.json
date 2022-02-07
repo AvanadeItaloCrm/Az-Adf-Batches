@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "select concat('aaaaaa333333333333333333333333333333333333333333aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',Codice) Chiave, Cluster Valore from [batchSync].[AggClusterClienti]",
+						"sqlReaderQuery": "select * from TestErrorePipeline2",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -27,12 +27,27 @@
 						"sqlWriterUseTableLock": false
 					},
 					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"logSettings": {
+						"enableCopyActivityLog": true,
+						"copyActivityLogSettings": {
+							"logLevel": "Warning",
+							"enableReliableLogging": false
+						},
+						"logLocationSettings": {
+							"linkedServiceName": {
+								"referenceName": "linkedService1",
+								"type": "LinkedServiceReference"
+							},
+							"path": "batchfiles/Errors"
+						}
+					},
 					"translator": {
 						"type": "TabularTranslator",
 						"mappings": [
 							{
 								"source": {
-									"name": "Chiave",
+									"name": "chiave",
 									"type": "String",
 									"physicalType": "varchar"
 								},
@@ -44,7 +59,7 @@
 							},
 							{
 								"source": {
-									"name": "Valore",
+									"name": "valore",
 									"type": "String",
 									"physicalType": "varchar"
 								},
