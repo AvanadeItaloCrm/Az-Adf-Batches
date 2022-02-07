@@ -94,7 +94,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT * FROM dbo.ntv_ntv_authoritydocument WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"value": "@concat('SELECT * FROM batchSync.v_ntv_ntv_authoritydocument WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -111,7 +111,18 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "ntv_receptiondate",
+									"name": "INTEGRAZIONE_ID",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "INTEGRAZIONE_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DATA_RICEZIONE",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
@@ -122,7 +133,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_authority",
+									"name": "AUTORITA",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -133,7 +144,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_dateandplace",
+									"name": "DATA_LUOGO",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -144,7 +155,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_acquirerdates",
+									"name": "DATI_ACQUIRER",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -155,7 +166,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_email",
+									"name": "EMAIL",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -166,7 +177,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_fax",
+									"name": "FAX",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -177,7 +188,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_address",
+									"name": "INDIRIZZO",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -188,7 +199,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_heading",
+									"name": "INTESTAZIONE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -199,7 +210,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_notes",
+									"name": "NOTE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -210,7 +221,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_authorityprotocolnumber",
+									"name": "PROTOCOLLO_AUTORITA",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -221,7 +232,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_subject",
+									"name": "OGGETTO",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -232,7 +243,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_inprotocol",
+									"name": "PROTOCOLLO_IN",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -243,7 +254,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_outprotocol",
+									"name": "PROTOCOLLO_OUT",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -254,7 +265,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_phonenumber",
+									"name": "TELEFONO",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -265,9 +276,9 @@
 							},
 							{
 								"source": {
-									"name": "ntv_acquirertypecode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "TIPO_ACQUIRER",
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "TIPO_ACQUIRER",
@@ -276,7 +287,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_processingenddate",
+									"name": "DATA_FINE_LAVORAZIONE",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
@@ -287,7 +298,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_processingstartdate",
+									"name": "DATA_INIZIO_LAVORAZIONE",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
@@ -298,7 +309,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_sendingdate",
+									"name": "DATA_INVIO",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
@@ -309,7 +320,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_authoritypracticedate",
+									"name": "DATA_PRATICA_AUTORITA",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
@@ -320,21 +331,13 @@
 							},
 							{
 								"source": {
-									"name": "ntv_resendingdate",
+									"name": "DATA_ULTIMO_INVIO",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
 								"sink": {
 									"name": "DATA_ULTIMO_INVIO",
 									"type": "DateTime"
-								}
-							},
-							{
-								"source": {
-									"name": "Id"
-								},
-								"sink": {
-									"name": "INTEGRAZIONE_ID"
 								}
 							}
 						],
