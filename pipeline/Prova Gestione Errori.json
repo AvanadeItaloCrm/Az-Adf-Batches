@@ -153,6 +153,26 @@
 					"referenceName": "AzSqlOracle_Dev_StagingArea",
 					"type": "LinkedServiceReference"
 				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Copy data1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "Output",
+					"value": {
+						"value": "@activity('Copy data1').output",
+						"type": "Expression"
+					}
+				}
 			}
 		],
 		"variables": {
