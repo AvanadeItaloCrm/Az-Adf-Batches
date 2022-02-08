@@ -13,12 +13,54 @@
 				"folderPath": "dem_business",
 				"container": "adobe"
 			},
-			"columnDelimiter": ",",
+			"columnDelimiter": ";",
 			"escapeChar": "\\",
+			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
 		"schema": [
 			{
+				"name": "Message id",
+				"type": "String"
+			},
+			{
+				"name": "Delivery id",
+				"type": "String"
+			},
+			{
+				"name": "Campaign id",
+				"type": "String"
+			},
+			{
+				"name": "Event date",
+				"type": "String"
+			},
+			{
+				"name": "Email address",
+				"type": "String"
+			},
+			{
+				"name": "Codice cliente",
+				"type": "String"
+			},
+			{
+				"name": "Subject",
+				"type": "String"
+			},
+			{
+				"name": "Status",
+				"type": "String"
+			},
+			{
+				"name": "Failure type",
+				"type": "String"
+			},
+			{
+				"name": "Reason",
+				"type": "String"
+			},
+			{
+				"name": "Transazionale",
 				"type": "String"
 			}
 		]
