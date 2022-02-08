@@ -178,21 +178,21 @@
 					"storedProcedureParameters": {
 						"ErrorCode": {
 							"value": {
-								"value": "out",
+								"value": "@activity('Copy data1').output.rowsCopied",
 								"type": "Expression"
 							},
 							"type": "String"
 						},
 						"ErrorDescription": {
 							"value": {
-								"value": "log out",
+								"value": "@activity('Copy data1').output.rowsSkipped",
 								"type": "Expression"
 							},
 							"type": "String"
 						},
 						"ErrorLoggedTime": {
 							"value": {
-								"value": "@utcnow()",
+								"value": "@concat(utcnow(),activity('Copy data1').output.logFilePath)",
 								"type": "Expression"
 							},
 							"type": "String"
