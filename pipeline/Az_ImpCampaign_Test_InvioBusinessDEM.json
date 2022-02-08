@@ -87,6 +87,8 @@
 												"storeSettings": {
 													"type": "AzureBlobStorageReadSettings",
 													"recursive": true,
+													"wildcardFolderPath": "dem_business",
+													"wildcardFileName": "@item().name",
 													"enablePartitionDiscovery": false
 												},
 												"formatSettings": {
