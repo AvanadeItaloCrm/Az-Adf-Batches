@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "File",
+				"fileName": "BusinessDEM_broadlog_20220208_160204.csv",
 				"folderPath": "dem_business",
 				"container": "adobe"
 			},
