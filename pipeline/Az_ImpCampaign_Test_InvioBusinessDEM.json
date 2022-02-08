@@ -91,7 +91,7 @@
 												},
 												"formatSettings": {
 													"type": "DelimitedTextReadSettings",
-													"skipLineCount": 1
+													"skipLineCount": 0
 												}
 											},
 											"sink": {
@@ -104,9 +104,9 @@
 												"mappings": [
 													{
 														"source": {
+															"name": "Message id",
 															"type": "String",
-															"physicalType": "String",
-															"ordinal": 1
+															"physicalType": "String"
 														},
 														"sink": {
 															"name": "Message_ID",
@@ -116,9 +116,9 @@
 													},
 													{
 														"source": {
+															"name": "Delivery id",
 															"type": "String",
-															"physicalType": "String",
-															"ordinal": 2
+															"physicalType": "String"
 														},
 														"sink": {
 															"name": "Delivery_ID",
@@ -128,9 +128,9 @@
 													},
 													{
 														"source": {
+															"name": "Campaign id",
 															"type": "String",
-															"physicalType": "String",
-															"ordinal": 3
+															"physicalType": "String"
 														},
 														"sink": {
 															"name": "Campaign_ID",
@@ -140,21 +140,21 @@
 													},
 													{
 														"source": {
+															"name": "Event date",
 															"type": "String",
-															"physicalType": "String",
-															"ordinal": 4
+															"physicalType": "String"
 														},
 														"sink": {
 															"name": "Event_Date",
-															"type": "DateTime",
-															"physicalType": "datetime"
+															"type": "String",
+															"physicalType": "varchar"
 														}
 													},
 													{
 														"source": {
+															"name": "Email address",
 															"type": "String",
-															"physicalType": "String",
-															"ordinal": 5
+															"physicalType": "String"
 														},
 														"sink": {
 															"name": "Email_Address",
@@ -164,9 +164,9 @@
 													},
 													{
 														"source": {
+															"name": "Codice cliente",
 															"type": "String",
-															"physicalType": "String",
-															"ordinal": 6
+															"physicalType": "String"
 														},
 														"sink": {
 															"name": "Codice_Cliente",
@@ -176,9 +176,9 @@
 													},
 													{
 														"source": {
+															"name": "Subject",
 															"type": "String",
-															"physicalType": "String",
-															"ordinal": 7
+															"physicalType": "String"
 														},
 														"sink": {
 															"name": "Subject",
@@ -188,9 +188,9 @@
 													},
 													{
 														"source": {
+															"name": "Status",
 															"type": "String",
-															"physicalType": "String",
-															"ordinal": 8
+															"physicalType": "String"
 														},
 														"sink": {
 															"name": "Status",
@@ -200,9 +200,9 @@
 													},
 													{
 														"source": {
+															"name": "Failure type",
 															"type": "String",
-															"physicalType": "String",
-															"ordinal": 9
+															"physicalType": "String"
 														},
 														"sink": {
 															"name": "Failure_Type",
@@ -212,9 +212,9 @@
 													},
 													{
 														"source": {
+															"name": "Reason",
 															"type": "String",
-															"physicalType": "String",
-															"ordinal": 10
+															"physicalType": "String"
 														},
 														"sink": {
 															"name": "Reason",
@@ -224,9 +224,9 @@
 													},
 													{
 														"source": {
+															"name": "Transazionale",
 															"type": "String",
-															"physicalType": "String",
-															"ordinal": 11
+															"physicalType": "String"
 														},
 														"sink": {
 															"name": "Transazionale",
