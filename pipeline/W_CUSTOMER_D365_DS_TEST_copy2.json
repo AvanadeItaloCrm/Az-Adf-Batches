@@ -1,0 +1,982 @@
+{
+	"name": "W_CUSTOMER_D365_DS_TEST_copy2",
+	"properties": {
+		"activities": [
+			{
+				"name": "Start SP",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[batchSync].[InizioSQL_ORACLEBatchSync]",
+					"storedProcedureParameters": {
+						"NomeFile": {
+							"value": "",
+							"type": "String"
+						},
+						"TabellaImport": {
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzSqlOracle_Test_StagingArea",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Finally SP",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "End Oracle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[batchSync].[FineSQL_ORACLEBatchSync]",
+					"storedProcedureParameters": {
+						"TabellaImport": {
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzSqlOracle_Test_StagingArea",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Sql To Oracle",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Ultima Sinc",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": {
+							"value": "@concat('SELECT * FROM batchSync.v_ntv_contact WHERE DATA_AGGIORNAMENTO>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"type": "Expression"
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "OracleSink",
+						"writeBatchSize": 10000,
+						"preCopyScript": "truncate table sa_d365_test.W_CUSTOMER_D365_DS"
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"logSettings": {
+						"enableCopyActivityLog": true,
+						"copyActivityLogSettings": {
+							"logLevel": "Warning",
+							"enableReliableLogging": false
+						},
+						"logLocationSettings": {
+							"linkedServiceName": {
+								"referenceName": "AzureBlobStorage_Test",
+								"type": "LinkedServiceReference"
+							},
+							"path": "batchfiles/Errors"
+						}
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "NOTE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NOTE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DATA_FINE_CLUB",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_FINE_CLUB",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "DATA_INIZIO_CLUB",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_INIZIO_CLUB",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "FLG_CLUB",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "FLG_CLUB",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CODICE_CLIENTE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CODICE_CLIENTE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INTEGRAZIONE_ID",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "INTEGRAZIONE_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "COGNOME",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "COGNOME",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NOME",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NOME",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "STATO_FIDELIZZAZIONE",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "STATO_FIDELIZZAZIONE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CANALE_ACQUISIZIONE",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "CANALE_ACQUISIZIONE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DATA_CREAZIONE",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_CREAZIONE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "FLG_PROFILO_CC",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "FLG_PROFILO_CC",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FLG_PMR",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "FLG_PMR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FLG_DIPENDENTE",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "FLG_DIPENDENTE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TIPOLOGIA_VIP",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "TIPOLOGIA_VIP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FLG_AMBASSADOR",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "FLG_AMBASSADOR",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PROFESSIONE",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "PROFESSIONE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SETTORE_ATTIVITA",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "SETTORE_ATTIVITA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "METODO_CONT_PRIV",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "METODO_CONT_PRIV",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "METODO_PAG_PRIV",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "METODO_PAG_PRIV",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MOTIVAZIONI_VIAG",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "MOTIVAZIONI_VIAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TRASPORTO_ABITUALE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "TRASPORTO_ABITUALE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PREFERENZA_AMBIENTE",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "PREFERENZA_AMBIENTE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PREFERENZA_CLAS_TARIFFA",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "PREFERENZA_CLAS_TARIFFA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PREFERENZA_PASTO",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "PREFERENZA_PASTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PREFERENZA_POSTO",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "PREFERENZA_POSTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PREFERENZA_CINEMA",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "PREFERENZA_CINEMA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LINGUA",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "LINGUA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CONTATTO_MESS_NTV",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CONTATTO_MESS_NTV",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CANALE_CONT_PRIV",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "CANALE_CONT_PRIV",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FASCIA_ORARIA_CONTATTO",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "FASCIA_ORARIA_CONTATTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EMAIL",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "EMAIL",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TEL_FISSO",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "TEL_FISSO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TEL_MOBILE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "TEL_MOBILE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FLG_CONSENSO_PROFILAZIONE",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "FLG_CONSENSO_PROFILAZIONE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FLG_CONSENSO_MARKETING",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "FLG_CONSENSO_MARKETING",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SEGMENTO",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "SEGMENTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CITTA",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CITTA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "STATO",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "STATO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PROVINCIA",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "PROVINCIA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INDIRIZZO",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "INDIRIZZO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CAP",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CAP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SESSO",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "SESSO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DATA_NASCITA",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_NASCITA",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "NUM_VIAGGI",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "NUM_VIAGGI",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "CLUSTER_PROMOZIONI",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "CLUSTER_PROMOZIONI",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DATA_AGG_CLUSTER_PROMO",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_AGG_CLUSTER_PROMO",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "CODICE_INVITO",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CODICE_INVITO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FLG_CONSENSO_TERZE_PARTI",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "FLG_CONSENSO_TERZE_PARTI",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DATA_AGG_CONS_TERZE_PARTI",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_AGG_CONS_TERZE_PARTI",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "CLUSTER_CHIAMATA",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "CLUSTER_CHIAMATA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "VALORE_CHIAMATA_CLIENTE",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "VALORE_CHIAMATA_CLIENTE",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "DATA_AGG_CLUSTER_CHIAM",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_AGG_CLUSTER_CHIAM",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "PROMOZIONI_CC",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "PROMOZIONI_CC",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DATA_AGG_CONS_MARK",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_AGG_CONS_MARK",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "DATA_AGG__CONS_PROF",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_AGG__CONS_PROF",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "DATA_AGGIORNAMENTO",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_AGGIORNAMENTO",
+									"type": "DateTime"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": true
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "TEST_W_CUSTUMER_D365_DS_SQLSorce",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "TEST_W_Customer_OracleDB",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Start Oracle",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Start SP",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": {
+							"value": "@concat('SELECT sa_d365_test.iniziasync (''',\nvariables('TableName'),\n''') FROM DUAL;')",
+							"type": "Expression"
+						},
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "TEST_W_Customer_OracleDB",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "End Oracle",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Sql To Oracle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": {
+							"value": "@concat('SELECT sa_d365_test.finesync (''',\nvariables('TableName'),\n''') FROM DUAL;')",
+							"type": "Expression"
+						},
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "TEST_W_Customer_OracleDB",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "Error End Oracle",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Sql To Oracle",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": {
+							"value": "@concat('SELECT sa_d365_test.errore_sync (''',\nvariables('TableName'),\n''',''',string(activity('Sql To Oracle').output),''') FROM DUAL;')",
+							"type": "Expression"
+						},
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "TEST_W_Customer_OracleDB",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "Error Finally SP",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Error End Oracle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[batchSync].[ErrorBatchSync]",
+					"storedProcedureParameters": {
+						"TabellaImport": {
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"Errore": {
+							"value": {
+								"value": "@pipeline().RunId",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"NomeFile": {
+							"value": "",
+							"type": "String"
+						},
+						"Modulo": {
+							"value": "Copy Data Sql To Oracle",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzSqlOracle_Test_StagingArea",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Ultima Sinc",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Start Oracle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": {
+							"value": "@concat('select dt_inizio_scrittura as Rec from sinc_log where tipo = ','''',\nvariables('TableName'),\n'''',' and UPPER(stato_lettura)=',\n'''',\n'COMPLETATO',\n'''',\n'and ROWNUM <=1 union select ',\n'''',\n'2010-01-01',\n'''',\n' as Rec FROM sinc_log order by Rec desc')",
+							"type": "Expression"
+						},
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "TEST_W_Customer_OracleDB",
+						"type": "DatasetReference"
+					}
+				}
+			}
+		],
+		"variables": {
+			"TableName": {
+				"type": "String",
+				"defaultValue": "W_CUSTUMER_D365_DS"
+			},
+			"Error": {
+				"type": "String",
+				"defaultValue": "@pipeline().RunId"
+			}
+		},
+		"folder": {
+			"name": "Az_IntegrazioniBatch_Oracle_Test"
+		},
+		"annotations": []
+	}
+}
