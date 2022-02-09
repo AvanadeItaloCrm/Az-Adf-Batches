@@ -31,7 +31,7 @@
 						},
 						"formatSettings": {
 							"type": "DelimitedTextReadSettings",
-							"skipLineCount": 1
+							"skipLineCount": 0
 						}
 					},
 					"sink": {
@@ -43,10 +43,17 @@
 						"type": "TabularTranslator",
 						"mappings": [
 							{
+								"sink": {
+									"name": "id",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
 								"source": {
+									"name": "CODICE_CLIENTE",
 									"type": "String",
-									"physicalType": "String",
-									"ordinal": 1
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "Codice",
@@ -56,9 +63,9 @@
 							},
 							{
 								"source": {
+									"name": "CLUSTER",
 									"type": "String",
-									"physicalType": "String",
-									"ordinal": 2
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "Cluster",
@@ -68,9 +75,9 @@
 							},
 							{
 								"source": {
+									"name": "DATA_AGGIORNAMENTO",
 									"type": "String",
-									"physicalType": "String",
-									"ordinal": 3
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "Data_Aggiornamento",
