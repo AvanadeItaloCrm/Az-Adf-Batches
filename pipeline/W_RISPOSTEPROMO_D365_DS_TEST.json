@@ -134,8 +134,8 @@
 							{
 								"source": {
 									"name": "CREATO_DA",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "CREATO_DA",
@@ -156,8 +156,8 @@
 							{
 								"source": {
 									"name": "AGGIORNATO_DA",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "AGGIORNATO_DA",
@@ -189,8 +189,8 @@
 							{
 								"source": {
 									"name": "ID_PROMO",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "ID_PROMO",
@@ -210,9 +210,9 @@
 							},
 							{
 								"source": {
-									"name": "RISPOSTA",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "DATA_RISPOSTA",
+									"type": "DateTime",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "RISPOSTA",
@@ -232,9 +232,20 @@
 							},
 							{
 								"source": {
+									"name": "CLUSTER",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "X_CLUSTER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
 									"name": "CODICE_CLIENTE",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "CODICE_CLIENTE",
@@ -244,8 +255,8 @@
 							{
 								"source": {
 									"name": "PNR",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "PNR",
