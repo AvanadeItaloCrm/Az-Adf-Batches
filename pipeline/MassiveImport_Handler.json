@@ -597,10 +597,40 @@
 							]
 						},
 						{
-							"value": "CHARGEBACK_UPDATE_PAYPAL"
+							"value": "CHARGEBACK_UPDATE_PAYPAL",
+							"activities": [
+								{
+									"name": "Execute Chargeback Update Paypal",
+									"type": "ExecutePipeline",
+									"dependsOn": [],
+									"userProperties": [],
+									"typeProperties": {
+										"pipeline": {
+											"referenceName": "Import Dynamic Flow",
+											"type": "PipelineReference"
+										},
+										"waitOnCompletion": true
+									}
+								}
+							]
 						},
 						{
-							"value": "CHARGEBACK_CANCELLAZIONE_PAYPAL"
+							"value": "CHARGEBACK_CANCELLAZIONE_PAYPAL",
+							"activities": [
+								{
+									"name": "Execute Chargeback Delete Paypal",
+									"type": "ExecutePipeline",
+									"dependsOn": [],
+									"userProperties": [],
+									"typeProperties": {
+										"pipeline": {
+											"referenceName": "Import Dynamic Flow",
+											"type": "PipelineReference"
+										},
+										"waitOnCompletion": true
+									}
+								}
+							]
 						},
 						{
 							"value": "CHARGEBACK_CANCELLAZIONE_CREDITCARD",
