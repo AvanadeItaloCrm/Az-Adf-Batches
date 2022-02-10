@@ -44,9 +44,9 @@
 						"mappings": [
 							{
 								"source": {
+									"name": "CODICE_CLIENTE",
 									"type": "String",
-									"physicalType": "String",
-									"ordinal": 1
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "Codice_Cliente",
@@ -56,9 +56,9 @@
 							},
 							{
 								"source": {
+									"name": "CLUSTER_CHIAMATA",
 									"type": "String",
-									"physicalType": "String",
-									"ordinal": 2
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "Cluster_Chiamata",
@@ -68,21 +68,21 @@
 							},
 							{
 								"source": {
+									"name": "VALORE_CLIENTE_CHIAMATA",
 									"type": "String",
-									"physicalType": "String",
-									"ordinal": 3
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "Valore_Cliente_Chiamata",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							},
 							{
 								"source": {
+									"name": "PROMOZIONI_CHIAMATA",
 									"type": "String",
-									"physicalType": "String",
-									"ordinal": 4
+									"physicalType": "String"
 								},
 								"sink": {
 									"name": "Promozioni_Chiamata",
