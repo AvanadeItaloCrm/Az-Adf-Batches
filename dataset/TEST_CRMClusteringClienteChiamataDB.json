@@ -42,7 +42,7 @@
 		],
 		"typeProperties": {
 			"schema": "batchSync",
-			"table": "AggClusteringClenteChiamata"
+			"table": "AggClusteringClienteChiamata"
 		}
 	}
 }
