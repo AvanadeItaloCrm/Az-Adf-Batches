@@ -136,10 +136,10 @@
 							]
 						},
 						{
-							"value": "FRODI",
+							"value": "FRODI_UPDATE_PAYPAL",
 							"activities": [
 								{
-									"name": "Execute Frodi",
+									"name": "Execute Frodi Update Paypal",
 									"type": "ExecutePipeline",
 									"dependsOn": [],
 									"userProperties": [],
@@ -210,7 +210,7 @@
 							]
 						},
 						{
-							"value": "CHARGEBACK",
+							"value": "CHARGEBACK_UPDATE_CREDITCARD",
 							"activities": [
 								{
 									"name": "Execute Chargeback",
@@ -541,6 +541,24 @@
 									}
 								}
 							]
+						},
+						{
+							"value": "FRODI_UPDATE_CREDITCARD"
+						},
+						{
+							"value": "FRODI_CANCELLAZIONE_CREDITCARD"
+						},
+						{
+							"value": "FRODI_CANCELLAZIONE_PAYPAL"
+						},
+						{
+							"value": "CHARGEBACK_UPDATE_PAYPAL"
+						},
+						{
+							"value": "CHARGEBACK_CANCELLAZIONE_PAYPAL"
+						},
+						{
+							"value": "CHARGEBACK_CANCELLAZIONE_CREDITCARD"
 						}
 					]
 				}
