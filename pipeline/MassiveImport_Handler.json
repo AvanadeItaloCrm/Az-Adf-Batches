@@ -561,7 +561,22 @@
 							]
 						},
 						{
-							"value": "FRODI_CANCELLAZIONE_CREDITCARD"
+							"value": "FRODI_CANCELLAZIONE_CREDITCARD",
+							"activities": [
+								{
+									"name": "Execute Frodi Delete CreditCard",
+									"type": "ExecutePipeline",
+									"dependsOn": [],
+									"userProperties": [],
+									"typeProperties": {
+										"pipeline": {
+											"referenceName": "Import Dynamic Flow",
+											"type": "PipelineReference"
+										},
+										"waitOnCompletion": true
+									}
+								}
+							]
 						},
 						{
 							"value": "FRODI_CANCELLAZIONE_PAYPAL"
