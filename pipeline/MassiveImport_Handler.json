@@ -573,7 +573,22 @@
 							"value": "CHARGEBACK_CANCELLAZIONE_PAYPAL"
 						},
 						{
-							"value": "CHARGEBACK_CANCELLAZIONE_CREDITCARD"
+							"value": "CHARGEBACK_CANCELLAZIONE_CREDITCARD",
+							"activities": [
+								{
+									"name": "Execute Chargeback Delete CreditCard",
+									"type": "ExecutePipeline",
+									"dependsOn": [],
+									"userProperties": [],
+									"typeProperties": {
+										"pipeline": {
+											"referenceName": "Import Dynamic Flow",
+											"type": "PipelineReference"
+										},
+										"waitOnCompletion": true
+									}
+								}
+							]
 						}
 					]
 				}
