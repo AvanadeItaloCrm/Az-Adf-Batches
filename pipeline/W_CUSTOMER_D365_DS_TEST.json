@@ -243,6 +243,17 @@
 							},
 							{
 								"source": {
+									"name": "FLG_PARTNER_NTV",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "FLG_PARTNER_NTV",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
 									"name": "FLG_PMR",
 									"type": "String",
 									"physicalType": "varchar"
@@ -260,6 +271,17 @@
 								},
 								"sink": {
 									"name": "FLG_DIPENDENTE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FLG_FAMILIARE_DIP",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "FLG_FAMILIARE_DIP",
 									"type": "String"
 								}
 							},
@@ -299,8 +321,8 @@
 							{
 								"source": {
 									"name": "SETTORE_ATTIVITA",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "SETTORE_ATTIVITA",
@@ -542,7 +564,7 @@
 								"source": {
 									"name": "PROVINCIA",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "PROVINCIA",
@@ -607,8 +629,8 @@
 							{
 								"source": {
 									"name": "CLUSTER_PROMOZIONI",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "CLUSTER_PROMOZIONI",
@@ -662,8 +684,8 @@
 							{
 								"source": {
 									"name": "CLUSTER_CHIAMATA",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "CLUSTER_CHIAMATA",
