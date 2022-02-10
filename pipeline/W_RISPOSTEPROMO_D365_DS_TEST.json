@@ -210,8 +210,8 @@
 							},
 							{
 								"source": {
-									"name": "DATA_RISPOSTA",
-									"type": "DateTime",
+									"name": "RISPOSTA",
+									"type": "String",
 									"physicalType": "varchar"
 								},
 								"sink": {
