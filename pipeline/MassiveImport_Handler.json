@@ -213,7 +213,7 @@
 							"value": "CHARGEBACK_UPDATE_CREDITCARD",
 							"activities": [
 								{
-									"name": "Execute Chargeback",
+									"name": "Execute Chargeback Update CreditCard",
 									"type": "ExecutePipeline",
 									"dependsOn": [],
 									"userProperties": [],
@@ -224,8 +224,8 @@
 										},
 										"waitOnCompletion": true,
 										"parameters": {
-											"CreateTableSP_Name": "dbo.sp_MassiveImports_Chargeback",
-											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/Chargeback.dtsx",
+											"CreateTableSP_Name": "dbo.sp_MassiveImports_ChargebackUpdateCreditCard",
+											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/ChargebackUpdateCreditCard.dtsx",
 											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
 											"FileName": {
 												"value": "@pipeline().parameters.FileName",
