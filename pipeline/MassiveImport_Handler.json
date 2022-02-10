@@ -579,7 +579,22 @@
 							]
 						},
 						{
-							"value": "FRODI_CANCELLAZIONE_PAYPAL"
+							"value": "FRODI_CANCELLAZIONE_PAYPAL",
+							"activities": [
+								{
+									"name": "Execute Frodi Delete Paypal",
+									"type": "ExecutePipeline",
+									"dependsOn": [],
+									"userProperties": [],
+									"typeProperties": {
+										"pipeline": {
+											"referenceName": "Import Dynamic Flow",
+											"type": "PipelineReference"
+										},
+										"waitOnCompletion": true
+									}
+								}
+							]
 						},
 						{
 							"value": "CHARGEBACK_UPDATE_PAYPAL"
