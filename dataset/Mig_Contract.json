@@ -1,0 +1,72 @@
+{
+	"name": "Mig_Contract",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Mig_STGAzure",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migration"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "RowId",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "ntv_contractid",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "ntv_expirationdate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ntv_contractnumber",
+				"type": "varchar"
+			},
+			{
+				"name": "ntv_signaturedate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ntv_notes",
+				"type": "varchar"
+			},
+			{
+				"name": "ntv_accountid",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "statuscode",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "statecode",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "BatchId",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "IsImported",
+				"type": "bit"
+			}
+		],
+		"typeProperties": {
+			"schema": "datav",
+			"table": "ntv_contract_V"
+		}
+	}
+}

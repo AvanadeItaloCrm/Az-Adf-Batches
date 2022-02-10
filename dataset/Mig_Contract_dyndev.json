@@ -1,0 +1,15 @@
+{
+	"name": "Mig_Contract_dyndev",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "DynamicsDev",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DynamicsEntity",
+		"schema": [],
+		"typeProperties": {
+			"entityName": "ntv_contract"
+		}
+	}
+}
