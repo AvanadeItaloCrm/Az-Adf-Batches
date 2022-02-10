@@ -543,7 +543,22 @@
 							]
 						},
 						{
-							"value": "FRODI_UPDATE_CREDITCARD"
+							"value": "FRODI_UPDATE_CREDITCARD",
+							"activities": [
+								{
+									"name": "Execute Frodi Update CreditCard",
+									"type": "ExecutePipeline",
+									"dependsOn": [],
+									"userProperties": [],
+									"typeProperties": {
+										"pipeline": {
+											"referenceName": "Import Dynamic Flow",
+											"type": "PipelineReference"
+										},
+										"waitOnCompletion": true
+									}
+								}
+							]
 						},
 						{
 							"value": "FRODI_CANCELLAZIONE_CREDITCARD"
