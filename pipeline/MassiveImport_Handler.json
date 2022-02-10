@@ -150,8 +150,8 @@
 										},
 										"waitOnCompletion": true,
 										"parameters": {
-											"CreateTableSP_Name": "dbo.sp_MassiveImports_Frodi",
-											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/Frodi.dtsx",
+											"CreateTableSP_Name": "dbo.sp_MassiveImports_Frodi_Update_Paypal",
+											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/Frodi_Update_Paypal.dtsx",
 											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
 											"FileName": {
 												"value": "@pipeline().parameters.FileName",
