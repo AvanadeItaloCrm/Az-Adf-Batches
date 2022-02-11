@@ -5,8 +5,8 @@
 		"annotations": [],
 		"type": "AzureSqlDatabase",
 		"typeProperties": {
-			"connectionString": "integrated security=False;encrypt=True;connection timeout=30;data source=172.26.78.139;initial catalog=NTV_StagingArea;user id=ETL_Accenture",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJiYzA4OTM4ZC02NzM0LTQxYzYtOTg1ZC02NjM5OTc3NjU3NDUiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"connectionString": "integrated security=False;encrypt=True;connection timeout=30;data source=172.26.78.139;initial catalog=NTV_StagingArea;user id=ETL_Accenture;trustservercertificate=true",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJhZTFiN2M4ZS0zZDM1LTQ3ZTEtYTUwMC04MDRmMGMwMzdhY2UiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "integrationRuntimeSFH-TEST",
