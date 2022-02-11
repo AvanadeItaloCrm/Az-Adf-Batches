@@ -157,7 +157,7 @@
 										"typeProperties": {
 											"variableName": "FILENAME_COMPLETO",
 											"value": {
-												"value": "@item().contract_FileName",
+												"value": "@item().Contract_FileName",
 												"type": "Expression"
 											}
 										}
