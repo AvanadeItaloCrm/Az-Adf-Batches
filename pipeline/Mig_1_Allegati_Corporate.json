@@ -1,5 +1,5 @@
 {
-	"name": "Mig_Allegati_Corporate",
+	"name": "Mig_1_Allegati_Corporate",
 	"properties": {
 		"activities": [
 			{
@@ -69,7 +69,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"pipeline": {
-									"referenceName": "Mig_iterazione_allegatiCorp",
+									"referenceName": "Mig_2_iterazione_allegatiCorp",
 									"type": "PipelineReference"
 								},
 								"waitOnCompletion": true,
