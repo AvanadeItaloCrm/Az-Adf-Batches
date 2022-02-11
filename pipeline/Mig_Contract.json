@@ -96,17 +96,6 @@
 							},
 							{
 								"source": {
-									"name": "ntv_accountid",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "ntv_accountid",
-									"type": "Guid"
-								}
-							},
-							{
-								"source": {
 									"name": "statuscode",
 									"type": "Int32",
 									"physicalType": "int"
@@ -125,6 +114,17 @@
 								"sink": {
 									"name": "statecode",
 									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "accountnumber",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "ntv_accountidname",
+									"type": "String"
 								}
 							}
 						],

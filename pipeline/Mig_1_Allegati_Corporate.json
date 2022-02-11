@@ -141,7 +141,14 @@
 			{
 				"name": "Stored procedure1",
 				"type": "SqlServerStoredProcedure",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Execute SSIS Load ntv_contract",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -280,6 +287,31 @@
 				"linkedServiceName": {
 					"referenceName": "Mig_STGAzure",
 					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Execute SSIS Load ntv_contract",
+				"type": "ExecuteSSISPackage",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"packageLocation": {
+						"packagePath": "NTV-CRM-MIGRAZIONE-Test/NTV-CRM-MIGRAZIONE/Load_ntv_contract.dtsx",
+						"type": "SSISDB"
+					},
+					"environmentPath": "./DEV",
+					"connectVia": {
+						"referenceName": "Italo-devtest-IntegrationRuntimeSSIS",
+						"type": "IntegrationRuntimeReference"
+					},
+					"loggingLevel": "Basic"
 				}
 			}
 		],
