@@ -1,0 +1,37 @@
+{
+	"name": "Mig_Allegato_Destination_Corp",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "mig_crmdevdyn365data",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"Destination": {
+				"type": "string",
+				"defaultValue": "contract"
+			},
+			"FileName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().FileName",
+					"type": "Expression"
+				},
+				"container": {
+					"value": "@dataset().Destination",
+					"type": "Expression"
+				}
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

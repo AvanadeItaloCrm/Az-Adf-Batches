@@ -22,7 +22,7 @@
 						"partitionOption": "None"
 					},
 					"dataset": {
-						"referenceName": "Mig_SR_Allegati",
+						"referenceName": "Mig_Corp_Allegati",
 						"type": "DatasetReference"
 					},
 					"firstRowOnly": false
@@ -127,28 +127,18 @@
 										},
 										"inputs": [
 											{
-												"referenceName": "Mig_staging_incident",
+												"referenceName": "Mig_staging_contract",
 												"type": "DatasetReference",
 												"parameters": {
-													"Filename": {
-														"value": "@pipeline().parameters.ParamPipeline",
-														"type": "Expression"
-													},
-													"FileSource": "staging-incident"
+													"Filename": "@pipeline().parameters.ParamPipeline",
+													"FileSource": "staging-contract"
 												}
 											}
 										],
 										"outputs": [
 											{
-												"referenceName": "Mig_Allegato_Destination",
-												"type": "DatasetReference",
-												"parameters": {
-													"DestinationFile": "incident",
-													"FileName": {
-														"value": "@replace(replace(string(variables('FILENAME_COMPLETO')),'[{\"NOMEFILE\":\"' , ''),'\"}]','')",
-														"type": "Expression"
-													}
-												}
+												"referenceName": "Mig_Allegato_Destination_Corp",
+												"type": "DatasetReference"
 											}
 										]
 									},
@@ -160,7 +150,7 @@
 										"typeProperties": {
 											"variableName": "FILENAME_COMPLETO",
 											"value": {
-												"value": "@item().SR_FileName",
+												"value": "@item().contract_FileName",
 												"type": "Expression"
 											}
 										}
