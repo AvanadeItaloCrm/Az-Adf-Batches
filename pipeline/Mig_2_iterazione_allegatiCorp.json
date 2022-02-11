@@ -140,7 +140,7 @@
 												"referenceName": "Mig_Allegato_Destination_Corp",
 												"type": "DatasetReference",
 												"parameters": {
-													"Destination": "*",
+													"Destination": "contract",
 													"FileName": {
 														"value": "@replace(replace(string(variables('FILENAME_COMPLETO')),'[{\"NOMEFILE\":\"' , ''),'\"}]','')",
 														"type": "Expression"
