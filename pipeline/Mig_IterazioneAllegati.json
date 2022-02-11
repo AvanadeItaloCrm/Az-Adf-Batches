@@ -238,6 +238,12 @@
 											"value": "@item().name",
 											"type": "Expression"
 										}
+									},
+									"FileSource": {
+										"value": {
+											"value": "@variables('FileSource')",
+											"type": "Expression"
+										}
 									}
 								}
 							},
@@ -280,6 +286,10 @@
 		"variables": {
 			"FileName": {
 				"type": "String"
+			},
+			"FileSource": {
+				"type": "String",
+				"defaultValue": "staging-incident"
 			}
 		},
 		"folder": {
