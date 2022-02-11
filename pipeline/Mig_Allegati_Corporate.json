@@ -241,7 +241,7 @@
 									},
 									"FileSource": {
 										"value": {
-											"value": "@item().FileSource",
+											"value": "@variables('FileSource')",
 											"type": "Expression"
 										}
 									}
@@ -286,6 +286,10 @@
 		"variables": {
 			"FileName": {
 				"type": "String"
+			},
+			"FileSource": {
+				"type": "String",
+				"defaultValue": "staging-contract"
 			}
 		},
 		"folder": {
