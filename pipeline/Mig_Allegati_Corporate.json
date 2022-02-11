@@ -179,12 +179,8 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Mig_staging_incident",
-						"type": "DatasetReference",
-						"parameters": {
-							"Filename": "*",
-							"FileSource": "staging-incident"
-						}
+						"referenceName": "Mig_staging_contract",
+						"type": "DatasetReference"
 					},
 					"fieldList": [
 						"childItems"
