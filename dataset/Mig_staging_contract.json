@@ -6,8 +6,12 @@
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"filename": {
+			"Filename": {
 				"type": "string"
+			},
+			"FileSource": {
+				"type": "string",
+				"defaultValue": "staging-contract"
 			}
 		},
 		"annotations": [],
@@ -19,7 +23,10 @@
 					"value": "@dataset().filename",
 					"type": "Expression"
 				},
-				"container": "staging-contract"
+				"container": {
+					"value": "@dataset().FileSource",
+					"type": "Expression"
+				}
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
