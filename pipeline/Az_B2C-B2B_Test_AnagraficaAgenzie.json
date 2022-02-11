@@ -694,7 +694,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"packageLocation": {
-									"packagePath": "SqlToDyn/NTV.Az.Batches.Dyn365.CC/Dev_AnagraficaAgenzie.dtsx",
+									"packagePath": "NTV.Az.Batches.Dyn365.CC_Test/NTV.Az.Batches.Dyn365.CC_Test/Test_AnagraficaAgenzie.dtsx",
 									"type": "SSISDB"
 								},
 								"environmentPath": null,
@@ -725,10 +725,10 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"storedProcedureName": "[batchSync].[copyToAggAnagraficaAgenzie2]"
+								"storedProcedureName": "batchSync.copyToAggAnagraficaAgenzie2"
 							},
 							"linkedServiceName": {
-								"referenceName": "AzureSqlDbCrmStagingArea",
+								"referenceName": "AzureSqlTestStagingArea",
 								"type": "LinkedServiceReference"
 							}
 						},
