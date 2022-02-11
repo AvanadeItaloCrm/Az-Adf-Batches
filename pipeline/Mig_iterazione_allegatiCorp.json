@@ -105,7 +105,7 @@
 													"metadata": [
 														{
 															"name": "Category",
-															"value": "Documentazione Generica"
+															"value": "Contratti"
 														}
 													]
 												},
@@ -138,7 +138,14 @@
 										"outputs": [
 											{
 												"referenceName": "Mig_Allegato_Destination_Corp",
-												"type": "DatasetReference"
+												"type": "DatasetReference",
+												"parameters": {
+													"Destination": "*",
+													"FileName": {
+														"value": "@replace(replace(string(variables('FILENAME_COMPLETO')),'[{\"NOMEFILE\":\"' , ''),'\"}]','')",
+														"type": "Expression"
+													}
+												}
 											}
 										]
 									},
