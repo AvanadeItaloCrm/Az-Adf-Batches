@@ -31,7 +31,7 @@
 		],
 		"typeProperties": {
 			"schema": "datav",
-			"table": "AllegatiCORP"
+			"table": "AllegatiSR"
 		}
 	}
 }
