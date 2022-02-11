@@ -89,7 +89,7 @@
 								}
 							},
 							"linkedServiceName": {
-								"referenceName": "AzureSqlDbCrmStagingArea",
+								"referenceName": "AzureSqlTestStagingArea",
 								"type": "LinkedServiceReference"
 							}
 						},
