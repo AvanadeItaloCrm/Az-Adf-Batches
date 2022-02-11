@@ -123,8 +123,8 @@
 							{
 								"source": {
 									"name": "CATEGORIA",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "CATEGORIA",
@@ -134,8 +134,8 @@
 							{
 								"source": {
 									"name": "SOTTOCATEGORIA",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "SOTTOCATEGORIA",
@@ -211,8 +211,8 @@
 							{
 								"source": {
 									"name": "CREATO_DA",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "CREATO_DA",
@@ -233,8 +233,8 @@
 							{
 								"source": {
 									"name": "OWNER",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "OWNER",
@@ -266,8 +266,8 @@
 							{
 								"source": {
 									"name": "ESITO",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "ESITO",
@@ -277,8 +277,8 @@
 							{
 								"source": {
 									"name": "MOTIVO",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "MOTIVO",
@@ -790,6 +790,17 @@
 								},
 								"sink": {
 									"name": "NUM_EC_FATTURA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LINGUA",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "LINGUA",
 									"type": "String"
 								}
 							}
