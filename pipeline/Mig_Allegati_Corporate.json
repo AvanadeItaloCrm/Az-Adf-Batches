@@ -7,7 +7,7 @@
 				"type": "GetMetadata",
 				"dependsOn": [
 					{
-						"activity": "Load AllegatiSR",
+						"activity": "Load AllegatiCorp",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -23,11 +23,11 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Mig_staging_incident",
+						"referenceName": "Mig_staging_contract",
 						"type": "DatasetReference",
 						"parameters": {
 							"Filename": "*",
-							"FileSource": "staging-incident"
+							"FileSource": "staging-contract"
 						}
 					},
 					"fieldList": [
@@ -180,7 +180,11 @@
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "Mig_staging_contract",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"Filename": "*",
+							"FileSource": "staging-contract"
+						}
 					},
 					"fieldList": [
 						"childItems"
@@ -234,6 +238,12 @@
 											"value": "@item().name",
 											"type": "Expression"
 										}
+									},
+									"FileSource": {
+										"value": {
+											"value": "@item().FileSource",
+											"type": "Expression"
+										}
 									}
 								}
 							},
@@ -246,7 +256,7 @@
 				}
 			},
 			{
-				"name": "Load AllegatiSR",
+				"name": "Load AllegatiCorp",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
@@ -265,7 +275,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[datav].[pr_Load_AllegatiSR]"
+					"storedProcedureName": "[datav].[pr_Load_AllegatiCORP]"
 				},
 				"linkedServiceName": {
 					"referenceName": "Mig_STGAzure",
