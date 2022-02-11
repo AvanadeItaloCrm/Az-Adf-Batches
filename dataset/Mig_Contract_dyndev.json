@@ -5,6 +5,9 @@
 			"referenceName": "DynamicsDev",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "Migration"
+		},
 		"annotations": [],
 		"type": "DynamicsEntity",
 		"schema": [],
