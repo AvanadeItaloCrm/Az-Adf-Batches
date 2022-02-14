@@ -188,7 +188,7 @@
 										"waitOnCompletion": true,
 										"parameters": {
 											"CreateTableSP_Name": "dbo.sp_MassiveImports_ElectionEventSegments",
-											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImport/ElectionEventSegments.dtsx",
+											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/ElectionEventSegments.dtsx",
 											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
 											"FileName": {
 												"value": "@pipeline().parameters.FileName",
