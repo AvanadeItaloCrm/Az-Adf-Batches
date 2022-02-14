@@ -726,6 +726,43 @@
 									}
 								}
 							]
+						},
+						{
+							"value": "SOSPENSIONE AGENTI",
+							"activities": [
+								{
+									"name": "Execute AgentSuspension",
+									"type": "ExecutePipeline",
+									"dependsOn": [],
+									"userProperties": [],
+									"typeProperties": {
+										"pipeline": {
+											"referenceName": "Import Dynamic Flow",
+											"type": "PipelineReference"
+										},
+										"waitOnCompletion": true,
+										"parameters": {
+											"CreateTableSP_Name": "dbo.sp_MassiveImports_AgentSuspension",
+											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/AgentSuspension.dtsx",
+											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
+											"FileName": {
+												"value": "@pipeline().parameters.FileName",
+												"type": "Expression"
+											},
+											"DeleteTableSP_Name": "dbo.sp_MassiveImports_DeleteTable",
+											"FindFlowMappingsSP_Name": "dbo.sp_MassiveImports_getColumnMapping",
+											"CategoryName": {
+												"value": "@variables('MetadataType')",
+												"type": "Expression"
+											},
+											"DisplayName": {
+												"value": "@variables('FileDisplayName')",
+												"type": "Expression"
+											}
+										}
+									}
+								}
+							]
 						}
 					]
 				}
