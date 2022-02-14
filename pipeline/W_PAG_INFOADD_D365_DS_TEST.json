@@ -188,6 +188,17 @@
 							},
 							{
 								"source": {
+									"name": "RICEVUTO_DA",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "RICEVUTO_DA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
 									"name": "PAGAMENTO_CRM_ID",
 									"type": "String",
 									"physicalType": "varchar"
