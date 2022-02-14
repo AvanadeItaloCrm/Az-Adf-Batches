@@ -12,7 +12,8 @@
 				"parameters": {
 					"BlobStorageURL": "https://crmdevdyn365data.blob.core.windows.net",
 					"FolderPath": "@triggerBody().folderPath",
-					"FileName": "@triggerBody().fileName"
+					"FileName": "@triggerBody().fileName",
+					"SSIS_EnvironmentPath": "NTV.D365.IntegrationServices/DEV"
 				}
 			}
 		],
