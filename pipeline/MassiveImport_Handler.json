@@ -247,7 +247,7 @@
 							]
 						},
 						{
-							"value": "RIASSEGNAZIONE AGENZIE",
+							"value": "RIASSEGNAZIONE AGENTI",
 							"activities": [
 								{
 									"name": "Execute Agent Reassign",
