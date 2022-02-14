@@ -133,7 +133,7 @@
 							},
 							{
 								"source": {
-									"name": "PaymentID",
+									"name": "PAGAMENTO_NAV_ID",
 									"type": "String",
 									"physicalType": "varchar"
 								},
@@ -144,7 +144,7 @@
 							},
 							{
 								"source": {
-									"name": "ApplicationId",
+									"name": "APPLICAZIONE_ID",
 									"type": "String",
 									"physicalType": "varchar"
 								},
@@ -155,7 +155,7 @@
 							},
 							{
 								"source": {
-									"name": "ChannelType",
+									"name": "CANALE",
 									"type": "String",
 									"physicalType": "varchar"
 								},
@@ -188,17 +188,6 @@
 							},
 							{
 								"source": {
-									"name": "RecCreationDate",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								},
-								"sink": {
-									"name": "RICEVUTO_DA",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
 									"name": "PAGAMENTO_CRM_ID",
 									"type": "String",
 									"physicalType": "varchar"
@@ -210,7 +199,7 @@
 							},
 							{
 								"source": {
-									"name": "RecordLocator",
+									"name": "PNR",
 									"type": "String",
 									"physicalType": "varchar"
 								},
