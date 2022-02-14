@@ -111,7 +111,7 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "Id",
+									"name": "INTEGRAZIONE_ID",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -122,7 +122,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_validityenddate",
+									"name": "DATA_SCADENZA",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
@@ -133,7 +133,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_validitystartdate",
+									"name": "DATA_INIZIO_VALIDITA",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
@@ -144,7 +144,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_mandatesubscriptiondate",
+									"name": "DATA_SOTTOSCRIZIONE_MANDATO",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
@@ -155,7 +155,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_bankbic",
+									"name": "BIC_BANCA_TITOLARE_CC_ADDE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -166,7 +166,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_causal",
+									"name": "INFORMAZIONI_CAUSALE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -177,7 +177,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_subscriberfiscalnumber",
+									"name": "CODICE_FISCALE_SOTTOSCRITTORE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -188,7 +188,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_debitaccountiban",
+									"name": "IBAN_CONTO_DEBITORE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -199,7 +199,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_sddmandateid",
+									"name": "IDENTIFICATIVO_DEL_MANDATO",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -210,7 +210,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_accountid",
+									"name": "ID_PARTNER",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -221,7 +221,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_mandatesigningplace",
+									"name": "LUOGO_SOTTOSCRIZIONE_MANDATO",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -232,7 +232,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_debtorname",
+									"name": "NOME_DEL_DEBITORE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -243,9 +243,9 @@
 							},
 							{
 								"source": {
-									"name": "ntv_collectiontypecode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "TIPO_INCASSO",
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "TIPO_INCASSO",
@@ -254,9 +254,9 @@
 							},
 							{
 								"source": {
-									"name": "ntv_sequencetypecode",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "TIPO_SEQUENZA_SDD",
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "TIPO_SEQUENZA_SDD",
