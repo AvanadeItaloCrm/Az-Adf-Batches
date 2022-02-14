@@ -122,9 +122,9 @@
 							},
 							{
 								"source": {
-									"name": "Id",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "id",
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "ID_NETWORK",
