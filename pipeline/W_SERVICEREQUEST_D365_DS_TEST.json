@@ -310,8 +310,8 @@
 							{
 								"source": {
 									"name": "PARTNER_FORNITORE",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
 								},
 								"sink": {
 									"name": "PARTNER_FORNITORE",
@@ -320,31 +320,9 @@
 							},
 							{
 								"source": {
-									"name": "CODICE_CLIENTE",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "CODICE_CLIENTE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "CODICE_PARTNER",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "CODICE_PARTNER",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
 									"name": "ORDINE_ID",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
 								},
 								"sink": {
 									"name": "ORDINE_ID",
@@ -784,6 +762,17 @@
 							},
 							{
 								"source": {
+									"name": "NOTE_WEB",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NOTE_WEB",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
 									"name": "DATA_RICEZIONE",
 									"type": "DateTime",
 									"physicalType": "datetime"
@@ -807,8 +796,8 @@
 							{
 								"source": {
 									"name": "LINGUA",
-									"type": "String",
-									"physicalType": "varchar"
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "LINGUA",
@@ -1015,7 +1004,7 @@
 					"source": {
 						"type": "OracleSource",
 						"oracleReaderQuery": {
-							"value": "@concat('SELECT * FROM (select TO_CHAR(dt_fine_lettura, ''DD-MON-YYYY'') as Rec from w_sincronizzazione_d365_log where UPPER(stato_lettura)=''COMPLETATO'' union select ''01-JEN-2010'' as Rec FROM w_sincronizzazione_d365_log order by Rec desc)T WHERE ROWNUM<=1')",
+							"value": "@concat('SELECT * FROM (select TO_CHAR(dt_fine_lettura, ''YYYY/MM/DD'') as Rec from w_sincronizzazione_d365_log where UPPER(stato_lettura)=''COMPLETATO'' union select ''2010/01/01'' as Rec FROM w_sincronizzazione_d365_log order by Rec desc)T WHERE ROWNUM<=1')",
 							"type": "Expression"
 						},
 						"partitionOption": "None",
