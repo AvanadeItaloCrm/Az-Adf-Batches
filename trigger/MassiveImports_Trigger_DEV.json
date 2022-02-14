@@ -2,7 +2,7 @@
 	"name": "MassiveImports_Trigger_DEV",
 	"properties": {
 		"annotations": [],
-		"runtimeState": "Stopped",
+		"runtimeState": "Started",
 		"pipelines": [
 			{
 				"pipelineReference": {
