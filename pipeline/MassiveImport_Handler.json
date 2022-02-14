@@ -261,7 +261,7 @@
 										},
 										"waitOnCompletion": true,
 										"parameters": {
-											"CreateTableSP_Name": "dbo.sp_MassiveImports_",
+											"CreateTableSP_Name": "dbo.sp_MassiveImports_AgentReassign",
 											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/AgentReassign.dtsx",
 											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
 											"FileName": {
@@ -287,7 +287,7 @@
 							"value": "AGENTI PARTNER",
 							"activities": [
 								{
-									"name": "Execute Agenti Partner",
+									"name": "Execute Partner Agents Create",
 									"type": "ExecutePipeline",
 									"dependsOn": [],
 									"userProperties": [],
@@ -298,8 +298,8 @@
 										},
 										"waitOnCompletion": true,
 										"parameters": {
-											"CreateTableSP_Name": "dbo.sp_MassiveImports_AgentiPartner",
-											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/AgentiPartner.dtsx",
+											"CreateTableSP_Name": "dbo.sp_MassiveImports_PartnerAgentsCreate",
+											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/PartnerAgentsCreate.dtsx",
 											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
 											"FileName": {
 												"value": "@pipeline().parameters.FileName",
@@ -324,7 +324,7 @@
 							"value": "SEGMENTI CORPORATE PARTNER",
 							"activities": [
 								{
-									"name": "Execute Segmenti Corporate Partner",
+									"name": "Execute PartnerSegmentsUpdate",
 									"type": "ExecutePipeline",
 									"dependsOn": [],
 									"userProperties": [],
@@ -335,8 +335,8 @@
 										},
 										"waitOnCompletion": true,
 										"parameters": {
-											"CreateTableSP_Name": "dbo.sp_MassiveImports_SegmentiCorporatePartner",
-											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/SegmentiCorporatePartner.dtsx",
+											"CreateTableSP_Name": "dbo.sp_MassiveImports_PartnerSegmentsUpdate",
+											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/PartnerSegmentsUpdate.dtsx",
 											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
 											"FileName": {
 												"value": "@pipeline().parameters.FileName",
