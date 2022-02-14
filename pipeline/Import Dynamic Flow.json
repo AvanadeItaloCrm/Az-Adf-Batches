@@ -97,6 +97,10 @@
 						},
 						"type": "SSISDB"
 					},
+					"environmentPath": {
+						"value": "@pipeline().parameters.EnvironmentPath",
+						"type": "Expression"
+					},
 					"connectVia": {
 						"referenceName": "Italo-devtest-IntegrationRuntimeSSIS",
 						"type": "IntegrationRuntimeReference"
@@ -114,27 +118,6 @@
 								"value": "@variables('CreatedTableName')",
 								"type": "Expression"
 							}
-						},
-						"Dyn365ClientId": {
-							"value": "0e4c4884-3aa4-4b80-869a-c49f4985b0aa"
-						},
-						"Dyn365Secret": {
-							"value": "O0j7Q~c2WjITI_STMB6-5XwY8mj-z5tFiEbYY"
-						},
-						"Dyn365ServerURL": {
-							"value": "https://italodev.crm4.dynamics.com"
-						},
-						"SQLInitialCatalog": {
-							"value": "crmdevstagingarea"
-						},
-						"SQLPsw": {
-							"value": "Avanade.2021!"
-						},
-						"SQLServerName": {
-							"value": "crm-dev-sqlsrv.database.windows.net"
-						},
-						"SQLUserName": {
-							"value": "crmdevadmin"
 						}
 					}
 				}

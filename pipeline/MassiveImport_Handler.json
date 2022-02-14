@@ -834,6 +834,9 @@
 			},
 			"FileName": {
 				"type": "string"
+			},
+			"SSIS_EnvironmentPath": {
+				"type": "string"
 			}
 		},
 		"variables": {
