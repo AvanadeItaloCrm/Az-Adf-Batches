@@ -65,7 +65,7 @@
 							"value": "AMMINISTRAZIONI PROMOCODE",
 							"activities": [
 								{
-									"name": "Execute Amministrazioni Promocode",
+									"name": "Execute Promocode Administration",
 									"type": "ExecutePipeline",
 									"dependsOn": [],
 									"userProperties": [],
@@ -76,8 +76,8 @@
 										},
 										"waitOnCompletion": true,
 										"parameters": {
-											"CreateTableSP_Name": "dbo.sp_MassiveImports_AmministrazionePromocode",
-											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/AmministrazionePromocode.dtsx",
+											"CreateTableSP_Name": "dbo.sp_MassiveImports_PromocodeAdministration",
+											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/PromocodeAdministration.dtsx",
 											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
 											"FileName": {
 												"value": "@pipeline().parameters.FileName",
@@ -102,7 +102,7 @@
 							"value": "TRATTE PROMOZIONI",
 							"activities": [
 								{
-									"name": "Execute Tratte Promozioni",
+									"name": "Execute Promotion Segments",
 									"type": "ExecutePipeline",
 									"dependsOn": [],
 									"userProperties": [],
@@ -113,8 +113,8 @@
 										},
 										"waitOnCompletion": true,
 										"parameters": {
-											"CreateTableSP_Name": "dbo.sp_MassiveImports_TrattePromozioni",
-											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/TrattePromozioni.dtsx",
+											"CreateTableSP_Name": "dbo.sp_MassiveImports_PromotionSegments",
+											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/PromotionSegments.dtsx",
 											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
 											"FileName": {
 												"value": "@pipeline().parameters.FileName",
@@ -150,8 +150,8 @@
 										},
 										"waitOnCompletion": true,
 										"parameters": {
-											"CreateTableSP_Name": "dbo.sp_MassiveImports_Frodi_Update_Paypal",
-											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/Frodi_Update_Paypal.dtsx",
+											"CreateTableSP_Name": "dbo.sp_MassiveImports_PaypalFraudUpdate",
+											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/PaypalFraudUpdate.dtsx",
 											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
 											"FileName": {
 												"value": "@pipeline().parameters.FileName",
@@ -176,7 +176,7 @@
 							"value": "TRATTE PROMOZIONI ELETTORALI",
 							"activities": [
 								{
-									"name": "Execute Tratte Promozioni Elettorali",
+									"name": "Execute Election Event Segments",
 									"type": "ExecutePipeline",
 									"dependsOn": [],
 									"userProperties": [],
@@ -187,8 +187,8 @@
 										},
 										"waitOnCompletion": true,
 										"parameters": {
-											"CreateTableSP_Name": "dbo.sp_MassiveImports_TrattePromozioniElettorali",
-											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImport/TrattePromozioniElettorali.dtsx",
+											"CreateTableSP_Name": "dbo.sp_MassiveImports_ElectionEventSegments",
+											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImport/ElectionEventSegments.dtsx",
 											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
 											"FileName": {
 												"value": "@pipeline().parameters.FileName",
@@ -224,8 +224,8 @@
 										},
 										"waitOnCompletion": true,
 										"parameters": {
-											"CreateTableSP_Name": "dbo.sp_MassiveImports_ChargebackUpdateCreditCard",
-											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/ChargebackUpdateCreditCard.dtsx",
+											"CreateTableSP_Name": "dbo.sp_MassiveImports_CreditCardChargebackUpdate",
+											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/CreditCardChargebackUpdate.dtsx",
 											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
 											"FileName": {
 												"value": "@pipeline().parameters.FileName",
@@ -250,7 +250,7 @@
 							"value": "RIASSEGNAZIONE AGENZIE",
 							"activities": [
 								{
-									"name": "Execute Riassegnazione Agenzie",
+									"name": "Execute Agent Reassign",
 									"type": "ExecutePipeline",
 									"dependsOn": [],
 									"userProperties": [],
@@ -261,8 +261,8 @@
 										},
 										"waitOnCompletion": true,
 										"parameters": {
-											"CreateTableSP_Name": "dbo.sp_MassiveImports_RiassegnazioneAgenzie",
-											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/RiassegnazioneAgenzie.dtsx",
+											"CreateTableSP_Name": "dbo.sp_MassiveImports_",
+											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/AgentReassign.dtsx",
 											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
 											"FileName": {
 												"value": "@pipeline().parameters.FileName",
