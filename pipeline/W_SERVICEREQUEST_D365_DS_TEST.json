@@ -320,6 +320,28 @@
 							},
 							{
 								"source": {
+									"name": "CODICE_CLIENTE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CODICE_CLIENTE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CODICE_PARTNER",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CODICE_PARTNER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
 									"name": "ORDINE_ID",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
@@ -796,8 +818,8 @@
 							{
 								"source": {
 									"name": "LINGUA",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "LINGUA",
