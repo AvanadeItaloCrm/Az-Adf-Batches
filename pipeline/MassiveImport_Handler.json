@@ -358,47 +358,10 @@
 							]
 						},
 						{
-							"value": "TRANSAZIONI CASHBACK",
-							"activities": [
-								{
-									"name": "Execute Transazioni Cashback",
-									"type": "ExecutePipeline",
-									"dependsOn": [],
-									"userProperties": [],
-									"typeProperties": {
-										"pipeline": {
-											"referenceName": "Import Dynamic Flow",
-											"type": "PipelineReference"
-										},
-										"waitOnCompletion": true,
-										"parameters": {
-											"CreateTableSP_Name": "dbo.sp_MassiveImports_TransazioniCashback",
-											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/TransazioniCashback.dtsx",
-											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
-											"FileName": {
-												"value": "@pipeline().parameters.FileName",
-												"type": "Expression"
-											},
-											"DeleteTableSP_Name": "dbo.sp_MassiveImports_DeleteTable",
-											"FindFlowMappingsSP_Name": "dbo.sp_MassiveImports_getColumnMapping",
-											"CategoryName": {
-												"value": "@variables('MetadataType')",
-												"type": "Expression"
-											},
-											"DisplayName": {
-												"value": "@variables('FileDisplayName')",
-												"type": "Expression"
-											}
-										}
-									}
-								}
-							]
-						},
-						{
 							"value": "PROMOZIONI CASHBACK",
 							"activities": [
 								{
-									"name": "Execute Promozioni Cashback",
+									"name": "Execute CashbackPromotionsAssoc",
 									"type": "ExecutePipeline",
 									"dependsOn": [],
 									"userProperties": [],
@@ -409,8 +372,8 @@
 										},
 										"waitOnCompletion": true,
 										"parameters": {
-											"CreateTableSP_Name": "dbo.sp_MassiveImports_PromozioniCashback",
-											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/PromozioniCashback.dtsx",
+											"CreateTableSP_Name": "dbo.sp_MassiveImports_CashbackPromotionsAssoc",
+											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/CashbackPromotionsAssoc.dtsx",
 											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
 											"FileName": {
 												"value": "@pipeline().parameters.FileName",
@@ -435,7 +398,7 @@
 							"value": "OFFERTE CASHBACK",
 							"activities": [
 								{
-									"name": "Execute Offerte Cashback",
+									"name": "Execute CashbackOfferAssoc",
 									"type": "ExecutePipeline",
 									"dependsOn": [],
 									"userProperties": [],
@@ -446,8 +409,8 @@
 										},
 										"waitOnCompletion": true,
 										"parameters": {
-											"CreateTableSP_Name": "dbo.sp_MassiveImports_OfferteCashback",
-											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/OfferteCashback.dtsx",
+											"CreateTableSP_Name": "dbo.sp_MassiveImports_CashbackOfferAssoc",
+											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/CashbackOfferAssoc.dtsx",
 											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
 											"FileName": {
 												"value": "@pipeline().parameters.FileName",
