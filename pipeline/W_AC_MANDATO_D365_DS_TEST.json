@@ -415,10 +415,7 @@
 							"value": "@concat('SELECT sa_d365_test.errore_sync (''',\nvariables('TableName'),\n''',''',variables('Error'),''') FROM DUAL;')",
 							"type": "Expression"
 						},
-						"partitionOption": "PhysicalPartitionsOfTable",
-						"partitionSettings": {
-							"partitionNames": []
-						},
+						"partitionOption": "None",
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
