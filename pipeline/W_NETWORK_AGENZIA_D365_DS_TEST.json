@@ -94,7 +94,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "SELECT (select top 1 accountnumber \nfrom ntv_account a join ntv_ntv_network_account na ON na.accountid = a.accountid \nwhere na.ntv_networkid=n.ntv_networkid) as accountnumber, convert(varchar(40),n.Id) id, n.ntv_name \nFROM ntv_ntv_network n \nunion select '1111111111111111111111' accountnumber,'fffffffffddddddddddddddddddddddddddddddddddddd' id,'sdfgsdfgsdf' ntv_name ",
+							"value": "SELECT (select top 1 accountnumber \nfrom ntv_account a join ntv_ntv_network_account na ON na.accountid = a.accountid \nwhere na.ntv_networkid=n.ntv_networkid) as accountnumber, convert(varchar(40),n.Id) id, n.ntv_name \nFROM ntv_ntv_network n \nunion select '1111111111111111111111' accountnumber,'fdddddddddddddddddddddddddddddddddddddddddddddddddddddddddffffffffffffffffffffffffffffffffffffddddddddddddddddddddddddddddddddddddd' id,'sdfgsdfgsdf' ntv_name ",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -343,7 +343,7 @@
 					"source": {
 						"type": "OracleSource",
 						"oracleReaderQuery": {
-							"value": "@concat('SELECT * FROM (select TO_CHAR(dt_fine_lettura, ''DD-MON-YYYY'') as Rec from w_sincronizzazione_d365_log where UPPER(stato_lettura)=''COMPLETATO'' union select ''01-JEN-2010'' as Rec FROM w_sincronizzazione_d365_log order by Rec desc)T WHERE ROWNUM<=1')",
+							"value": "@concat('SELECT * FROM (select TO_CHAR(dt_fine_lettura, ''YYYY/MM/DD'') as Rec from w_sincronizzazione_d365_log where UPPER(stato_lettura)=''COMPLETATO'' union select ''2010/01/01'' as Rec FROM w_sincronizzazione_d365_log order by Rec desc)T WHERE ROWNUM<=1')",
 							"type": "Expression"
 						},
 						"partitionOption": "None",
