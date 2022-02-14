@@ -78,7 +78,10 @@
 										"parameters": {
 											"CreateTableSP_Name": "dbo.sp_MassiveImports_PromocodeAdministration",
 											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/PromocodeAdministration.dtsx",
-											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
+											"EnvironmentPath": {
+												"value": "@pipeline().parameters.SSIS_EnvironmentPath",
+												"type": "Expression"
+											},
 											"FileName": {
 												"value": "@pipeline().parameters.FileName",
 												"type": "Expression"
@@ -115,7 +118,10 @@
 										"parameters": {
 											"CreateTableSP_Name": "dbo.sp_MassiveImports_PromotionSegments",
 											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/PromotionSegments.dtsx",
-											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
+											"EnvironmentPath": {
+												"value": "@pipeline().parameters.SSIS_EnvironmentPath",
+												"type": "Expression"
+											},
 											"FileName": {
 												"value": "@pipeline().parameters.FileName",
 												"type": "Expression"
@@ -152,7 +158,10 @@
 										"parameters": {
 											"CreateTableSP_Name": "dbo.sp_MassiveImports_PaypalFraudUpdate",
 											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/PaypalFraudUpdate.dtsx",
-											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
+											"EnvironmentPath": {
+												"value": "@pipeline().parameters.SSIS_EnvironmentPath",
+												"type": "Expression"
+											},
 											"FileName": {
 												"value": "@pipeline().parameters.FileName",
 												"type": "Expression"
