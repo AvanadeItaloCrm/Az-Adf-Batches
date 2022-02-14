@@ -139,7 +139,7 @@
 							"value": "FRODI_UPDATE_PAYPAL",
 							"activities": [
 								{
-									"name": "Execute Frodi Update Paypal",
+									"name": "Execute PaypalFraudUpdate",
 									"type": "ExecutePipeline",
 									"dependsOn": [],
 									"userProperties": [],
@@ -435,7 +435,7 @@
 							"value": "AGGIORNAMENTO CLUSTER BSS",
 							"activities": [
 								{
-									"name": "Execute Aggiornamento Cluster BSS",
+									"name": "Execute BSSClusterUpdate",
 									"type": "ExecutePipeline",
 									"dependsOn": [],
 									"userProperties": [],
@@ -446,8 +446,8 @@
 										},
 										"waitOnCompletion": true,
 										"parameters": {
-											"CreateTableSP_Name": "dbo.sp_MassiveImports_AggiornamentoClusterBSS",
-											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/AggiornamentoClusterBSS.dtsx",
+											"CreateTableSP_Name": "dbo.sp_MassiveImports_BSSClusterUpdate",
+											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/BSSClusterUpdate.dtsx",
 											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
 											"FileName": {
 												"value": "@pipeline().parameters.FileName",
@@ -472,7 +472,7 @@
 							"value": "FRODI_UPDATE_CREDITCARD",
 							"activities": [
 								{
-									"name": "Execute Frodi Update CreditCard",
+									"name": "Execute CreditCardFraudUpdate",
 									"type": "ExecutePipeline",
 									"dependsOn": [],
 									"userProperties": [],
@@ -481,7 +481,26 @@
 											"referenceName": "Import Dynamic Flow",
 											"type": "PipelineReference"
 										},
-										"waitOnCompletion": true
+										"waitOnCompletion": true,
+										"parameters": {
+											"CreateTableSP_Name": "dbo.sp_MassiveImports_CreditCardFraudUpdate",
+											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/CreditCardFraudUpdate.dtsx",
+											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
+											"FileName": {
+												"value": "@pipeline().parameters.FileName",
+												"type": "Expression"
+											},
+											"DeleteTableSP_Name": "dbo.sp_MassiveImports_DeleteTable",
+											"FindFlowMappingsSP_Name": "dbo.sp_MassiveImports_getColumnMapping",
+											"CategoryName": {
+												"value": "@variables('MetadataType')",
+												"type": "Expression"
+											},
+											"DisplayName": {
+												"value": "@variables('FileDisplayName')",
+												"type": "Expression"
+											}
+										}
 									}
 								}
 							]
@@ -490,7 +509,7 @@
 							"value": "FRODI_CANCELLAZIONE_CREDITCARD",
 							"activities": [
 								{
-									"name": "Execute Frodi Delete CreditCard",
+									"name": "Execute CreditCardFraudDelete",
 									"type": "ExecutePipeline",
 									"dependsOn": [],
 									"userProperties": [],
@@ -499,7 +518,26 @@
 											"referenceName": "Import Dynamic Flow",
 											"type": "PipelineReference"
 										},
-										"waitOnCompletion": true
+										"waitOnCompletion": true,
+										"parameters": {
+											"CreateTableSP_Name": "dbo.sp_MassiveImports_CreditCardFraudDelete",
+											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/CreditCardFraudDelete.dtsx",
+											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
+											"FileName": {
+												"value": "@pipeline().parameters.FileName",
+												"type": "Expression"
+											},
+											"DeleteTableSP_Name": "dbo.sp_MassiveImports_DeleteTable",
+											"FindFlowMappingsSP_Name": "dbo.sp_MassiveImports_getColumnMapping",
+											"CategoryName": {
+												"value": "@variables('MetadataType')",
+												"type": "Expression"
+											},
+											"DisplayName": {
+												"value": "@variables('FileDisplayName')",
+												"type": "Expression"
+											}
+										}
 									}
 								}
 							]
@@ -508,7 +546,7 @@
 							"value": "FRODI_CANCELLAZIONE_PAYPAL",
 							"activities": [
 								{
-									"name": "Execute Frodi Delete Paypal",
+									"name": "Execute PaypalFraudDelete",
 									"type": "ExecutePipeline",
 									"dependsOn": [],
 									"userProperties": [],
@@ -517,7 +555,26 @@
 											"referenceName": "Import Dynamic Flow",
 											"type": "PipelineReference"
 										},
-										"waitOnCompletion": true
+										"waitOnCompletion": true,
+										"parameters": {
+											"CreateTableSP_Name": "dbo.sp_MassiveImports_PaypalFraudDelete",
+											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/PaypalFraudDelete.dtsx",
+											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
+											"FileName": {
+												"value": "@pipeline().parameters.FileName",
+												"type": "Expression"
+											},
+											"DeleteTableSP_Name": "dbo.sp_MassiveImports_DeleteTable",
+											"FindFlowMappingsSP_Name": "dbo.sp_MassiveImports_getColumnMapping",
+											"CategoryName": {
+												"value": "@variables('MetadataType')",
+												"type": "Expression"
+											},
+											"DisplayName": {
+												"value": "@variables('FileDisplayName')",
+												"type": "Expression"
+											}
+										}
 									}
 								}
 							]
@@ -526,7 +583,7 @@
 							"value": "CHARGEBACK_UPDATE_PAYPAL",
 							"activities": [
 								{
-									"name": "Execute Chargeback Update Paypal",
+									"name": "Execute PaypalChargebackUpdate",
 									"type": "ExecutePipeline",
 									"dependsOn": [],
 									"userProperties": [],
@@ -535,7 +592,26 @@
 											"referenceName": "Import Dynamic Flow",
 											"type": "PipelineReference"
 										},
-										"waitOnCompletion": true
+										"waitOnCompletion": true,
+										"parameters": {
+											"CreateTableSP_Name": "dbo.sp_MassiveImports_PaypalChargebackUpdate",
+											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/PaypalChargebackUpdate.dtsx",
+											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
+											"FileName": {
+												"value": "@pipeline().parameters.FileName",
+												"type": "Expression"
+											},
+											"DeleteTableSP_Name": "dbo.sp_MassiveImports_DeleteTable",
+											"FindFlowMappingsSP_Name": "dbo.sp_MassiveImports_getColumnMapping",
+											"CategoryName": {
+												"value": "@variables('MetadataType')",
+												"type": "Expression"
+											},
+											"DisplayName": {
+												"value": "@variables('FileDisplayName')",
+												"type": "Expression"
+											}
+										}
 									}
 								}
 							]
@@ -544,7 +620,7 @@
 							"value": "CHARGEBACK_CANCELLAZIONE_PAYPAL",
 							"activities": [
 								{
-									"name": "Execute Chargeback Delete Paypal",
+									"name": "Execute PaypalChargebackDelete",
 									"type": "ExecutePipeline",
 									"dependsOn": [],
 									"userProperties": [],
@@ -553,7 +629,26 @@
 											"referenceName": "Import Dynamic Flow",
 											"type": "PipelineReference"
 										},
-										"waitOnCompletion": true
+										"waitOnCompletion": true,
+										"parameters": {
+											"CreateTableSP_Name": "dbo.sp_MassiveImports_PaypalChargebackDelete",
+											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/PaypalChargebackDelete.dtsx",
+											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
+											"FileName": {
+												"value": "@pipeline().parameters.FileName",
+												"type": "Expression"
+											},
+											"DeleteTableSP_Name": "dbo.sp_MassiveImports_DeleteTable",
+											"FindFlowMappingsSP_Name": "dbo.sp_MassiveImports_getColumnMapping",
+											"CategoryName": {
+												"value": "@variables('MetadataType')",
+												"type": "Expression"
+											},
+											"DisplayName": {
+												"value": "@variables('FileDisplayName')",
+												"type": "Expression"
+											}
+										}
 									}
 								}
 							]
@@ -562,7 +657,7 @@
 							"value": "CHARGEBACK_CANCELLAZIONE_CREDITCARD",
 							"activities": [
 								{
-									"name": "Execute Chargeback Delete CreditCard",
+									"name": "Execute CreditCardChargebackDelete",
 									"type": "ExecutePipeline",
 									"dependsOn": [],
 									"userProperties": [],
@@ -571,7 +666,26 @@
 											"referenceName": "Import Dynamic Flow",
 											"type": "PipelineReference"
 										},
-										"waitOnCompletion": true
+										"waitOnCompletion": true,
+										"parameters": {
+											"CreateTableSP_Name": "dbo.sp_MassiveImports_CreditCardChargebackDelete",
+											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/CreditCardChargebackDelete.dtsx",
+											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
+											"FileName": {
+												"value": "@pipeline().parameters.FileName",
+												"type": "Expression"
+											},
+											"DeleteTableSP_Name": "dbo.sp_MassiveImports_DeleteTable",
+											"FindFlowMappingsSP_Name": "dbo.sp_MassiveImports_getColumnMapping",
+											"CategoryName": {
+												"value": "@variables('MetadataType')",
+												"type": "Expression"
+											},
+											"DisplayName": {
+												"value": "@variables('FileDisplayName')",
+												"type": "Expression"
+											}
+										}
 									}
 								}
 							]
