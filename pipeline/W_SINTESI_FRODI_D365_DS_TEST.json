@@ -465,7 +465,7 @@
 					"source": {
 						"type": "OracleSource",
 						"oracleReaderQuery": {
-							"value": "@concat('select dt_inizio_scrittura as Rec from sinc_log where tipo = ','''',\nvariables('TableName'),\n'''',' and UPPER(stato_lettura)=',\n'''',\n'COMPLETATO',\n'''',\n'and ROWNUM <=1 union select ',\n'''',\n'2010-01-01',\n'''',\n' as Rec FROM sinc_log order by Rec desc')",
+							"value": "@concat('SELECT * FROM (select TO_CHAR(dt_fine_lettura, ''DD-MON-YYYY'') as Rec from w_sincronizzazione_d365_log where UPPER(stato_lettura)=''COMPLETATO'' union select ''01-JEN-2010'' as Rec FROM w_sincronizzazione_d365_log order by Rec desc)T WHERE ROWNUM<=1')",
 							"type": "Expression"
 						},
 						"partitionOption": "None",
