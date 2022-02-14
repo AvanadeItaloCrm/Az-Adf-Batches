@@ -262,6 +262,17 @@
 									"name": "TIPO_SEQUENZA_SDD",
 									"type": "String"
 								}
+							},
+							{
+								"source": {
+									"name": "FLG_ATTIVO",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "FLG_ATTIVO",
+									"type": "String"
+								}
 							}
 						],
 						"typeConversion": true,
