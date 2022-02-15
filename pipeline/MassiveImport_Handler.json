@@ -512,7 +512,8 @@
 											"DisplayName": {
 												"value": "@variables('FileDisplayName')",
 												"type": "Expression"
-											}
+											},
+											"DateTimeFormat": "dd/MM/yyyy"
 										}
 									}
 								}
@@ -549,7 +550,8 @@
 											"DisplayName": {
 												"value": "@variables('FileDisplayName')",
 												"type": "Expression"
-											}
+											},
+											"DateTimeFormat": "dd/MM/yyyy"
 										}
 									}
 								}
@@ -586,7 +588,8 @@
 											"DisplayName": {
 												"value": "@variables('FileDisplayName')",
 												"type": "Expression"
-											}
+											},
+											"DateTimeFormat": "dd/MM/yyyy"
 										}
 									}
 								}
@@ -660,7 +663,8 @@
 											"DisplayName": {
 												"value": "@variables('FileDisplayName')",
 												"type": "Expression"
-											}
+											},
+											"DateTimeFormat": "dd/MM/yyyy"
 										}
 									}
 								}
