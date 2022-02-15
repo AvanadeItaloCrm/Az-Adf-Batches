@@ -476,7 +476,7 @@
 		"variables": {
 			"TableName": {
 				"type": "String",
-				"defaultValue": "AggImpCampaign_Invio"
+				"defaultValue": "AggImpCampaignBusiness_Invio"
 			},
 			"InizioNomeFile": {
 				"type": "String",
