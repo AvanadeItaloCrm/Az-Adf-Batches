@@ -159,6 +159,12 @@
 							"operation": {
 								"type": "String",
 								"value": "OUT"
+							},
+							"dateTimeFormat": {
+								"value": {
+									"value": "@pipeline().parameters.DateTimeFormat",
+									"type": "Expression"
+								}
 							}
 						},
 						"queryTimeout": "02:00:00",
@@ -348,6 +354,13 @@
 							"operation": {
 								"type": "String",
 								"value": "IN"
+							},
+							"dateTimeFormat": {
+								"type": "String",
+								"value": {
+									"value": "@pipeline().parameters.DateTimeFormat",
+									"type": "Expression"
+								}
 							}
 						},
 						"queryTimeout": "02:00:00",
@@ -471,6 +484,9 @@
 				"type": "string"
 			},
 			"DisplayName": {
+				"type": "string"
+			},
+			"DateTimeFormat": {
 				"type": "string"
 			}
 		},
