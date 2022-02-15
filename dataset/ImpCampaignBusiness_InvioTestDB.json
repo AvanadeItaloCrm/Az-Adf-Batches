@@ -1,0 +1,72 @@
+{
+	"name": "ImpCampaignBusiness_InvioTestDB",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlTestStagingArea",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ROW_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Message_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "Delivery_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "Campaign_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "Event_Date",
+				"type": "varchar"
+			},
+			{
+				"name": "Email_Address",
+				"type": "varchar"
+			},
+			{
+				"name": "Codice_Cliente",
+				"type": "varchar"
+			},
+			{
+				"name": "Subject",
+				"type": "varchar"
+			},
+			{
+				"name": "Status",
+				"type": "varchar"
+			},
+			{
+				"name": "Failure_Type",
+				"type": "varchar"
+			},
+			{
+				"name": "Reason",
+				"type": "varchar"
+			},
+			{
+				"name": "Transazionale",
+				"type": "varchar"
+			},
+			{
+				"name": "RowCreatedDate",
+				"type": "smalldatetime",
+				"precision": 16,
+				"scale": 0
+			}
+		],
+		"typeProperties": {
+			"schema": "batchSync",
+			"table": "AggImpCampaignBusiness_Invio"
+		}
+	}
+}

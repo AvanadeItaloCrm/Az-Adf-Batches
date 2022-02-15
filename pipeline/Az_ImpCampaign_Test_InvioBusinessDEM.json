@@ -88,7 +88,10 @@
 													"type": "AzureBlobStorageReadSettings",
 													"recursive": true,
 													"wildcardFolderPath": "dem_business",
-													"wildcardFileName": "@item().name",
+													"wildcardFileName": {
+														"value": "@item().name",
+														"type": "Expression"
+													},
 													"enablePartitionDiscovery": false
 												},
 												"formatSettings": {
@@ -252,7 +255,7 @@
 										],
 										"outputs": [
 											{
-												"referenceName": "ImpCampaign_InvioTestDB",
+												"referenceName": "ImpCampaignBusiness_InvioTestDB",
 												"type": "DatasetReference"
 											}
 										]
