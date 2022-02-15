@@ -60,7 +60,7 @@
 		],
 		"typeProperties": {
 			"schema": "batchSync",
-			"table": "AggImpCampaignBusiness_Invio"
+			"table": "AggImpCampaign_Invio"
 		}
 	}
 }
