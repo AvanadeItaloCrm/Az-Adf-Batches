@@ -1,0 +1,17 @@
+{
+	"name": "MassiveImports_Trigger_TEST",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/massiveimports/blobs/",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/ae9204f7-a24b-4876-b3cc-7adf107242e0/resourceGroups/crm-test-core/providers/Microsoft.Storage/storageAccounts/crmtestdyn365data",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}
