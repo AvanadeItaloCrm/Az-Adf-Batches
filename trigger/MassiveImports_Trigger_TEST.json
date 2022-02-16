@@ -3,7 +3,20 @@
 	"properties": {
 		"annotations": [],
 		"runtimeState": "Started",
-		"pipelines": [],
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "MassiveImport_Handler",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"BlobStorageURL": "https://crmtestdyn365data.blob.core.windows.net",
+					"FolderPath": "@triggerBody().folderPath",
+					"FileName": "@triggerBody().fileName",
+					"SSIS_EnvironmentPath": "NTV.D365.IntegrationServices/TEST"
+				}
+			}
+		],
 		"type": "BlobEventsTrigger",
 		"typeProperties": {
 			"blobPathBeginsWith": "/massiveimports/blobs/",
