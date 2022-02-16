@@ -905,7 +905,7 @@
 			},
 			"SASTokenURL": {
 				"type": "String",
-				"defaultValue": "sp=r&st=2022-02-01T12:03:40Z&se=2027-02-01T20:03:40Z&spr=https&sv=2020-08-04&sr=c&sig=jy%2BiJ6O%2FIOtMMy56WRmIifwB8y6%2FTgdl%2Bt32%2FJMMEiM%3D"
+				"defaultValue": "sp=racwdl&st=2022-02-16T19:40:39Z&se=2026-02-17T03:40:39Z&spr=https&sv=2020-08-04&sr=c&sig=GRycTdTMXeBnp55o1BgsqAy2xkzn6PHOvAn2RNvNfPo%3D"
 			},
 			"FileDisplayName": {
 				"type": "String"
