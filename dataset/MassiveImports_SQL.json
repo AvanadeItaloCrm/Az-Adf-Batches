@@ -2,7 +2,7 @@
 	"name": "MassiveImports_SQL",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "MassiveImports_SQL_LS",
+			"referenceName": "MassiveImports_SQL_LS_TEST",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {

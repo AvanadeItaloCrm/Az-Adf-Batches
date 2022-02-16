@@ -2,7 +2,7 @@
 	"name": "MassiveImports_StorageAccount",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "MassiveImports_BlobStorageLS",
+			"referenceName": "MassiveImports_BlobStorageLS_TEST",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
