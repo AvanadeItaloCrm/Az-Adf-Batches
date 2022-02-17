@@ -1,0 +1,12 @@
+{
+	"name": "SqlTest_SAP_IBO",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Sql_Server_Test_SAP_IBO",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": []
+	}
+}

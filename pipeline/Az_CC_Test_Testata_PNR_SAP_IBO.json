@@ -455,7 +455,19 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": "insert into [dev].[ID_LOAD]\nselect isnull(max(Load_Number),0)+1 from [dev].[ID_LOAD];\nselect max(Load_Number) id from [dev].[ID_LOAD];",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "SqlTest_SAP_IBO",
+						"type": "DatasetReference"
+					}
+				}
 			}
 		],
 		"variables": {
