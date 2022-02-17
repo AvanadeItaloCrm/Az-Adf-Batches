@@ -906,10 +906,6 @@
 			"MetadataType": {
 				"type": "String"
 			},
-			"SASTokenURL": {
-				"type": "String",
-				"defaultValue": "sp=racwdl&st=2022-02-16T19:40:39Z&se=2026-02-17T03:40:39Z&spr=https&sv=2020-08-04&sr=c&sig=GRycTdTMXeBnp55o1BgsqAy2xkzn6PHOvAn2RNvNfPo%3D"
-			},
 			"FileDisplayName": {
 				"type": "String"
 			}
