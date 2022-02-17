@@ -491,7 +491,10 @@
 				"typeProperties": {
 					"source": {
 						"type": "SqlServerSource",
-						"sqlReaderQuery": "insert into dev.History_Log\n(IDDataSrc,IDLoad,SAStartDate,SAStatus)\nvalues (1,1,GETUTCDATE(),1);\nselect @@IDENTITY as idHy",
+						"sqlReaderQuery": {
+							"value": "@concat('insert into dev.History_Log (IDDataSrc,IDLoad,SAStartDate,SAStatus) values (1,',\nactivity('Nuovo IDLOAD').output.firstRow.Rec,\n'GETUTCDATE(),1);select @@IDENTITY as idHy')",
+							"type": "Expression"
+						},
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
