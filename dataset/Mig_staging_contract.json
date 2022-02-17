@@ -14,6 +14,9 @@
 				"defaultValue": "staging-contract"
 			}
 		},
+		"folder": {
+			"name": "Migration"
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {

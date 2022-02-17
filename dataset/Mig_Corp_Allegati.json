@@ -5,6 +5,9 @@
 			"referenceName": "Mig_STGAzure",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "Migration"
+		},
 		"annotations": [],
 		"type": "AzureSqlTable",
 		"schema": [
