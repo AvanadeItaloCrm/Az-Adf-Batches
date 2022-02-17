@@ -90,7 +90,7 @@
 					"source": {
 						"type": "SqlServerSource",
 						"sqlReaderQuery": {
-							"value": "@concat('insert into dev.History_Log (IDDataSrc,IDLoad,SAStartDate,SAStatus) values (1,',\nactivity('Nuovo IDLOAD').output.firstRow.Rec,\n'GETUTCDATE(),1);select @@IDENTITY as idHy')",
+							"value": "@concat('insert into dev.History_Log (IDDataSrc,IDLoad,SAStartDate,SAStatus) values (1,',\nactivity('Nuovo IDLOAD').output.firstRow.Id,\n',GETUTCDATE(),1);select @@IDENTITY as idHy')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
