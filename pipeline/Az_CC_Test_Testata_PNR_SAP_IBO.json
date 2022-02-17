@@ -76,7 +76,7 @@
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "Nuovo IDLOAD",
+						"activity": "Aggiorna HystoryLog",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -97,9 +97,9 @@
 						"partitionOption": "None"
 					},
 					"sink": {
-						"type": "OracleSink",
-						"writeBatchSize": 10000,
-						"preCopyScript": "truncate table sa_d365_svil.testata_pnr"
+						"type": "SqlServerSink",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false
 					},
 					"enableStaging": false,
 					"translator": {
@@ -389,7 +389,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "Testata_PNR_OracleDB",
+						"referenceName": "SqlTest_SAP_IBO",
 						"type": "DatasetReference"
 					}
 				]
@@ -460,6 +460,38 @@
 					"source": {
 						"type": "SqlServerSource",
 						"sqlReaderQuery": "insert into [dev].[ID_LOAD]\nselect isnull(max(Load_Number),0)+1 from [dev].[ID_LOAD];\nselect max(Load_Number) id from [dev].[ID_LOAD];",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "SqlTest_SAP_IBO",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "Aggiorna HystoryLog",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Nuovo IDLOAD",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": "insert into dev.History_Log\n(IDDataSrc,IDLoad,SAStartDate,SAStatus)\nvalues (1,1,GETUTCDATE(),1);\nselect @@IDENTITY as idHy",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
