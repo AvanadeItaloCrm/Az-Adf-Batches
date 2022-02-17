@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"url": {
-						"value": "@concat(pipeline().parameters.BlobStorageURL,'/',pipeline().parameters.FolderPath,'/',pipeline().parameters.FileName, '?' ,variables('SASTokenURL'))",
+						"value": "@concat(pipeline().parameters.BlobStorageURL,'/',pipeline().parameters.FolderPath,'/',pipeline().parameters.FileName, '?' ,pipeline().parameters.SASTokenURL)",
 						"type": "Expression"
 					},
 					"method": "GET",
@@ -896,6 +896,9 @@
 				"type": "string"
 			},
 			"SSIS_EnvironmentPath": {
+				"type": "string"
+			},
+			"SASTokenURL": {
 				"type": "string"
 			}
 		},

@@ -13,7 +13,8 @@
 					"BlobStorageURL": "https://crmdevdyn365data.blob.core.windows.net",
 					"FolderPath": "@triggerBody().folderPath",
 					"FileName": "@triggerBody().fileName",
-					"SSIS_EnvironmentPath": "NTV.D365.IntegrationServices/DEV"
+					"SSIS_EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
+					"SASTokenURL": "sp=racwdl&st=2022-02-17T09:16:13Z&se=2022-02-17T17:16:13Z&spr=https&sv=2020-08-04&sr=c&sig=p%2FhumJVZ21cSFXtG5BsZ1UudUCfUSVqomfHp%2FH6xDSI%3D"
 				}
 			}
 		],
