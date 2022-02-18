@@ -463,7 +463,7 @@
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "Sql To Sql",
+						"activity": "HystoryLog Fine",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -499,9 +499,9 @@
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "Sql To Sql",
+						"activity": "HystoryLog Errore",
 						"dependencyConditions": [
-							"Failed"
+							"Succeeded"
 						]
 					}
 				],
@@ -540,6 +540,76 @@
 				"linkedServiceName": {
 					"referenceName": "AzureSqlTestStagingArea",
 					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "HystoryLog Fine",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Sql To Sql",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": {
+							"value": "@concat('update dev.History_Log set SAStatus=2, SAEndDate=GETUTCDATE() where IDHistory=',\nactivity('Aggiorna HystoryLog').output.firstRow.idHy)",
+							"type": "Expression"
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "SqlTest_SAP_IBO",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "HystoryLog Errore",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Sql To Sql",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": {
+							"value": "@concat('update dev.History_Log set SAStatus=3, SAEndDate=GETUTCDATE() where IDHistory=',\nactivity('Aggiorna HystoryLog').output.firstRow.idHy,\n';insert into dev.Error_Log (IDError,IDDataSrc,ErrorDetail,ErrorDate,IDLoad) values (3,1,',\n'''','Errore Pipeline Az_CC_Test_Testata_PNR_SAP_IBO',\n'''',\nactivity('Nuovo IDLOAD').output.firstRow.Id\n)",
+							"type": "Expression"
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "SqlTest_SAP_IBO",
+						"type": "DatasetReference"
+					}
 				}
 			}
 		],
