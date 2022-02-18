@@ -426,9 +426,9 @@
 							},
 							{
 								"source": {
-									"name": "IDLoad",
-									"type": "Int64",
-									"physicalType": "bigint"
+									"name": "IDLOAD",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "IDLOAD",
