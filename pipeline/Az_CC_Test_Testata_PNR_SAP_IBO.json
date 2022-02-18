@@ -516,18 +516,20 @@
 				"typeProperties": {
 					"storedProcedureName": "[batchSync].[ErrorBatchSync]",
 					"storedProcedureParameters": {
-						"TabellaImport": {
-							"value": {
-								"value": "@variables('TableName')",
-								"type": "Expression"
-							},
+						"Errore": {
+							"value": "@pipeline().RunId",
 							"type": "String"
 						},
-						"Errore": {
-							"value": {
-								"value": "@pipeline().RunId",
-								"type": "Expression"
-							},
+						"Modulo": {
+							"value": "Sql To Sql",
+							"type": "String"
+						},
+						"NomeFile": {
+							"value": "",
+							"type": "String"
+						},
+						"TabellaImport": {
+							"value": "@variables('TableName')",
 							"type": "String"
 						}
 					}
