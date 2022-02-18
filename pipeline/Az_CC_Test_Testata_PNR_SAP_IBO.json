@@ -101,6 +101,361 @@
 						"type": "DatasetReference"
 					}
 				}
+			},
+			{
+				"name": "Sql To Sql",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Aggiorna HystoryLog",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": {
+							"value": "@concat('SELECT Row_ID,Created,TimeStamp,Last_UPD,PNR,Num_Itinerari,Num_Passeggeri,Costo_Totale,Stato_Biglietto,Data_Creazione,Data_Modifica,Balance_Due,Created_Org,Created_Loc,Created_Dom,Created_Agent,Modified_Org,Modified_Loc,Modified_Dom,Modified_Agent,Received_By,PNR_Padre,IDDataSRC,',\nactivity('Nuovo IDLOAD').output.firstRow.Id,\n' IDLOAD ',\n'FROM [batchSync].[v_Testata_PNR]')",
+							"type": "Expression"
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SqlServerSink",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Row_ID",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "ROW_ID",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Created",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "CREATED",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Last_UPD",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "LAST_UPD",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TimeStamp",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "TIMESTAMP",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "PNR",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "PNR",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Num_Itinerari",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "NUM_ITINERARI",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "Num_Passeggeri",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "NUM_PASSEGGERI",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "Costo_Totale",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 4,
+									"precision": 18
+								},
+								"sink": {
+									"name": "COSTO_TOTALE",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 7,
+									"precision": 22
+								}
+							},
+							{
+								"source": {
+									"name": "Stato_Biglietto",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "STATO_BIGLIETTO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Data_Creazione",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_CREAZIONE",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Data_Modifica",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_MODIFICA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Balance_Due",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 4,
+									"precision": 18
+								},
+								"sink": {
+									"name": "BALANCE_DUE",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 7,
+									"precision": 22
+								}
+							},
+							{
+								"source": {
+									"name": "Created_Org",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "CREATED_ORG",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Created_Loc",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "CREATED_LOC",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Created_Dom",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "CREATED_DOM",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Created_Agent",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "CREATED_AGENT",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Modified_Org",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "MODIFIED_ORG",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Modified_Loc",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "MODIFIED_LOC",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Modified_Dom",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "MODIFIED_DOM",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Modified_Agent",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "MODIFIED_AGENT",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Received_By",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "RECEIVED_BY",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "PNR_Padre",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "PNR_PADRE",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "IDDataSRC",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "IDDATASRC",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "IDLoad",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "IDLOAD",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Testata_PNR_SQL",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SqlTest_DS_SAP_IBO",
+						"type": "DatasetReference"
+					}
+				]
 			}
 		],
 		"variables": {
