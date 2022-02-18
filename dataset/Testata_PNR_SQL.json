@@ -2,7 +2,7 @@
 	"name": "Testata_PNR_SQL",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzureSqlDbCrmStagingArea",
+			"referenceName": "AzureSqlTestStagingArea",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
