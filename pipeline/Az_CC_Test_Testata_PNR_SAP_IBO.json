@@ -517,7 +517,10 @@
 					"storedProcedureName": "[batchSync].[ErrorBatchSync]",
 					"storedProcedureParameters": {
 						"Errore": {
-							"value": "@pipeline().RunId",
+							"value": {
+								"value": "@concat(pipeline().RunId,' ',\nactivity('Sql To Sql').output.errors[0].Message)",
+								"type": "Expression"
+							},
 							"type": "String"
 						},
 						"Modulo": {
