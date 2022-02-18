@@ -125,7 +125,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT distinct Row_ID,Created,TimeStamp,Last_UPD,PNR,Num_Itinerari,Num_Passeggeri,Costo_Totale,Stato_Biglietto,Data_Creazione,Data_Modifica,Balance_Due,Created_Org,Created_Loc,Created_Dom,Created_Agent,Modified_Org,Modified_Loc,Modified_Dom,Modified_Agent,Received_By,PNR_Padre,IDDataSRC,',\nactivity('Nuovo IDLOAD').output.firstRow.Id,\n' IDLOAD ',\n'FROM [batchSync].[v_Testata_PNR] order by Row_ID,Created')",
+							"value": "@concat('SELECT distinct Row_ID,Created,TimeStamp,Last_UPD,PNR,Num_Itinerari,Num_Passeggeri,Costo_Totale,Stato_Biglietto,Data_Creazione,Data_Modifica,Balance_Due,Created_Org,Created_Loc,Created_Dom,Created_Agent,Modified_Org,Modified_Loc,Modified_Dom,Modified_Agent,Received_By,PNR_Padre,IDDataSRC,',\nactivity('Nuovo IDLOAD').output.firstRow.Id,\n' IDLOAD ',\n'FROM [batchSync].[v_Testata_PNR] order by Created,Row_ID')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
