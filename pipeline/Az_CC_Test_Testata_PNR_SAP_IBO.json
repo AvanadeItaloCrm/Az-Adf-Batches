@@ -600,7 +600,7 @@
 					"source": {
 						"type": "SqlServerSource",
 						"sqlReaderQuery": {
-							"value": "@concat('update dev.History_Log set SAStatus=3, SAEndDate=GETUTCDATE() where IDHistory=',\nactivity('Aggiorna HystoryLog').output.firstRow.idHy,\n';insert into dev.Error_Log (IDError,IDDataSrc,ErrorDetail,ErrorDate,IDLoad) values (3,1,',\n'''','Errore Pipeline Az_CC_Test_Testata_PNR_SAP_IBO',\n''',',\nactivity('Nuovo IDLOAD').output.firstRow.Id,\n'; select @@identity')",
+							"value": "@concat('update dev.History_Log set SAStatus=3, SAEndDate=GETUTCDATE() where IDHistory=',\nactivity('Aggiorna HystoryLog').output.firstRow.idHy,\n';insert into dev.Error_Log (IDError,IDDataSrc,ErrorDetail,ErrorDate,IDLoad) values (3,1,',\n'''','Errore Pipeline Az_CC_Test_Testata_PNR_SAP_IBO',\n''',GETUTCDATE(),',\nactivity('Nuovo IDLOAD').output.firstRow.Id,\n'); select @@identity')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
