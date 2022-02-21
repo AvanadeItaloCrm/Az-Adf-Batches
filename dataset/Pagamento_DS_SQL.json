@@ -1,0 +1,75 @@
+{
+	"name": "Pagamento_DS_SQL",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlTestStagingArea",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ROW_ID",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "CREATED",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LAST_UPD",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TIMESTAMP",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PAYMENT_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "PAR_PAYMENT_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "DATA_PAGAMENTO",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ORA_PAGAMENTO",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CODICE_AUTORIZ",
+				"type": "varchar"
+			},
+			{
+				"name": "METODO_PAGAMENTO",
+				"type": "varchar"
+			},
+			{
+				"name": "ESITO_PAGAMENTO",
+				"type": "varchar"
+			},
+			{
+				"name": "RICEVUTA_FISCALE",
+				"type": "varchar"
+			},
+			{
+				"name": "IMPORTO",
+				"type": "varchar"
+			},
+			{
+				"name": "IDDATASRC",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "batchSync",
+			"table": "v_Pagamento"
+		}
+	}
+}
