@@ -125,7 +125,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT ROW_ID,CREATED,LAST_UPD,TIMESTAMP,IDDATASRC,CODICE,NOME,RAGIONE_SOCIALE,CODICE_FISCALE,PARTITA_IVA,ONLUS_FLG,PIVA_GRUPPO_FLG,TIPO_CENTRO_FATT,COD_CENTRO_FATT,COD_BUSIN_PART,NAZIONALITA,TIPO,TIPO_AGENZIA,TIPO_CORPORATE,DATA_ATTIVAZIONE,TEL_FISSO,FAX,EMAIL,EMAIL_PEC,COD_PERC_IVA,COD_MTD_PAG,COD_TRM_PAG,FLG_MANDATO,ESITO_MANDATO,DATA_ESITO_MDT,CODICE_PADRE,IND_LEGALE,IND_SEDE_OPT,STATO,',\nactivity('Nuovo IDLOAD').output.firstRow.Id,\n' IDLOAD ',\n'FROM [batchSync].[v_ANAGRAFICA_AZIENDE] order by Created,Row_ID')",
+							"value": "@concat('SELECT ROW_ID,CREATED,LAST_UPD,TIMESTAMP,IDDATASRC,CODICE,NOME,RAGIONE_SOCIALE,CODICE_FISCALE,PARTITA_IVA,ONLUS_FLG,PIVA_GRUPPO_FLG,TIPO_CENTRO_FATT,COD_CENTRO_FATT,COD_BUSIN_PART,NAZIONALITA,TIPO_PARTNERSHIP,TIPO_AGENZIA,TIPO_CORPORATE,DATA_ATTIVAZIONE,TEL_FISSO,FAX,EMAIL,EMAIL_PEC,COD_PERC_IVA,COD_MTD_PAG,COD_TRM_PAG,FLG_MANDATO,ESITO_MANDATO,DATA_ESITO_MDT,CODICE_PADRE,IND_LEGALE,IND_SEDE_OPT,STATO,IS_CEE_FLG,',\nactivity('Nuovo IDLOAD').output.firstRow.Id,\n' IDLOAD ',\n'FROM [batchSync].[v_ANAGRAFICA_AZIENDE] order by Created,Row_ID')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -143,9 +143,9 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "Row_ID",
-									"type": "Int64",
-									"physicalType": "bigint"
+									"name": "ROW_ID",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "ROW_ID",
@@ -155,33 +155,33 @@
 							},
 							{
 								"source": {
-									"name": "Created",
+									"name": "CREATED",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
 								"sink": {
 									"name": "CREATED",
-									"type": "String",
-									"physicalType": "varchar"
+									"type": "DateTime",
+									"physicalType": "datetime"
 								}
 							},
 							{
 								"source": {
-									"name": "Last_UPD",
+									"name": "LAST_UPD",
 									"type": "DateTime",
 									"physicalType": "datetime"
 								},
 								"sink": {
 									"name": "LAST_UPD",
-									"type": "String",
-									"physicalType": "varchar"
+									"type": "DateTime",
+									"physicalType": "datetime"
 								}
 							},
 							{
 								"source": {
-									"name": "TimeStamp",
-									"type": "DateTime",
-									"physicalType": "datetime"
+									"name": "TIMESTAMP",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "TIMESTAMP",
@@ -191,233 +191,9 @@
 							},
 							{
 								"source": {
-									"name": "PNR",
-									"type": "String",
-									"physicalType": "varchar"
-								},
-								"sink": {
-									"name": "PNR",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Num_Itinerari",
+									"name": "IDDATASRC",
 									"type": "Int32",
 									"physicalType": "int"
-								},
-								"sink": {
-									"name": "NUM_ITINERARI",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "Num_Passeggeri",
-									"type": "String",
-									"physicalType": "varchar"
-								},
-								"sink": {
-									"name": "NUM_PASSEGGERI",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "Costo_Totale",
-									"type": "Decimal",
-									"physicalType": "decimal",
-									"scale": 4,
-									"precision": 18
-								},
-								"sink": {
-									"name": "COSTO_TOTALE",
-									"type": "Decimal",
-									"physicalType": "decimal",
-									"scale": 7,
-									"precision": 22
-								}
-							},
-							{
-								"source": {
-									"name": "Stato_Biglietto",
-									"type": "String",
-									"physicalType": "varchar"
-								},
-								"sink": {
-									"name": "STATO_BIGLIETTO",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Data_Creazione",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								},
-								"sink": {
-									"name": "DATA_CREAZIONE",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Data_Modifica",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								},
-								"sink": {
-									"name": "DATA_MODIFICA",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Balance_Due",
-									"type": "Decimal",
-									"physicalType": "decimal",
-									"scale": 4,
-									"precision": 18
-								},
-								"sink": {
-									"name": "BALANCE_DUE",
-									"type": "Decimal",
-									"physicalType": "decimal",
-									"scale": 7,
-									"precision": 22
-								}
-							},
-							{
-								"source": {
-									"name": "Created_Org",
-									"type": "String",
-									"physicalType": "varchar"
-								},
-								"sink": {
-									"name": "CREATED_ORG",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Created_Loc",
-									"type": "String",
-									"physicalType": "varchar"
-								},
-								"sink": {
-									"name": "CREATED_LOC",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Created_Dom",
-									"type": "String",
-									"physicalType": "varchar"
-								},
-								"sink": {
-									"name": "CREATED_DOM",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Created_Agent",
-									"type": "String",
-									"physicalType": "varchar"
-								},
-								"sink": {
-									"name": "CREATED_AGENT",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Modified_Org",
-									"type": "String",
-									"physicalType": "varchar"
-								},
-								"sink": {
-									"name": "MODIFIED_ORG",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Modified_Loc",
-									"type": "String",
-									"physicalType": "varchar"
-								},
-								"sink": {
-									"name": "MODIFIED_LOC",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Modified_Dom",
-									"type": "String",
-									"physicalType": "varchar"
-								},
-								"sink": {
-									"name": "MODIFIED_DOM",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Modified_Agent",
-									"type": "String",
-									"physicalType": "varchar"
-								},
-								"sink": {
-									"name": "MODIFIED_AGENT",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Received_By",
-									"type": "String",
-									"physicalType": "varchar"
-								},
-								"sink": {
-									"name": "RECEIVED_BY",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "PNR_Padre",
-									"type": "String",
-									"physicalType": "varchar"
-								},
-								"sink": {
-									"name": "PNR_PADRE",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "IDDataSRC",
-									"type": "String",
-									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "IDDATASRC",
@@ -435,6 +211,205 @@
 									"name": "IDLOAD",
 									"type": "Int32",
 									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "CODICE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CODICE",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "NOME",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NOME",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "RAGIONE_SOCIALE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "RAGIONE_SOCIALE",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CODICE_FISCALE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CODICE_FISCALE",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "PARTITA_IVA",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "PARTITA_IVA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ONLUS_FLG",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "ONLUS_FLG",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "PIVA_GRUPPO_FLG",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "PIVA_GRUPPO_FLG",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TIPO_CENTRO_FATT",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "TIPO_CENTRO_FATT",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "COD_CENTRO_FATT",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "COD_CENTRO_FATT",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "COD_BUSIN_PART",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "COD_BUSIN_PART",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "NAZIONALITA",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NAZIONALITA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TIPO_PARTNERSHIP",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "TIPO_PARTNERSHIP",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TIPO_AGENZIA",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "TIPO_AGENZIA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TIPO_CORPORATE",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "TIPO_CORPORATE",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "IND_LEGALE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "IND_LEGALE",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"sink": {
+									"name": "IS_CEE_FLG",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "STATO",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "STATO",
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							}
 						],
