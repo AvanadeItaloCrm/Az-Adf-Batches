@@ -125,7 +125,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT Row_ID,Created,TimeStamp,Last_UPD,PNR,Num_Itinerari,Num_Passeggeri,Costo_Totale,Stato_Biglietto,Data_Creazione,Data_Modifica,Balance_Due,Created_Org,Created_Loc,Created_Dom,Created_Agent,Modified_Org,Modified_Loc,Modified_Dom,Modified_Agent,Received_By,PNR_Padre,IDDataSRC,',\nactivity('Nuovo IDLOAD').output.firstRow.Id,\n' IDLOAD ',\n'FROM [batchSync].[v_Testata_PNR] order by Data_Creazione,Row_ID')",
+							"value": "@concat('SELECT ROW_ID,CREATED,LAST_UPD,TIMESTAMP,COD_PRODOTTO,TIPO_PRODOTTO,DESC_PRODOTTO,DATA_PRODOTTO,DATA_INIZIO,DATA_SCADENZA,NUM_ORDINE,PREZZO,NUM_COUPON,IDDATASRC',\nactivity('Nuovo IDLOAD').output.firstRow.Id,\n' IDLOAD ',\n'FROM [batchSync].[v_PROD_COMM] order by CREATED,ROW_ID')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -603,7 +603,7 @@
 					"source": {
 						"type": "SqlServerSource",
 						"sqlReaderQuery": {
-							"value": "@concat('update dev.History_Log set SAStatus=3, SAEndDate=GETUTCDATE() where IDHistory=',\nactivity('Aggiorna HystoryLog').output.firstRow.idHy,\n' insert into dev.Error_Log (IDError,IDDataSrc,ErrorDetail,ErrorDate,IDLoad) values (3,1,',\n'''','Errore Pipeline Az_CC_Test_Testata_PNR_SAP_IBO',\n''',GETUTCDATE(),',\nactivity('Nuovo IDLOAD').output.firstRow.Id,\n') select @@identity')",
+							"value": "@concat('update dev.History_Log set SAStatus=3, SAEndDate=GETUTCDATE() where IDHistory=',\nactivity('Aggiorna HystoryLog').output.firstRow.idHy,\n' insert into dev.Error_Log (IDError,IDDataSrc,ErrorDetail,ErrorDate,IDLoad) values (3,32,',\n'''','Errore Pipeline Az_CC_Test_PROD_COMM_SAP_IBO',\n''',GETUTCDATE(),',\nactivity('Nuovo IDLOAD').output.firstRow.Id,\n') select @@identity')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
