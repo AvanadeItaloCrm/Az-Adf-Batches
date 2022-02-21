@@ -125,7 +125,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT Row_ID,Created,TimeStamp,Last_UPD,PNR,Num_Itinerari,Num_Passeggeri,Costo_Totale,Stato_Biglietto,Data_Creazione,Data_Modifica,Balance_Due,Created_Org,Created_Loc,Created_Dom,Created_Agent,Modified_Org,Modified_Loc,Modified_Dom,Modified_Agent,Received_By,PNR_Padre,IDDataSRC,',\nactivity('Nuovo IDLOAD').output.firstRow.Id,\n' IDLOAD ',\n'FROM [batchSync].[v_Testata_PNR] order by Data_Creazione,Row_ID')",
+							"value": "@concat('SELECT ROW_ID,CREATED,LAST_UPD,TIMESTAMP,IDDATASRC,CODICE,NOME,RAGIONE_SOCIALE,CODICE_FISCALE,PARTITA_IVA,ONLUS_FLG,PIVA_GRUPPO_FLG,TIPO_CENTRO_FATT,COD_CENTRO_FATT,COD_BUSIN_PART,NAZIONALITA,TIPO,TIPO_AGENZIA,TIPO_CORPORATE,DATA_ATTIVAZIONE,TEL_FISSO,FAX,EMAIL,EMAIL_PEC,COD_PERC_IVA,COD_MTD_PAG,COD_TRM_PAG,FLG_MANDATO,ESITO_MANDATO,DATA_ESITO_MDT,CODICE_PADRE,IND_LEGALE,IND_SEDE_OPT,STATO,',\nactivity('Nuovo IDLOAD').output.firstRow.Id,\n' IDLOAD ',\n'FROM [batchSync].[v_ANAGRAFICA_AZIENDE] order by Created,Row_ID')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -447,13 +447,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Testata_PNR_SQL",
+						"referenceName": "ANAGRAFICA_AZIENDE_SQL",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "SqlTest_DS_SAP_IBO",
+						"referenceName": "SqlTest_Anagrafica_Aziende_SAP_IBO",
 						"type": "DatasetReference"
 					}
 				]

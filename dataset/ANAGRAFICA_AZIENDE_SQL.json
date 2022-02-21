@@ -1,0 +1,164 @@
+{
+	"name": "ANAGRAFICA_AZIENDE_SQL",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlTestStagingArea",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ROW_ID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CREATED",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "LAST_UPD",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "TIMESTAMP",
+				"type": "nvarchar"
+			},
+			{
+				"name": "IDDATASRC",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CODICE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NOME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RAGIONE_SOCIALE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CODICE_FISCALE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PARTITA_IVA",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ONLUS_FLG",
+				"type": "varchar"
+			},
+			{
+				"name": "PIVA_GRUPPO_FLG",
+				"type": "varchar"
+			},
+			{
+				"name": "TIPO_CENTRO_FATT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "COD_CENTRO_FATT",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "COD_BUSIN_PART",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NAZIONALITA",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TIPO",
+				"type": "varchar"
+			},
+			{
+				"name": "TIPO_AGENZIA",
+				"type": "varchar"
+			},
+			{
+				"name": "TIPO_CORPORATE",
+				"type": "varchar"
+			},
+			{
+				"name": "DATA_ATTIVAZIONE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "TEL_FISSO",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FAX",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EMAIL",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EMAIL_PEC",
+				"type": "nvarchar"
+			},
+			{
+				"name": "COD_PERC_IVA",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "COD_MTD_PAG",
+				"type": "varchar"
+			},
+			{
+				"name": "COD_TRM_PAG",
+				"type": "varchar"
+			},
+			{
+				"name": "FLG_MANDATO",
+				"type": "varchar"
+			},
+			{
+				"name": "ESITO_MANDATO",
+				"type": "varchar"
+			},
+			{
+				"name": "DATA_ESITO_MDT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "CODICE_PADRE",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "IND_LEGALE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "IND_SEDE_OPT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "STATO",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "batchSync",
+			"table": "v_ANAGRAFICA_AZIENDE"
+		}
+	}
+}
