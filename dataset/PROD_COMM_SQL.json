@@ -1,0 +1,372 @@
+{
+	"name": "PROD_COMM_SQL",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzSqlOracle_Test_DesDYN365",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Id",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "SinkCreatedOn",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "SinkModifiedOn",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "statecode",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "statuscode",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ntv_producttype",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ntv_acquisitionchannelcode",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ntv_customerbuyerid",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "ntv_customerbuyerid_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "createdonbehalfby",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "createdonbehalfby_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_productpromotionid",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "ntv_productpromotionid_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_partnerbuyerid",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "ntv_partnerbuyerid_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_partnerholderid",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "ntv_partnerholderid_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "modifiedonbehalfby",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "modifiedonbehalfby_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "owningteam",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "owningteam_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_productid",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "ntv_productid_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_customerholderid",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "ntv_customerholderid_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_productitemid",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "ntv_productitemid_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_bookingid",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "ntv_bookingid_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "createdby",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "createdby_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "modifiedby",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "modifiedby_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "owninguser",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "owninguser_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "owningbusinessunit",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "owningbusinessunit_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ownerid",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "ownerid_entitytype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_productpromotionname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_customerbuyeridname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "versionnumber",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "createdon",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "owningbusinessunitname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_partnerholderidyominame",
+				"type": "nvarchar"
+			},
+			{
+				"name": "modifiedbyyominame",
+				"type": "nvarchar"
+			},
+			{
+				"name": "owneridtype",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_vat",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "modifiedbyname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_endvaliditydate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ntv_bookingidname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "owneridname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "overriddencreatedon",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ntv_productidname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "createdonbehalfbyyominame",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_productpromotionidname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_startvaliditydate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ntv_productitemidname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "timezoneruleversionnumber",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ntv_assetid",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "ntv_customerholderidname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_partnerbuyeridname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_customerbuyeridyominame",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_deactivationdate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ntv_description",
+				"type": "nvarchar"
+			},
+			{
+				"name": "createdonbehalfbyname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_note",
+				"type": "nvarchar"
+			},
+			{
+				"name": "utcconversiontimezonecode",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "modifiedon",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "importsequencenumber",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "owneridyominame",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_assetnumber",
+				"type": "nvarchar"
+			},
+			{
+				"name": "createdbyname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_totalamount",
+				"type": "decimal",
+				"precision": 38,
+				"scale": 2
+			},
+			{
+				"name": "modifiedonbehalfbyname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_productname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "createdbyyominame",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_partnerbuyeridyominame",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_partnerholderidname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "modifiedonbehalfbyyominame",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_customerholderidyominame",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntv_ordernumber",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "ntv_ntv_asset"
+		}
+	}
+}
