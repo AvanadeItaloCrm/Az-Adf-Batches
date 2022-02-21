@@ -394,6 +394,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "IS_CEE_FLG",
+									"type": "String",
+									"physicalType": "varchar"
+								},
 								"sink": {
 									"name": "IS_CEE_FLG",
 									"type": "String",
