@@ -1,0 +1,81 @@
+{
+	"name": "SqlTest_Pagamento_DS_SAP_IBO",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Sql_Server_Test_SAP_IBO",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "ROW_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "CREATED",
+				"type": "varchar"
+			},
+			{
+				"name": "LAST_UPD",
+				"type": "varchar"
+			},
+			{
+				"name": "TIMESTAMP",
+				"type": "varchar"
+			},
+			{
+				"name": "PAYMENT_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "PAR_PAYMENT_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "DATA_PAGAMENTO",
+				"type": "varchar"
+			},
+			{
+				"name": "ORA_PAGAMENTO",
+				"type": "varchar"
+			},
+			{
+				"name": "CODICE_AUTORIZ",
+				"type": "varchar"
+			},
+			{
+				"name": "METODO_PAGAMENTO",
+				"type": "varchar"
+			},
+			{
+				"name": "ESITO_PAGAMENTO",
+				"type": "varchar"
+			},
+			{
+				"name": "RICEVUTA_FISCALE",
+				"type": "varchar"
+			},
+			{
+				"name": "IMPORTO",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 4
+			},
+			{
+				"name": "IDDATASRC",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "IDLOAD",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dev",
+			"table": "PAGAMENTO"
+		}
+	}
+}

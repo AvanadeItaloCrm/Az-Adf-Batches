@@ -90,7 +90,7 @@
 					"source": {
 						"type": "SqlServerSource",
 						"sqlReaderQuery": {
-							"value": "@concat('insert into dev.History_Log (IDDataSrc,IDLoad,SAStartDate,SAStatus) values (1,',\nactivity('Nuovo IDLOAD').output.firstRow.Id,\n',GETUTCDATE(),1);select @@IDENTITY as idHy')",
+							"value": "@concat('insert into dev.History_Log (IDDataSrc,IDLoad,SAStartDate,SAStatus) values (20,',\nactivity('Nuovo IDLOAD').output.firstRow.Id,\n',GETUTCDATE(),1);select @@IDENTITY as idHy')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -125,7 +125,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT Row_ID,Created,TimeStamp,Last_UPD,PNR,Num_Itinerari,Num_Passeggeri,Costo_Totale,Stato_Biglietto,Data_Creazione,Data_Modifica,Balance_Due,Created_Org,Created_Loc,Created_Dom,Created_Agent,Modified_Org,Modified_Loc,Modified_Dom,Modified_Agent,Received_By,PNR_Padre,IDDataSRC,',\nactivity('Nuovo IDLOAD').output.firstRow.Id,\n' IDLOAD ',\n'FROM [batchSync].[v_Testata_PNR] order by Data_Creazione,Row_ID')",
+							"value": "@concat('select ROW_ID,CREATED,LAST_UPD,TIMESTAMP,PAYMENT_ID,PAR_PAYMENT_ID,DATA_PAGAMENTO,ORA_PAGAMENTO,CODICE_AUTORIZ,METODO_PAGAMENTO,ESITO_PAGAMENTO,RICEVUTA_FISCALE,IMPORTO,IDDATASRC,',\nactivity('Nuovo IDLOAD').output.firstRow.Id,\n' IDLOAD ',\n'FROM [batchSync].[v_Pagamento] order by CREATED,Row_ID')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -143,7 +143,7 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "Row_ID",
+									"name": "ROW_ID",
 									"type": "Int64",
 									"physicalType": "bigint"
 								},
@@ -155,9 +155,9 @@
 							},
 							{
 								"source": {
-									"name": "Created",
-									"type": "DateTime",
-									"physicalType": "datetime"
+									"name": "CREATED",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "CREATED",
@@ -167,9 +167,9 @@
 							},
 							{
 								"source": {
-									"name": "Last_UPD",
-									"type": "DateTime",
-									"physicalType": "datetime"
+									"name": "LAST_UPD",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "LAST_UPD",
@@ -179,9 +179,9 @@
 							},
 							{
 								"source": {
-									"name": "TimeStamp",
-									"type": "DateTime",
-									"physicalType": "datetime"
+									"name": "TIMESTAMP",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "TIMESTAMP",
@@ -191,233 +191,119 @@
 							},
 							{
 								"source": {
-									"name": "PNR",
+									"name": "PAYMENT_ID",
 									"type": "String",
 									"physicalType": "varchar"
 								},
 								"sink": {
-									"name": "PNR",
+									"name": "PAYMENT_ID",
 									"type": "String",
 									"physicalType": "varchar"
 								}
 							},
 							{
 								"source": {
-									"name": "Num_Itinerari",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "NUM_ITINERARI",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "Num_Passeggeri",
+									"name": "PAR_PAYMENT_ID",
 									"type": "String",
 									"physicalType": "varchar"
 								},
 								"sink": {
-									"name": "NUM_PASSEGGERI",
-									"type": "Int32",
-									"physicalType": "int"
+									"name": "PAR_PAYMENT_ID",
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							},
 							{
 								"source": {
-									"name": "Costo_Totale",
+									"name": "DATA_PAGAMENTO",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "DATA_PAGAMENTO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ORA_PAGAMENTO",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "ORA_PAGAMENTO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CODICE_AUTORIZ",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "CODICE_AUTORIZ",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "METODO_PAGAMENTO",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "METODO_PAGAMENTO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ESITO_PAGAMENTO",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "ESITO_PAGAMENTO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "RICEVUTA_FISCALE",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "RICEVUTA_FISCALE",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "IMPORTO",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "IMPORTO",
 									"type": "Decimal",
 									"physicalType": "decimal",
 									"scale": 4,
 									"precision": 18
-								},
-								"sink": {
-									"name": "COSTO_TOTALE",
-									"type": "Decimal",
-									"physicalType": "decimal",
-									"scale": 7,
-									"precision": 22
 								}
 							},
 							{
 								"source": {
-									"name": "Stato_Biglietto",
-									"type": "String",
-									"physicalType": "varchar"
-								},
-								"sink": {
-									"name": "STATO_BIGLIETTO",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Data_Creazione",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								},
-								"sink": {
-									"name": "DATA_CREAZIONE",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Data_Modifica",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								},
-								"sink": {
-									"name": "DATA_MODIFICA",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Balance_Due",
-									"type": "Decimal",
-									"physicalType": "decimal",
-									"scale": 4,
-									"precision": 18
-								},
-								"sink": {
-									"name": "BALANCE_DUE",
-									"type": "Decimal",
-									"physicalType": "decimal",
-									"scale": 7,
-									"precision": 22
-								}
-							},
-							{
-								"source": {
-									"name": "Created_Org",
-									"type": "String",
-									"physicalType": "varchar"
-								},
-								"sink": {
-									"name": "CREATED_ORG",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Created_Loc",
-									"type": "String",
-									"physicalType": "varchar"
-								},
-								"sink": {
-									"name": "CREATED_LOC",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Created_Dom",
-									"type": "String",
-									"physicalType": "varchar"
-								},
-								"sink": {
-									"name": "CREATED_DOM",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Created_Agent",
-									"type": "String",
-									"physicalType": "varchar"
-								},
-								"sink": {
-									"name": "CREATED_AGENT",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Modified_Org",
-									"type": "String",
-									"physicalType": "varchar"
-								},
-								"sink": {
-									"name": "MODIFIED_ORG",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Modified_Loc",
-									"type": "String",
-									"physicalType": "varchar"
-								},
-								"sink": {
-									"name": "MODIFIED_LOC",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Modified_Dom",
-									"type": "String",
-									"physicalType": "varchar"
-								},
-								"sink": {
-									"name": "MODIFIED_DOM",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Modified_Agent",
-									"type": "String",
-									"physicalType": "varchar"
-								},
-								"sink": {
-									"name": "MODIFIED_AGENT",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Received_By",
-									"type": "String",
-									"physicalType": "varchar"
-								},
-								"sink": {
-									"name": "RECEIVED_BY",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "PNR_Padre",
-									"type": "String",
-									"physicalType": "varchar"
-								},
-								"sink": {
-									"name": "PNR_PADRE",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "IDDataSRC",
-									"type": "String",
-									"physicalType": "varchar"
+									"name": "IDDATASRC",
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "IDDATASRC",
@@ -447,13 +333,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Testata_PNR_SQL",
+						"referenceName": "Pagamento_DS_SQL",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "SqlTest_DS_SAP_IBO",
+						"referenceName": "SqlTest_Pagamento_DS_SAP_IBO",
 						"type": "DatasetReference"
 					}
 				]
@@ -603,7 +489,7 @@
 					"source": {
 						"type": "SqlServerSource",
 						"sqlReaderQuery": {
-							"value": "@concat('update dev.History_Log set SAStatus=3, SAEndDate=GETUTCDATE() where IDHistory=',\nactivity('Aggiorna HystoryLog').output.firstRow.idHy,\n' insert into dev.Error_Log (IDError,IDDataSrc,ErrorDetail,ErrorDate,IDLoad) values (3,1,',\n'''','Errore Pipeline Az_CC_Test_Testata_PNR_SAP_IBO',\n''',GETUTCDATE(),',\nactivity('Nuovo IDLOAD').output.firstRow.Id,\n') select @@identity')",
+							"value": "@concat('update dev.History_Log set SAStatus=3, SAEndDate=GETUTCDATE() where IDHistory=',\nactivity('Aggiorna HystoryLog').output.firstRow.idHy,\n' insert into dev.Error_Log (IDError,IDDataSrc,ErrorDetail,ErrorDate,IDLoad) values (3,20,',\n'''','Errore Pipeline Az_CC_Test_PAGAMENTO_SAP_IBO',\n''',GETUTCDATE(),',\nactivity('Nuovo IDLOAD').output.firstRow.Id,\n') select @@identity')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
