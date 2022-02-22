@@ -619,7 +619,7 @@
 							},
 							{
 								"source": {
-									"name": "IMPORTO_DA_RIMBORSARE",
+									"name": "IMPORTO_OPERAZIONE",
 									"type": "Decimal",
 									"physicalType": "decimal",
 									"scale": 4,
