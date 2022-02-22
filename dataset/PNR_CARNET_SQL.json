@@ -1,0 +1,43 @@
+{
+	"name": "PNR_CARNET_SQL",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlTestStagingArea",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ID_TESTATA_PNR",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "CREATED",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LAST_UPD",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TIMESTAMP",
+				"type": "nvarchar"
+			},
+			{
+				"name": "COD_CARNET",
+				"type": "nvarchar"
+			},
+			{
+				"name": "IDDATASRC",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "batchSync",
+			"table": "v_PNR_CARNET"
+		}
+	}
+}

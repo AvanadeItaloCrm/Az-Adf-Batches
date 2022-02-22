@@ -1,0 +1,47 @@
+{
+	"name": "SqlTest_PNR_CARNET_SAP_IBO",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Sql_Server_Test_SAP_IBO",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "ID_TESTATA_PNR",
+				"type": "varchar"
+			},
+			{
+				"name": "CREATED",
+				"type": "varchar"
+			},
+			{
+				"name": "LAST_UPD",
+				"type": "varchar"
+			},
+			{
+				"name": "TIMESTAMP",
+				"type": "varchar"
+			},
+			{
+				"name": "COD_CARNET",
+				"type": "varchar"
+			},
+			{
+				"name": "IDDATASRC",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "IDLOAD",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dev",
+			"table": "PNR_CARNET"
+		}
+	}
+}
