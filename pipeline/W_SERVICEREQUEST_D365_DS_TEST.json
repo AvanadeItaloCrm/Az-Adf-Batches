@@ -287,9 +287,9 @@
 							},
 							{
 								"source": {
-									"name": "TIPO_INTERAZIONE",
+									"name": "TIPOLOGIA",
 									"type": "String",
-									"physicalType": "varchar"
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "TIPOLOGIA",
@@ -408,7 +408,7 @@
 							},
 							{
 								"source": {
-									"name": "IMPORTO_OPERAZIONE",
+									"name": "IMPORTO_SCARICATO",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -621,7 +621,9 @@
 								"source": {
 									"name": "IMPORTO_DA_RIMBORSARE",
 									"type": "Decimal",
-									"physicalType": "nvarchar"
+									"physicalType": "decimal",
+									"scale": 4,
+									"precision": 38
 								},
 								"sink": {
 									"name": "IMPORTO_OPERAZIONE",
