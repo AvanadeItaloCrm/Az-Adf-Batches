@@ -39,6 +39,7 @@
 						"sqlWriterUseTableLock": false
 					},
 					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
 					"translator": {
 						"value": "@json(activity('Get Mapping IN').output.firstRow.json_output)",
 						"type": "Expression"
