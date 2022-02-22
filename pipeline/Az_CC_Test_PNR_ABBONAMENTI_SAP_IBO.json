@@ -125,7 +125,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT ID_TESTATA_PNR,CREATED,LAST_UPD,TIMESTAMP,COD_CARNET,IDDATASRC,',\nactivity('Nuovo IDLOAD').output.firstRow.Id,\n' IDLOAD ',\n'FROM [batchSync].[v_PNR_ABBONAMENTI] order by CREATED,ID_TESTATA_PNR')",
+							"value": "@concat('SELECT ID_TESTATA_PNR,CREATED,LAST_UPD,TIMESTAMP,COD_ABBONAMENTO,IDDATASRC,',\nactivity('Nuovo IDLOAD').output.firstRow.Id,\n' IDLOAD ',\n'FROM [batchSync].[v_PNR_ABBONAMENTI] order by CREATED,ID_TESTATA_PNR')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -142,6 +142,11 @@
 						"type": "TabularTranslator",
 						"mappings": [
 							{
+								"source": {
+									"name": "ID_TESTATA_PNR",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
 								"sink": {
 									"name": "ID_TESTATA_PNR",
 									"type": "String",
@@ -150,7 +155,7 @@
 							},
 							{
 								"source": {
-									"name": "Created",
+									"name": "CREATED",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -162,7 +167,7 @@
 							},
 							{
 								"source": {
-									"name": "Last_UPD",
+									"name": "LAST_UPD",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -174,7 +179,7 @@
 							},
 							{
 								"source": {
-									"name": "TimeStamp",
+									"name": "TIMESTAMP",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -185,6 +190,11 @@
 								}
 							},
 							{
+								"source": {
+									"name": "COD_ABBONAMENTO",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
 								"sink": {
 									"name": "COD_ABBONAMENTO",
 									"type": "String",
@@ -193,7 +203,7 @@
 							},
 							{
 								"source": {
-									"name": "IDDataSRC",
+									"name": "IDDATASRC",
 									"type": "Int32",
 									"physicalType": "int"
 								},
