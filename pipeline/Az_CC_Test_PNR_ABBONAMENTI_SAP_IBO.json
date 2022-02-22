@@ -407,7 +407,7 @@
 		"variables": {
 			"TableName": {
 				"type": "String",
-				"defaultValue": "Testata_PNR"
+				"defaultValue": "PNR_ABBONAMENTI"
 			}
 		},
 		"folder": {
