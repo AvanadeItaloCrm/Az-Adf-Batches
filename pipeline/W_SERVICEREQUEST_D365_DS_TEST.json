@@ -287,6 +287,17 @@
 							},
 							{
 								"source": {
+									"name": "TIPO_INTERAZIONE",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "TIPOLOGIA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
 									"name": "INTEGRAZIONE_ID",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
@@ -299,8 +310,8 @@
 							{
 								"source": {
 									"name": "PNR",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "PNR",
@@ -310,19 +321,41 @@
 							{
 								"source": {
 									"name": "PARTNER_FORNITORE",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "PARTNER_FORNITORE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CODICE_CLIENTE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CODICE_CLIENTE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CODICE_PARTNER",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CODICE_PARTNER",
 									"type": "String"
 								}
 							},
 							{
 								"source": {
 									"name": "ORDINE_ID",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "ORDINE_ID",
@@ -371,6 +404,17 @@
 								"sink": {
 									"name": "PNR_SCARICO_BORSELLINO",
 									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IMPORTO_OPERAZIONE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "IMPORTO_SCARICATO",
+									"type": "Decimal"
 								}
 							},
 							{
@@ -575,8 +619,8 @@
 							},
 							{
 								"source": {
-									"name": "IMPORTO_OPERAZIONE",
-									"type": "String",
+									"name": "IMPORTO_DA_RIMBORSARE",
+									"type": "Decimal",
 									"physicalType": "nvarchar"
 								},
 								"sink": {
@@ -796,11 +840,22 @@
 							{
 								"source": {
 									"name": "LINGUA",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "LINGUA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CODICE_DIPENDENTE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CODICE_DIPENDENTE",
 									"type": "String"
 								}
 							}
