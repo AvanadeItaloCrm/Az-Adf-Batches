@@ -94,7 +94,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT ntv_city CITTA,n.ntv_name NAZIONE,batchSync.FV(''ntv_ntv_address'',''ntv_provincecode'', ntv_provincecode) PROVINCIA,ntv_postalcode CAP,a.Id INTEGRAZIONE_ID FROM ntv_ntv_address a left join ntv_ntv_nation n on n.Id=a.ntv_nationid WHERE a.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"value": "@concat('SELECT ntv_city CITTA,n.ntv_name NAZIONE,batchSync.FV(''ntv_ntv_address'',''ntv_provincecode'', ntv_provincecode) PROVINCIA,ntv_postalcode CAP,a.Id INTEGRAZIONE_ID FROM ntv_ntv_address a left join ntv_ntv_nation n on n.Id=a.ntv_nationid WHERE batchSync.SyncTime(a.modifiedon)>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
