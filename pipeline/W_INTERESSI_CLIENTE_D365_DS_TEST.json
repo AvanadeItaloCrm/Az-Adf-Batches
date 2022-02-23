@@ -97,7 +97,10 @@
 						"storedProcedureParameters": {
 							"DataUltimaModifica": {
 								"type": "DateTime",
-								"value": "activity('Ultima Sinc').output.firstRow.Rec"
+								"value": {
+									"value": "@activity('Ultima Sinc').output.firstRow.Rec",
+									"type": "Expression"
+								}
 							}
 						},
 						"queryTimeout": "02:00:00",
