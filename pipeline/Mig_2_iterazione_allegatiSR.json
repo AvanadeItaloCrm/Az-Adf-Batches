@@ -140,7 +140,7 @@
 										],
 										"outputs": [
 											{
-												"referenceName": "Mig_Allegato_Destination",
+												"referenceName": "Mig_Allegato_Destination_SR",
 												"type": "DatasetReference",
 												"parameters": {
 													"DestinationFile": "incident",
