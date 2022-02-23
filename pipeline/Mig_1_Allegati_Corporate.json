@@ -282,7 +282,16 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[datav].[pr_Load_AllegatiCORP]"
+					"storedProcedureName": "[datav].[pr_Load_AllegatiCORP]",
+					"storedProcedureParameters": {
+						"BatchId": {
+							"value": {
+								"value": "@variables('BatchId')",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
 				},
 				"linkedServiceName": {
 					"referenceName": "Mig_STGAzure",
