@@ -77,6 +77,10 @@
 									"ParamPipeline": {
 										"value": "@item().name",
 										"type": "Expression"
+									},
+									"BatchId": {
+										"value": "@variables('BatchId')",
+										"type": "Expression"
 									}
 								}
 							}
