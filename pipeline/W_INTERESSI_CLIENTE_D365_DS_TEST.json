@@ -93,10 +93,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": {
-							"value": "@concat('select ntv_customernumber,Id,batchSync.FV(''contact'',''ntv_interestscodes'',ntv_interestscodes) as ntv_interestscodes from ntv_contact WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
-							"type": "Expression"
-						},
+						"sqlReaderStoredProcedureName": "[batchSync].[w_Interessi_Cliente]",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -135,7 +132,7 @@
 								"source": {
 									"name": "ntv_interestscodes",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "INTERESSE",
