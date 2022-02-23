@@ -18,7 +18,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT SR_FileName,filename FROM [datav].[AllegatiSR] WHERE IsImported=0 AND BATCHID=',variables('BatchId'))",
+							"value": "@concat('SELECT SR_FileName,filename FROM [datav].[AllegatiSR] WHERE IsImported=0 AND BATCHID=',pipeline().parameters.BatchId)",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -178,15 +178,14 @@
 		"parameters": {
 			"ParamPipeline": {
 				"type": "string"
+			},
+			"BatchId": {
+				"type": "string"
 			}
 		},
 		"variables": {
 			"FILENAME_COMPLETO": {
 				"type": "String"
-			},
-			"BatchId": {
-				"type": "String",
-				"defaultValue": "51"
 			}
 		},
 		"folder": {
