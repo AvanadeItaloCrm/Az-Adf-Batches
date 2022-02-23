@@ -94,7 +94,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT ntv_ntv_customercluster.ntv_name, ntv_ntv_promotion.Id FROM   ntv_ntv_promotion INNER JOIN ntv_ntv_ntv_customercluster_ntv_promotion ON ntv_ntv_promotion.ntv_promotionid = ntv_ntv_ntv_customercluster_ntv_promotion.ntv_promotionid INNER JOIN ntv_ntv_customercluster ON ntv_ntv_ntv_customercluster_ntv_promotion.ntv_customerclusterid = ntv_ntv_customercluster.ntv_customerclusterid WHERE ntv_ntv_promotion.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or ntv_ntv_customercluster.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"value": "@concat('SELECT ntv_ntv_customercluster.ntv_name, ntv_ntv_promotion.Id FROM   ntv_ntv_promotion INNER JOIN ntv_ntv_ntv_customercluster_ntv_promotion ON ntv_ntv_promotion.ntv_promotionid = ntv_ntv_ntv_customercluster_ntv_promotion.ntv_promotionid INNER JOIN ntv_ntv_customercluster ON ntv_ntv_ntv_customercluster_ntv_promotion.ntv_customerclusterid = ntv_ntv_customercluster.ntv_customerclusterid WHERE batchSync.SyncTime(ntv_ntv_promotion.modifiedon)>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or batchSync.SyncTime(ntv_ntv_customercluster.modifiedon)>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
