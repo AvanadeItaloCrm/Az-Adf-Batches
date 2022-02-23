@@ -279,9 +279,15 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": {
-						"value": "@concat('[datav].[pr_Load_AllegatiSR]',variables('BatchId'))",
-						"type": "Expression"
+					"storedProcedureName": "[datav].[pr_Load_AllegatiSR]",
+					"storedProcedureParameters": {
+						"BatchId": {
+							"value": {
+								"value": "@variables('BatchId')",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
 					}
 				},
 				"linkedServiceName": {
