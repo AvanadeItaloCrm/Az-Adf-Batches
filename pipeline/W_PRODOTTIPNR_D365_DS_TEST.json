@@ -93,7 +93,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "select ntv_assetid,createdon,modifiedon,ntv_assetnumber,bo.RecordLocator\nfrom ntv_ntv_asset a\njoin ntv.v_Bookings b\non a.ntv_bookingid=b.BookGUID\njoin ntv.v_Bookings bo on\nbo.BookingID=b.BookingID",
+						"sqlReaderQuery": "select ntv_assetid,batchSync.SyncTime(createdon) as createdon,batchSync.SyncTime(modifiedon) as modifiedon,ntv_assetnumber,bo.RecordLocator\nfrom ntv_ntv_asset a\njoin ntv.v_Bookings b\non a.ntv_bookingid=b.BookGUID\njoin ntv.v_Bookings bo on\nbo.BookingID=b.BookingID",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
