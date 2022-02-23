@@ -94,7 +94,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT pf.PaymentFieldID INTEGRAZIONE_ID, p.PaymentID PAGAMENTO_CRM_ID, Name NOME, Value VALORE, p.PayID AS PAGAMENTO_NAV_ID FROM ntv.PaymentFields pf join ntv.Payments p on p.PayID=pf.PayID WHERE pf.RecModifiedDate>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"value": "@concat('SELECT pf.PaymentFieldID INTEGRAZIONE_ID, p.PaymentID PAGAMENTO_CRM_ID, Name NOME, Value VALORE, p.PayID AS PAGAMENTO_NAV_ID FROM ntv.PaymentFields pf join ntv.Payments p on p.PayID=pf.PayID WHERE batchSync.SyncTime(pf.RecModifiedDate)>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
