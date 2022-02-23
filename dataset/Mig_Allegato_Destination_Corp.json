@@ -1,12 +1,15 @@
 {
-	"name": "Mig_Allegato_Destination_Corp",
+	"name": "Mig_Allegato_Destination_Corp_TEST",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "mig_crmdevdyn365data",
-			"type": "LinkedServiceReference"
+			"referenceName": "crmtestdyn365data",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"linkedserviceName": "crmtestdyn365data"
+			}
 		},
 		"parameters": {
-			"Destination": {
+			"DestinationFile": {
 				"type": "string",
 				"defaultValue": "contract"
 			},
@@ -27,7 +30,7 @@
 					"type": "Expression"
 				},
 				"container": {
-					"value": "@dataset().Destination",
+					"value": "@dataset().DestinationFile",
 					"type": "Expression"
 				}
 			},
