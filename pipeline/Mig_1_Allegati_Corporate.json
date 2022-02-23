@@ -322,6 +322,10 @@
 			"FileSource": {
 				"type": "String",
 				"defaultValue": "staging-contract"
+			},
+			"BatchId": {
+				"type": "String",
+				"defaultValue": "51"
 			}
 		},
 		"folder": {
