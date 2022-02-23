@@ -17,7 +17,10 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "SELECT Contract_FileName,filename\nFROM datav.[AllegatiCORP]\nWHERE IsImported=0",
+						"sqlReaderQuery": {
+							"value": "@concat('SELECT Contract_FileName,filename FROM datav.[AllegatiCORP] WHERE IsImported=0',pipeline().parameters.BatchId)",
+							"type": "Expression"
+						},
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
