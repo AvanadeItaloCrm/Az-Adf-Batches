@@ -1,5 +1,5 @@
 {
-	"name": "Mig_Allegato_Destination_Corp_TEST",
+	"name": "Mig_Allegato_Destination_Corp",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "crmtestdyn365data",

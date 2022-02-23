@@ -1,5 +1,5 @@
 {
-	"name": "Mig_Allegato_Destination_Corp",
+	"name": "ZZ_Mig_Allegato_Destination_Corp",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "mig_crmdevdyn365data",

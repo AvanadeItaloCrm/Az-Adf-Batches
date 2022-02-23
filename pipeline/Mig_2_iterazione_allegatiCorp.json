@@ -137,7 +137,7 @@
 										],
 										"outputs": [
 											{
-												"referenceName": "Mig_Allegato_Destination_Corp_TEST",
+												"referenceName": "Mig_Allegato_Destination_Corp",
 												"type": "DatasetReference",
 												"parameters": {
 													"DestinationFile": "contract",
