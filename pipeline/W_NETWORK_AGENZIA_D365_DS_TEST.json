@@ -94,7 +94,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "SELECT (select top 1 accountnumber from ntv_account a join ntv_ntv_network_account na ON na.accountid = a.accountid where na.ntv_networkid=n.ntv_networkid) as accountnumber, convert(varchar(40),n.Id) id, n.ntv_name FROM ntv_ntv_network n\nunion select '12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890' accountnumber,'asasas' id,'sdfsdf' ntv_name",
+							"value": "SELECT (select top 1 accountnumber from ntv_account a join ntv_ntv_network_account na ON na.accountid = a.accountid where na.ntv_networkid=n.ntv_networkid) as accountnumber, convert(varchar(40),n.Id) id, n.ntv_name FROM ntv_ntv_network n\nunion select '12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890' accountnumber,'123' id,null ntv_name",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
