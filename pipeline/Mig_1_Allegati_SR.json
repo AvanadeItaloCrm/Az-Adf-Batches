@@ -77,6 +77,10 @@
 									"ParamPipeline": {
 										"value": "@item().name",
 										"type": "Expression"
+									},
+									"BatchId": {
+										"value": "@variables('BatchId')",
+										"type": "Expression"
 									}
 								}
 							}
@@ -275,7 +279,10 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[datav].[pr_Load_AllegatiSR]"
+					"storedProcedureName": {
+						"value": "@concat('[datav].[pr_Load_AllegatiSR]',variables('BatchId'))",
+						"type": "Expression"
+					}
 				},
 				"linkedServiceName": {
 					"referenceName": "Mig_STGAzure",
@@ -290,6 +297,10 @@
 			"FileSource": {
 				"type": "String",
 				"defaultValue": "staging-incident"
+			},
+			"BatchId": {
+				"type": "String",
+				"defaultValue": "51"
 			}
 		},
 		"folder": {
