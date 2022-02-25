@@ -324,7 +324,21 @@
 						"referenceName": "Italo-devtest-IntegrationRuntimeSSIS",
 						"type": "IntegrationRuntimeReference"
 					},
-					"loggingLevel": "Basic"
+					"loggingLevel": "Basic",
+					"projectParameters": {
+						"DynamicsCRM_ClientId": {
+							"value": "4cb4f732-ed9f-407c-b1f0-dac273c3b19a"
+						},
+						"DynamicsCRM_Secret": {
+							"value": {
+								"type": "SecureString",
+								"value": "**********"
+							}
+						},
+						"DynamicsCRM_ServerUrl": {
+							"value": "https://italotestapi.crm4.dynamics.com/"
+						}
+					}
 				}
 			}
 		],
