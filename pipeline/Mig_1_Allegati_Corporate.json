@@ -135,7 +135,16 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[log].[pr_UpdateIsImported_AllegatiCorp]"
+					"storedProcedureName": "[log].[pr_UpdateIsImported_AllegatiCorp]",
+					"storedProcedureParameters": {
+						"BatchId": {
+							"value": {
+								"value": "@variables('BatchId')",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
 				},
 				"linkedServiceName": {
 					"referenceName": "Mig_STGAzure",
