@@ -148,12 +148,6 @@
 						"dependencyConditions": [
 							"Completed"
 						]
-					},
-					{
-						"activity": "pr_Load_ntv_segment",
-						"dependencyConditions": [
-							"Completed"
-						]
 					}
 				],
 				"policy": {
@@ -186,7 +180,7 @@
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "pr_Load_ntv_paxseat",
+						"activity": "pr_Load_ntv_paxssr",
 						"dependencyConditions": [
 							"Completed"
 						]
@@ -258,7 +252,7 @@
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "pr_Load_ntv_paxseat",
+						"activity": "pr_Load_ntv_segment",
 						"dependencyConditions": [
 							"Completed"
 						]
@@ -330,7 +324,7 @@
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "pr_Load_ntv_paxssr",
+						"activity": "pr_Load_ntv_multitratta",
 						"dependencyConditions": [
 							"Completed"
 						]
