@@ -404,7 +404,7 @@
 					{
 						"activity": "pr_Load_ntv_paxfareprice",
 						"dependencyConditions": [
-							"Succeeded"
+							"Completed"
 						]
 					}
 				],
