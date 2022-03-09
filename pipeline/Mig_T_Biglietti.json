@@ -430,8 +430,7 @@
 		],
 		"parameters": {
 			"ID": {
-				"type": "int",
-				"defaultValue": 62
+				"type": "int"
 			}
 		},
 		"folder": {
