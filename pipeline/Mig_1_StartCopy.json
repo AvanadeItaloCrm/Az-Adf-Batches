@@ -28,7 +28,7 @@
 				}
 			},
 			{
-				"name": "Copy",
+				"name": "STG",
 				"type": "IfCondition",
 				"dependsOn": [
 					{
@@ -46,7 +46,7 @@
 					},
 					"ifTrueActivities": [
 						{
-							"name": "Start Primary",
+							"name": "Mig_CopyPrimary",
 							"type": "ExecutePipeline",
 							"dependsOn": [],
 							"userProperties": [],
@@ -66,11 +66,53 @@
 						}
 					]
 				}
+			},
+			{
+				"name": "TRSF",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "STG",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@not(equals(activity('GetId').output.firstRow.ID, 100000000))",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Mig_Trasformations",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "Mig_Trasformations",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"ID": {
+										"value": "@activity('GetId').output.firstRow.ID",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
 			}
 		],
 		"folder": {
 			"name": "Migration"
 		},
-		"annotations": []
-	}
+		"annotations": [],
+		"lastPublishTime": "2022-02-17T14:27:51Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
 }
