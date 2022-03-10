@@ -3,824 +3,308 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "ntv_nation",
-				"type": "SqlServerStoredProcedure",
-				"dependsOn": [
-					{
-						"activity": "Indirizzo",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"storedProcedureName": "[datav].[pr_Load_ntv_nation]",
-					"storedProcedureParameters": {
-						"ID": {
-							"value": {
-								"value": "@pipeline().parameters.ID",
-								"type": "Expression"
-							},
-							"type": "Int32"
-						}
-					}
-				},
-				"linkedServiceName": {
-					"referenceName": "Mig_STGAzure",
-					"type": "LinkedServiceReference"
-				}
-			},
-			{
-				"name": "ntv_originchannel",
-				"type": "SqlServerStoredProcedure",
-				"dependsOn": [
-					{
-						"activity": "ntv_callcluster",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"storedProcedureName": "[datav].[pr_Load_ntv_originchannel]",
-					"storedProcedureParameters": {
-						"ID": {
-							"value": {
-								"value": "@pipeline().parameters.ID",
-								"type": "Expression"
-							},
-							"type": "Int32"
-						}
-					}
-				},
-				"linkedServiceName": {
-					"referenceName": "Mig_STGAzure",
-					"type": "LinkedServiceReference"
-				}
-			},
-			{
-				"name": "ntv_referent",
-				"type": "SqlServerStoredProcedure",
-				"dependsOn": [
-					{
-						"activity": "Contact",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"storedProcedureName": "[datav].[pr_Load_ntv_referent]",
-					"storedProcedureParameters": {
-						"ID": {
-							"value": {
-								"value": "@pipeline().parameters.ID",
-								"type": "Expression"
-							},
-							"type": "Int32"
-						}
-					}
-				},
-				"linkedServiceName": {
-					"referenceName": "Mig_STGAzure",
-					"type": "LinkedServiceReference"
-				}
-			},
-			{
-				"name": "ntv_italopassper3",
-				"type": "SqlServerStoredProcedure",
-				"dependsOn": [
-					{
-						"activity": "ntv_servicecontact",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"storedProcedureName": "[datav].[pr_Load_ntv_italopassper3]",
-					"storedProcedureParameters": {
-						"ID": {
-							"value": {
-								"value": "@pipeline().parameters.ID",
-								"type": "Expression"
-							},
-							"type": "Int32"
-						}
-					}
-				},
-				"linkedServiceName": {
-					"referenceName": "Mig_STGAzure",
-					"type": "LinkedServiceReference"
-				}
-			},
-			{
-				"name": "ntv_billingprofile",
-				"type": "SqlServerStoredProcedure",
-				"dependsOn": [
-					{
-						"activity": "ntv_referent",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"storedProcedureName": "[datav].[pr_Load_ntv_billingprofile]",
-					"storedProcedureParameters": {
-						"ID": {
-							"value": {
-								"value": "@pipeline().parameters.ID",
-								"type": "Expression"
-							},
-							"type": "Int32"
-						}
-					}
-				},
-				"linkedServiceName": {
-					"referenceName": "Mig_STGAzure",
-					"type": "LinkedServiceReference"
-				}
-			},
-			{
-				"name": "ntv_callcluster",
-				"type": "SqlServerStoredProcedure",
-				"dependsOn": [
-					{
-						"activity": "ntv_customercluster",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"storedProcedureName": "[datav].[pr_Load_ntv_callcluster]",
-					"storedProcedureParameters": {
-						"ID": {
-							"value": {
-								"value": "@pipeline().parameters.ID",
-								"type": "Expression"
-							},
-							"type": "Int32"
-						}
-					}
-				},
-				"linkedServiceName": {
-					"referenceName": "Mig_STGAzure",
-					"type": "LinkedServiceReference"
-				}
-			},
-			{
-				"name": "Contact",
-				"type": "SqlServerStoredProcedure",
-				"dependsOn": [
-					{
-						"activity": "ntv_addressbook",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"storedProcedureName": "[datav].[pr_Load_Contact]",
-					"storedProcedureParameters": {
-						"ID": {
-							"value": {
-								"value": "@pipeline().parameters.ID",
-								"type": "Expression"
-							},
-							"type": "Int32"
-						}
-					}
-				},
-				"linkedServiceName": {
-					"referenceName": "Mig_STGAzure",
-					"type": "LinkedServiceReference"
-				}
-			},
-			{
-				"name": "ntv_customercluster",
-				"type": "SqlServerStoredProcedure",
-				"dependsOn": [
-					{
-						"activity": "ntv_employee",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"storedProcedureName": "[datav].[pr_Load_ntv_customercluster]",
-					"storedProcedureParameters": {
-						"ID": {
-							"value": {
-								"value": "@pipeline().parameters.ID",
-								"type": "Expression"
-							},
-							"type": "Int32"
-						}
-					}
-				},
-				"linkedServiceName": {
-					"referenceName": "Mig_STGAzure",
-					"type": "LinkedServiceReference"
-				}
-			},
-			{
-				"name": "ntv_corporatecluster",
-				"type": "SqlServerStoredProcedure",
-				"dependsOn": [
-					{
-						"activity": "ntv_originchannel",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"storedProcedureName": "[datav].[pr_Load_ntv_corporatecluster]",
-					"storedProcedureParameters": {
-						"ID": {
-							"value": {
-								"value": "@pipeline().parameters.ID",
-								"type": "Expression"
-							},
-							"type": "Int32"
-						}
-					}
-				},
-				"linkedServiceName": {
-					"referenceName": "Mig_STGAzure",
-					"type": "LinkedServiceReference"
-				}
-			},
-			{
-				"name": "Account",
-				"type": "SqlServerStoredProcedure",
-				"dependsOn": [
-					{
-						"activity": "ntv_o2otracking",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"storedProcedureName": "[datav].[pr_Load_Account]",
-					"storedProcedureParameters": {
-						"ID": {
-							"value": {
-								"value": "@pipeline().parameters.ID",
-								"type": "Expression"
-							},
-							"type": "Int32"
-						}
-					}
-				},
-				"linkedServiceName": {
-					"referenceName": "Mig_STGAzure",
-					"type": "LinkedServiceReference"
-				}
-			},
-			{
-				"name": "ntv_address",
-				"type": "SqlServerStoredProcedure",
-				"dependsOn": [
-					{
-						"activity": "Incident",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"storedProcedureName": "[datav].[pr_Load_ntv_address]",
-					"storedProcedureParameters": {
-						"ID": {
-							"value": {
-								"value": "@pipeline().parameters.ID",
-								"type": "Expression"
-							},
-							"type": "Int32"
-						}
-					}
-				},
-				"linkedServiceName": {
-					"referenceName": "Mig_STGAzure",
-					"type": "LinkedServiceReference"
-				}
-			},
-			{
-				"name": "Incident",
-				"type": "SqlServerStoredProcedure",
-				"dependsOn": [
-					{
-						"activity": "ntv_servicerequestoutcome",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"storedProcedureName": "[datav].[pr_Load_Account]",
-					"storedProcedureParameters": {
-						"ID": {
-							"value": {
-								"value": "@pipeline().parameters.ID",
-								"type": "Expression"
-							},
-							"type": "Int32"
-						}
-					}
-				},
-				"linkedServiceName": {
-					"referenceName": "Mig_STGAzure",
-					"type": "LinkedServiceReference"
-				}
-			},
-			{
-				"name": "ntv_addressbook",
-				"type": "SqlServerStoredProcedure",
-				"dependsOn": [
-					{
-						"activity": "ntv_agent",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"storedProcedureName": "[datav].[pr_Load_ntv_addressbook]",
-					"storedProcedureParameters": {
-						"ID": {
-							"value": {
-								"value": "@pipeline().parameters.ID",
-								"type": "Expression"
-							},
-							"type": "Int32"
-						}
-					}
-				},
-				"linkedServiceName": {
-					"referenceName": "Mig_STGAzure",
-					"type": "LinkedServiceReference"
-				}
-			},
-			{
-				"name": "ntv_agent",
-				"type": "SqlServerStoredProcedure",
-				"dependsOn": [
-					{
-						"activity": "ntv_italopassper3",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"storedProcedureName": "[datav].[pr_Load_ntv_agent]",
-					"storedProcedureParameters": {
-						"ID": {
-							"value": {
-								"value": "@pipeline().parameters.ID",
-								"type": "Expression"
-							},
-							"type": "Int32"
-						}
-					}
-				},
-				"linkedServiceName": {
-					"referenceName": "Mig_STGAzure",
-					"type": "LinkedServiceReference"
-				}
-			},
-			{
-				"name": "ntv_emaildomain",
-				"type": "SqlServerStoredProcedure",
-				"dependsOn": [
-					{
-						"activity": "Account",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"storedProcedureName": "[datav].[pr_Load_ntv_emaildomain]",
-					"storedProcedureParameters": {
-						"ID": {
-							"value": {
-								"value": "@pipeline().parameters.ID",
-								"type": "Expression"
-							},
-							"type": "Int32"
-						}
-					}
-				},
-				"linkedServiceName": {
-					"referenceName": "Mig_STGAzure",
-					"type": "LinkedServiceReference"
-				}
-			},
-			{
-				"name": "ntv_employee",
-				"type": "SqlServerStoredProcedure",
-				"dependsOn": [
-					{
-						"activity": "ntv_nation",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"storedProcedureName": "[datav].[pr_Load_ntv_employee]",
-					"storedProcedureParameters": {
-						"ID": {
-							"value": {
-								"value": "@pipeline().parameters.ID",
-								"type": "Expression"
-							},
-							"type": "Int32"
-						}
-					}
-				},
-				"linkedServiceName": {
-					"referenceName": "Mig_STGAzure",
-					"type": "LinkedServiceReference"
-				}
-			},
-			{
-				"name": "ntv_o2otracking",
-				"type": "SqlServerStoredProcedure",
-				"dependsOn": [
-					{
-						"activity": "ntv_billingprofile",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"storedProcedureName": "[datav].[pr_Load_ntv_o2otracking]",
-					"storedProcedureParameters": {
-						"ID": {
-							"value": {
-								"value": "@pipeline().parameters.ID",
-								"type": "Expression"
-							},
-							"type": "Int32"
-						}
-					}
-				},
-				"linkedServiceName": {
-					"referenceName": "Mig_STGAzure",
-					"type": "LinkedServiceReference"
-				}
-			},
-			{
-				"name": "ntv_servicerequestoutcome",
-				"type": "SqlServerStoredProcedure",
-				"dependsOn": [
-					{
-						"activity": "ntv_tmc",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"storedProcedureName": "[datav].[pr_Load_ntv_servicerequestoutcome]",
-					"storedProcedureParameters": {
-						"ID": {
-							"value": {
-								"value": "@pipeline().parameters.ID",
-								"type": "Expression"
-							},
-							"type": "Int32"
-						}
-					}
-				},
-				"linkedServiceName": {
-					"referenceName": "Mig_STGAzure",
-					"type": "LinkedServiceReference"
-				}
-			},
-			{
-				"name": "ntv_servicerequestcategory",
-				"type": "SqlServerStoredProcedure",
-				"dependsOn": [
-					{
-						"activity": "ntv_address",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"storedProcedureName": "[datav].[pr_Load_ntv_servicerequestcategory]",
-					"storedProcedureParameters": {
-						"ID": {
-							"value": {
-								"value": "@pipeline().parameters.ID",
-								"type": "Expression"
-							},
-							"type": "Int32"
-						}
-					}
-				},
-				"linkedServiceName": {
-					"referenceName": "Mig_STGAzure",
-					"type": "LinkedServiceReference"
-				}
-			},
-			{
-				"name": "Indirizzo",
-				"type": "SqlServerStoredProcedure",
-				"dependsOn": [
-					{
-						"activity": "User",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"storedProcedureName": "[dbo].[pr_Load_Indirizzo]",
-					"storedProcedureParameters": {
-						"ID": {
-							"value": {
-								"value": "@pipeline().parameters.ID",
-								"type": "Expression"
-							},
-							"type": "Int32"
-						}
-					}
-				},
-				"linkedServiceName": {
-					"referenceName": "Mig_STGAzure",
-					"type": "LinkedServiceReference"
-				}
-			},
-			{
-				"name": "User",
-				"type": "SqlServerStoredProcedure",
+				"name": "Mig_T_Anagrafiche",
+				"type": "ExecutePipeline",
 				"dependsOn": [],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[dbo].[pr_Load_User]",
-					"storedProcedureParameters": {
+					"pipeline": {
+						"referenceName": "Mig_T_Anagrafiche",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
 						"ID": {
-							"value": {
-								"value": "@pipeline().parameters.ID",
-								"type": "Expression"
-							},
-							"type": "Int32"
+							"value": "@pipeline().parameters.ID",
+							"type": "Expression"
 						}
 					}
-				},
-				"linkedServiceName": {
-					"referenceName": "Mig_STGAzure",
-					"type": "LinkedServiceReference"
 				}
 			},
 			{
-				"name": "ntv_servicecontact",
-				"type": "SqlServerStoredProcedure",
+				"name": "Mig_T_Partners",
+				"type": "ExecutePipeline",
 				"dependsOn": [
 					{
-						"activity": "ntv_corporatecluster",
+						"activity": "Mig_T_Anagrafiche",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Mig_T_Partners",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": false,
+					"parameters": {
+						"ID": {
+							"value": "@pipeline().parameters.ID",
+							"type": "Expression"
+						}
+					}
+				}
+			},
+			{
+				"name": "Mig_T_Cashback",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Mig_T_Partners",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Mig_T_Cashback",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": false,
+					"parameters": {
+						"ID": {
+							"value": "@pipeline().parameters.ID",
+							"type": "Expression"
+						}
+					}
+				}
+			},
+			{
+				"name": "Mig_T_CreditShell",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Mig_T_Cashback",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Mig_T_CreditShell",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": false,
+					"parameters": {
+						"ID": {
+							"value": "@pipeline().parameters.ID",
+							"type": "Expression"
+						}
+					}
+				}
+			},
+			{
+				"name": "Mig_T_CashbackLog",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Mig_T_CreditShell",
 						"dependencyConditions": [
 							"Succeeded"
 						]
 					}
 				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[datav].[pr_Load_ntv_servicecontact]",
-					"storedProcedureParameters": {
+					"pipeline": {
+						"referenceName": "Mig_T_CashbackLog",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": false,
+					"parameters": {
 						"ID": {
-							"value": {
-								"value": "@pipeline().parameters.ID",
-								"type": "Expression"
-							},
-							"type": "Int32"
+							"value": "@pipeline().parameters.ID",
+							"type": "Expression"
 						}
 					}
-				},
-				"linkedServiceName": {
-					"referenceName": "Mig_STGAzure",
-					"type": "LinkedServiceReference"
 				}
 			},
 			{
-				"name": "ntv_tmc",
-				"type": "SqlServerStoredProcedure",
+				"name": "Mig_T_Promocode",
+				"type": "ExecutePipeline",
 				"dependsOn": [
 					{
-						"activity": "ntv_emaildomain",
+						"activity": "Mig_T_CashbackLog",
 						"dependencyConditions": [
 							"Succeeded"
 						]
 					}
 				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[datav].[pr_Load_ntv_tmc]",
-					"storedProcedureParameters": {
+					"pipeline": {
+						"referenceName": "Mig_T_Promocode",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": false,
+					"parameters": {
 						"ID": {
-							"value": {
-								"value": "@pipeline().parameters.ID",
-								"type": "Expression"
-							},
-							"type": "Int32"
+							"value": "@pipeline().parameters.ID",
+							"type": "Expression"
 						}
 					}
-				},
-				"linkedServiceName": {
-					"referenceName": "Mig_STGAzure",
-					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Mig_T_Clienti",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Mig_T_CatalogoPrezzi",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Mig_T_Clienti",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": false,
+					"parameters": {
+						"ID": {
+							"value": "@pipeline().parameters.ID",
+							"type": "Expression"
+						}
+					}
+				}
+			},
+			{
+				"name": "Mig_T_Biglietti",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Mig_T_Clienti",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Mig_T_Biglietti",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": false,
+					"parameters": {
+						"ID": {
+							"value": "@pipeline().parameters.ID",
+							"type": "Expression"
+						}
+					}
+				}
+			},
+			{
+				"name": "Mig_T_CatalogoPrezzi",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Mig_T_Promocode",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Mig_T_CatalogoPrezzi",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": false,
+					"parameters": {
+						"ID": {
+							"value": "@pipeline().parameters.ID",
+							"type": "Expression"
+						}
+					}
+				}
+			},
+			{
+				"name": "Mig_T_DocumentiAutorita",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Mig_T_Biglietti",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Mig_T_DocumentiAutorita",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": false,
+					"parameters": {
+						"ID": {
+							"value": "@pipeline().parameters.ID",
+							"type": "Expression"
+						}
+					}
+				}
+			},
+			{
+				"name": "Mig_T_OrderMngt",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Mig_T_DocumentiAutorita",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Mig_T_OrderMngt",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": false,
+					"parameters": {
+						"ID": {
+							"value": "@pipeline().parameters.ID",
+							"type": "Expression"
+						}
+					}
+				}
+			},
+			{
+				"name": "Mig_T_Promo",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Mig_T_OrderMngt",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Mig_T_Promo",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": false,
+					"parameters": {
+						"ID": {
+							"value": "@pipeline().parameters.ID",
+							"type": "Expression"
+						}
+					}
 				}
 			}
 		],
