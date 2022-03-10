@@ -106,7 +106,7 @@
 					{
 						"activity": "Mig_T_CreditShell",
 						"dependencyConditions": [
-							"Succeeded"
+							"Completed"
 						]
 					}
 				],
@@ -132,7 +132,7 @@
 					{
 						"activity": "Mig_T_CashbackLog",
 						"dependencyConditions": [
-							"Succeeded"
+							"Completed"
 						]
 					}
 				],
@@ -158,7 +158,7 @@
 					{
 						"activity": "Mig_T_CatalogoPrezzi",
 						"dependencyConditions": [
-							"Succeeded"
+							"Completed"
 						]
 					}
 				],
@@ -184,7 +184,7 @@
 					{
 						"activity": "Mig_T_Clienti",
 						"dependencyConditions": [
-							"Succeeded"
+							"Completed"
 						]
 					}
 				],
@@ -210,7 +210,7 @@
 					{
 						"activity": "Mig_T_Promocode",
 						"dependencyConditions": [
-							"Succeeded"
+							"Completed"
 						]
 					}
 				],
@@ -236,7 +236,7 @@
 					{
 						"activity": "Mig_T_Biglietti",
 						"dependencyConditions": [
-							"Succeeded"
+							"Completed"
 						]
 					}
 				],
@@ -262,7 +262,7 @@
 					{
 						"activity": "Mig_T_DocumentiAutorita",
 						"dependencyConditions": [
-							"Succeeded"
+							"Completed"
 						]
 					}
 				],
@@ -288,7 +288,7 @@
 					{
 						"activity": "Mig_T_OrderMngt",
 						"dependencyConditions": [
-							"Succeeded"
+							"Completed"
 						]
 					}
 				],
@@ -296,6 +296,58 @@
 				"typeProperties": {
 					"pipeline": {
 						"referenceName": "Mig_T_Promo",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": false,
+					"parameters": {
+						"ID": {
+							"value": "@pipeline().parameters.ID",
+							"type": "Expression"
+						}
+					}
+				}
+			},
+			{
+				"name": "Mig_T_Indirizzi",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Mig_T_Promo",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Mig_T_Indirizzi",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": false,
+					"parameters": {
+						"ID": {
+							"value": "@pipeline().parameters.ID",
+							"type": "Expression"
+						}
+					}
+				}
+			},
+			{
+				"name": "Mig_T_SR",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Mig_T_Indirizzi",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Mig_T_SR",
 						"type": "PipelineReference"
 					},
 					"waitOnCompletion": false,
