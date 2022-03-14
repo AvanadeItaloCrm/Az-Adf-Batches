@@ -1,0 +1,44 @@
+{
+	"name": "Mig_staging_attachments",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "mig_crmdevdyn365data",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"Filename": {
+				"type": "string"
+			},
+			"FileSource": {
+				"type": "string",
+				"defaultValue": "staging-attachments"
+			}
+		},
+		"folder": {
+			"name": "Migration"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().Filename",
+					"type": "Expression"
+				},
+				"container": {
+					"value": "@dataset().FileSource",
+					"type": "Expression"
+				}
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"type": "String"
+			}
+		]
+	}
+}
