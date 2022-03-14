@@ -23,11 +23,11 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Mig_staging_contract",
+						"referenceName": "Mig_staging_attachments",
 						"type": "DatasetReference",
 						"parameters": {
 							"Filename": "*",
-							"FileSource": "staging-contract"
+							"FileSource": "staging-attachments"
 						}
 					},
 					"fieldList": [
@@ -199,11 +199,11 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Mig_staging_contract",
+						"referenceName": "Mig_staging_attachments",
 						"type": "DatasetReference",
 						"parameters": {
 							"Filename": "*",
-							"FileSource": "staging-contract"
+							"FileSource": "staging-attachments"
 						}
 					},
 					"fieldList": [
