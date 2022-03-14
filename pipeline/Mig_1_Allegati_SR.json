@@ -23,11 +23,11 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Mig_staging_incident",
+						"referenceName": "Mig_staging_attachments",
 						"type": "DatasetReference",
 						"parameters": {
 							"Filename": "*",
-							"FileSource": "staging-incident"
+							"FileSource": "staging-attachments"
 						}
 					},
 					"fieldList": [
@@ -183,11 +183,11 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Mig_staging_incident",
+						"referenceName": "Mig_staging_attachments",
 						"type": "DatasetReference",
 						"parameters": {
 							"Filename": "*",
-							"FileSource": "staging-incident"
+							"FileSource": "staging-attachments"
 						}
 					},
 					"fieldList": [
