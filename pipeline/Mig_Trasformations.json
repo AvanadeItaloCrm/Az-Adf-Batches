@@ -368,6 +368,8 @@
 		"folder": {
 			"name": "Migration"
 		},
-		"annotations": []
-	}
+		"annotations": [],
+		"lastPublishTime": "2022-03-10T10:41:26Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
 }
