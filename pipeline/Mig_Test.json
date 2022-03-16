@@ -53,7 +53,7 @@
 							"typeProperties": {
 								"variableName": "StartTime",
 								"value": {
-									"value": "@convertTimeZone(utcnow(),'UTC', 'Europe Standard Time','yyyy-MM-ddTHH:mm:ss')",
+									"value": "@convertTimeZone(utcnow(),'UTC', 'W. Europe Standard Time')",
 									"type": "Expression"
 								}
 							}
@@ -84,7 +84,7 @@
 					"source": {
 						"type": "OracleSource",
 						"oracleReaderQuery": {
-							"value": "@CONCAT('EXEC SetSyncLogLettura ',activity('GetId').output.firstRow.ID,',',variables('StartTime'),',',convertTimeZone(utcnow(),'UTC', 'Europe Standard Time','yyyy-MM-ddTHH:mm:ss'),',',variables('Stato'))",
+							"value": "@CONCAT('EXEC SetSyncLogLettura ',activity('GetId').output.firstRow.ID,',',variables('StartTime'),',',convertTimeZone(utcnow(),'UTC', 'w. Europe Standard Time'),',',variables('Stato'))",
 							"type": "Expression"
 						},
 						"partitionOption": "None",
