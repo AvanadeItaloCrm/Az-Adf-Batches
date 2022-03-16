@@ -183,7 +183,7 @@
 			},
 			"Stato": {
 				"type": "String",
-				"defaultValue": "Terminato"
+				"defaultValue": "Completato"
 			}
 		},
 		"folder": {
