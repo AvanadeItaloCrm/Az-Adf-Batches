@@ -32,9 +32,9 @@
 				"type": "IfCondition",
 				"dependsOn": [
 					{
-						"activity": "GetId",
+						"activity": "Set Start Time",
 						"dependencyConditions": [
-							"Succeeded"
+							"Completed"
 						]
 					}
 				],
@@ -141,11 +141,45 @@
 						"type": "DatasetReference"
 					}
 				}
+			},
+			{
+				"name": "Set Start Time",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "GetId",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@not(equals(activity('GetId').output.firstRow.ID, 100000000))",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "DataInizioLettura",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "StartTime",
+								"value": {
+									"value": "@utcnow()",
+									"type": "Expression"
+								}
+							}
+						}
+					]
+				}
 			}
 		],
-		"parameters": {
-			"TriggerStartTime": {
-				"type": "string"
+		"variables": {
+			"StartTime": {
+				"type": "String"
 			}
 		},
 		"folder": {
