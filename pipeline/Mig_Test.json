@@ -26,8 +26,86 @@
 						"type": "DatasetReference"
 					}
 				}
+			},
+			{
+				"name": "Set Start Time",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "GetId",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@not(equals(activity('GetId').output.firstRow.ID, 100000000))",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "DataInizioLettura",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "StartTime",
+								"value": {
+									"value": "@convertTimeZone(utcnow(),'UTC', 'Europe Standard Time')",
+									"type": "Expression"
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "SetSyncLogLettura",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Set Start Time",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": {
+							"value": "@CONCAT('EXEC SetSyncLogLettura ',activity('GetId').output.firstRow.ID,',',variables('StartTime'),',',convertTimeZone(utcnow(),'UTC', 'Europe Standard Time'),',',variables('Stato'))",
+							"type": "Expression"
+						},
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "Mig_OracleSyncLog",
+						"type": "DatasetReference"
+					}
+				}
 			}
 		],
+		"variables": {
+			"StartTime": {
+				"type": "String"
+			},
+			"Stato": {
+				"type": "String",
+				"defaultValue": "Completato"
+			}
+		},
 		"folder": {
 			"name": "Migration"
 		},
