@@ -84,7 +84,7 @@
 					"source": {
 						"type": "OracleSource",
 						"oracleReaderQuery": {
-							"value": "@CONCAT('EXEC SetSyncLogLettura ',activity('GetId').output.firstRow.ID,',',variables('StartTime'),',',convertTimeZone(utcnow(),'UTC', 'w. Europe Standard Time'),',',variables('Stato'))",
+							"value": "@CONCAT('EXEC SetSyncLogLettura (',activity('GetId').output.firstRow.ID,',''',variables('StartTime'),'''',',''',convertTimeZone(utcnow(),'UTC', 'W. Europe Standard Time'),'''',',''',variables('Stato'),''')')",
 							"type": "Expression"
 						},
 						"partitionOption": "None",
