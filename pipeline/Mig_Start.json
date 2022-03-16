@@ -130,7 +130,7 @@
 					"source": {
 						"type": "OracleSource",
 						"oracleReaderQuery": {
-							"value": "@EXEC SetSyncLogLettura (activity('GetId').output.firstRow.ID)",
+							"value": "@CONCAT('EXEC SetSyncLogLettura ',activity('GetId').output.firstRow.ID,',',variables('StartTime'),',',utcNow(),',',variables('Stato'))",
 							"type": "Expression"
 						},
 						"partitionOption": "None",
@@ -168,7 +168,7 @@
 							"typeProperties": {
 								"variableName": "StartTime",
 								"value": {
-									"value": "@utcnow()",
+									"value": "@convertTimeZone(utcnow(),'UTC', 'Europe Standard Time')",
 									"type": "Expression"
 								}
 							}
@@ -180,6 +180,10 @@
 		"variables": {
 			"StartTime": {
 				"type": "String"
+			},
+			"Stato": {
+				"type": "String",
+				"defaultValue": "Terminato"
 			}
 		},
 		"folder": {
