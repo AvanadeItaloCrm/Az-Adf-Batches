@@ -130,7 +130,7 @@
 					"source": {
 						"type": "OracleSource",
 						"oracleReaderQuery": {
-							"value": "@CONCAT('EXEC SetSyncLogLettura ',activity('GetId').output.firstRow.ID,',',variables('StartTime'),',',utcNow(),',',variables('Stato'))",
+							"value": "@CONCAT('EXEC SetSyncLogLettura ',activity('GetId').output.firstRow.ID,',',variables('StartTime'),',',convertTimeZone(utcnow(),'UTC', 'Europe Standard Time'),',',variables('Stato'))",
 							"type": "Expression"
 						},
 						"partitionOption": "None",
