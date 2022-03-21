@@ -804,7 +804,10 @@
 										"parameters": {
 											"CreateTableSP_Name": "dbo.sp_MassiveImports_CorporateCashbackOfferAssoc",
 											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/CorporateCashbackOfferAssoc.dtsx",
-											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
+											"EnvironmentPath": {
+												"value": "@pipeline().parameters.SSIS_EnvironmentPath",
+												"type": "Expression"
+											},
 											"FileName": {
 												"value": "@pipeline().parameters.FileName",
 												"type": "Expression"
