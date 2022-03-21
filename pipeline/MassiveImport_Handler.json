@@ -199,7 +199,10 @@
 										"parameters": {
 											"CreateTableSP_Name": "dbo.sp_MassiveImports_ElectionEventSegments",
 											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/ElectionEventSegments.dtsx",
-											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
+											"EnvironmentPath": {
+												"value": "@pipeline().parameters.SSIS_EnvironmentPath",
+												"type": "Expression"
+											},
 											"FileName": {
 												"value": "@pipeline().parameters.FileName",
 												"type": "Expression"
@@ -236,7 +239,10 @@
 										"parameters": {
 											"CreateTableSP_Name": "dbo.sp_MassiveImports_CreditCardChargebackUpdate",
 											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/CreditCardChargebackUpdate.dtsx",
-											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
+											"EnvironmentPath": {
+												"value": "@pipeline().parameters.SSIS_EnvironmentPath",
+												"type": "Expression"
+											},
 											"FileName": {
 												"value": "@pipeline().parameters.FileName",
 												"type": "Expression"
@@ -274,7 +280,10 @@
 										"parameters": {
 											"CreateTableSP_Name": "dbo.sp_MassiveImports_AgentReassign",
 											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/AgentReassign.dtsx",
-											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
+											"EnvironmentPath": {
+												"value": "@pipeline().parameters.SSIS_EnvironmentPath",
+												"type": "Expression"
+											},
 											"FileName": {
 												"value": "@pipeline().parameters.FileName",
 												"type": "Expression"
@@ -391,7 +400,10 @@
 										"parameters": {
 											"CreateTableSP_Name": "dbo.sp_MassiveImports_CashbackPromotionsAssoc",
 											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/CashbackPromotionsAssoc.dtsx",
-											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
+											"EnvironmentPath": {
+												"value": "@pipeline().parameters.SSIS_EnvironmentPath",
+												"type": "Expression"
+											},
 											"FileName": {
 												"value": "@pipeline().parameters.FileName",
 												"type": "Expression"
@@ -428,7 +440,10 @@
 										"parameters": {
 											"CreateTableSP_Name": "dbo.sp_MassiveImports_CashbackOfferAssoc",
 											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/CashbackOfferAssoc.dtsx",
-											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
+											"EnvironmentPath": {
+												"value": "@pipeline().parameters.SSIS_EnvironmentPath",
+												"type": "Expression"
+											},
 											"FileName": {
 												"value": "@pipeline().parameters.FileName",
 												"type": "Expression"
@@ -465,7 +480,10 @@
 										"parameters": {
 											"CreateTableSP_Name": "dbo.sp_MassiveImports_BSSClusterUpdate",
 											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/BSSClusterUpdate.dtsx",
-											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
+											"EnvironmentPath": {
+												"value": "@pipeline().parameters.SSIS_EnvironmentPath",
+												"type": "Expression"
+											},
 											"FileName": {
 												"value": "@pipeline().parameters.FileName",
 												"type": "Expression"
@@ -502,7 +520,10 @@
 										"parameters": {
 											"CreateTableSP_Name": "dbo.sp_MassiveImports_CreditCardFraudUpdate",
 											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/CreditCardFraudUpdate.dtsx",
-											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
+											"EnvironmentPath": {
+												"value": "@pipeline().parameters.SSIS_EnvironmentPath",
+												"type": "Expression"
+											},
 											"FileName": {
 												"value": "@pipeline().parameters.FileName",
 												"type": "Expression"
@@ -540,7 +561,10 @@
 										"parameters": {
 											"CreateTableSP_Name": "dbo.sp_MassiveImports_CreditCardFraudDelete",
 											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/CreditCardFraudDelete.dtsx",
-											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
+											"EnvironmentPath": {
+												"value": "@pipeline().parameters.SSIS_EnvironmentPath",
+												"type": "Expression"
+											},
 											"FileName": {
 												"value": "@pipeline().parameters.FileName",
 												"type": "Expression"
@@ -578,7 +602,10 @@
 										"parameters": {
 											"CreateTableSP_Name": "dbo.sp_MassiveImports_PaypalFraudDelete",
 											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/PaypalFraudDelete.dtsx",
-											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
+											"EnvironmentPath": {
+												"value": "@pipeline().parameters.SSIS_EnvironmentPath",
+												"type": "Expression"
+											},
 											"FileName": {
 												"value": "@pipeline().parameters.FileName",
 												"type": "Expression"
@@ -616,7 +643,10 @@
 										"parameters": {
 											"CreateTableSP_Name": "dbo.sp_MassiveImports_PaypalChargebackUpdate",
 											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/PaypalChargebackUpdate.dtsx",
-											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
+											"EnvironmentPath": {
+												"value": "@pipeline().parameters.SSIS_EnvironmentPath",
+												"type": "Expression"
+											},
 											"FileName": {
 												"value": "@pipeline().parameters.FileName",
 												"type": "Expression"
@@ -654,7 +684,10 @@
 										"parameters": {
 											"CreateTableSP_Name": "dbo.sp_MassiveImports_PaypalChargebackDelete",
 											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/PaypalChargebackDelete.dtsx",
-											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
+											"EnvironmentPath": {
+												"value": "@pipeline().parameters.SSIS_EnvironmentPath",
+												"type": "Expression"
+											},
 											"FileName": {
 												"value": "@pipeline().parameters.FileName",
 												"type": "Expression"
@@ -692,7 +725,10 @@
 										"parameters": {
 											"CreateTableSP_Name": "dbo.sp_MassiveImports_CreditCardChargebackDelete",
 											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/CreditCardChargebackDelete.dtsx",
-											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
+											"EnvironmentPath": {
+												"value": "@pipeline().parameters.SSIS_EnvironmentPath",
+												"type": "Expression"
+											},
 											"FileName": {
 												"value": "@pipeline().parameters.FileName",
 												"type": "Expression"
@@ -730,7 +766,10 @@
 										"parameters": {
 											"CreateTableSP_Name": "dbo.sp_MassiveImports_FraudSummary",
 											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/FraudSummary.dtsx",
-											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
+											"EnvironmentPath": {
+												"value": "@pipeline().parameters.SSIS_EnvironmentPath",
+												"type": "Expression"
+											},
 											"FileName": {
 												"value": "@pipeline().parameters.FileName",
 												"type": "Expression"
@@ -767,7 +806,10 @@
 										"parameters": {
 											"CreateTableSP_Name": "dbo.sp_MassiveImports_AgentSuspension",
 											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/AgentSuspension.dtsx",
-											"EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
+											"EnvironmentPath": {
+												"value": "@pipeline().parameters.SSIS_EnvironmentPath",
+												"type": "Expression"
+											},
 											"FileName": {
 												"value": "@pipeline().parameters.FileName",
 												"type": "Expression"
