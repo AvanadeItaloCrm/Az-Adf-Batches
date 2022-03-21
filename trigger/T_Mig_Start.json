@@ -2,7 +2,7 @@
 	"name": "T_Mig_Start",
 	"properties": {
 		"annotations": [],
-		"runtimeState": "Started",
+		"runtimeState": "Stopped",
 		"pipelines": [],
 		"type": "ScheduleTrigger",
 		"typeProperties": {
