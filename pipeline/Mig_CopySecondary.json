@@ -124,7 +124,7 @@
 						},
 						"durationInQueue": {
 							"value": {
-								"value": "@activity('Copy data').output.durationInQueue.integrationRuntimeQueue",
+								"value": "@if(contains(activity('Copy data').output.durationInQueue, 'integrationRuntimeQueue'), activity('Copy data').output.durationInQueue.integrationRuntimeQueue, 0)",
 								"type": "Expression"
 							},
 							"type": "Double"
