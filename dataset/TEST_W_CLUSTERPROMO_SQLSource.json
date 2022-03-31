@@ -2,7 +2,7 @@
 	"name": "TEST_W_CLUSTERPROMO_SQLSource",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzSqlOracle_Test_DesDYN365",
+			"referenceName": "AzSqlOracle_Test_StagingArea",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
