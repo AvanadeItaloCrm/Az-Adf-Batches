@@ -93,7 +93,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "SELECT ntv_ntv_assetitem.ntv_recordlocator AS ID_TESTATA_PNR, ntv_ntv_assetitem.ntv_deactivationdate AS CREATED, ntv_ntv_assetitem.modifiedon AS LAST_UPD, ntv_ntv_assetitem.modifiedon AS TIMESTAMP, ntv_ntv_asset.ntv_assetnumber AS COD_ABBONAMENTO\nFROM   ntv_ntv_assetitem INNER JOIN\n             ntv_ntv_asset ON ntv_ntv_assetitem.ntv_assetid = ntv_ntv_asset.ntv_assetid",
+						"sqlReaderQuery": "SELECT * from batchSync.PNR_ABBONAMENTI",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
