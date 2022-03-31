@@ -1700,10 +1700,6 @@
 				"name": "ntv_referent_lastname",
 				"type": "nvarchar"
 			}
-		],
-		"typeProperties": {
-			"schema": "dbo",
-			"table": "ntv_account"
-		}
+		]
 	}
 }
