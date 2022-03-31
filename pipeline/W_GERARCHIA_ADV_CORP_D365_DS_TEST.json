@@ -94,7 +94,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT ntv_customhierarchymodelid INTEGRAZIONE_ID, ntv_accountnumber ADV_CORP_ID,ntv_parentaccountnumber ADV_CORP_PADRE_ID,batchSync.FV(''ntv_ntv_customhierarchymodel'',''ntv_relationtypology'', ntv_relationtypology) TIPOLOGIA_RELAZIONE FROM ntv_ntv_customhierarchymodel WHERE batchSync.SyncTime(modifiedon)>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"value": "@concat('SELECT INTEGRAZIONE_ID, ADV_CORP_ID, ADV_CORP_PADRE_ID, TIPOLOGIA_RELAZIONE FROM batchSync.v_W_GERARCHIA_ADV_CORP_D365_DS WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
