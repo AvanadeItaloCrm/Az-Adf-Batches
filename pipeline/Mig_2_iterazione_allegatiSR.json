@@ -130,14 +130,10 @@
 										},
 										"inputs": [
 											{
-												"referenceName": "Mig_staging_incident",
+												"referenceName": "Mig_staging_attachments",
 												"type": "DatasetReference",
 												"parameters": {
-													"Filename": {
-														"value": "@pipeline().parameters.ParamPipeline",
-														"type": "Expression"
-													},
-													"FileSource": "staging-incident"
+													"FileSource": "staging-attachments"
 												}
 											}
 										],
