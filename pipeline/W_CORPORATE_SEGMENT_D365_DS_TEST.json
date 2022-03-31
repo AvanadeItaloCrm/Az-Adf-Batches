@@ -94,7 +94,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT Id INTEGRAZIONE_ID,id CORPORATE_ID,batchSync.FV(''contact'',''ntv_segmentcode'',ntv_segmentcode) SEGMENTO,batchSync.SyncTime(ntv_segmentstartdate) DATA_INIZIO_SEGMENTO,batchSync.SyncTime(ntv_segmentenddate) DATA_FINE_SEGMENTO,batchSync.SyncTime(ntv_segmentupdatedon) DATA_AGGIORNAMENTO,ntv_travelscount NUMERO_VIAGGI_QUAL FROM dbo.ntv_account WHERE batchSync.SyncTime(modifiedon)>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"value": "@concat('SELECT INTEGRAZIONE_ID,CORPORATE_ID,SEGMENTO,DATA_INIZIO_SEGMENTO,DATA_FINE_SEGMENTO,DATA_AGGIORNAMENTO,NUMERO_VIAGGI_QUAL FROM batchSync.v_W_CORPORATE_SEGMENT_D365_DS WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
