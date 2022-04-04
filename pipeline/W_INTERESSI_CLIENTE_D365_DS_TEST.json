@@ -108,7 +108,7 @@
 					},
 					"sink": {
 						"type": "OracleSink",
-						"writeBatchSize": 10000,
+						"writeBatchSize": 1000000,
 						"preCopyScript": "truncate table sa_d365_test.W_INTERESSI_CLIENTE_D365_D"
 					},
 					"enableStaging": false,
