@@ -42,10 +42,6 @@
 				"name": "RecDeleted",
 				"type": "bit"
 			}
-		],
-		"typeProperties": {
-			"schema": "ntv",
-			"table": "PaymentFields"
-		}
+		]
 	}
 }
