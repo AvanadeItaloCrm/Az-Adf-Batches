@@ -102,6 +102,7 @@
 					},
 					"sink": {
 						"type": "OracleSink",
+						"writeBatchSize": 100000,
 						"preCopyScript": "truncate table sa_d365_test.W_PAG_CAMPI_D365_DS"
 					},
 					"enableStaging": false,
