@@ -76,7 +76,7 @@
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "Ultima Sinc",
+						"activity": "Sql To Oracle_copy1",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -102,8 +102,8 @@
 					},
 					"sink": {
 						"type": "OracleSink",
-						"writeBatchSize": 1000000,
-						"preCopyScript": "truncate table sa_d365_test.W_NETWORK_AGENZIA_D365_DS_TEST"
+						"writeBatchSize": 10000,
+						"preCopyScript": "truncate table sa_d365_test.W_NETWORK_AGENZIA_D365_DS"
 					},
 					"enableStaging": false,
 					"enableSkipIncompatibleRow": false,
@@ -159,7 +159,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "TEST_W_NETWORK_AGENZIA_D365_DS",
+						"referenceName": "TEST_W_NETWORK_AGENZIA_D365_DS_OracleDB",
 						"type": "DatasetReference"
 					}
 				]
@@ -204,7 +204,7 @@
 				"type": "Lookup",
 				"dependsOn": [
 					{
-						"activity": "Ora to Ora",
+						"activity": "Sql To Oracle",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -356,11 +356,11 @@
 				}
 			},
 			{
-				"name": "Ora to Ora",
+				"name": "Sql To Oracle_copy1",
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "Sql To Oracle",
+						"activity": "Ultima Sinc",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -376,47 +376,72 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "OracleSource",
-						"partitionOption": "None",
-						"queryTimeout": "02:00:00"
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": {
+							"value": "SELECT (select top 1 accountnumber from ntv_account a join ntv_ntv_network_account na ON na.accountid = a.accountid where na.ntv_networkid=n.ntv_networkid) as accountnumber, convert(varchar(40),n.Id) id, n.ntv_name FROM ntv_ntv_network n\nunion select '123456789012345678901234567890123456789012345678901234567890' accountnumber,'asdasdfd' id, null ntv_name",
+							"type": "Expression"
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
 					},
 					"sink": {
-						"type": "OracleSink",
-						"writeBatchSize": 10000,
-						"preCopyScript": "truncate table sa_d365_test.W_NETWORK_AGENZIA_D365_DS"
+						"type": "AzureSqlSink",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false
 					},
 					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"logSettings": {
+						"enableCopyActivityLog": true,
+						"copyActivityLogSettings": {
+							"logLevel": "Warning",
+							"enableReliableLogging": false
+						},
+						"logLocationSettings": {
+							"linkedServiceName": {
+								"referenceName": "AzureBlobStorage_Test",
+								"type": "LinkedServiceReference"
+							},
+							"path": "batchfiles/Errors"
+						}
+					},
 					"translator": {
 						"type": "TabularTranslator",
 						"mappings": [
 							{
 								"source": {
-									"name": "CODICE_ADV",
-									"type": "String"
+									"name": "accountnumber",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "CODICE_ADV",
-									"type": "String"
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							},
 							{
 								"source": {
-									"name": "ID_NETWORK",
-									"type": "String"
+									"name": "id",
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "ID_NETWORK",
-									"type": "String"
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							},
 							{
 								"source": {
-									"name": "NOME_NETWORK",
-									"type": "String"
+									"name": "ntv_name",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "NOME_NETWORK",
-									"type": "String"
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							}
 						],
@@ -429,13 +454,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "TEST_W_NETWORK_AGENZIA_D365_TEST",
+						"referenceName": "TEST_W_NETWORK_AGENZIA_D365_DS_SQLSourceDB",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "TEST_W_NETWORK_AGENZIA_D365_DS_OracleDB",
+						"referenceName": "AzureSqlTable7",
 						"type": "DatasetReference"
 					}
 				]

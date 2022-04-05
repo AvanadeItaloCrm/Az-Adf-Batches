@@ -1,0 +1,29 @@
+{
+	"name": "AzureSqlTable7",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzSqlOracle_Test_StagingArea",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "CODICE_ADV",
+				"type": "varchar"
+			},
+			{
+				"name": "ID_NETWORK",
+				"type": "varchar"
+			},
+			{
+				"name": "NOME_NETWORK",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "batchSync",
+			"table": "W_NETWORK_AGENZIA_D365_DS"
+		}
+	}
+}
