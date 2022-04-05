@@ -103,7 +103,7 @@
 					"sink": {
 						"type": "OracleSink",
 						"writeBatchSize": 10000,
-						"preCopyScript": "truncate table sa_d365_test.W_NETWORK_AGENZIA_D365_DS"
+						"preCopyScript": "truncate table sa_d365_test.W_NETWORK_AGENZIA_D365_DS_TEST"
 					},
 					"enableStaging": false,
 					"enableSkipIncompatibleRow": false,
