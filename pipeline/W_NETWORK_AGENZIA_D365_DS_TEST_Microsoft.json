@@ -102,7 +102,7 @@
 					},
 					"sink": {
 						"type": "OracleSink",
-						"writeBatchSize": 10000,
+						"writeBatchSize": 1000000,
 						"preCopyScript": "truncate table sa_d365_test.W_NETWORK_AGENZIA_D365_DS_TEST"
 					},
 					"enableStaging": false,
@@ -159,7 +159,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "TEST_W_NETWORK_AGENZIA_D365_DS_OracleDB",
+						"referenceName": "TEST_W_NETWORK_AGENZIA_D365_DS",
 						"type": "DatasetReference"
 					}
 				]
@@ -204,7 +204,7 @@
 				"type": "Lookup",
 				"dependsOn": [
 					{
-						"activity": "Sql To Oracle",
+						"activity": "Ora to Ora",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -354,6 +354,91 @@
 						"type": "DatasetReference"
 					}
 				}
+			},
+			{
+				"name": "Ora to Ora",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Sql To Oracle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "OracleSink",
+						"writeBatchSize": 10000,
+						"preCopyScript": "truncate table sa_d365_test.W_NETWORK_AGENZIA_D365_DS"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "CODICE_ADV",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CODICE_ADV",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ID_NETWORK",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ID_NETWORK",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NOME_NETWORK",
+									"type": "String"
+								},
+								"sink": {
+									"name": "NOME_NETWORK",
+									"type": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "TEST_W_NETWORK_AGENZIA_D365_TEST",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "TEST_W_NETWORK_AGENZIA_D365_DS_OracleDB",
+						"type": "DatasetReference"
+					}
+				]
 			}
 		],
 		"variables": {
