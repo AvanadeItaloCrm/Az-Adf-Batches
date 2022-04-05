@@ -106,6 +106,7 @@
 						"preCopyScript": "truncate table sa_d365_test.W_REFERENTI_D365_DS"
 					},
 					"enableStaging": false,
+					"validateDataConsistency": true,
 					"translator": {
 						"type": "TabularTranslator",
 						"mappings": [
@@ -222,7 +223,7 @@
 						],
 						"typeConversion": true,
 						"typeConversionSettings": {
-							"allowDataTruncation": true,
+							"allowDataTruncation": false,
 							"treatBooleanAsNumber": false
 						}
 					}
