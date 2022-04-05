@@ -10,7 +10,7 @@
 		"schema": [],
 		"typeProperties": {
 			"schema": "SA_D365_TEST",
-			"table": "W_NETWORK_AGENZIA_D365_DS_TEST"
+			"table": "W_NETWORK_AGENZIA_D365_DS"
 		}
 	}
 }
