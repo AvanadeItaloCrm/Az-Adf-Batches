@@ -115,7 +115,7 @@
 		],
 		"typeProperties": {
 			"schema": "dev",
-			"table": "TESTATA_PNR"
+			"table": "PROD_COMM"
 		}
 	}
 }
