@@ -1,0 +1,91 @@
+{
+	"name": "SqlTest_Prod_Comm_SAP_IBO",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Sql_Server_Test_SAP_IBO",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "ROW_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "CREATED",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "LAST_UPD",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "TIMESTAMP",
+				"type": "varchar"
+			},
+			{
+				"name": "COD_PRODOTTO",
+				"type": "varchar"
+			},
+			{
+				"name": "TIPO_PRODOTTO",
+				"type": "varchar"
+			},
+			{
+				"name": "DESC_PRODOTTO",
+				"type": "varchar"
+			},
+			{
+				"name": "DATA_PRODOTTO",
+				"type": "varchar"
+			},
+			{
+				"name": "DATA_INIZIO",
+				"type": "varchar"
+			},
+			{
+				"name": "DATA_SCADENZA",
+				"type": "varchar"
+			},
+			{
+				"name": "NUM_ORDINE",
+				"type": "varchar"
+			},
+			{
+				"name": "COD_ORD_ESTERNO",
+				"type": "varchar"
+			},
+			{
+				"name": "PREZZO",
+				"type": "decimal",
+				"precision": 20,
+				"scale": 6
+			},
+			{
+				"name": "NUM_COUPON",
+				"type": "decimal",
+				"precision": 20,
+				"scale": 6
+			},
+			{
+				"name": "IDDATASRC",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "IDLOAD",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dev",
+			"table": "PROD_COMM"
+		}
+	}
+}

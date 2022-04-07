@@ -180,8 +180,8 @@
 							{
 								"source": {
 									"name": "TIMESTAMP",
-									"type": "DateTime",
-									"physicalType": "datetime"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "TIMESTAMP",
@@ -228,8 +228,8 @@
 							{
 								"source": {
 									"name": "DATA_PRODOTTO",
-									"type": "DateTime",
-									"physicalType": "datetime"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "DATA_PRODOTTO",
@@ -240,8 +240,8 @@
 							{
 								"source": {
 									"name": "DATA_INIZIO",
-									"type": "DateTime",
-									"physicalType": "datetime"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "DATA_INIZIO",
@@ -252,8 +252,8 @@
 							{
 								"source": {
 									"name": "DATA_SCADENZA",
-									"type": "DateTime",
-									"physicalType": "datetime"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "DATA_SCADENZA",
@@ -277,7 +277,7 @@
 								"source": {
 									"name": "COD_ORD_ESTERNO",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "COD_ORD_ESTERNO",
@@ -355,7 +355,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "SqlTest_DS_SAP_IBO",
+						"referenceName": "SqlTest_Prod_Comm_SAP_IBO",
 						"type": "DatasetReference"
 					}
 				]
