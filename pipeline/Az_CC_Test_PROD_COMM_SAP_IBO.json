@@ -137,7 +137,22 @@
 						"sqlWriterUseTableLock": false
 					},
 					"enableStaging": false,
-					"enableSkipIncompatibleRow": false,
+					"enableSkipIncompatibleRow": true,
+					"validateDataConsistency": true,
+					"logSettings": {
+						"enableCopyActivityLog": true,
+						"copyActivityLogSettings": {
+							"logLevel": "Warning",
+							"enableReliableLogging": false
+						},
+						"logLocationSettings": {
+							"linkedServiceName": {
+								"referenceName": "AzureBlobStorage_Test",
+								"type": "LinkedServiceReference"
+							},
+							"path": "batchfiles/Errors"
+						}
+					},
 					"translator": {
 						"type": "TabularTranslator",
 						"mappings": [
