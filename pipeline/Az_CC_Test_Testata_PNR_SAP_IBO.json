@@ -156,8 +156,8 @@
 							{
 								"source": {
 									"name": "Created",
-									"type": "DateTime",
-									"physicalType": "datetime"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "CREATED",
@@ -168,8 +168,8 @@
 							{
 								"source": {
 									"name": "Last_UPD",
-									"type": "DateTime",
-									"physicalType": "datetime"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "LAST_UPD",
@@ -180,8 +180,8 @@
 							{
 								"source": {
 									"name": "TimeStamp",
-									"type": "DateTime",
-									"physicalType": "datetime"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "TIMESTAMP",
@@ -216,8 +216,8 @@
 							{
 								"source": {
 									"name": "Num_Passeggeri",
-									"type": "String",
-									"physicalType": "varchar"
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "NUM_PASSEGGERI",
@@ -256,8 +256,8 @@
 							{
 								"source": {
 									"name": "Data_Creazione",
-									"type": "DateTime",
-									"physicalType": "datetime"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "DATA_CREAZIONE",
@@ -268,8 +268,8 @@
 							{
 								"source": {
 									"name": "Data_Modifica",
-									"type": "DateTime",
-									"physicalType": "datetime"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "DATA_MODIFICA",
@@ -416,8 +416,8 @@
 							{
 								"source": {
 									"name": "IDDataSRC",
-									"type": "String",
-									"physicalType": "varchar"
+									"type": "Int32",
+									"physicalType": "int"
 								},
 								"sink": {
 									"name": "IDDATASRC",
@@ -532,7 +532,10 @@
 							"type": "String"
 						},
 						"TabellaImport": {
-							"value": "@variables('TableName')",
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
 							"type": "String"
 						}
 					}
