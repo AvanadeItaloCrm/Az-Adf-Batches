@@ -150,7 +150,7 @@
 								"referenceName": "AzureBlobStorage_Test",
 								"type": "LinkedServiceReference"
 							},
-							"path": "batchfiles/Errors"
+							"path": "batchfiles/Batch/PROD_COMM_SAP_IBO"
 						}
 					},
 					"translator": {
