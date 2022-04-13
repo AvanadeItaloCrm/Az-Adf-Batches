@@ -1,0 +1,205 @@
+{
+	"name": "Test_OracleToSql_FattureADV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlTestStagingArea",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "CODICE_FATTURA",
+				"type": "varchar"
+			},
+			{
+				"name": "CODICE_ADV",
+				"type": "varchar"
+			},
+			{
+				"name": "CODICE_ADV_TRG_INC",
+				"type": "varchar"
+			},
+			{
+				"name": "CODICE_FISCALE",
+				"type": "varchar"
+			},
+			{
+				"name": "DATA_APPROVAZIONE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "DATA_CALCOLO",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "DATA_COMPLETAMENTO",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "DATA_FATTURA",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "DATA_STAMPA_CSV",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "DATA_MODIFICA",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "DESCRIZIONE",
+				"type": "varchar"
+			},
+			{
+				"name": "EMAIL_INT",
+				"type": "varchar"
+			},
+			{
+				"name": "TIPO_ERRORE_SDI",
+				"type": "varchar"
+			},
+			{
+				"name": "DATA_TRASMISSIONE_SDI",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "DATA_ESITO_SDI",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "CODICE_ERRORE_SDI",
+				"type": "varchar"
+			},
+			{
+				"name": "ESITO_SDI",
+				"type": "varchar"
+			},
+			{
+				"name": "STATO_SDI",
+				"type": "varchar"
+			},
+			{
+				"name": "INIZIO_PERIODO_COMPETENZA",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "FINE_PERIODO_COMPETENZA",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "FLG_GRUPPO_IVA",
+				"type": "varchar"
+			},
+			{
+				"name": "IMPORTO_IVA",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 0
+			},
+			{
+				"name": "IMPORTO_LORDO",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 0
+			},
+			{
+				"name": "IMPORTO_NETTO",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 0
+			},
+			{
+				"name": "NUMERO_FATTURA",
+				"type": "varchar"
+			},
+			{
+				"name": "FLG_ONLUS",
+				"type": "varchar"
+			},
+			{
+				"name": "PIVA_INT",
+				"type": "varchar"
+			},
+			{
+				"name": "PERCENTUALE_IVA",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 0
+			},
+			{
+				"name": "RAG_SOCIALE_INT",
+				"type": "varchar"
+			},
+			{
+				"name": "TIPOLOGIA",
+				"type": "varchar"
+			},
+			{
+				"name": "TOTALE_FATTURATO",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 0
+			},
+			{
+				"name": "TOT_VENDUTO",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 0
+			},
+			{
+				"name": "NAZIONE",
+				"type": "varchar"
+			},
+			{
+				"name": "CITTA",
+				"type": "varchar"
+			},
+			{
+				"name": "PROVINCIA",
+				"type": "varchar"
+			},
+			{
+				"name": "TIPO_STRADA",
+				"type": "varchar"
+			},
+			{
+				"name": "NOME_STRADA",
+				"type": "varchar"
+			},
+			{
+				"name": "NUMERO_CIVICO",
+				"type": "varchar"
+			},
+			{
+				"name": "CODICE_POSTALE",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "batchSync",
+			"table": "Fatture_Adv_Com"
+		}
+	}
+}
