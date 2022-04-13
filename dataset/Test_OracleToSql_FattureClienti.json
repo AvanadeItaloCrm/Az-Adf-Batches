@@ -1,0 +1,204 @@
+{
+	"name": "Test_OracleToSql_FattureClienti",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlTestStagingArea",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "INTEGRAZIONE_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "PNR",
+				"type": "varchar"
+			},
+			{
+				"name": "BLOCCO_FATTURAZIONE_PNR_FLG",
+				"type": "varchar"
+			},
+			{
+				"name": "CARTA_BUSS_PASS",
+				"type": "varchar"
+			},
+			{
+				"name": "CARTA_BUSS_PASS_WEB",
+				"type": "varchar"
+			},
+			{
+				"name": "ORDINE",
+				"type": "varchar"
+			},
+			{
+				"name": "NUM_DOCUMENTO",
+				"type": "varchar"
+			},
+			{
+				"name": "TIPO_DOCUMENTO",
+				"type": "varchar"
+			},
+			{
+				"name": "NUM_DOCUMENTO_PADRE",
+				"type": "varchar"
+			},
+			{
+				"name": "TIPO_DOCUMENTO_PADRE",
+				"type": "varchar"
+			},
+			{
+				"name": "DATA_CREAZIONE_DOC",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "DATA_EMISSIONE_DOC",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "DATA_CREAZIONE_PDF",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "DATA_MODIFICA",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "DATA_TRASMISSIONE_SDI",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ESITO_SDI",
+				"type": "varchar"
+			},
+			{
+				"name": "DESCRIZIONE_SDI",
+				"type": "varchar"
+			},
+			{
+				"name": "CODICE_ERRORE_SDI",
+				"type": "varchar"
+			},
+			{
+				"name": "DATA_ESITO_SDI",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "TIPOLOGIA_ERRORE_SDI",
+				"type": "varchar"
+			},
+			{
+				"name": "IMPORTO_LORDO",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 0
+			},
+			{
+				"name": "NC_FLG_INTERNA",
+				"type": "varchar"
+			},
+			{
+				"name": "NOME",
+				"type": "varchar"
+			},
+			{
+				"name": "COGNOME_RAG_SOC",
+				"type": "varchar"
+			},
+			{
+				"name": "P_IVA",
+				"type": "varchar"
+			},
+			{
+				"name": "CODFICE_FISCALE",
+				"type": "varchar"
+			},
+			{
+				"name": "CODICE_DESTINATARIO",
+				"type": "varchar"
+			},
+			{
+				"name": "E_MAIL",
+				"type": "varchar"
+			},
+			{
+				"name": "TIPOLOGIA_PROFILO",
+				"type": "varchar"
+			},
+			{
+				"name": "GRUPPO_IVA_FLG",
+				"type": "varchar"
+			},
+			{
+				"name": "ONLUS_FLG",
+				"type": "varchar"
+			},
+			{
+				"name": "CODICE_CIU",
+				"type": "varchar"
+			},
+			{
+				"name": "CODICE_CIG",
+				"type": "varchar"
+			},
+			{
+				"name": "CODICE_CUP",
+				"type": "varchar"
+			},
+			{
+				"name": "PA_FLG",
+				"type": "varchar"
+			},
+			{
+				"name": "NAZIONE",
+				"type": "varchar"
+			},
+			{
+				"name": "CITTA",
+				"type": "varchar"
+			},
+			{
+				"name": "PROVINCIA",
+				"type": "varchar"
+			},
+			{
+				"name": "TIPO_STRADA",
+				"type": "varchar"
+			},
+			{
+				"name": "NOME_STRADA",
+				"type": "varchar"
+			},
+			{
+				"name": "NUMERO_CIVICO",
+				"type": "varchar"
+			},
+			{
+				"name": "CODICE_POSTALE",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "batchSync",
+			"table": "Fatture_Cliente"
+		}
+	}
+}
