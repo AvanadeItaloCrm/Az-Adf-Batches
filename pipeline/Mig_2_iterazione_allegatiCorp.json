@@ -130,11 +130,14 @@
 										},
 										"inputs": [
 											{
-												"referenceName": "Mig_staging_contract",
+												"referenceName": "Mig_staging_attachments",
 												"type": "DatasetReference",
 												"parameters": {
-													"Filename": "@pipeline().parameters.ParamPipeline",
-													"FileSource": "staging-contract"
+													"Filename": {
+														"value": "@pipeline().parameters.ParamPipeline",
+														"type": "Expression"
+													},
+													"FileSource": "staging-attachments"
 												}
 											}
 										],
