@@ -30,42 +30,6 @@
 				}
 			},
 			{
-				"name": "Update IsImported",
-				"type": "SqlServerStoredProcedure",
-				"dependsOn": [
-					{
-						"activity": "LOG OK",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"storedProcedureName": "[log].[pr_UpdateIsImported_AllegatiCorp]",
-					"storedProcedureParameters": {
-						"BatchId": {
-							"value": {
-								"value": "@variables('BatchId')",
-								"type": "Expression"
-							},
-							"type": "String"
-						}
-					}
-				},
-				"linkedServiceName": {
-					"referenceName": "Mig_STGAzure",
-					"type": "LinkedServiceReference"
-				}
-			},
-			{
 				"name": "Mig_2_allegatiCorp",
 				"type": "ExecutePipeline",
 				"dependsOn": [],
