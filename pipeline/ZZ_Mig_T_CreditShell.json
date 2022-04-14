@@ -1,0 +1,172 @@
+{
+	"name": "ZZ_Mig_T_CreditShell",
+	"properties": {
+		"activities": [
+			{
+				"name": "LOG OK",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Mig_2_allegatiCorp",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[log].[Load_pr_LogAllegatiCORP]"
+				},
+				"linkedServiceName": {
+					"referenceName": "Mig_STGAzure",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Update IsImported",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "LOG OK",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[log].[pr_UpdateIsImported_AllegatiCorp]",
+					"storedProcedureParameters": {
+						"BatchId": {
+							"value": {
+								"value": "@variables('BatchId')",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "Mig_STGAzure",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Load AllegatiCorp",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Execute SSIS Load ntv_contract",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[datav].[pr_Load_AllegatiCORP]",
+					"storedProcedureParameters": {
+						"BatchId": {
+							"value": {
+								"value": "@variables('BatchId')",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "Mig_STGAzure",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Execute SSIS Load ntv_contract",
+				"type": "ExecuteSSISPackage",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"packageLocation": {
+						"packagePath": "Migrazione_NTVD365/NTV-CRM-MIGRAZIONE/Load_ntv_contract.dtsx",
+						"type": "SSISDB"
+					},
+					"environmentPath": "Migrazione_NTVD365/PREPROD",
+					"loggingLevel": "Basic"
+				}
+			},
+			{
+				"name": "Mig_2_allegatiCorp",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Load AllegatiCorp",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Mig_2_iterazione_allegatiCorp",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"BatchId": {
+							"value": "@variables('BatchId')",
+							"type": "Expression"
+						}
+					}
+				}
+			}
+		],
+		"variables": {
+			"FileName": {
+				"type": "String"
+			},
+			"FileSource": {
+				"type": "String",
+				"defaultValue": "staging-contract"
+			},
+			"BatchId": {
+				"type": "String",
+				"defaultValue": "51"
+			}
+		},
+		"folder": {
+			"name": "Migration"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-04-14T16:21:40Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
