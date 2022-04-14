@@ -86,13 +86,6 @@
 			}
 		],
 		"variables": {
-			"FileName": {
-				"type": "String"
-			},
-			"FileSource": {
-				"type": "String",
-				"defaultValue": "staging-contract"
-			},
 			"BatchId": {
 				"type": "String",
 				"defaultValue": "45"
