@@ -94,7 +94,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT * FROM batchSync.v_ntv_ntv_referent WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"value": "@concat('SELECT * FROM [batchSync].[v_W_REFERENTI_D365_DS] WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -217,6 +217,28 @@
 								},
 								"sink": {
 									"name": "ADV_CORP_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TIPO",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "TIPO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TIPOLOGIA_REFERENTE",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "TIPOLOGIA_REFERENTE",
 									"type": "String"
 								}
 							}
