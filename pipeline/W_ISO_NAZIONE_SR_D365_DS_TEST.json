@@ -111,7 +111,7 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "ntv_isonation",
+									"name": "CODICE_ISO",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -122,9 +122,9 @@
 							},
 							{
 								"source": {
-									"name": "ntv_issepa",
-									"type": "Boolean",
-									"physicalType": "bit"
+									"name": "CLASSIFICAZIONE_AREA",
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "CLASSIFICAZIONE_AREA",
@@ -133,7 +133,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_name",
+									"name": "NAZIONE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
