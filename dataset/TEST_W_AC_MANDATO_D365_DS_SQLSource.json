@@ -263,7 +263,7 @@
 		],
 		"typeProperties": {
 			"schema": "batchSync",
-			"table": "v_ntv_ntv_sddmandate"
+			"table": "v_W_ISO_NAZIONE_SR_D365_DS"
 		}
 	}
 }
