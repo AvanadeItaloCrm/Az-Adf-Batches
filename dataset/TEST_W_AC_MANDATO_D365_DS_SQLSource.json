@@ -263,7 +263,7 @@
 		],
 		"typeProperties": {
 			"schema": "batchSync",
-			"table": "v_W_ISO_NAZIONE_SR_D365_DS"
+			"table": "v_W_AC_MANDATO_D365_DS"
 		}
 	}
 }
