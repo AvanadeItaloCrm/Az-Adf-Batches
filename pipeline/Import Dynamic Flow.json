@@ -450,12 +450,6 @@
 						"dependencyConditions": [
 							"Succeeded"
 						]
-					},
-					{
-						"activity": "Execute SSIS Error",
-						"dependencyConditions": [
-							"Completed"
-						]
 					}
 				],
 				"userProperties": [],
@@ -517,6 +511,45 @@
 							}
 						}
 					}
+				}
+			},
+			{
+				"name": "Delete Temp Table Error",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Execute SSIS Error",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": {
+						"value": "@pipeline().parameters.DeleteTableSP_Name",
+						"type": "Expression"
+					},
+					"storedProcedureParameters": {
+						"TableName": {
+							"value": {
+								"value": "@variables('CreatedTableName')",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "MassiveImports_SQL_LS_TEST",
+					"type": "LinkedServiceReference"
 				}
 			}
 		],
