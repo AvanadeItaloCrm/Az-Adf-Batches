@@ -450,6 +450,12 @@
 						"dependencyConditions": [
 							"Succeeded"
 						]
+					},
+					{
+						"activity": "Execute SSIS Error",
+						"dependencyConditions": [
+							"Succeeded"
+						]
 					}
 				],
 				"userProperties": [],
@@ -458,6 +464,58 @@
 					"value": {
 						"value": "@replace(pipeline().parameters.DisplayName, '.CSV', '_RESULT.CSV')",
 						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Execute SSIS Error",
+				"type": "ExecuteSSISPackage",
+				"dependsOn": [
+					{
+						"activity": "Get CSV Records",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"packageLocation": {
+						"packagePath": {
+							"value": "@pipeline().parameters.PackagePath",
+							"type": "Expression"
+						},
+						"type": "SSISDB"
+					},
+					"environmentPath": {
+						"value": "@pipeline().parameters.EnvironmentPath",
+						"type": "Expression"
+					},
+					"connectVia": {
+						"referenceName": "Italo-devtest-IntegrationRuntimeSSIS",
+						"type": "IntegrationRuntimeReference"
+					},
+					"loggingLevel": "Basic",
+					"projectParameters": {
+						"ErrorMessage": {
+							"value": {
+								"value": "@activity('Get CSV Records').output.error[0].Message",
+								"type": "Expression"
+							}
+						},
+						"Catalog": {
+							"value": {
+								"value": "@pipeline().parameters.CategoryName",
+								"type": "Expression"
+							}
+						}
 					}
 				}
 			}
