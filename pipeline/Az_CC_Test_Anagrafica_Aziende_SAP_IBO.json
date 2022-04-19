@@ -142,8 +142,8 @@
 					"logSettings": {
 						"enableCopyActivityLog": true,
 						"copyActivityLogSettings": {
-							"logLevel": "Warning",
-							"enableReliableLogging": false
+							"logLevel": "Info",
+							"enableReliableLogging": true
 						},
 						"logLocationSettings": {
 							"linkedServiceName": {
