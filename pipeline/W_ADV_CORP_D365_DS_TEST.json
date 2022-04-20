@@ -94,7 +94,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT * FROM batchSync.v_W_ADV_CORP_D365_DS WHERE corporatecluster_modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or ntv_account_modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or indLegale_modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or indOP_modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or indFAT_modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"value": "@concat('SELECT * FROM batchSync.v_W_ADV_CORP_D365_DS WHERE codice_partner=''1000002486'' and corporatecluster_modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or ntv_account_modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or indLegale_modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or indOP_modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or indFAT_modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -605,17 +605,6 @@
 								},
 								"sink": {
 									"name": "CAP_SEDE_LEGALE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "INDIRIZZO_SEDE_LEGALE",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "INDIRIZZO_SEDE_LEGALE",
 									"type": "String"
 								}
 							},
