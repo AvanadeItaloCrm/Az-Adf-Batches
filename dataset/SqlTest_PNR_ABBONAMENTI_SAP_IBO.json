@@ -40,7 +40,7 @@
 			}
 		],
 		"typeProperties": {
-			"schema": "dev",
+			"schema": "dbo",
 			"table": "PNR_ABBONAMENTI"
 		}
 	}
