@@ -478,6 +478,12 @@
 								}
 							},
 							{
+								"sink": {
+									"name": "FLG_OVERCOMMISSIONING",
+									"type": "String"
+								}
+							},
+							{
 								"source": {
 									"name": "METODO_PAGAMENTO",
 									"type": "String",
