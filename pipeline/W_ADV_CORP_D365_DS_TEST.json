@@ -138,17 +138,6 @@
 							},
 							{
 								"source": {
-									"name": "INDIRIZZO_SEDE_LEGALE",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "INDIRIZZO_SEDE_LEGALE",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
 									"name": "DESCRIZIONE_PROMOCODE",
 									"type": "String",
 									"physicalType": "nvarchar"
@@ -617,6 +606,17 @@
 								},
 								"sink": {
 									"name": "CAP_SEDE_LEGALE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INDIRIZZO_SEDE_LEGALE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "INDIRIZZO_SEDE_LEGALE",
 									"type": "String"
 								}
 							},
@@ -1248,8 +1248,7 @@
 									"name": "DATA_AGG_CLUSTER_CORP",
 									"type": "DateTime"
 								}
-							},
-							null
+							}
 						],
 						"typeConversion": true,
 						"typeConversionSettings": {
