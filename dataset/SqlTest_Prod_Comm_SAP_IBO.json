@@ -84,7 +84,7 @@
 			}
 		],
 		"typeProperties": {
-			"schema": "dev",
+			"schema": "dbo",
 			"table": "PROD_COMM"
 		}
 	}
