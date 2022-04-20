@@ -106,6 +106,21 @@
 						"preCopyScript": "truncate table sa_d365_test.W_ADV_CORP_D365_DS"
 					},
 					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"logSettings": {
+						"enableCopyActivityLog": true,
+						"copyActivityLogSettings": {
+							"logLevel": "Warning",
+							"enableReliableLogging": false
+						},
+						"logLocationSettings": {
+							"linkedServiceName": {
+								"referenceName": "AzureBlobStorage_Test",
+								"type": "LinkedServiceReference"
+							},
+							"path": "batchfiles"
+						}
+					},
 					"translator": {
 						"type": "TabularTranslator",
 						"mappings": [
@@ -145,8 +160,8 @@
 							{
 								"source": {
 									"name": "TIPO_AGENZIA",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "TIPO_AGENZIA",
@@ -156,8 +171,8 @@
 							{
 								"source": {
 									"name": "TIPO_PARTNER",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "TIPO_PARTNER",
@@ -178,8 +193,8 @@
 							{
 								"source": {
 									"name": "STATO",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "STATO",
@@ -189,8 +204,8 @@
 							{
 								"source": {
 									"name": "SEGMENTO_MERCATO",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "SEGMENTO_MERCATO",
@@ -299,8 +314,8 @@
 							{
 								"source": {
 									"name": "NOME_HOLDING",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
 								},
 								"sink": {
 									"name": "NOME_HOLDING",
@@ -408,6 +423,28 @@
 							},
 							{
 								"source": {
+									"name": "NUMERO_CONTO",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NUMERO_CONTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NAZIONE_BANCA",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NAZIONE_BANCA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
 									"name": "SWIFT",
 									"type": "String",
 									"physicalType": "nvarchar"
@@ -431,8 +468,8 @@
 							{
 								"source": {
 									"name": "TIPO_CENTRO_FATTURAZIONE",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "TIPO_CENTRO_FATTURAZIONE",
@@ -442,8 +479,8 @@
 							{
 								"source": {
 									"name": "METODO_PAGAMENTO",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "METODO_PAGAMENTO",
@@ -464,8 +501,8 @@
 							{
 								"source": {
 									"name": "TERMINE_PAGAMENTO",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "TERMINE_PAGAMENTO",
@@ -552,8 +589,8 @@
 							{
 								"source": {
 									"name": "PROVINCIA_SEDE_LEGALE",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "PROVINCIA_SEDE_LEGALE",
@@ -585,8 +622,8 @@
 							{
 								"source": {
 									"name": "TIPO_CORPORATE",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "TIPO_CORPORATE",
@@ -620,8 +657,8 @@
 							{
 								"source": {
 									"name": "STATO_CONTRATTO",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "STATO_CONTRATTO",
@@ -642,8 +679,8 @@
 							{
 								"source": {
 									"name": "MODALITA_BOOKING",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "MODALITA_BOOKING",
@@ -653,8 +690,8 @@
 							{
 								"source": {
 									"name": "TIPO_CARTA_LODGE",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "TIPO_CARTA_LODGE",
@@ -696,6 +733,17 @@
 							},
 							{
 								"source": {
+									"name": "Lavoro_REFERENTE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "LAVORO_REFERENTE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
 									"name": "INTEGRAZIONE_ID",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
@@ -730,8 +778,8 @@
 							{
 								"source": {
 									"name": "PROVINCIA_FATTURAZIONE",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "PROVINCIA_FATTURAZIONE",
@@ -785,8 +833,8 @@
 							{
 								"source": {
 									"name": "PROVINCIA_SEDE_OPERATIVA",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "PROVINCIA_SEDE_OPERATIVA",
@@ -829,8 +877,8 @@
 							{
 								"source": {
 									"name": "DESC_IVA",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "DESC_IVA",
@@ -840,8 +888,8 @@
 							{
 								"source": {
 									"name": "CLASSIFICAZIONE",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "CLASSIFICAZIONE",
@@ -851,8 +899,8 @@
 							{
 								"source": {
 									"name": "SETTORE_ATTIVITA",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "SETTORE_ATTIVITA",
@@ -873,8 +921,8 @@
 							{
 								"source": {
 									"name": "CANALE_DI_REGISTRAZIONE",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "CANALE_DI_REGISTRAZIONE",
@@ -884,8 +932,8 @@
 							{
 								"source": {
 									"name": "TRAVEL_POLICY",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "TRAVEL_POLICY",
@@ -939,8 +987,8 @@
 							{
 								"source": {
 									"name": "CONSENSO_INFO_MARK",
-									"type": "Boolean",
-									"physicalType": "bit"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "CONSENSO_INFO_MARK",
@@ -1093,8 +1141,8 @@
 							{
 								"source": {
 									"name": "ESITO_CONFERIMENTO_MAND",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "ESITO_CONFERIMENTO_MAND",
