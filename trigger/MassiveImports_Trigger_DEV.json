@@ -14,7 +14,7 @@
 					"FolderPath": "@triggerBody().folderPath",
 					"FileName": "@triggerBody().fileName",
 					"SSIS_EnvironmentPath": "NTV.D365.IntegrationServices/DEV",
-					"SASTokenURL": "sp=racwdl&st=2022-02-17T09:16:13Z&se=2022-02-17T17:16:13Z&spr=https&sv=2020-08-04&sr=c&sig=p%2FhumJVZ21cSFXtG5BsZ1UudUCfUSVqomfHp%2FH6xDSI%3D"
+					"SASTokenURL": "sp=racwl&st=2022-04-20T13:05:31Z&se=2026-04-20T21:05:31Z&spr=https&sv=2020-08-04&sr=c&sig=pL1%2BEHU1mIHdGJW9JQbMXh0IUYqoDQ8rSDbbeNLSzcs%3D"
 				}
 			}
 		],
