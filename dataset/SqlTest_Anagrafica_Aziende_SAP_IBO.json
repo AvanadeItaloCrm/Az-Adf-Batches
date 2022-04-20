@@ -108,7 +108,7 @@
 			}
 		],
 		"typeProperties": {
-			"schema": "dev",
+			"schema": "dbo",
 			"table": "ANAGRAFICA_AZIENDE"
 		}
 	}
