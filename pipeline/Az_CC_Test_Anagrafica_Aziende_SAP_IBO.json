@@ -57,7 +57,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "SqlServerSource",
-						"sqlReaderQuery": "insert into [dev].[ID_LOAD]\nselect isnull(max(Load_Number),0)+1 from [dev].[ID_LOAD];\nselect max(Load_Number) id from [dev].[ID_LOAD];",
+						"sqlReaderQuery": "insert into [dbo].[ID_LOAD]\nselect isnull(max(Load_Number),0)+1 from [dbo].[ID_LOAD];\nselect max(Load_Number) id from [dbo].[ID_LOAD];",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -90,7 +90,7 @@
 					"source": {
 						"type": "SqlServerSource",
 						"sqlReaderQuery": {
-							"value": "@concat('insert into dev.History_Log (IDDataSrc,IDLoad,SAStartDate,SAStatus) values (37,',\nactivity('Nuovo IDLOAD').output.firstRow.Id,\n',GETUTCDATE(),1);select @@IDENTITY as idHy')",
+							"value": "@concat('insert into dbo.History_Log (IDDataSrc,IDLoad,SAStartDate,SAStatus) values (37,',\nactivity('Nuovo IDLOAD').output.firstRow.Id,\n',GETUTCDATE(),1);select @@IDENTITY as idHy')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -159,8 +159,8 @@
 							{
 								"source": {
 									"name": "ROW_ID",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
 								},
 								"sink": {
 									"name": "ROW_ID",
@@ -316,7 +316,7 @@
 								"source": {
 									"name": "TIPO_CENTRO_FATT",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "TIPO_CENTRO_FATT",
@@ -327,8 +327,8 @@
 							{
 								"source": {
 									"name": "COD_CENTRO_FATT",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "COD_CENTRO_FATT",
