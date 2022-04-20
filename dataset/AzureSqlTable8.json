@@ -1,0 +1,115 @@
+{
+	"name": "AzureSqlTable8",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlTestStagingArea",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ROW_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "CREATED",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "LAST_UPD",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "TIMESTAMP",
+				"type": "varchar"
+			},
+			{
+				"name": "IDDATASRC",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "IDLOAD",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CODICE",
+				"type": "varchar"
+			},
+			{
+				"name": "NOME",
+				"type": "varchar"
+			},
+			{
+				"name": "RAGIONE_SOCIALE",
+				"type": "varchar"
+			},
+			{
+				"name": "CODICE_FISCALE",
+				"type": "varchar"
+			},
+			{
+				"name": "PARTITA_IVA",
+				"type": "varchar"
+			},
+			{
+				"name": "ONLUS_FLG",
+				"type": "varchar"
+			},
+			{
+				"name": "PIVA_GRUPPO_FLG",
+				"type": "varchar"
+			},
+			{
+				"name": "TIPO_CENTRO_FATT",
+				"type": "varchar"
+			},
+			{
+				"name": "COD_CENTRO_FATT",
+				"type": "varchar"
+			},
+			{
+				"name": "COD_BUSIN_PART",
+				"type": "varchar"
+			},
+			{
+				"name": "NAZIONALITA",
+				"type": "varchar"
+			},
+			{
+				"name": "TIPO_PARTNERSHIP",
+				"type": "varchar"
+			},
+			{
+				"name": "TIPO_AGENZIA",
+				"type": "varchar"
+			},
+			{
+				"name": "TIPO_CORPORATE",
+				"type": "varchar"
+			},
+			{
+				"name": "IND_LEGALE",
+				"type": "varchar"
+			},
+			{
+				"name": "IS_CEE_FLG",
+				"type": "varchar"
+			},
+			{
+				"name": "STATO",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "batchSync",
+			"table": "ANAGRAFICA_AZIENDE_SAP_IBO"
+		}
+	}
+}

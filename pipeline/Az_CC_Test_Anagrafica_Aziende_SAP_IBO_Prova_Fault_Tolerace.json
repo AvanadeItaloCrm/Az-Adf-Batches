@@ -1,0 +1,626 @@
+{
+	"name": "Az_CC_Test_Anagrafica_Aziende_SAP_IBO_Prova_Fault_Tolerace",
+	"properties": {
+		"activities": [
+			{
+				"name": "Start SP",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "batchSync.InizioSQL_ORACLEBatchSync",
+					"storedProcedureParameters": {
+						"NomeFile": {
+							"value": "",
+							"type": "String"
+						},
+						"TabellaImport": {
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureSqlTestStagingArea",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Nuovo IDLOAD",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Start SP",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": "insert into [dev].[ID_LOAD]\nselect isnull(max(Load_Number),0)+1 from [dev].[ID_LOAD];\nselect max(Load_Number) id from [dev].[ID_LOAD];",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "SqlTest_SAP_IBO",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "Aggiorna HystoryLog",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Nuovo IDLOAD",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": {
+							"value": "@concat('insert into dev.History_Log (IDDataSrc,IDLoad,SAStartDate,SAStatus) values (37,',\nactivity('Nuovo IDLOAD').output.firstRow.Id,\n',GETUTCDATE(),1);select @@IDENTITY as idHy')",
+							"type": "Expression"
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "SqlTest_SAP_IBO",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "Sql To Sql",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Aggiorna HystoryLog",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": {
+							"value": "@concat('SELECT ROW_ID,CREATED,LAST_UPD,TIMESTAMP,IDDATASRC,CODICE,NOME,RAGIONE_SOCIALE,CODICE_FISCALE,PARTITA_IVA,ONLUS_FLG,PIVA_GRUPPO_FLG,TIPO_CENTRO_FATT,COD_CENTRO_FATT,COD_BUSIN_PART,NAZIONALITA,TIPO_PARTNERSHIP,TIPO_AGENZIA,TIPO_CORPORATE,DATA_ATTIVAZIONE,TEL_FISSO,FAX,EMAIL,EMAIL_PEC,COD_PERC_IVA,COD_MTD_PAG,COD_TRM_PAG,FLG_MANDATO,ESITO_MANDATO,DATA_ESITO_MDT,CODICE_PADRE,IND_LEGALE,IND_SEDE_OPT,STATO,IS_CEE_FLG,',\nactivity('Nuovo IDLOAD').output.firstRow.Id,\n' IDLOAD ',\n'FROM [batchSync].[v_ANAGRAFICA_AZIENDE] order by Created,Row_ID')",
+							"type": "Expression"
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"validateDataConsistency": false,
+					"logSettings": {
+						"enableCopyActivityLog": true,
+						"copyActivityLogSettings": {
+							"logLevel": "Warning",
+							"enableReliableLogging": true
+						},
+						"logLocationSettings": {
+							"linkedServiceName": {
+								"referenceName": "AzureBlobStorage_Test",
+								"type": "LinkedServiceReference"
+							},
+							"path": "batchfiles/Batch/Anagrafica_Aziende_SAP_IBO"
+						}
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "ROW_ID",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "ROW_ID",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "CREATED",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "LAST_UPD",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "LAST_UPD",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "TIMESTAMP",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "TIMESTAMP",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "IDDATASRC",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "IDDATASRC",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "IDLOAD",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "IDLOAD",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "CODICE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CODICE",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "NOME",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NOME",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "RAGIONE_SOCIALE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "RAGIONE_SOCIALE",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CODICE_FISCALE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CODICE_FISCALE",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "PARTITA_IVA",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "PARTITA_IVA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ONLUS_FLG",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "ONLUS_FLG",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "PIVA_GRUPPO_FLG",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "PIVA_GRUPPO_FLG",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TIPO_CENTRO_FATT",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "TIPO_CENTRO_FATT",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "COD_CENTRO_FATT",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "COD_CENTRO_FATT",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "COD_BUSIN_PART",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "COD_BUSIN_PART",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "NAZIONALITA",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NAZIONALITA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TIPO_PARTNERSHIP",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "TIPO_PARTNERSHIP",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TIPO_AGENZIA",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "TIPO_AGENZIA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TIPO_CORPORATE",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "TIPO_CORPORATE",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "IND_LEGALE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "IND_LEGALE",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "IS_CEE_FLG",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "IS_CEE_FLG",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "STATO",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "STATO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": false,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ANAGRAFICA_AZIENDE_SQL",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "AzureSqlTable8",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Finally SP",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "HystoryLog Fine",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[batchSync].[FineBatchSync]",
+					"storedProcedureParameters": {
+						"TabellaImport": {
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureSqlTestStagingArea",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Error Finally SP",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "HystoryLog Errore",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[batchSync].[ErrorBatchSync]",
+					"storedProcedureParameters": {
+						"Errore": {
+							"value": {
+								"value": "@concat(pipeline().RunId,' ',\nactivity('Sql To Sql').output.errors[0].Message)",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"Modulo": {
+							"value": "Sql To Sql",
+							"type": "String"
+						},
+						"NomeFile": {
+							"value": "",
+							"type": "String"
+						},
+						"TabellaImport": {
+							"value": {
+								"value": "@variables('TableName')",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureSqlTestStagingArea",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "HystoryLog Fine",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Sql To Sql",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": {
+							"value": "@concat('update dev.History_Log set SAStatus=2, SAEndDate=GETUTCDATE() output inserted.idhistory where IDHistory=',\nactivity('Aggiorna HystoryLog').output.firstRow.idHy)",
+							"type": "Expression"
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "SqlTest_SAP_IBO",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "HystoryLog Errore",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Sql To Sql",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": {
+							"value": "@concat('update dev.History_Log set SAStatus=3, SAEndDate=GETUTCDATE() where IDHistory=',\nactivity('Aggiorna HystoryLog').output.firstRow.idHy,\n' insert into dev.Error_Log (IDError,IDDataSrc,ErrorDetail,ErrorDate,IDLoad) values (3,37,',\n'''','Errore Pipeline Az_CC_Test_Anagrafica_Aziende_SAP_IBO',\n''',GETUTCDATE(),',\nactivity('Nuovo IDLOAD').output.firstRow.Id,\n') select @@identity')",
+							"type": "Expression"
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "SqlTest_SAP_IBO",
+						"type": "DatasetReference"
+					}
+				}
+			}
+		],
+		"variables": {
+			"TableName": {
+				"type": "String",
+				"defaultValue": "Anagrafica_Aziende"
+			}
+		},
+		"folder": {
+			"name": "Az_IntegrazioneBatch_Test"
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-10-04T10:34:30Z"
+	}
+}
