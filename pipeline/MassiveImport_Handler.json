@@ -908,6 +908,46 @@
 									}
 								}
 							]
+						},
+						{
+							"value": "ACCREDITI CASHBACK",
+							"activities": [
+								{
+									"name": "Execute CashbackAccredit",
+									"type": "ExecutePipeline",
+									"dependsOn": [],
+									"userProperties": [],
+									"typeProperties": {
+										"pipeline": {
+											"referenceName": "Import Dynamic Flow",
+											"type": "PipelineReference"
+										},
+										"waitOnCompletion": true,
+										"parameters": {
+											"CreateTableSP_Name": "dbo.sp_MassiveImports_CashbackAccredit",
+											"PackagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/CashbackAccredit.dtsx",
+											"EnvironmentPath": {
+												"value": "@pipeline().parameters.SSIS_EnvironmentPath",
+												"type": "Expression"
+											},
+											"FileName": {
+												"value": "@pipeline().parameters.FileName",
+												"type": "Expression"
+											},
+											"DeleteTableSP_Name": "dbo.sp_MassiveImports_DeleteTable",
+											"FindFlowMappingsSP_Name": "dbo.sp_MassiveImports_getColumnMapping",
+											"CategoryName": {
+												"value": "@variables('MetadataType')",
+												"type": "Expression"
+											},
+											"DisplayName": {
+												"value": "@variables('FileDisplayName')",
+												"type": "Expression"
+											}
+										}
+									}
+								}
+							]
 						}
 					]
 				}
