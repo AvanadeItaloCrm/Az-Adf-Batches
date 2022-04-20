@@ -57,7 +57,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "SqlServerSource",
-						"sqlReaderQuery": "insert into [dev].[ID_LOAD]\nselect isnull(max(Load_Number),0)+1 from [dev].[ID_LOAD];\nselect max(Load_Number) id from [dev].[ID_LOAD];",
+						"sqlReaderQuery": "insert into [dbo].[ID_LOAD]\nselect isnull(max(Load_Number),0)+1 from [dbo].[ID_LOAD];\nselect max(Load_Number) id from [dbo].[ID_LOAD];",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -90,7 +90,7 @@
 					"source": {
 						"type": "SqlServerSource",
 						"sqlReaderQuery": {
-							"value": "@concat('insert into dev.History_Log (IDDataSrc,IDLoad,SAStartDate,SAStatus) values (1,',\nactivity('Nuovo IDLOAD').output.firstRow.Id,\n',GETUTCDATE(),1);select @@IDENTITY as idHy')",
+							"value": "@concat('insert into dbo.History_Log (IDDataSrc,IDLoad,SAStartDate,SAStatus) values (1,',\nactivity('Nuovo IDLOAD').output.firstRow.Id,\n',GETUTCDATE(),1);select @@IDENTITY as idHy')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -582,7 +582,7 @@
 					"source": {
 						"type": "SqlServerSource",
 						"sqlReaderQuery": {
-							"value": "@concat('update dev.History_Log set SAStatus=2, SAEndDate=GETUTCDATE() output inserted.idhistory where IDHistory=',\nactivity('Aggiorna HystoryLog').output.firstRow.idHy)",
+							"value": "@concat('update dbo.History_Log set SAStatus=2, SAEndDate=GETUTCDATE() output inserted.idhistory where IDHistory=',\nactivity('Aggiorna HystoryLog').output.firstRow.idHy)",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -617,7 +617,7 @@
 					"source": {
 						"type": "SqlServerSource",
 						"sqlReaderQuery": {
-							"value": "@concat('update dev.History_Log set SAStatus=3, SAEndDate=GETUTCDATE() where IDHistory=',\nactivity('Aggiorna HystoryLog').output.firstRow.idHy,\n' insert into dev.Error_Log (IDError,IDDataSrc,ErrorDetail,ErrorDate,IDLoad) values (3,1,',\n'''','Errore Pipeline Az_CC_Test_Testata_PNR_SAP_IBO',\n''',GETUTCDATE(),',\nactivity('Nuovo IDLOAD').output.firstRow.Id,\n') select @@identity')",
+							"value": "@concat('update dbo.History_Log set SAStatus=3, SAEndDate=GETUTCDATE() where IDHistory=',\nactivity('Aggiorna HystoryLog').output.firstRow.idHy,\n' insert into dbo.Error_Log (IDError,IDDataSrc,ErrorDetail,ErrorDate,IDLoad) values (3,1,',\n'''','Errore Pipeline Az_CC_Test_Testata_PNR_SAP_IBO',\n''',GETUTCDATE(),',\nactivity('Nuovo IDLOAD').output.firstRow.Id,\n') select @@identity')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
