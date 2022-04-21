@@ -1,0 +1,43 @@
+{
+	"name": "Mig_Allegato_Destination_DocAut",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "crmtestdyn365data",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"linkedserviceName": "crmtestdyn365data"
+			}
+		},
+		"parameters": {
+			"DestinationFile": {
+				"type": "string",
+				"defaultValue": "incident"
+			},
+			"FileName": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "Migration"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().FileName",
+					"type": "Expression"
+				},
+				"container": {
+					"value": "@dataset().DestinationFile",
+					"type": "Expression"
+				}
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
