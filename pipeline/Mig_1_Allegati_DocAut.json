@@ -1,0 +1,45 @@
+{
+	"name": "Mig_1_Allegati_DocAut",
+	"properties": {
+		"activities": [
+			{
+				"name": "Load AllegatiDocAut",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[datav].[pr_Load_AllegatiDOC_AUT]",
+					"storedProcedureParameters": {
+						"BatchId": {
+							"value": {
+								"value": "@pipeline().parameters.BatchId",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "Mig_STGAzure",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"parameters": {
+			"BatchId": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "Migration"
+		},
+		"annotations": []
+	}
+}
