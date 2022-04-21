@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Verifica Partenza",
+				"name": "Start Oracle",
 				"type": "Lookup",
 				"dependsOn": [],
 				"policy": {
@@ -17,22 +17,60 @@
 				"typeProperties": {
 					"source": {
 						"type": "OracleSource",
-						"oracleReaderQuery": "select count(*) as REC from w_sincronizzazione_d365_log where UPPER(stato_scrittura)='COMPLETATO' AND stato_lettura IS NULL",
+						"oracleReaderQuery": {
+							"value": "@concat('SELECT sa_d365_test.IniziaSync_NEW as Rec FROM DUAL;')",
+							"type": "Expression"
+						},
 						"partitionOption": "None",
 						"queryTimeout": "02:00:00"
 					},
 					"dataset": {
-						"referenceName": "OracleVerificaPartenza",
+						"referenceName": "OracleFullSyncStart",
 						"type": "DatasetReference"
 					}
 				}
 			},
 			{
-				"name": "If Condition2",
+				"name": "End Oracle",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "If Condition1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": {
+							"value": "@concat('SELECT sa_d365_test.finesync_new FROM DUAL;')",
+							"type": "Expression"
+						},
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "OracleFullSyncSuccess",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "If Condition1",
 				"type": "IfCondition",
 				"dependsOn": [
 					{
-						"activity": "Verifica Partenza",
+						"activity": "Start Oracle",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -41,285 +79,201 @@
 				"userProperties": [],
 				"typeProperties": {
 					"expression": {
-						"value": "@equals(activity('Verifica Partenza').output.firstRow.Rec,0)",
+						"value": "@equals(activity('Start Oracle').output.firstRow.Rec,'ok')",
 						"type": "Expression"
 					},
+					"ifFalseActivities": [
+						{
+							"name": "Fail1",
+							"type": "Fail",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"message": "Un altro processo sta leggendo i dati",
+								"errorCode": "200"
+							}
+						}
+					],
 					"ifTrueActivities": [
 						{
-							"name": "Start Oracle",
-							"type": "Lookup",
+							"name": "Execute Pipeline1",
+							"type": "ExecutePipeline",
 							"dependsOn": [],
-							"policy": {
-								"timeout": "7.00:00:00",
-								"retry": 0,
-								"retryIntervalInSeconds": 30,
-								"secureOutput": false,
-								"secureInput": false
-							},
 							"userProperties": [],
 							"typeProperties": {
-								"source": {
-									"type": "OracleSource",
-									"oracleReaderQuery": {
-										"value": "@concat('SELECT sa_d365_test.IniziaSync_NEW as Rec FROM DUAL;')",
-										"type": "Expression"
-									},
-									"partitionOption": "None",
-									"queryTimeout": "02:00:00"
+								"pipeline": {
+									"referenceName": "W_ADV_CORP_D365_DS_TEST",
+									"type": "PipelineReference"
 								},
-								"dataset": {
-									"referenceName": "OracleFullSyncStart",
-									"type": "DatasetReference"
-								}
+								"waitOnCompletion": true
 							}
 						},
 						{
-							"name": "End Oracle",
-							"type": "Lookup",
-							"dependsOn": [
-								{
-									"activity": "If Condition1",
-									"dependencyConditions": [
-										"Succeeded"
-									]
-								}
-							],
-							"policy": {
-								"timeout": "7.00:00:00",
-								"retry": 0,
-								"retryIntervalInSeconds": 30,
-								"secureOutput": false,
-								"secureInput": false
-							},
+							"name": "Execute Pipeline2",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
 							"userProperties": [],
 							"typeProperties": {
-								"source": {
-									"type": "OracleSource",
-									"oracleReaderQuery": {
-										"value": "@concat('SELECT sa_d365_test.finesync_new FROM DUAL;')",
-										"type": "Expression"
-									},
-									"partitionOption": "None",
-									"queryTimeout": "02:00:00"
+								"pipeline": {
+									"referenceName": "W_AGENTI_D365_DS_TEST",
+									"type": "PipelineReference"
 								},
-								"dataset": {
-									"referenceName": "OracleFullSyncSuccess",
-									"type": "DatasetReference"
-								}
+								"waitOnCompletion": true
 							}
 						},
 						{
-							"name": "If Condition1",
-							"type": "IfCondition",
-							"dependsOn": [
-								{
-									"activity": "Start Oracle",
-									"dependencyConditions": [
-										"Succeeded"
-									]
-								}
-							],
+							"name": "Execute Pipeline3",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
 							"userProperties": [],
 							"typeProperties": {
-								"expression": {
-									"value": "@equals(activity('Start Oracle').output.firstRow.Rec,'ok')",
-									"type": "Expression"
+								"pipeline": {
+									"referenceName": "W_CORPORATE_SEGMENT_D365_DS_TEST",
+									"type": "PipelineReference"
 								},
-								"ifFalseActivities": [
-									{
-										"name": "Fail1",
-										"type": "Fail",
-										"dependsOn": [],
-										"userProperties": [],
-										"typeProperties": {
-											"message": "Un altro processo sta leggendo i dati",
-											"errorCode": "200"
-										}
-									}
-								],
-								"ifTrueActivities": [
-									{
-										"name": "Execute Pipeline1",
-										"type": "ExecutePipeline",
-										"dependsOn": [],
-										"userProperties": [],
-										"typeProperties": {
-											"pipeline": {
-												"referenceName": "W_ADV_CORP_D365_DS_TEST",
-												"type": "PipelineReference"
-											},
-											"waitOnCompletion": true
-										}
-									},
-									{
-										"name": "Execute Pipeline2",
-										"type": "ExecutePipeline",
-										"dependsOn": [],
-										"userProperties": [],
-										"typeProperties": {
-											"pipeline": {
-												"referenceName": "W_AGENTI_D365_DS_TEST",
-												"type": "PipelineReference"
-											},
-											"waitOnCompletion": true
-										}
-									},
-									{
-										"name": "Execute Pipeline3",
-										"type": "ExecutePipeline",
-										"dependsOn": [],
-										"userProperties": [],
-										"typeProperties": {
-											"pipeline": {
-												"referenceName": "W_CORPORATE_SEGMENT_D365_DS_TEST",
-												"type": "PipelineReference"
-											},
-											"waitOnCompletion": true
-										}
-									},
-									{
-										"name": "Execute Pipeline4",
-										"type": "ExecutePipeline",
-										"dependsOn": [],
-										"userProperties": [],
-										"typeProperties": {
-											"pipeline": {
-												"referenceName": "W_GERARCHIA_ADV_CORP_D365_DS_TEST",
-												"type": "PipelineReference"
-											},
-											"waitOnCompletion": true
-										}
-									},
-									{
-										"name": "Execute Pipeline5",
-										"type": "ExecutePipeline",
-										"dependsOn": [],
-										"userProperties": [],
-										"typeProperties": {
-											"pipeline": {
-												"referenceName": "W_REFERENTI_D365_DS_TEST",
-												"type": "PipelineReference"
-											},
-											"waitOnCompletion": true
-										}
-									},
-									{
-										"name": "Execute Pipeline6",
-										"type": "ExecutePipeline",
-										"dependsOn": [],
-										"userProperties": [],
-										"typeProperties": {
-											"pipeline": {
-												"referenceName": "W_AC_MANDATO_D365_DS_TEST",
-												"type": "PipelineReference"
-											},
-											"waitOnCompletion": true
-										}
-									},
-									{
-										"name": "Execute Pipeline7",
-										"type": "ExecutePipeline",
-										"dependsOn": [],
-										"userProperties": [],
-										"typeProperties": {
-											"pipeline": {
-												"referenceName": "W_ISO_NAZIONE_SR_D365_DS_TEST",
-												"type": "PipelineReference"
-											},
-											"waitOnCompletion": true
-										}
-									},
-									{
-										"name": "Execute Pipeline8",
-										"type": "ExecutePipeline",
-										"dependsOn": [],
-										"userProperties": [],
-										"typeProperties": {
-											"pipeline": {
-												"referenceName": "W_SERVICEREQUEST_D365_DS_TEST_B2B",
-												"type": "PipelineReference"
-											},
-											"waitOnCompletion": true
-										}
-									},
-									{
-										"name": "Execute Pipeline9",
-										"type": "ExecutePipeline",
-										"dependsOn": [],
-										"userProperties": [],
-										"typeProperties": {
-											"pipeline": {
-												"referenceName": "W_ATTIVITA_SR_D365_DS_TEST_B2B",
-												"type": "PipelineReference"
-											},
-											"waitOnCompletion": true
-										}
-									},
-									{
-										"name": "Execute Pipeline10",
-										"type": "ExecutePipeline",
-										"dependsOn": [],
-										"userProperties": [],
-										"typeProperties": {
-											"pipeline": {
-												"referenceName": "W_INDIRIZZI_D365_DS_TEST_B2B",
-												"type": "PipelineReference"
-											},
-											"waitOnCompletion": true
-										}
-									},
-									{
-										"name": "Execute Pipeline11",
-										"type": "ExecutePipeline",
-										"dependsOn": [],
-										"userProperties": [],
-										"typeProperties": {
-											"pipeline": {
-												"referenceName": "W_NETWORK_AGENZIA_D365_DS_TEST",
-												"type": "PipelineReference"
-											},
-											"waitOnCompletion": true
-										}
-									}
-								]
+								"waitOnCompletion": true
 							}
 						},
 						{
-							"name": "Error Oracle",
-							"type": "Lookup",
-							"dependsOn": [
-								{
-									"activity": "If Condition1",
-									"dependencyConditions": [
-										"Failed"
-									]
-								}
-							],
-							"policy": {
-								"timeout": "7.00:00:00",
-								"retry": 0,
-								"retryIntervalInSeconds": 30,
-								"secureOutput": false,
-								"secureInput": false
-							},
+							"name": "Execute Pipeline4",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
 							"userProperties": [],
 							"typeProperties": {
-								"source": {
-									"type": "OracleSource",
-									"oracleReaderQuery": {
-										"value": "@concat('SELECT sa_d365_test.errore_sync_new(''',\nvariables('TableName'),\n''') FROM DUAL;')\n",
-										"type": "Expression"
-									},
-									"partitionOption": "None",
-									"queryTimeout": "02:00:00"
+								"pipeline": {
+									"referenceName": "W_GERARCHIA_ADV_CORP_D365_DS_TEST",
+									"type": "PipelineReference"
 								},
-								"dataset": {
-									"referenceName": "OracleFullSyncError",
-									"type": "DatasetReference"
-								}
+								"waitOnCompletion": true
+							}
+						},
+						{
+							"name": "Execute Pipeline5",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "W_REFERENTI_D365_DS_TEST",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						},
+						{
+							"name": "Execute Pipeline6",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "W_AC_MANDATO_D365_DS_TEST",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						},
+						{
+							"name": "Execute Pipeline7",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "W_ISO_NAZIONE_SR_D365_DS_TEST",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						},
+						{
+							"name": "Execute Pipeline8",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "W_SERVICEREQUEST_D365_DS_TEST_B2B",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						},
+						{
+							"name": "Execute Pipeline9",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "W_ATTIVITA_SR_D365_DS_TEST_B2B",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						},
+						{
+							"name": "Execute Pipeline10",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "W_INDIRIZZI_D365_DS_TEST_B2B",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						},
+						{
+							"name": "Execute Pipeline11",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "W_NETWORK_AGENZIA_D365_DS_TEST",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
 							}
 						}
 					]
+				}
+			},
+			{
+				"name": "Error Oracle",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "If Condition1",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": {
+							"value": "@concat('SELECT sa_d365_test.errore_sync_new(''',\nvariables('TableName'),\n''') FROM DUAL;')\n",
+							"type": "Expression"
+						},
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "OracleFullSyncError",
+						"type": "DatasetReference"
+					}
 				}
 			}
 		],
