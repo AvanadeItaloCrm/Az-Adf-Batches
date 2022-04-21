@@ -132,10 +132,10 @@
 							],
 							"outputs": [
 								{
-									"referenceName": "Mig_Allegato_Destination_Corp",
+									"referenceName": "Mig_Allegato_Destination_DocAut",
 									"type": "DatasetReference",
 									"parameters": {
-										"DestinationFile": "contract",
+										"DestinationFile": "authoritydocument",
 										"FileName": {
 											"value": "@replace(replace(string(variables('FILENAME_COMPLETO')),'[{\"NOMEFILE\":\"' , ''),'\"}]','')",
 											"type": "Expression"
