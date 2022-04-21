@@ -2,16 +2,13 @@
 	"name": "Mig_Allegato_Destination_DocAut",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "crmtestdyn365data",
-			"type": "LinkedServiceReference",
-			"parameters": {
-				"linkedserviceName": "crmtestdyn365data"
-			}
+			"referenceName": "mig_crmdevdyn365data",
+			"type": "LinkedServiceReference"
 		},
 		"parameters": {
 			"DestinationFile": {
 				"type": "string",
-				"defaultValue": "incident"
+				"defaultValue": "authoritydocument"
 			},
 			"FileName": {
 				"type": "string"
