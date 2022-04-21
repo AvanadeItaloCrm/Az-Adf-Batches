@@ -30,6 +30,22 @@
 					"referenceName": "Mig_STGAzure",
 					"type": "LinkedServiceReference"
 				}
+			},
+			{
+				"name": "Execute Pipeline1",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Load AllegatiDocAut",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"waitOnCompletion": true
+				}
 			}
 		],
 		"parameters": {
