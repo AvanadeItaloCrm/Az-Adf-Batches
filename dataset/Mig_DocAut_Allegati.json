@@ -1,0 +1,37 @@
+{
+	"name": "Mig_DocAut_Allegati",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Mig_STGAzure",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Migration"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "FileName",
+				"type": "varchar"
+			},
+			{
+				"name": "SR_FileName",
+				"type": "varchar"
+			},
+			{
+				"name": "IsImported",
+				"type": "bit"
+			}
+		],
+		"typeProperties": {
+			"schema": "datav",
+			"table": "AllegatiDOC_AUT"
+		}
+	}
+}
