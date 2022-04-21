@@ -32,7 +32,7 @@
 				}
 			},
 			{
-				"name": "Execute Pipeline1",
+				"name": "Mig2_allegatiDocAut",
 				"type": "ExecutePipeline",
 				"dependsOn": [
 					{
@@ -52,7 +52,7 @@
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "Execute Pipeline1",
+						"activity": "Mig2_allegatiDocAut",
 						"dependencyConditions": [
 							"Succeeded"
 						]
