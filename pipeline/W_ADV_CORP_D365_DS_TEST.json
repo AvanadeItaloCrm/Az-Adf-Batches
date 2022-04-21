@@ -491,8 +491,8 @@
 							{
 								"source": {
 									"name": "PERCENTUALE_IVA",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "PERCENTUALE_IVA",
@@ -507,6 +507,28 @@
 								},
 								"sink": {
 									"name": "TERMINE_PAGAMENTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CENTRO_FATT_BASE_ID",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "CENTRO_FATT_BASE_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CENTRO_FATT_OVER_ID",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "CENTRO_FATT_OVER_ID",
 									"type": "String"
 								}
 							},
@@ -646,6 +668,17 @@
 							},
 							{
 								"source": {
+									"name": "TMC_PRIMARIA_ID",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "TMC_PRIMARIA_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
 									"name": "OWNER_CORPORATE_NTV",
 									"type": "String",
 									"physicalType": "nvarchar"
@@ -685,6 +718,17 @@
 								},
 								"sink": {
 									"name": "MODALITA_BOOKING",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PROMOCODE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "PROMOCODE",
 									"type": "String"
 								}
 							},
@@ -877,6 +921,39 @@
 							},
 							{
 								"source": {
+									"name": "FLG_AZIENDA_PRIMARIA",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "FLG_AZIENDA_PRIMARIA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FLG_CEE",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "FLG_CEE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FLG_PRIVACY",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "FLG_PRIVACY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
 									"name": "DESC_IVA",
 									"type": "String",
 									"physicalType": "nvarchar"
@@ -895,6 +972,17 @@
 								"sink": {
 									"name": "CLASSIFICAZIONE",
 									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DATA_NAS_REF",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "DATA_NAS_REF",
+									"type": "DateTime"
 								}
 							},
 							{
@@ -921,6 +1009,17 @@
 							},
 							{
 								"source": {
+									"name": "TIPO_VENDITORE_CORP",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "TIPO_VENDITORE_CORP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
 									"name": "CANALE_DI_REGISTRAZIONE",
 									"type": "String",
 									"physicalType": "varchar"
@@ -938,6 +1037,17 @@
 								},
 								"sink": {
 									"name": "TRAVEL_POLICY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CODICE_CONVENZIONE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CODICE_CONVENZIONE",
 									"type": "String"
 								}
 							},
@@ -982,6 +1092,63 @@
 								},
 								"sink": {
 									"name": "CODICE_CUP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FATT_ANNUO_ITALO",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 38
+								},
+								"sink": {
+									"name": "FATT_ANNUO_ITALO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MEDIA_VIAGGIO",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "MEDIA_VIAGGIO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FREQU_VIAGG",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "FREQU_VIAGG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TRATTA_PRINCIPALE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "TRATTA_PRINCIPALE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NOME_OFFERTA",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NOME_OFFERTA",
 									"type": "String"
 								}
 							},
@@ -1043,8 +1210,8 @@
 							{
 								"source": {
 									"name": "SEGMENTO",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "SEGMENTO",
@@ -1163,6 +1330,54 @@
 							},
 							{
 								"source": {
+									"name": "ABILITA_AC",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "ABILITA_AC",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LIMITE_AC",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 38
+								},
+								"sink": {
+									"name": "LIMITE_AC",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PLAFOND_AC",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 38
+								},
+								"sink": {
+									"name": "PLAFOND_AC",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "STATO_AC",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "STATO_AC",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
 									"name": "CODICE_FISCALE_PARTNER",
 									"type": "String",
 									"physicalType": "nvarchar"
@@ -1225,6 +1440,80 @@
 								"sink": {
 									"name": "CODICE_FISCALE_CREDITO",
 									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RICH_FIDO_AT_ID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "RICH_FIDO_AT_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "STATO_RICHIESTA",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "STATO_RICHIESTA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PLAFOND_ACCETTATO",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 38
+								},
+								"sink": {
+									"name": "PLAFOND_ACCETTATO",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PLAFOND_ATTIVATO",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 38
+								},
+								"sink": {
+									"name": "PLAFOND_ATTIVATO",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PLAFOND_COMUNICATO",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 38
+								},
+								"sink": {
+									"name": "PLAFOND_COMUNICATO",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PLAFOND_RICHIESTO",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 38
+								},
+								"sink": {
+									"name": "PLAFOND_RICHIESTO",
+									"type": "Decimal"
 								}
 							},
 							{
