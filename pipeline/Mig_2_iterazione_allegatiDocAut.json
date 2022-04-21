@@ -51,124 +51,110 @@
 					"isSequential": true,
 					"activities": [
 						{
-							"name": "If Condition1",
-							"type": "IfCondition",
-							"dependsOn": [],
-							"userProperties": [],
-							"typeProperties": {
-								"expression": {
-									"value": "@equals(item().Filename,pipeline().parameters.ParamPipeline)",
-									"type": "Expression"
+							"name": "Copy data1_copy1",
+							"type": "Copy",
+							"dependsOn": [
+								{
+									"activity": "Set variable1_copy1",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [
+								{
+									"name": "Source",
+									"value": "@{'staging-incident'}//@{'*'}"
 								},
-								"ifTrueActivities": [
-									{
-										"name": "Copy data1_copy1",
-										"type": "Copy",
-										"dependsOn": [
+								{
+									"name": "Destination",
+									"value": "@{'incident'}//@{replace(replace(string(variables('FILENAME_COMPLETO')),'[{\"NOMEFILE\":\"' , ''),'\"}]','')}"
+								}
+							],
+							"typeProperties": {
+								"source": {
+									"type": "DelimitedTextSource",
+									"storeSettings": {
+										"type": "AzureBlobStorageReadSettings",
+										"recursive": true,
+										"enablePartitionDiscovery": false
+									},
+									"formatSettings": {
+										"type": "DelimitedTextReadSettings"
+									}
+								},
+								"sink": {
+									"type": "DelimitedTextSink",
+									"storeSettings": {
+										"type": "AzureBlobStorageWriteSettings",
+										"metadata": [
 											{
-												"activity": "Set variable1_copy1",
-												"dependencyConditions": [
-													"Succeeded"
-												]
-											}
-										],
-										"policy": {
-											"timeout": "7.00:00:00",
-											"retry": 0,
-											"retryIntervalInSeconds": 30,
-											"secureOutput": false,
-											"secureInput": false
-										},
-										"userProperties": [
-											{
-												"name": "Source",
-												"value": "@{'staging-incident'}//@{'*'}"
-											},
-											{
-												"name": "Destination",
-												"value": "@{'incident'}//@{replace(replace(string(variables('FILENAME_COMPLETO')),'[{\"NOMEFILE\":\"' , ''),'\"}]','')}"
-											}
-										],
-										"typeProperties": {
-											"source": {
-												"type": "DelimitedTextSource",
-												"storeSettings": {
-													"type": "AzureBlobStorageReadSettings",
-													"recursive": true,
-													"enablePartitionDiscovery": false
-												},
-												"formatSettings": {
-													"type": "DelimitedTextReadSettings"
-												}
-											},
-											"sink": {
-												"type": "DelimitedTextSink",
-												"storeSettings": {
-													"type": "AzureBlobStorageWriteSettings",
-													"metadata": [
-														{
-															"name": "Category",
-															"value": "Contratti"
-														}
-													]
-												},
-												"formatSettings": {
-													"type": "DelimitedTextWriteSettings",
-													"quoteAllText": true,
-													"fileExtension": ".txt"
-												}
-											},
-											"enableStaging": false,
-											"translator": {
-												"type": "TabularTranslator",
-												"typeConversion": true,
-												"typeConversionSettings": {
-													"allowDataTruncation": true,
-													"treatBooleanAsNumber": false
-												}
-											}
-										},
-										"inputs": [
-											{
-												"referenceName": "Mig_staging_attachments",
-												"type": "DatasetReference",
-												"parameters": {
-													"Filename": {
-														"value": "@pipeline().parameters.ParamPipeline",
-														"type": "Expression"
-													},
-													"FileSource": "staging-attachments"
-												}
-											}
-										],
-										"outputs": [
-											{
-												"referenceName": "Mig_Allegato_Destination_Corp",
-												"type": "DatasetReference",
-												"parameters": {
-													"DestinationFile": "contract",
-													"FileName": {
-														"value": "@replace(replace(string(variables('FILENAME_COMPLETO')),'[{\"NOMEFILE\":\"' , ''),'\"}]','')",
-														"type": "Expression"
-													}
-												}
+												"name": "Category",
+												"value": "Contratti"
 											}
 										]
 									},
-									{
-										"name": "Set variable1_copy1",
-										"type": "SetVariable",
-										"dependsOn": [],
-										"userProperties": [],
-										"typeProperties": {
-											"variableName": "FILENAME_COMPLETO",
-											"value": {
-												"value": "@item().Contract_FileName",
-												"type": "Expression"
-											}
+									"formatSettings": {
+										"type": "DelimitedTextWriteSettings",
+										"quoteAllText": true,
+										"fileExtension": ".txt"
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "Mig_staging_attachments",
+									"type": "DatasetReference",
+									"parameters": {
+										"Filename": {
+											"value": "@item().Filename",
+											"type": "Expression"
+										},
+										"FileSource": "staging-attachments"
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "Mig_Allegato_Destination_Corp",
+									"type": "DatasetReference",
+									"parameters": {
+										"DestinationFile": "contract",
+										"FileName": {
+											"value": "@replace(replace(string(variables('FILENAME_COMPLETO')),'[{\"NOMEFILE\":\"' , ''),'\"}]','')",
+											"type": "Expression"
 										}
 									}
-								]
+								}
+							]
+						},
+						{
+							"name": "Set variable1_copy1",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "FILENAME_COMPLETO",
+								"value": {
+									"value": "@item().DocAut_FileName",
+									"type": "Expression"
+								}
 							}
 						}
 					]
