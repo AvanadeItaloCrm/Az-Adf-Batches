@@ -156,6 +156,41 @@
 									"type": "Expression"
 								}
 							}
+						},
+						{
+							"name": "Log OK",
+							"type": "Lookup",
+							"dependsOn": [
+								{
+									"activity": "Copy data1_copy1",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "AzureSqlSource",
+									"sqlReaderQuery": {
+										"value": "INSERT INTO [log].[Loading_AllegatiDOC_AUT]([filename],[DocAut_FileName],[DocAut], [BatchId])\nSELECT [filename],[DocAut_FileName],[DocAut],[BatchId]\n\nFROM [datav].[AllegatiDOC_AUT] with(nolock)\nWHERE filename='@{item().filename}'\n\nSELECT '' A",
+										"type": "Expression"
+									},
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"dataset": {
+									"referenceName": "Mig_AzureCopyConfig",
+									"type": "DatasetReference"
+								}
+							}
 						}
 					]
 				}
