@@ -2,8 +2,11 @@
 	"name": "Mig_staging_attachments",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "mig_crmdevdyn365data",
-			"type": "LinkedServiceReference"
+			"referenceName": "crmtestdyn365data",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"linkedserviceName": "crmtestdyn365data"
+			}
 		},
 		"parameters": {
 			"Filename": {
