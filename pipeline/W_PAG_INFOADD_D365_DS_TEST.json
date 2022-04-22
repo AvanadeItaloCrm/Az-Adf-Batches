@@ -94,7 +94,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT * FROM ntv.v_AdditionalInfo WHERE RecModifiedDate>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"value": "@concat('SELECT * FROM batchSync.v_W_PAG_INFOADD_D365_DS WHERE RecModifiedDate>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -205,6 +205,28 @@
 								},
 								"sink": {
 									"name": "PAGAMENTO_CRM_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CODICE_RICEVUTA",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "CODICE_RICEVUTA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CANCELLATO_DA",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "CANCELLATO_DA",
 									"type": "String"
 								}
 							},
