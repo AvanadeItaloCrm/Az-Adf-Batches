@@ -18,7 +18,7 @@
 					"source": {
 						"type": "OracleSource",
 						"oracleReaderQuery": {
-							"value": "@concat('SELECT sa_d365_test.IniziaSync_NEW as Rec FROM DUAL;')",
+							"value": "@concat('SELECT sa_d365_test.IniziaSync_kpi as Rec FROM DUAL;')",
 							"type": "Expression"
 						},
 						"partitionOption": "None",
@@ -53,7 +53,7 @@
 					"source": {
 						"type": "OracleSource",
 						"oracleReaderQuery": {
-							"value": "@concat('SELECT sa_d365_test.finesync_new FROM DUAL;')",
+							"value": "@concat('SELECT sa_d365_test.finesync_kpi FROM DUAL;')",
 							"type": "Expression"
 						},
 						"partitionOption": "None",
@@ -251,7 +251,7 @@
 					"source": {
 						"type": "OracleSource",
 						"oracleReaderQuery": {
-							"value": "@concat('SELECT sa_d365_test.errore_sync_new(''',\nvariables('TableName'),\n''') FROM DUAL;')\n",
+							"value": "@concat('SELECT sa_d365_test.errore_sync_kpi(''',\nvariables('TableName'),\n''') FROM DUAL;')\n",
 							"type": "Expression"
 						},
 						"partitionOption": "None",
