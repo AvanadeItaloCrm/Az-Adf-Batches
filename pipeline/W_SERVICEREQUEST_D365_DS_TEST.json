@@ -852,6 +852,17 @@
 							},
 							{
 								"source": {
+									"name": "NAZIONE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NAZIONE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
 									"name": "LINGUA",
 									"type": "String",
 									"physicalType": "varchar"
