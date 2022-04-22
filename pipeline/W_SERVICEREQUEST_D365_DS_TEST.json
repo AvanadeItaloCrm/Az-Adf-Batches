@@ -687,6 +687,17 @@
 							},
 							{
 								"source": {
+									"name": "DIPENDENTE_CID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "DIPENDENTE_CID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
 									"name": "EMAIL_RIMBORSO",
 									"type": "String",
 									"physicalType": "nvarchar"
@@ -836,6 +847,12 @@
 								},
 								"sink": {
 									"name": "NUM_EC_FATTURA",
+									"type": "String"
+								}
+							},
+							{
+								"sink": {
+									"name": "NAZIONE",
 									"type": "String"
 								}
 							},
