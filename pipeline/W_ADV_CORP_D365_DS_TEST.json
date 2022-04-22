@@ -940,6 +940,17 @@
 							},
 							{
 								"source": {
+									"name": "FLG_SEPA",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "FLG_SEPA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
 									"name": "DESC_IVA",
 									"type": "String",
 									"physicalType": "nvarchar"
