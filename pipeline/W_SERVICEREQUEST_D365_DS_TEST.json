@@ -851,12 +851,6 @@
 								}
 							},
 							{
-								"sink": {
-									"name": "NAZIONE",
-									"type": "String"
-								}
-							},
-							{
 								"source": {
 									"name": "LINGUA",
 									"type": "String",
