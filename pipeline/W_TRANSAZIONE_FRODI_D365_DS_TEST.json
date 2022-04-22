@@ -577,7 +577,7 @@
 					"source": {
 						"type": "OracleSource",
 						"oracleReaderQuery": {
-							"value": "@concat('SELECT * FROM (select TO_CHAR(dt_fine_lettura, ''YYYY/MM/DD'') as Rec from w_sincronizzazione_d365_log where UPPER(stato_lettura)=''COMPLETATO'' union select ''2010/01/01'' as Rec FROM w_sincronizzazione_d365_log order by Rec desc)T WHERE ROWNUM<=1')",
+							"value": "@concat('SELECT * FROM (select TO_CHAR(dt_ultima_sinc, ''YYYY/MM/DD'') as Rec from w_sincronizzazione_d365_log where UPPER(stato_lettura)=''COMPLETATO'' union select ''2010/01/01'' as Rec FROM w_sincronizzazione_d365_log order by Rec desc)T WHERE ROWNUM<=1')",
 							"type": "Expression"
 						},
 						"partitionOption": "None",
