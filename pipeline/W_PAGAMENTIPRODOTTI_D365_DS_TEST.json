@@ -94,7 +94,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT * FROM batchSync.v_Payments WHERE RecModifiedDate>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"value": "@concat('SELECT * FROM batchSync.v_W_PAGAMENTIPRODOTTI_D365_DS WHERE RecModifiedDate>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -111,7 +111,7 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "PayID",
+									"name": "INTEGRAZIONE_ID",
 									"type": "Int64",
 									"physicalType": "bigint"
 								},
@@ -122,7 +122,7 @@
 							},
 							{
 								"source": {
-									"name": "AuthorizationCode",
+									"name": "CODICE_AUTORIZZAZIONE",
 									"type": "String",
 									"physicalType": "varchar"
 								},
@@ -133,7 +133,7 @@
 							},
 							{
 								"source": {
-									"name": "PaymentMethodCode",
+									"name": "COD_METODO_PAGAMENTO",
 									"type": "String",
 									"physicalType": "varchar"
 								},
@@ -144,7 +144,7 @@
 							},
 							{
 								"source": {
-									"name": "QuotedAmount",
+									"name": "IMPORTO",
 									"type": "String",
 									"physicalType": "varchar"
 								},
@@ -155,7 +155,7 @@
 							},
 							{
 								"source": {
-									"name": "AuthorizationStatus",
+									"name": "STATO_AUTORIZZAZIONE",
 									"type": "String",
 									"physicalType": "varchar"
 								},
@@ -166,7 +166,7 @@
 							},
 							{
 								"source": {
-									"name": "EIHFiscalId",
+									"name": "CODICE_RICEVUTA",
 									"type": "String",
 									"physicalType": "varchar"
 								},
@@ -177,7 +177,7 @@
 							},
 							{
 								"source": {
-									"name": "PaymentID",
+									"name": "PAGAMENTO_NAV_ID",
 									"type": "String",
 									"physicalType": "varchar"
 								},
@@ -188,7 +188,18 @@
 							},
 							{
 								"source": {
-									"name": "Transferred",
+									"name": "STATO_RICONCILIAZIONE",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "STATO_RICONCILIAZIONE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TRASFERIMENTO_FLG",
 									"type": "Boolean",
 									"physicalType": "bit"
 								},
@@ -199,7 +210,7 @@
 							},
 							{
 								"source": {
-									"name": "RecordLocator",
+									"name": "PNR",
 									"type": "String",
 									"physicalType": "varchar"
 								},
@@ -210,7 +221,7 @@
 							},
 							{
 								"source": {
-									"name": "AccountName",
+									"name": "INTESTATARIO_CONTO",
 									"type": "String",
 									"physicalType": "varchar"
 								},
