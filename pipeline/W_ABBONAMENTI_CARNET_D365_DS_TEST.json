@@ -134,11 +134,44 @@
 							{
 								"source": {
 									"name": "TIPO_PRODOTTO",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "TIPO_PRODOTTO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TARIFFA",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "TARIFFA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "STAZIONE_PARTENZA",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "STAZIONE_PARTENZA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "STAZIONE_ARRIVO",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "STAZIONE_ARRIVO",
 									"type": "String"
 								}
 							},
@@ -177,9 +210,20 @@
 							},
 							{
 								"source": {
+									"name": "NUM_COUPON",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NUM_COUPON",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
 									"name": "STATO",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "STATO",
@@ -238,6 +282,17 @@
 								},
 								"sink": {
 									"name": "CODICE_ASSET",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AMBIENTE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "AMBIENTE",
 									"type": "String"
 								}
 							},
