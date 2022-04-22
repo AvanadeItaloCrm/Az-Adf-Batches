@@ -94,7 +94,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT NUMERO_ORDINE, INTEGRAZIONE_ID, TIPO_ORDINE,STATO,DATA_ORDINE,DATA_CHIUSURA,PROVENIENZA_ORDINE,PNR_PAGAMENTO,PREZZO_TOTALE,NOME_PRODOTTO,TIPO_PRODOTTO, CLIENTE_ACQUIRENTE_ID,TIPO_ACQUIRENTE,ADVCORP_ACQUIRENTE_ID,ADVCORP_INTESTATARIO_ID,ASSET_ID,IVA,NOTE, CLIENTE_INTESTATARIO_ID FROM batchSync.v_W_ORDINI_D365_DS WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or ass_modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or a_modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or o_modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"value": "@concat('SELECT * FROM batchSync.v_W_ORDINI_D365_DS WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or ass_modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or a_modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or o_modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -235,8 +235,8 @@
 							{
 								"source": {
 									"name": "CLIENTE_ACQUIRENTE_ID",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "CLIENTE_ACQUIRENTE_ID",
@@ -290,11 +290,24 @@
 							{
 								"source": {
 									"name": "IVA",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 38
 								},
 								"sink": {
 									"name": "IVA",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "NUMERO_COUPON",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "NUMERO_COUPON",
 									"type": "Decimal"
 								}
 							},
@@ -306,6 +319,17 @@
 								},
 								"sink": {
 									"name": "NOTE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AMBIENTE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "AMBIENTE",
 									"type": "String"
 								}
 							},
