@@ -1704,7 +1704,7 @@
 		],
 		"typeProperties": {
 			"schema": "batchSync",
-			"table": "v_ntv_contact"
+			"table": "v_W_CUSTOMER_D365_DS"
 		}
 	}
 }
