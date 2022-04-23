@@ -112,8 +112,8 @@
 							{
 								"source": {
 									"name": "INTEGRAZIONE_ID",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
 								},
 								"sink": {
 									"name": "INTEGRAZIONE_ID",
@@ -134,8 +134,8 @@
 							{
 								"source": {
 									"name": "CREATO_DA",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "CREATO_DA",
@@ -156,8 +156,8 @@
 							{
 								"source": {
 									"name": "AGGIORNATO_DA",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "AGGIORNATO_DA",
@@ -287,7 +287,7 @@
 							},
 							{
 								"source": {
-									"name": "FLG_OMUNICAZIONE_ADOBE",
+									"name": "FLG_COMUNICAZIONE_ADOBE",
 									"type": "String",
 									"physicalType": "varchar"
 								},
