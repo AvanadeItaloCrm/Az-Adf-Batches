@@ -232,7 +232,7 @@
 							},
 							{
 								"source": {
-									"name": "CLUSTER",
+									"name": "X_CLUSTER",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
