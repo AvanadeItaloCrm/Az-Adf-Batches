@@ -124,7 +124,7 @@
 								"source": {
 									"name": "NOME_FILE",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "NOME_FILE",
@@ -172,6 +172,17 @@
 								},
 								"sink": {
 									"name": "NR_TRX",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "TRANSATO",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "TRANSATO",
 									"type": "Decimal"
 								}
 							},
