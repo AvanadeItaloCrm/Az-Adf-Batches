@@ -93,15 +93,9 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderStoredProcedureName": "[batchSync].[w_Interessi_Cliente]",
-						"storedProcedureParameters": {
-							"DataUltimaModifica": {
-								"type": "DateTime",
-								"value": {
-									"value": "@activity('Ultima Sinc').output.firstRow.Rec",
-									"type": "Expression"
-								}
-							}
+						"sqlReaderQuery": {
+							"value": "@concat('SELECT * FROM [batchSync].[v_W_INTERESS_CLIENTE_D365_DS] WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
@@ -117,7 +111,7 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "ntv_customernumber",
+									"name": "CODICE_CLIENTE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -128,18 +122,7 @@
 							},
 							{
 								"source": {
-									"name": "Id",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "INTERESSE_ID",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"name": "ntv_interestscodes",
+									"name": "INTERESSE",
 									"type": "String",
 									"physicalType": "varchar"
 								},

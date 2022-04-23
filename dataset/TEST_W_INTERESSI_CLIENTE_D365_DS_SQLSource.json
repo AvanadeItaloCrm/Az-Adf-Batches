@@ -2,7 +2,7 @@
 	"name": "TEST_W_INTERESSI_CLIENTE_D365_DS_SQLSource",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzureSqlTestStagingArea",
+			"referenceName": "AzSqlOracle_Test_StagingArea",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -1703,8 +1703,8 @@
 			}
 		],
 		"typeProperties": {
-			"schema": "dbo",
-			"table": "ntv_contact"
+			"schema": "batchSync",
+			"table": "v_W_INTERESS_CLIENTE_D365_DS"
 		}
 	}
 }
