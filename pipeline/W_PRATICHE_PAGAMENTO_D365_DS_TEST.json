@@ -94,7 +94,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT * FROM batchSync.v_ntv_ntv_docpayment WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"value": "@concat('SELECT * FROM [batchSync].[v_W_PRATICHE_PAGAMENTO_D365_DS] WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -176,6 +176,17 @@
 								},
 								"sink": {
 									"name": "DEVICE_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BOOKING_ID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "BOOKING_ID",
 									"type": "String"
 								}
 							},
