@@ -288,7 +288,7 @@
 		],
 		"typeProperties": {
 			"schema": "batchSync",
-			"table": "v_ntv_ntv_authoritydocument"
+			"table": "v_W_PRATICHE_AUTORITA_D365_DS"
 		}
 	}
 }
