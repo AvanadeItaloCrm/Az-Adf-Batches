@@ -94,7 +94,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT * FROM batchSync.v_W_PROMOTER_BSS_D365_DS WHERE MODON_STAZIONE>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or DATA_MODIFICA>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"value": "@concat('SELECT * FROM [batchSync].[v_W_PROMOTER_BSS_D365_DS] WHERE MODON_STAZIONE>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''',\n' or DATA_MODIFICA>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
