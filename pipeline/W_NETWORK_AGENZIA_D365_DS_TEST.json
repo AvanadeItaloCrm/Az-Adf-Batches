@@ -112,7 +112,7 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "accountnumber",
+									"name": "CODICE_ADV",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -123,9 +123,9 @@
 							},
 							{
 								"source": {
-									"name": "id",
-									"type": "String",
-									"physicalType": "varchar"
+									"name": "ID_NETWORK",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
 								},
 								"sink": {
 									"name": "ID_NETWORK",
@@ -134,7 +134,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_name",
+									"name": "NOME_NETWORK",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
