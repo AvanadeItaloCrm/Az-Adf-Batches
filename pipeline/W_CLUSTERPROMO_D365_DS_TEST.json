@@ -94,7 +94,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT ntv_name, Id FROM [batchSync].[v_W_CLUSTERPROMO_D365_DS] WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"value": "@concat('SELECT * FROM [batchSync].[v_W_CLUSTERPROMO_D365_DS] WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -111,9 +111,9 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "Id",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"name": "INTEGRAZIONE_ID",
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "INTEGRAZIONE_ID",
@@ -122,7 +122,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_name",
+									"name": "CLUSTER_TARGET",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
