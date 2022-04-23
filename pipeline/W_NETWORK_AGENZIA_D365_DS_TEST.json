@@ -94,7 +94,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT (select top 1 accountnumber from ntv_account a join ntv_ntv_network_account na ON na.accountid = a.accountid where na.ntv_networkid=n.ntv_networkid) as accountnumber, convert(varchar(40),n.Id) id, n.ntv_name FROM ntv_ntv_network n where n.modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"value": "@concat('SELECT * FROM [batchSync].[v_W_NETWORK_AGENZIA_D365_DS] WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
