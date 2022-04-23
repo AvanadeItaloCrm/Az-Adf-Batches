@@ -96,7 +96,7 @@
 					],
 					"ifTrueActivities": [
 						{
-							"name": "Execute Pipeline2",
+							"name": "Execute ABBONAMENTI CARNET",
 							"type": "ExecutePipeline",
 							"dependsOn": [],
 							"userProperties": [],
@@ -109,7 +109,7 @@
 							}
 						},
 						{
-							"name": "Execute Pipeline3",
+							"name": "Execute AC MANDATO",
 							"type": "ExecutePipeline",
 							"dependsOn": [],
 							"userProperties": [],
@@ -122,7 +122,7 @@
 							}
 						},
 						{
-							"name": "Execute Pipeline4",
+							"name": "Execute ADV CORP",
 							"type": "ExecutePipeline",
 							"dependsOn": [],
 							"userProperties": [],
@@ -135,7 +135,7 @@
 							}
 						},
 						{
-							"name": "Execute Pipeline5",
+							"name": "Execute AGENTI",
 							"type": "ExecutePipeline",
 							"dependsOn": [],
 							"userProperties": [],
@@ -148,7 +148,7 @@
 							}
 						},
 						{
-							"name": "Execute Pipeline6",
+							"name": "Execute ANAGRAFICA TVM",
 							"type": "ExecutePipeline",
 							"dependsOn": [],
 							"userProperties": [],
@@ -161,7 +161,7 @@
 							}
 						},
 						{
-							"name": "Execute Pipeline7",
+							"name": "Execute ATTIVITA SR",
 							"type": "ExecutePipeline",
 							"dependsOn": [],
 							"userProperties": [],
@@ -174,7 +174,7 @@
 							}
 						},
 						{
-							"name": "Execute Pipeline8",
+							"name": "Execute CANALE PROMO",
 							"type": "ExecutePipeline",
 							"dependsOn": [],
 							"userProperties": [],
@@ -187,7 +187,7 @@
 							}
 						},
 						{
-							"name": "Execute Pipeline9",
+							"name": "Execute CLUSTER PROMO",
 							"type": "ExecutePipeline",
 							"dependsOn": [],
 							"userProperties": [],
@@ -200,7 +200,7 @@
 							}
 						},
 						{
-							"name": "Execute Pipeline10",
+							"name": "Execute CONTATTO SR CTC",
 							"type": "ExecutePipeline",
 							"dependsOn": [],
 							"userProperties": [],
@@ -213,7 +213,7 @@
 							}
 						},
 						{
-							"name": "Execute Pipeline11",
+							"name": "Execute CONTATTO SR WEB",
 							"type": "ExecutePipeline",
 							"dependsOn": [],
 							"userProperties": [],
@@ -226,7 +226,7 @@
 							}
 						},
 						{
-							"name": "Execute Pipeline12",
+							"name": "Execute CORPORATE SEGMENT",
 							"type": "ExecutePipeline",
 							"dependsOn": [],
 							"userProperties": [],
@@ -239,7 +239,7 @@
 							}
 						},
 						{
-							"name": "Execute Pipeline13",
+							"name": "Execute CUSTOMER",
 							"type": "ExecutePipeline",
 							"dependsOn": [],
 							"userProperties": [],
@@ -252,7 +252,7 @@
 							}
 						},
 						{
-							"name": "Execute Pipeline14",
+							"name": "Execute DIPENDENTE",
 							"type": "ExecutePipeline",
 							"dependsOn": [],
 							"userProperties": [],
@@ -265,7 +265,7 @@
 							}
 						},
 						{
-							"name": "Execute Pipeline15",
+							"name": "Execute GERARCHIA ADV CORP",
 							"type": "ExecutePipeline",
 							"dependsOn": [],
 							"userProperties": [],
@@ -278,7 +278,7 @@
 							}
 						},
 						{
-							"name": "Execute Pipeline16",
+							"name": "Execute INDIRIZZI",
 							"type": "ExecutePipeline",
 							"dependsOn": [],
 							"userProperties": [],
@@ -291,7 +291,7 @@
 							}
 						},
 						{
-							"name": "Execute Pipeline17",
+							"name": "Execute INTERESSI CLIENTI",
 							"type": "ExecutePipeline",
 							"dependsOn": [],
 							"userProperties": [],
@@ -304,7 +304,7 @@
 							}
 						},
 						{
-							"name": "Execute Pipeline18",
+							"name": "Execute NAZIONE",
 							"type": "ExecutePipeline",
 							"dependsOn": [],
 							"userProperties": [],
@@ -317,7 +317,7 @@
 							}
 						},
 						{
-							"name": "Execute Pipeline19",
+							"name": "Execute MULTITRATTA",
 							"type": "ExecutePipeline",
 							"dependsOn": [],
 							"userProperties": [],
@@ -330,7 +330,7 @@
 							}
 						},
 						{
-							"name": "Execute Pipeline20",
+							"name": "Execute NETWORK",
 							"type": "ExecutePipeline",
 							"dependsOn": [],
 							"userProperties": [],
@@ -343,7 +343,7 @@
 							}
 						},
 						{
-							"name": "Execute Pipeline21",
+							"name": "Execute ORDINI",
 							"type": "ExecutePipeline",
 							"dependsOn": [],
 							"userProperties": [],
@@ -356,7 +356,7 @@
 							}
 						},
 						{
-							"name": "Execute Pipeline22",
+							"name": "Execute PAG CAMPI",
 							"type": "ExecutePipeline",
 							"dependsOn": [],
 							"userProperties": [],
@@ -369,7 +369,7 @@
 							}
 						},
 						{
-							"name": "Execute Pipeline23",
+							"name": "Execute PAG INFODD",
 							"type": "ExecutePipeline",
 							"dependsOn": [],
 							"userProperties": [],
@@ -382,7 +382,7 @@
 							}
 						},
 						{
-							"name": "Execute Pipeline24",
+							"name": "Execute PAGAMENTI PRODOTTI",
 							"type": "ExecutePipeline",
 							"dependsOn": [],
 							"userProperties": [],
@@ -395,7 +395,7 @@
 							}
 						},
 						{
-							"name": "Execute Pipeline25",
+							"name": "Execute PRATICHE AUTORITA",
 							"type": "ExecutePipeline",
 							"dependsOn": [],
 							"userProperties": [],
@@ -408,7 +408,7 @@
 							}
 						},
 						{
-							"name": "Execute Pipeline26",
+							"name": "Execute PRATICHE PAGAMENTO",
 							"type": "ExecutePipeline",
 							"dependsOn": [],
 							"userProperties": [],
@@ -421,7 +421,7 @@
 							}
 						},
 						{
-							"name": "Execute Pipeline27",
+							"name": "Execute PRODOTTI PNR",
 							"type": "ExecutePipeline",
 							"dependsOn": [],
 							"userProperties": [],
@@ -434,7 +434,7 @@
 							}
 						},
 						{
-							"name": "Execute Pipeline28",
+							"name": "Execute PROMOTER BSS",
 							"type": "ExecutePipeline",
 							"dependsOn": [],
 							"userProperties": [],
@@ -447,7 +447,7 @@
 							}
 						},
 						{
-							"name": "Execute Pipeline29",
+							"name": "Execute PROMOZIONI",
 							"type": "ExecutePipeline",
 							"dependsOn": [],
 							"userProperties": [],
@@ -460,7 +460,7 @@
 							}
 						},
 						{
-							"name": "Execute Pipeline30",
+							"name": "Execute REFERENTI",
 							"type": "ExecutePipeline",
 							"dependsOn": [],
 							"userProperties": [],
@@ -473,7 +473,7 @@
 							}
 						},
 						{
-							"name": "Execute Pipeline31",
+							"name": "Execute RISPOSTE PROMO",
 							"type": "ExecutePipeline",
 							"dependsOn": [],
 							"userProperties": [],
@@ -486,7 +486,7 @@
 							}
 						},
 						{
-							"name": "Execute Pipeline32",
+							"name": "Execute SERVICE REQUEST",
 							"type": "ExecutePipeline",
 							"dependsOn": [],
 							"userProperties": [],
@@ -499,7 +499,7 @@
 							}
 						},
 						{
-							"name": "Execute Pipeline33",
+							"name": "Execute SINTESI FRODI",
 							"type": "ExecutePipeline",
 							"dependsOn": [],
 							"userProperties": [],
@@ -512,7 +512,7 @@
 							}
 						},
 						{
-							"name": "Execute Pipeline34",
+							"name": "Execute TRANSAZIONI CHARGEBACK",
 							"type": "ExecutePipeline",
 							"dependsOn": [],
 							"userProperties": [],
@@ -525,7 +525,7 @@
 							}
 						},
 						{
-							"name": "Execute Pipeline35",
+							"name": "Execute TRANSAZIONI FRODI",
 							"type": "ExecutePipeline",
 							"dependsOn": [],
 							"userProperties": [],
