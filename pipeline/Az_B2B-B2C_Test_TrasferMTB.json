@@ -317,17 +317,6 @@
 							},
 							{
 								"source": {
-									"name": "Tipologia",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "TIPOLOGIA",
-									"type": "String",
-									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
 									"name": "Stato Carta",
 									"type": "String",
 									"physicalType": "String"
