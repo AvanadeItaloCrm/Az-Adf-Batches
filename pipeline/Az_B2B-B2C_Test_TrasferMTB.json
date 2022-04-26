@@ -198,7 +198,7 @@
 							},
 							{
 								"source": {
-									"name": "Valore Nominale Lordo",
+									"name": "Importo",
 									"type": "String",
 									"physicalType": "String"
 								},
