@@ -109,7 +109,7 @@
 						"upsertSettings": {
 							"useTempDB": true,
 							"keys": [
-								""
+								"CODICE_CARTA"
 							]
 						},
 						"sqlWriterUseTableLock": false,
@@ -127,6 +127,18 @@
 								},
 								"sink": {
 									"name": "CODICE_CARTA",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Codice Transazione",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "INTEGRAZIONE_ID",
 									"type": "String",
 									"physicalType": "varchar"
 								}
@@ -207,7 +219,7 @@
 							},
 							{
 								"source": {
-									"name": "Importo",
+									"name": "Importo Sconto Lordo",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -305,12 +317,38 @@
 							},
 							{
 								"source": {
+									"name": "Importo",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "IMPORTO_NETTO",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 22
+								}
+							},
+							{
+								"source": {
 									"name": "Canale di acquisto",
 									"type": "String",
 									"physicalType": "String"
 								},
 								"sink": {
 									"name": "CANALE_DI_ACQUISTO",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Tipologia3",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TIPOLOGIA",
 									"type": "String",
 									"physicalType": "varchar"
 								}
