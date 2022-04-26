@@ -109,7 +109,7 @@
 						"upsertSettings": {
 							"useTempDB": true,
 							"keys": [
-								"CODICE_CARTA"
+								"INTEGRAZIONE_ID"
 							]
 						},
 						"sqlWriterUseTableLock": false,
