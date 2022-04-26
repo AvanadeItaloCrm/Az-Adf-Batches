@@ -104,7 +104,16 @@
 						}
 					},
 					"sink": {
-						"type": "AzureSqlSink"
+						"type": "AzureSqlSink",
+						"writeBehavior": "upsert",
+						"upsertSettings": {
+							"useTempDB": true,
+							"keys": [
+								""
+							]
+						},
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
 					},
 					"enableStaging": false,
 					"translator": {
@@ -308,8 +317,7 @@
 							},
 							{
 								"source": {
-									"name": "Tipologia3",
-									"type": "String",
+									"name": "Tipologia",
 									"physicalType": "String"
 								},
 								"sink": {
