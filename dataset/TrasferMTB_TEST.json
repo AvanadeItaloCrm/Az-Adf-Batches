@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "CRM_TransferMultitrattaTransactionsData.csv",
+				"fileName": "CRM_TransferMultitrattaTransactionsData_20190118.csv",
 				"folderPath": "TrasferMTB",
 				"container": "batchfiles"
 			},
@@ -21,11 +21,11 @@
 		},
 		"schema": [
 			{
-				"name": "Codice Transazione",
+				"name": "Codice_Transazione",
 				"type": "String"
 			},
 			{
-				"name": "Data transazione",
+				"name": "Data_transazione",
 				"type": "String"
 			},
 			{
@@ -49,63 +49,63 @@
 				"type": "String"
 			},
 			{
-				"name": "Codice carta",
+				"name": "Codice_carta",
 				"type": "String"
 			},
 			{
-				"name": "Codice carta web",
+				"name": "Codice_carta_web",
 				"type": "String"
 			},
 			{
-				"name": "Codice carta migrata",
+				"name": "Codice_carta_migrata",
 				"type": "String"
 			},
 			{
-				"name": "Codice carta web migrata",
+				"name": "Codice_carta_web_migrata",
 				"type": "String"
 			},
 			{
-				"name": "Residuo Carta Migrata",
+				"name": "Residuo_Carta_Migrata",
 				"type": "String"
 			},
 			{
-				"name": "PNR tecnico acquisto",
+				"name": "PNR_tecnico_acquisto",
 				"type": "String"
 			},
 			{
-				"name": "Data di acquisto",
+				"name": "Data_di_acquisto",
 				"type": "String"
 			},
 			{
-				"name": "Valore Nominale Lordo",
+				"name": "Valore_Nominale_Lordo",
 				"type": "String"
 			},
 			{
-				"name": "Valore Nominale Netto",
+				"name": "Valore_Nominale_Netto",
 				"type": "String"
 			},
 			{
-				"name": "Percentuale Sconto",
+				"name": "Percentuale_Sconto",
 				"type": "String"
 			},
 			{
-				"name": "Importo Sconto Lordo",
+				"name": "Importo_Sconto_Lordo",
 				"type": "String"
 			},
 			{
-				"name": "Importo Sconto Netto",
+				"name": "Importo_Sconto_Netto",
 				"type": "String"
 			},
 			{
-				"name": "Corrispettivo Lordo",
+				"name": "Corrispettivo_Lordo",
 				"type": "String"
 			},
 			{
-				"name": "Corrispettivo Netto",
+				"name": "Corrispettivo_Netto",
 				"type": "String"
 			},
 			{
-				"name": "Percentuale Iva",
+				"name": "Percentuale_Iva",
 				"type": "String"
 			},
 			{
@@ -113,7 +113,7 @@
 				"type": "String"
 			},
 			{
-				"name": "Canale di acquisto",
+				"name": "Canale_di_acquisto",
 				"type": "String"
 			},
 			{
@@ -121,15 +121,15 @@
 				"type": "String"
 			},
 			{
-				"name": "Stato Carta",
+				"name": "Stato_Carta",
 				"type": "String"
 			},
 			{
-				"name": "Data scadenza carta",
+				"name": "Data_scadenza_carta",
 				"type": "String"
 			},
 			{
-				"name": "Richiesta fattura",
+				"name": "Richiesta_fattura",
 				"type": "String"
 			},
 			{
@@ -137,7 +137,7 @@
 				"type": "String"
 			},
 			{
-				"name": "Partita Iva",
+				"name": "Partita_Iva",
 				"type": "String"
 			},
 			{
@@ -145,43 +145,43 @@
 				"type": "String"
 			},
 			{
-				"name": "Indirizzo - Particella Toponomastica",
+				"name": "Indirizzo_- Particella_Toponomastica",
 				"type": "String"
 			},
 			{
-				"name": "Indirizzo - Strada",
+				"name": "Indirizzo_-_Strada",
 				"type": "String"
 			},
 			{
-				"name": "Indirizzo - Numero Civico",
+				"name": "Indirizzo_-_Numero_Civico",
 				"type": "String"
 			},
 			{
-				"name": "Indirizzo - Comune",
+				"name": "Indirizzo_-_Comune",
 				"type": "String"
 			},
 			{
-				"name": "Indirizzo - Provincia",
+				"name": "Indirizzo_-_Provincia",
 				"type": "String"
 			},
 			{
-				"name": "Indirizzo - CAP",
+				"name": "Indirizzo_-_CAP",
 				"type": "String"
 			},
 			{
-				"name": "Indirizzo - Nazione",
+				"name": "Indirizzo_-_Nazione",
 				"type": "String"
 			},
 			{
-				"name": "Consenso Marketing",
+				"name": "Consenso_Marketing",
 				"type": "String"
 			},
 			{
-				"name": "Consenso Profilazione",
+				"name": "Consenso_Profilazione",
 				"type": "String"
 			},
 			{
-				"name": "Consenso Marketing Terze Parti",
+				"name": "Consenso_Marketing_Terze_Parti",
 				"type": "String"
 			}
 		]
