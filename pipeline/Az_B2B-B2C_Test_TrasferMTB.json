@@ -329,8 +329,7 @@
 							},
 							{
 								"source": {
-									"name": "Tipologia3",
-									"type": "String",
+									"name": "Tipologia",
 									"physicalType": "String"
 								},
 								"sink": {
