@@ -147,7 +147,7 @@
 							},
 							{
 								"source": {
-									"name": "Codice carta web",
+									"name": "Codice carta web migrata",
 									"type": "String",
 									"physicalType": "String"
 								},
