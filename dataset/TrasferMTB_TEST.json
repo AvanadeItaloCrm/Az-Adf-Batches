@@ -21,6 +21,167 @@
 		},
 		"schema": [
 			{
+				"name": "Codice Transazione",
+				"type": "String"
+			},
+			{
+				"name": "Data transazione",
+				"type": "String"
+			},
+			{
+				"name": "PNR",
+				"type": "String"
+			},
+			{
+				"name": "Tipologia3",
+				"type": "String"
+			},
+			{
+				"name": "Importo",
+				"type": "String"
+			},
+			{
+				"name": "Shop",
+				"type": "String"
+			},
+			{
+				"name": "Terminal",
+				"type": "String"
+			},
+			{
+				"name": "Codice carta",
+				"type": "String"
+			},
+			{
+				"name": "Codice carta web",
+				"type": "String"
+			},
+			{
+				"name": "Codice carta migrata",
+				"type": "String"
+			},
+			{
+				"name": "Codice carta web migrata",
+				"type": "String"
+			},
+			{
+				"name": "Residuo Carta Migrata",
+				"type": "String"
+			},
+			{
+				"name": "PNR tecnico acquisto",
+				"type": "String"
+			},
+			{
+				"name": "Data di acquisto",
+				"type": "String"
+			},
+			{
+				"name": "Valore Nominale Lordo",
+				"type": "String"
+			},
+			{
+				"name": "Valore Nominale Netto",
+				"type": "String"
+			},
+			{
+				"name": "Percentuale Sconto",
+				"type": "String"
+			},
+			{
+				"name": "Importo Sconto Lordo",
+				"type": "String"
+			},
+			{
+				"name": "Importo Sconto Netto",
+				"type": "String"
+			},
+			{
+				"name": "Corrispettivo Lordo",
+				"type": "String"
+			},
+			{
+				"name": "Corrispettivo Netto",
+				"type": "String"
+			},
+			{
+				"name": "Percentuale Iva",
+				"type": "String"
+			},
+			{
+				"name": "Imposta",
+				"type": "String"
+			},
+			{
+				"name": "Canale di acquisto",
+				"type": "String"
+			},
+			{
+				"name": "Tipologia24",
+				"type": "String"
+			},
+			{
+				"name": "Stato Carta",
+				"type": "String"
+			},
+			{
+				"name": "Data scadenza carta",
+				"type": "String"
+			},
+			{
+				"name": "Richiesta fattura",
+				"type": "String"
+			},
+			{
+				"name": "Denominazione",
+				"type": "String"
+			},
+			{
+				"name": "Partita Iva",
+				"type": "String"
+			},
+			{
+				"name": "Email",
+				"type": "String"
+			},
+			{
+				"name": "Indirizzo - Particella Toponomastica",
+				"type": "String"
+			},
+			{
+				"name": "Indirizzo - Strada",
+				"type": "String"
+			},
+			{
+				"name": "Indirizzo - Numero Civico",
+				"type": "String"
+			},
+			{
+				"name": "Indirizzo - Comune",
+				"type": "String"
+			},
+			{
+				"name": "Indirizzo - Provincia",
+				"type": "String"
+			},
+			{
+				"name": "Indirizzo - CAP",
+				"type": "String"
+			},
+			{
+				"name": "Indirizzo - Nazione",
+				"type": "String"
+			},
+			{
+				"name": "Consenso Marketing",
+				"type": "String"
+			},
+			{
+				"name": "Consenso Profilazione",
+				"type": "String"
+			},
+			{
+				"name": "Consenso Marketing Terze Parti",
 				"type": "String"
 			}
 		]

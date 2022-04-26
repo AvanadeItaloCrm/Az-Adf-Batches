@@ -171,18 +171,6 @@
 							},
 							{
 								"source": {
-									"name": "Data di acquisto",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "DATA_DI_ACQUISTO",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								}
-							},
-							{
-								"source": {
 									"name": "Valore Nominale Netto",
 									"type": "String",
 									"physicalType": "String"
@@ -327,18 +315,6 @@
 									"name": "STATO",
 									"type": "String",
 									"physicalType": "varchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Data scadenza carta",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "DATA_SCADENZA_CARTA",
-									"type": "DateTime",
-									"physicalType": "datetime"
 								}
 							},
 							{
