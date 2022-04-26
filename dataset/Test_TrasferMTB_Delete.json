@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "CRM_TransferMultitrattaTransactionsData_20211127.csv",
+				"fileName": "CRM_TransferMultitrattaTransactionsData.csv",
 				"folderPath": "TrasferMTB",
 				"container": "batchfiles"
 			}
