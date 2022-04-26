@@ -296,20 +296,6 @@
 							},
 							{
 								"source": {
-									"name": "Importo Sconto Netto",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "IMPORTO_NETTO",
-									"type": "Decimal",
-									"physicalType": "decimal",
-									"scale": 2,
-									"precision": 22
-								}
-							},
-							{
-								"source": {
 									"name": "Canale di acquisto",
 									"type": "String",
 									"physicalType": "String"
