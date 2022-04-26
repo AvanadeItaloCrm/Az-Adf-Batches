@@ -73,6 +73,7 @@
 			},
 			{
 				"name": "Sql To Oracle",
+				"description": "Tabella Multitratta popolata dalla pipeline: Az_B2B-B2C_Test_TrasferMTB",
 				"type": "Copy",
 				"dependsOn": [
 					{
