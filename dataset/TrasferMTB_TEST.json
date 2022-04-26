@@ -10,179 +10,150 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "CRM_TransferMultitrattaTransactionsData_20190118.csv",
+				"fileName": "CRM_TransferMultitrattaTransactionsData_20211127.csv",
 				"folderPath": "TrasferMTB",
 				"container": "batchfiles"
 			},
 			"columnDelimiter": ";",
-			"encodingName": "UTF-8 without BOM",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": ""
 		},
 		"schema": [
 			{
-				"name": "Codice_Transazione",
+				"name": "CODICE_CARTA",
 				"type": "String"
 			},
 			{
-				"name": "Data_transazione",
+				"name": "CODICE_CARTA_WEB",
 				"type": "String"
 			},
 			{
-				"name": "PNR",
+				"name": "CODICE_CARTA_MIGRATA",
 				"type": "String"
 			},
 			{
-				"name": "Tipologia3",
+				"name": "CODICE_CARTA_WEB_MIGRATA",
 				"type": "String"
 			},
 			{
-				"name": "Importo",
+				"name": "RESIDUO_CARTA_MIGRATA",
 				"type": "String"
 			},
 			{
-				"name": "Shop",
+				"name": "PNR_TECNICO_RESIDUO",
 				"type": "String"
 			},
 			{
-				"name": "Terminal",
+				"name": "DATA_ACQUISTO",
 				"type": "String"
 			},
 			{
-				"name": "Codice_carta",
+				"name": "VALORE_NOM_LORDO",
 				"type": "String"
 			},
 			{
-				"name": "Codice_carta_web",
+				"name": "VALORE_NOM_NETTO",
 				"type": "String"
 			},
 			{
-				"name": "Codice_carta_migrata",
+				"name": "PERCENTUALE_SCONTO",
 				"type": "String"
 			},
 			{
-				"name": "Codice_carta_web_migrata",
+				"name": "IMPORTO_SCONTO_LORDO",
 				"type": "String"
 			},
 			{
-				"name": "Residuo_Carta_Migrata",
+				"name": "IMPORTO_SCONTO_NETTO",
 				"type": "String"
 			},
 			{
-				"name": "PNR_tecnico_acquisto",
+				"name": "CORRISPETTIVO_LORDO",
 				"type": "String"
 			},
 			{
-				"name": "Data_di_acquisto",
+				"name": "CORRISPETTIVO_NETTO",
 				"type": "String"
 			},
 			{
-				"name": "Valore_Nominale_Lordo",
+				"name": "PERC_IVA",
 				"type": "String"
 			},
 			{
-				"name": "Valore_Nominale_Netto",
+				"name": "IMPOSTA",
 				"type": "String"
 			},
 			{
-				"name": "Percentuale_Sconto",
+				"name": "CANALE_DI_ACQUISTO",
 				"type": "String"
 			},
 			{
-				"name": "Importo_Sconto_Lordo",
+				"name": "TIPOLOGIA",
 				"type": "String"
 			},
 			{
-				"name": "Importo_Sconto_Netto",
+				"name": "STATO_CARTA",
 				"type": "String"
 			},
 			{
-				"name": "Corrispettivo_Lordo",
+				"name": "DATA_SCADENZA_CARTA",
 				"type": "String"
 			},
 			{
-				"name": "Corrispettivo_Netto",
+				"name": "RICHIESTA_FATTURA",
 				"type": "String"
 			},
 			{
-				"name": "Percentuale_Iva",
+				"name": "DENOMINAZIONE",
 				"type": "String"
 			},
 			{
-				"name": "Imposta",
+				"name": "PARTITA_IVA",
 				"type": "String"
 			},
 			{
-				"name": "Canale_di_acquisto",
+				"name": "EMAIL",
 				"type": "String"
 			},
 			{
-				"name": "Tipologia24",
+				"name": "INDIRIZZO_PART_TOPONOMASTICA",
 				"type": "String"
 			},
 			{
-				"name": "Stato_Carta",
+				"name": "INDIRIZZO_STRADA",
 				"type": "String"
 			},
 			{
-				"name": "Data_scadenza_carta",
+				"name": "INDIRIZZO_NUM_CIVICO",
 				"type": "String"
 			},
 			{
-				"name": "Richiesta_fattura",
+				"name": "INDIRIZZO_COMUNE",
 				"type": "String"
 			},
 			{
-				"name": "Denominazione",
+				"name": "INDIRIZZO_PROVINCIA",
 				"type": "String"
 			},
 			{
-				"name": "Partita_Iva",
+				"name": "INDIRIZZO_CAP",
 				"type": "String"
 			},
 			{
-				"name": "Email",
+				"name": "INDIRIZZO_NAZIONE",
 				"type": "String"
 			},
 			{
-				"name": "Indirizzo_- Particella_Toponomastica",
+				"name": "CONSENSO_MARKETING",
 				"type": "String"
 			},
 			{
-				"name": "Indirizzo_-_Strada",
+				"name": "CONSENSO_PROFILAZIONE",
 				"type": "String"
 			},
 			{
-				"name": "Indirizzo_-_Numero_Civico",
-				"type": "String"
-			},
-			{
-				"name": "Indirizzo_-_Comune",
-				"type": "String"
-			},
-			{
-				"name": "Indirizzo_-_Provincia",
-				"type": "String"
-			},
-			{
-				"name": "Indirizzo_-_CAP",
-				"type": "String"
-			},
-			{
-				"name": "Indirizzo_-_Nazione",
-				"type": "String"
-			},
-			{
-				"name": "Consenso_Marketing",
-				"type": "String"
-			},
-			{
-				"name": "Consenso_Profilazione",
-				"type": "String"
-			},
-			{
-				"name": "Consenso_Marketing_Terze_Parti",
+				"name": "CONSENSO_MARKETING_TERZE_PARTI",
 				"type": "String"
 			}
 		]

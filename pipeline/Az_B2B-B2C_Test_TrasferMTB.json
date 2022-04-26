@@ -112,7 +112,7 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "Codice_carta",
+									"name": "CODICE_CARTA",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -124,7 +124,7 @@
 							},
 							{
 								"source": {
-									"name": "Codice_carta_web",
+									"name": "CODICE_CARTA_WEB",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -136,7 +136,7 @@
 							},
 							{
 								"source": {
-									"name": "Codice_carta_migrata",
+									"name": "CODICE_CARTA_MIGRATA",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -148,7 +148,7 @@
 							},
 							{
 								"source": {
-									"name": "Codice_carta_web_migrata",
+									"name": "CODICE_CARTA_WEB_MIGRATA",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -160,7 +160,7 @@
 							},
 							{
 								"source": {
-									"name": "PNR",
+									"name": "PNR_TECNICO_RESIDUO",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -172,7 +172,7 @@
 							},
 							{
 								"source": {
-									"name": "Data_di_acquisto",
+									"name": "DATA_ACQUISTO",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -184,7 +184,7 @@
 							},
 							{
 								"source": {
-									"name": "Valore_Nominale_Netto",
+									"name": "VALORE_NOM_LORDO",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -198,7 +198,7 @@
 							},
 							{
 								"source": {
-									"name": "Importo",
+									"name": "IMPORTO_SCONTO_LORDO",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -212,7 +212,7 @@
 							},
 							{
 								"source": {
-									"name": "Importo_Sconto_Lordo",
+									"name": "IMPORTO_SCONTO_LORDO",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -226,7 +226,7 @@
 							},
 							{
 								"source": {
-									"name": "Importo_Sconto_Netto",
+									"name": "IMPORTO_SCONTO_NETTO",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -240,7 +240,7 @@
 							},
 							{
 								"source": {
-									"name": "Percentuale_Sconto",
+									"name": "PERCENTUALE_SCONTO",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -254,7 +254,7 @@
 							},
 							{
 								"source": {
-									"name": "Valore_Nominale_Lordo",
+									"name": "VALORE_NOM_NETTO",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -268,7 +268,7 @@
 							},
 							{
 								"source": {
-									"name": "Percentuale_Iva",
+									"name": "PERC_IVA",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -282,7 +282,7 @@
 							},
 							{
 								"source": {
-									"name": "Imposta",
+									"name": "IMPOSTA",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -296,7 +296,7 @@
 							},
 							{
 								"source": {
-									"name": "Canale_di_acquisto",
+									"name": "CANALE_DI_ACQUISTO",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -308,7 +308,7 @@
 							},
 							{
 								"source": {
-									"name": "Tipologia3",
+									"name": "TIPOLOGIA",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -320,7 +320,7 @@
 							},
 							{
 								"source": {
-									"name": "Stato_Carta",
+									"name": "STATO_CARTA",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -332,7 +332,7 @@
 							},
 							{
 								"source": {
-									"name": "Data_scadenza_carta",
+									"name": "DATA_SCADENZA_CARTA",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -344,7 +344,7 @@
 							},
 							{
 								"source": {
-									"name": "Richiesta_fattura",
+									"name": "RICHIESTA_FATTURA",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -356,7 +356,7 @@
 							},
 							{
 								"source": {
-									"name": "Denominazione",
+									"name": "DENOMINAZIONE",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -368,7 +368,7 @@
 							},
 							{
 								"source": {
-									"name": "Partita_Iva",
+									"name": "PARTITA_IVA",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -380,7 +380,7 @@
 							},
 							{
 								"source": {
-									"name": "Email",
+									"name": "EMAIL",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -392,7 +392,7 @@
 							},
 							{
 								"source": {
-									"name": "Indirizzo_Particella_Toponomastica",
+									"name": "INDIRIZZO_PART_TOPONOMASTICA",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -404,7 +404,7 @@
 							},
 							{
 								"source": {
-									"name": "Indirizzo_Strada",
+									"name": "INDIRIZZO_STRADA",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -416,7 +416,7 @@
 							},
 							{
 								"source": {
-									"name": "Indirizzo_Numero_Civico",
+									"name": "INDIRIZZO_NUM_CIVICO",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -428,7 +428,7 @@
 							},
 							{
 								"source": {
-									"name": "Indirizzo_Comune",
+									"name": "INDIRIZZO_COMUNE",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -440,7 +440,7 @@
 							},
 							{
 								"source": {
-									"name": "Indirizzo_Provincia",
+									"name": "INDIRIZZO_PROVINCIA",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -452,7 +452,7 @@
 							},
 							{
 								"source": {
-									"name": "Indirizzo_CAP",
+									"name": "INDIRIZZO_CAP",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -464,7 +464,7 @@
 							},
 							{
 								"source": {
-									"name": "Indirizzo_Nazione",
+									"name": "INDIRIZZO_NAZIONE",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -476,7 +476,7 @@
 							},
 							{
 								"source": {
-									"name": "Consenso_Marketing",
+									"name": "CONSENSO_MARKETING",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -488,7 +488,7 @@
 							},
 							{
 								"source": {
-									"name": "Consenso_Profilazione",
+									"name": "CONSENSO_PROFILAZIONE",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -500,7 +500,7 @@
 							},
 							{
 								"source": {
-									"name": "Residuo_Carta_Migrata",
+									"name": "RESIDUO_CARTA_MIGRATA",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -514,7 +514,7 @@
 							},
 							{
 								"source": {
-									"name": "Consenso_Marketing_Terze_Parti",
+									"name": "CONSENSO_MARKETING_TERZE_PARTI",
 									"type": "String",
 									"physicalType": "String"
 								},
