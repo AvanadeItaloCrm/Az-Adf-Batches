@@ -219,7 +219,7 @@
 							},
 							{
 								"source": {
-									"name": "Importo Sconto Lordo",
+									"name": "Importo",
 									"type": "String",
 									"physicalType": "String"
 								},
@@ -309,20 +309,6 @@
 								},
 								"sink": {
 									"name": "IMPOSTA",
-									"type": "Decimal",
-									"physicalType": "decimal",
-									"scale": 2,
-									"precision": 22
-								}
-							},
-							{
-								"source": {
-									"name": "Importo",
-									"type": "String",
-									"physicalType": "String"
-								},
-								"sink": {
-									"name": "IMPORTO_NETTO",
 									"type": "Decimal",
 									"physicalType": "decimal",
 									"scale": 2,
