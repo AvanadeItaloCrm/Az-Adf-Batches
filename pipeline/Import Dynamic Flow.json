@@ -119,6 +119,12 @@
 								"value": "@variables('CreatedTableName')",
 								"type": "Expression"
 							}
+						},
+						"FileName": {
+							"value": {
+								"value": "@pipeline().parameters.DisplayName",
+								"type": "Expression"
+							}
 						}
 					}
 				}
