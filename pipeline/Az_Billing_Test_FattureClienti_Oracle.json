@@ -677,7 +677,7 @@
 		"variables": {
 			"TableName": {
 				"type": "String",
-				"defaultValue": "AggFatture"
+				"defaultValue": "Fatture_Cliente"
 			}
 		},
 		"folder": {
