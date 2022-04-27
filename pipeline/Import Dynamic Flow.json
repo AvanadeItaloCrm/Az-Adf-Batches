@@ -515,6 +515,12 @@
 								"value": "@pipeline().parameters.CategoryName",
 								"type": "Expression"
 							}
+						},
+						"FileName": {
+							"value": {
+								"value": "@pipeline().parameters.DisplayName",
+								"type": "Expression"
+							}
 						}
 					}
 				}
