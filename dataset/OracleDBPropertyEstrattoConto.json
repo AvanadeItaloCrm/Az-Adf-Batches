@@ -2,7 +2,7 @@
 	"name": "OracleDBPropertyEstrattoConto",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "OracleDB_TEST",
+			"referenceName": "OracleDB_DEV",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
