@@ -1,5 +1,5 @@
 {
-	"name": "W_SINCRONIZZAZIONE_KBI_BIDYN_TEST",
+	"name": "W_SINCRONIZZAZIONE_KPI_BIDYN_TEST",
 	"properties": {
 		"activities": [
 			{
@@ -102,7 +102,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"pipeline": {
-									"referenceName": "KBI_BIDYN_01_TEST",
+									"referenceName": "KPI_BIDYN_01_TEST",
 									"type": "PipelineReference"
 								},
 								"waitOnCompletion": true
@@ -115,7 +115,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"pipeline": {
-									"referenceName": "KBI_BIDYN_02_TEST",
+									"referenceName": "KPI_BIDYN_02_TEST",
 									"type": "PipelineReference"
 								},
 								"waitOnCompletion": true
@@ -128,7 +128,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"pipeline": {
-									"referenceName": "KBI_BIDYN_03_TEST",
+									"referenceName": "KPI_BIDYN_03_TEST",
 									"type": "PipelineReference"
 								},
 								"waitOnCompletion": true
@@ -141,7 +141,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"pipeline": {
-									"referenceName": "KBI_BIDYN_04_TEST",
+									"referenceName": "KPI_BIDYN_04_TEST",
 									"type": "PipelineReference"
 								},
 								"waitOnCompletion": true
@@ -154,7 +154,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"pipeline": {
-									"referenceName": "KBI_BIDYN_05_TEST",
+									"referenceName": "KPI_BIDYN_05_TEST",
 									"type": "PipelineReference"
 								},
 								"waitOnCompletion": true
@@ -167,7 +167,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"pipeline": {
-									"referenceName": "KBI_BIDYN_06_TEST",
+									"referenceName": "KPI_BIDYN_06_TEST",
 									"type": "PipelineReference"
 								},
 								"waitOnCompletion": true
@@ -180,7 +180,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"pipeline": {
-									"referenceName": "KBI_BIDYN_07_TEST",
+									"referenceName": "KPI_BIDYN_07_TEST",
 									"type": "PipelineReference"
 								},
 								"waitOnCompletion": true
@@ -193,7 +193,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"pipeline": {
-									"referenceName": "KBI_BIDYN_08_TEST",
+									"referenceName": "KPI_BIDYN_08_TEST",
 									"type": "PipelineReference"
 								},
 								"waitOnCompletion": true
@@ -206,7 +206,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"pipeline": {
-									"referenceName": "KBI_BIDYN_09_TEST",
+									"referenceName": "KPI_BIDYN_09_TEST",
 									"type": "PipelineReference"
 								},
 								"waitOnCompletion": true
@@ -219,7 +219,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"pipeline": {
-									"referenceName": "KBI_BIDYN_10_TEST",
+									"referenceName": "KPI_BIDYN_10_TEST",
 									"type": "PipelineReference"
 								},
 								"waitOnCompletion": true

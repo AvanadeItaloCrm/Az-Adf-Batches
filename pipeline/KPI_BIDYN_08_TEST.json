@@ -1,5 +1,5 @@
 {
-	"name": "KBI_BIDYN_08_TEST",
+	"name": "KPI_BIDYN_08_TEST",
 	"properties": {
 		"description": "Flusso che legge da Oracle e scrive su DB Sql di Staging area",
 		"activities": [

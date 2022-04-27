@@ -626,7 +626,10 @@
 							"type": "String"
 						},
 						"Errore": {
-							"value": "@pipeline().RunId",
+							"value": {
+								"value": "@pipeline().RunId",
+								"type": "Expression"
+							},
 							"type": "String"
 						}
 					}
