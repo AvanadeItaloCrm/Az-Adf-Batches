@@ -518,6 +518,18 @@
 								"value": "@pipeline().parameters.DisplayName",
 								"type": "Expression"
 							}
+						},
+						"TabName": {
+							"value": {
+								"value": "@variables('CreatedTableName')",
+								"type": "Expression"
+							}
+						},
+						"MassiveImportRef": {
+							"value": {
+								"value": "@split(pipeline().parameters.FileName, '_')[0]",
+								"type": "Expression"
+							}
 						}
 					}
 				}
