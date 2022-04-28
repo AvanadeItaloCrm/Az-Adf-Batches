@@ -241,10 +241,6 @@
 				"name": "ntv_compositekey",
 				"type": "nvarchar"
 			}
-		],
-		"typeProperties": {
-			"schema": "dbo",
-			"table": "ntv_ntv_servicecontact"
-		}
+		]
 	}
 }
