@@ -224,8 +224,8 @@
 							{
 								"source": {
 									"name": "ADV_PADRE_ID",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "ADV_PADRE_ID",
@@ -477,8 +477,10 @@
 							{
 								"source": {
 									"name": "PERCENTUALE_IVA",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 38
 								},
 								"sink": {
 									"name": "PERCENTUALE_IVA",
@@ -499,8 +501,8 @@
 							{
 								"source": {
 									"name": "CENTRO_FATT_BASE_ID",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "CENTRO_FATT_BASE_ID",
@@ -510,8 +512,8 @@
 							{
 								"source": {
 									"name": "CENTRO_FATT_OVER_ID",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "CENTRO_FATT_OVER_ID",
@@ -655,8 +657,8 @@
 							{
 								"source": {
 									"name": "TMC_PRIMARIA_ID",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
+									"type": "String",
+									"physicalType": "nvarchar"
 								},
 								"sink": {
 									"name": "TMC_PRIMARIA_ID",
@@ -693,6 +695,17 @@
 								},
 								"sink": {
 									"name": "DIST_TOOL_AZIENDA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CODICE_ESTERNO_CORPORATE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CODICE_ESTERNO_CORPORATE",
 									"type": "String"
 								}
 							},
@@ -1095,10 +1108,8 @@
 							{
 								"source": {
 									"name": "FATT_ANNUO_ITALO",
-									"type": "Decimal",
-									"physicalType": "decimal",
-									"scale": 2,
-									"precision": 38
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "FATT_ANNUO_ITALO",
