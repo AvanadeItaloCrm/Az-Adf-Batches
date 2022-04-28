@@ -488,10 +488,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"packageLocation": {
-						"packagePath": {
-							"value": "@pipeline().parameters.PackagePath",
-							"type": "Expression"
-						},
+						"packagePath": "NTV.D365.IntegrationServices/NTV.IntegrationServices.MassiveImports/ErrorManagement.dtsx",
 						"type": "SSISDB"
 					},
 					"environmentPath": {
