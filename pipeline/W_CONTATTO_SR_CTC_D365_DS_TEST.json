@@ -117,7 +117,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "TEST_W_CONTATTO_SR_CTC_D365_DS_SQLSource",
+						"referenceName": "TEST_W_CONTATTO_SR_CTC_D365_DS",
 						"type": "DatasetReference"
 					}
 				],

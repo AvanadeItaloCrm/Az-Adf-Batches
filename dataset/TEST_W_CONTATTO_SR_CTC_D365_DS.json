@@ -1,0 +1,51 @@
+{
+	"name": "TEST_W_CONTATTO_SR_CTC_D365_DS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlTestStagingArea",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "INTEGRAZIONE_ID",
+				"type": "uniqueidentifier"
+			},
+			{
+				"name": "EMAIL",
+				"type": "nvarchar"
+			},
+			{
+				"name": "COGNOME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NOME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TELEFONO_MOBILE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TELEFONO_FISSO",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NOTE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "modifiedon",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "batchSync",
+			"table": "v_W_CONTATTO_SR_CTC_D365_DS"
+		}
+	}
+}
