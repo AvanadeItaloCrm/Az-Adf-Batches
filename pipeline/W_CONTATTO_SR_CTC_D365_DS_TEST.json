@@ -174,6 +174,39 @@
 									"name": "TELEFONO",
 									"type": "String"
 								}
+							},
+							{
+								"source": {
+									"name": "CC_CLUSTER",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CC_CLUSTER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CC_FIELD1",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CC_FIELD1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CC_FIELD2",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CC_FIELD2",
+									"type": "String"
+								}
 							}
 						],
 						"typeConversion": true,
