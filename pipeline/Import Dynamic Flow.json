@@ -506,7 +506,7 @@
 					"projectParameters": {
 						"ErrorMessage": {
 							"value": {
-								"value": "@activity('Get CSV Records').output",
+								"value": "@activity('Get CSV Records').output.errors[0].Message",
 								"type": "Expression"
 							}
 						},
