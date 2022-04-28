@@ -94,7 +94,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT * FROM batchSync.v_W_CONTATTO_SR_CTC_D365_DS WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
+							"value": "@concat('SELECT * FROM batchSync.v_W_CONTATTO_SR_WEB_D365_DS WHERE modifiedon>',\n'''',activity('Ultima Sinc').output.firstRow.Rec,'''')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -111,7 +111,7 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "Id",
+									"name": "INTEGRAZIONE_ID",
 									"type": "Guid",
 									"physicalType": "uniqueidentifier"
 								},
@@ -122,7 +122,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_email",
+									"name": "EMAIL",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -133,7 +133,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_lastname",
+									"name": "COGNOME",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -144,7 +144,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_firstname",
+									"name": "NOME",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -155,7 +155,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_mobilephone",
+									"name": "TELEFONO_MOBILE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -166,7 +166,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_homephone",
+									"name": "TELEFONO_FISSO",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
@@ -177,7 +177,7 @@
 							},
 							{
 								"source": {
-									"name": "ntv_comment",
+									"name": "NOTE",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
