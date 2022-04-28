@@ -241,6 +241,10 @@
 				"name": "ntv_compositekey",
 				"type": "nvarchar"
 			}
-		]
+		],
+		"typeProperties": {
+			"schema": "batchSync",
+			"table": "v_W_CONTATTO_SR_CTC_D365_DS"
+		}
 	}
 }
